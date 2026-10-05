@@ -1,0 +1,11 @@
+{
+  "name": "Inspeção Ferroviária",
+  "short_name": "Inspeção",
+  "description": "Registro georreferenciado de anomalias ferroviárias",
+  "start_url": "./",
+  "scope": "./",
+  "display": "standalone",
+  "background_color": "#edf3f6",
+  "theme_color": "#063b5b",
+  "icons": [{ "src": "./favicon.svg", "sizes": "any", "type": "image/svg+xml", "purpose": "any maskable" }]
+}
