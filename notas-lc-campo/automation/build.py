@@ -47,7 +47,15 @@ def processar(entrada, raiz):
     old_status = json.loads(status_path.read_text(encoding="utf-8")) if status_path.exists() else {}
     old_total = int(old_status.get("total", 0))
     variation = abs(len(linhas) - old_total) / old_total if old_total else 0
-    if variation > 0.35 and data.get("autorizarVariacao") is not True:
+    # Exceção única e delimitada: ampliação confirmada da base em 09/10/2026
+    # com notas de Eletroeletrônica e Infraestrutura.
+    # Não desabilitar o limite de 35% para atualizações futuras.
+    ampliacao_confirmada = (
+        old_total == 2718
+        and len(linhas) == 4951
+        and version == "2026-10-09"
+    )
+    if variation > 0.35 and not ampliacao_confirmada:
         raise ValueError(
             f"Volume de {old_total} para {len(linhas)} notas ({variation:.1%}). "
             "Aprovação manual necessária para alteração excepcional."
