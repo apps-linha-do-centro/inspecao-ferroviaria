@@ -1,22 +1,27 @@
-
-name: Validar atualizacao Notas LC
+name: Atualizar Notas LC automaticamente
 
 on:
   workflow_dispatch:
+  schedule:
+    - cron: '*/20 * * * *'
 
 permissions:
-  contents: read
+  contents: write
+
+concurrency:
+  group: atualizar-notas-lc-main
+  cancel-in-progress: false
 
 jobs:
-  validar-notas:
+  atualizar-notas:
     runs-on: ubuntu-latest
-
     steps:
-      - name: Baixar arquivos do site
+      - name: Baixar site publicado
         uses: actions/checkout@v4
         with:
           ref: main
           path: site
+          persist-credentials: true
 
       - name: Baixar conversor e validador
         uses: actions/checkout@v4
@@ -30,23 +35,65 @@ jobs:
           ref: notas-lc-inbox
           path: entrada
 
-      - name: Verificar arquivo recebido
+      - name: Verificar se ha nova base
+        id: nova_base
+        shell: bash
         run: |
+          set -euo pipefail
           test -s entrada/notas-lc-campo/automation/incoming.csv
+          SHA_ENTRADA="$(git -C entrada rev-parse HEAD)"
+          echo "sha=$SHA_ENTRADA" >> "$GITHUB_OUTPUT"
+          MARCADOR="site/notas-lc-campo/automation/last-processed-sha.txt"
+          if [ -f "$MARCADOR" ] && [ "$(cat "$MARCADOR")" = "$SHA_ENTRADA" ]; then
+            echo "nova=false" >> "$GITHUB_OUTPUT"
+            echo "Base ja publicada. Nenhuma alteracao."
+          else
+            echo "nova=true" >> "$GITHUB_OUTPUT"
+            echo "Nova base detectada: $SHA_ENTRADA"
+          fi
 
-      - name: Converter CSV para formato do aplicativo
+      - name: Converter CSV
+        if: steps.nova_base.outputs.nova == 'true'
         run: |
           python3 ferramentas/notas-lc-campo/automation/convert_csv.py \
             entrada/notas-lc-campo/automation/incoming.csv \
             /tmp/notas-lc-convertidas.json.gz
 
       - name: Validar base e preparar arquivos
+        if: steps.nova_base.outputs.nova == 'true'
         run: |
           python3 ferramentas/notas-lc-campo/automation/build.py \
             --entrada /tmp/notas-lc-convertidas.json.gz \
             --raiz site
 
-      - name: Exibir resultado
+      - name: Registrar base processada
+        if: steps.nova_base.outputs.nova == 'true'
+        env:
+          SHA_ENTRADA: ${{ steps.nova_base.outputs.sha }}
         run: |
-          echo "Validacao concluida."
-          echo "Nenhuma alteracao foi publicada."
+          printf '%s' "$SHA_ENTRADA" > site/notas-lc-campo/automation/last-processed-sha.txt
+
+      - name: Publicar somente arquivos do Notas LC
+        if: steps.nova_base.outputs.nova == 'true'
+        working-directory: site
+        run: |
+          set -euo pipefail
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add -- notas-lc-campo/notes.json.gz \
+            notas-lc-campo/base-status.json \
+            notas-lc-campo/index.html \
+            notas-lc-campo/sw.js \
+            notas-lc-campo/automation/last-processed-sha.txt
+          if git diff --cached --quiet; then
+            echo "Nenhuma alteracao para publicar."
+            exit 0
+          fi
+          git commit -m "Atualizar base Notas LC validada"
+          git push origin HEAD:main
+
+      - name: Resultado
+        if: always()
+        run: |
+          echo "Se a validacao falhar, nada sera publicado."
+          echo "GitHub Pages publicara os arquivos da main apos o commit."
