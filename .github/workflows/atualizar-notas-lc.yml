@@ -1,0 +1,52 @@
+
+name: Validar atualizacao Notas LC
+
+on:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  validar-notas:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Baixar arquivos do site
+        uses: actions/checkout@v4
+        with:
+          ref: main
+          path: site
+
+      - name: Baixar conversor e validador
+        uses: actions/checkout@v4
+        with:
+          ref: feature/notas-lc-automacao-20261009
+          path: ferramentas
+
+      - name: Baixar CSV recebido do Gmail
+        uses: actions/checkout@v4
+        with:
+          ref: notas-lc-inbox
+          path: entrada
+
+      - name: Verificar arquivo recebido
+        run: |
+          test -s entrada/notas-lc-campo/automation/incoming.csv
+
+      - name: Converter CSV para formato do aplicativo
+        run: |
+          python3 ferramentas/notas-lc-campo/automation/convert_csv.py \
+            entrada/notas-lc-campo/automation/incoming.csv \
+            /tmp/notas-lc-convertidas.json.gz
+
+      - name: Validar base e preparar arquivos
+        run: |
+          python3 ferramentas/notas-lc-campo/automation/build.py \
+            --entrada /tmp/notas-lc-convertidas.json.gz \
+            --raiz site
+
+      - name: Exibir resultado
+        run: |
+          echo "Validacao concluida."
+          echo "Nenhuma alteracao foi publicada."
