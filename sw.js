@@ -1,7 +1,7 @@
 const ROOT = new URL(self.registration.scope);
 const PREFIX = "inspecao-pages-" + ROOT.pathname + "-";
-const CACHE = PREFIX + "e7f10d4ff7d2";
-const APP_SHELL = ["", "index.html", "manifest.webmanifest", "favicon.svg", "railway-segments-v2.bin", ...["assets/index-BpMVqc6d.css","assets/index-CH34kGtA.js"]]
+const CACHE = PREFIX + "3b0ea5aab4dd";
+const APP_SHELL = ["", "index.html", "manifest.webmanifest", "favicon.svg", "railway-segments-v2.bin", ...["assets/index-BpMVqc6d.css","assets/index-Dh9jGWSH.js"]]
   .map(path => new URL(path, ROOT).href);
 
 self.addEventListener("install", event => {
@@ -24,3 +24,4 @@ self.addEventListener("fetch", event => {
     return response;
   })));
 });
+
