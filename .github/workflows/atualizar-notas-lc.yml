@@ -71,6 +71,7 @@ jobs:
         env:
           SHA_ENTRADA: ${{ steps.nova_base.outputs.sha }}
         run: |
+          mkdir -p site/notas-lc-campo/automation
           printf '%s' "$SHA_ENTRADA" > site/notas-lc-campo/automation/last-processed-sha.txt
 
       - name: Publicar somente arquivos do Notas LC
