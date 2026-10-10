@@ -50,6 +50,28 @@ jobs:
           print('Criticidades site:',json.dumps(dict(Counter(str(r[3]).strip() for r in linhas_site)),ensure_ascii=False))
           print('IDs apenas no CSV:',len(set(origem)-set(site)))
           print('IDs apenas no site:',len(set(site)-set(origem)))
+          def km(marker, offset):
+              m=re.fullmatch(r'\s*KM\s*(\d+(?:[.,]\d+)?)\s*',str(marker or ''),flags=re.I)
+              if not m:return None
+              try:
+                  return round(float(m.group(1).replace(',','.'))*1000+float(str(offset or '0').replace(',','.'))*1000)
+              except ValueError:return None
+          def notas_fcl_lc2(linhas):
+              resposta=set()
+              for r in linhas:
+                  coord=str(r[0] or '').strip().upper().removeprefix('C')
+                  ativo=str(r[5] or '').strip().upper()
+                  if coord!='FCL' or not ativo.startswith('MF-LC2-'):continue
+                  inicio,fim=km(r[9],r[10]),km(r[11],r[12])
+                  if inicio is None and fim is None:continue
+                  if inicio is None:inicio=fim
+                  if fim is None:fim=inicio
+                  if min(inicio,fim)<=462000 and max(inicio,fim)>=461000:
+                      resposta.add(normalizar(r[2]))
+              return resposta
+          atuais=notas_fcl_lc2(linhas_site)
+          print('Faixa 461+000 a 462+000, FCL LC2 no site:',len(atuais),'notas (referencia ChatGPT: 29).')
+          print('Notas de referencia presentes nesta faixa no site:',sorted(atuais & alvos))
           for nota in sorted(alvos):
               r=origem.get(nota)
               s=site.get(nota)
