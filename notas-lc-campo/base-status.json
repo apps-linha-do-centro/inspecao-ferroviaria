@@ -1,1 +1,1 @@
-{"version":"2026-10-09","total":4951,"located":4364,"unlocated":587,"missing_asset":90,"reasons":{"Km em branco":587,"Ativo em branco":90}}
+{"version":"2026-10-10","total":4826,"located":4269,"unlocated":557,"missing_asset":63,"reasons":{"Km em branco":557,"Ativo em branco":63},"auditoria_criticidade":{"":1426,"1-Muito alta":39,"2-Alta":768,"3-Média":1921,"4-Baixa":672},"criticidades_fora_padrao":{},"sem_criticidade":1426}
