@@ -42,7 +42,7 @@ def processar(entrada, raiz):
     criticidades = Counter(str(r[3]).strip() for r in linhas)
     classificacoes = {"1-Muito alta", "2-Alta", "3-Média", "4-Baixa"}
     fora_padrao = {k: v for k, v in criticidades.items() if k and k not in classificacoes}
-    ids_normalizados = [re.sub(r"^0+(?=\\d)", "", x) for x in ids]
+    ids_normalizados = [re.sub(r"^0+(?=\d)", "", x) for x in ids]
     repetidos = len(ids_normalizados) - len(set(ids_normalizados))
     if repetidos:
         raise ValueError(f"{repetidos} notas duplicadas apos remover zeros a esquerda")
