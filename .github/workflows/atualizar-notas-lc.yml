@@ -2,6 +2,13 @@ name: Atualizar Notas LC automaticamente
 
 on:
   workflow_dispatch:
+  push:
+    branches: [main]
+    paths:
+      - .github/workflows/atualizar-notas-lc.yml
+  schedule:
+    # 06:45 e 07:45 em Brasilia (UTC-3), de segunda a sexta.
+    - cron: '45 9,10 * * 1-5'
 
 permissions:
   contents: write
@@ -41,6 +48,13 @@ jobs:
           test -s entrada/notas-lc-campo/automation/incoming.csv
           SHA_ENTRADA="$(git -C entrada rev-parse HEAD)"
           echo "sha=$SHA_ENTRADA" >> "$GITHUB_OUTPUT"
+          HOJE_BR="$(TZ=America/Sao_Paulo date +%F)"
+          DATA_COMMIT_BR="$(TZ=America/Sao_Paulo date -d "$(git -C entrada log -1 --format=%cI)" +%F)"
+          if [ "$DATA_COMMIT_BR" != "$HOJE_BR" ]; then
+            echo "nova=false" >> "$GITHUB_OUTPUT"
+            echo "Sem arquivo novo nesta data ($HOJE_BR); a ultima entrada foi atualizada em $DATA_COMMIT_BR. Nao publicar."
+            exit 0
+          fi
           MARCADOR="site/notas-lc-campo/automation/last-processed-sha.txt"
           if [ -f "$MARCADOR" ] && [ "$(cat "$MARCADOR")" = "$SHA_ENTRADA" ]; then
             echo "nova=false" >> "$GITHUB_OUTPUT"
@@ -50,11 +64,9 @@ jobs:
             echo "Nova base detectada: $SHA_ENTRADA"
           fi
 
-      # Protecao temporaria: nao publicar bases ate conclusao da auditoria.
-      - name: Bloquear publicacao durante auditoria
-        run: |
-          echo 'Auditoria de equivalencia pendente. Nao publicar automaticamente.'
-          exit 1
+      - name: Testar o conversor antes de atualizar
+        if: steps.nova_base.outputs.nova == 'true'
+        run: python3 -m unittest discover -s ferramentas/notas-lc-campo/automation -p 'test_*.py' -v
 
       - name: Converter CSV
         if: steps.nova_base.outputs.nova == 'true'
@@ -100,5 +112,5 @@ jobs:
       - name: Resultado
         if: always()
         run: |
-          echo "Se a validacao falhar, nada sera publicado."
+          echo "Sem entrada nova da data de hoje ou se a validacao falhar, nada sera publicado."
           echo "GitHub Pages publicara os arquivos da main apos o commit."
