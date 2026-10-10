@@ -2,6 +2,13 @@ name: Auditar Notas LC (sem publicar)
 
 on:
   workflow_dispatch:
+  push:
+    branches: [main]
+    paths:
+      - notas-lc-campo/core.js
+      - notas-lc-campo/app.js
+      - notas-lc-campo/sw.js
+      - .github/workflows/auditar-notas-lc.yml
 
 permissions:
   contents: read
@@ -28,6 +35,35 @@ jobs:
           ref: notas-lc-inbox
           path: entrada
 
+      - name: Testar criticidades e identificadores no navegador
+        run: |
+          node - <<'JS'
+          const assert=require('node:assert/strict');
+          require('./site/notas-lc-campo/core.js');
+          const casos=[
+            ['000014600288','P3','3-Média'],
+            ['000014619762','3-Média','3-Média'],
+            ['000013827803','P2','2-Alta'],
+            ['000013558789','P1','1-Muito alta'],
+            ['000013555555','P4','4-Baixa'],
+            ['000014000000','',''],
+          ];
+          const linhas=casos.map(([id,criticidade])=>[
+            'FCL','YRD',id,criticidade,'19/08/2026','MF-LC2-FPK_FPK-L000001',
+            'Descrição','AM42','Anomalia','KM 461','0','KM 461','0',
+          ]);
+          const base={abas:[
+            {colunas:['Coordenação','TAM','Número da Nota','Prioridade','Data da Nota','Ativo','Descrição','Código anomalia','Anomalia','Marcador inic.','Distância inic.','Marcador final','Distância final'],linhas},
+            {colunas:['TAM','Descrição'],linhas:[]},
+          ],versao_base:'2026-10-09'};
+          const notas=globalThis.RailCore.parseBase(base).notes;
+          for(let i=0;i<casos.length;i++){
+            assert.equal(notas[i].id,casos[i][0], 'ID interno nao deve mudar');
+            assert.equal(notas[i].priority,casos[i][2], 'Criticidade exibida divergente');
+          }
+          console.log('APROVADO: rotulos P1-P4, valores originais, vazio e IDs preservados');
+          JS
+
       - name: Comparar base publicada com CSV atual
         run: |
           python3 - <<'PY'
@@ -50,6 +86,18 @@ jobs:
           print('Criticidades site:',json.dumps(dict(Counter(str(r[3]).strip() for r in linhas_site)),ensure_ascii=False))
           print('IDs apenas no CSV:',len(set(origem)-set(site)))
           print('IDs apenas no site:',len(set(site)-set(origem)))
+          if set(origem)!=set(site):
+              raise SystemExit('BLOQUEADO: IDs da base publicada diferentes dos IDs do CSV')
+          rotulos={'P1':'1-Muito alta','P2':'2-Alta','P3':'3-Média','P4':'4-Baixa'}
+          inconsistencias=[
+              nota for nota,r in origem.items()
+              if (r.get('Texto referente à prioridade') or '').strip()
+              != rotulos.get(str(site[nota][3]).strip(),str(site[nota][3]).strip())
+          ]
+          print('Notas com criticidade diferente entre CSV e base publicada:',len(inconsistencias))
+          if inconsistencias:
+              print('Exemplos:',inconsistencias[:10])
+              raise SystemExit('BLOQUEADO: criticidades divergentes')
           def km(marker, offset):
               m=re.fullmatch(r'\s*KM\s*(\d+(?:[.,]\d+)?)\s*',str(marker or ''),flags=re.I)
               if not m:return None
