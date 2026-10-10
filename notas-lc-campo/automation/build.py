@@ -2,6 +2,7 @@
 """Valida nova base gerada pelo Google Apps Script; somente biblioteca padrão."""
 import argparse
 import gzip
+import hashlib
 import json
 from pathlib import Path
 import re
@@ -91,7 +92,13 @@ def processar(entrada, raiz):
         raise ValueError("Não foi possível atualizar as datas do HTML")
     sw_path = pasta / "sw.js"
     sw = sw_path.read_text(encoding="utf-8")
-    sw, n = re.subn(r"const CACHE='notas-lc-v[^']+'", f"const CACHE='notas-lc-v13-{version.replace('-', '')}'", sw, count=1)
+    # A identidade do cache acompanha base e codigo, inclusive em atualizacoes no mesmo dia.
+    digest = hashlib.sha256()
+    digest.update(entrada.read_bytes())
+    for recurso in ("app.js", "core.js", "style.css"):
+        digest.update((pasta / recurso).read_bytes())
+    identificador_cache = f"notas-lc-v14-{version.replace('-', '')}-{digest.hexdigest()[:12]}"
+    sw, n = re.subn(r"const CACHE='notas-lc-v[^']+'", f"const CACHE='{identificador_cache}'", sw, count=1)
     if n != 1:
         raise ValueError("Não foi possível trocar versão de cache")
     shutil.copyfile(entrada, pasta / "notes.json.gz")
