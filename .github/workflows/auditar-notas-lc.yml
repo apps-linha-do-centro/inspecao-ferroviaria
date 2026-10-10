@@ -28,6 +28,35 @@ jobs:
           ref: notas-lc-inbox
           path: entrada
 
+      - name: Comparar base publicada com CSV atual
+        run: |
+          python3 - <<'PY'
+          import csv, gzip, json, re
+          from collections import Counter
+          from pathlib import Path
+          alvos={'14600288','14619762'}
+          normalizar=lambda valor: re.sub(r'^0+(?=\d)', '', str(valor).strip())
+          assert normalizar('000014600288') == '14600288'
+          assert normalizar('000014619762') == '14619762'
+          with Path('entrada/notas-lc-campo/automation/incoming.csv').open(encoding='utf-8-sig',newline='') as f:
+              linhas_csv=list(csv.DictReader(f))
+          with gzip.open('site/notas-lc-campo/notes.json.gz','rt',encoding='utf-8') as f:
+              base=json.load(f)
+          linhas_site=base['abas'][0]['linhas']
+          origem={normalizar(r['Número da nota']):r for r in linhas_csv}
+          site={normalizar(r[2]):r for r in linhas_site}
+          print('CSV recebido:',len(linhas_csv),'notas. Site publicado:',len(linhas_site),'notas.')
+          print('Criticidades CSV:',json.dumps(dict(Counter((r.get('Texto referente à prioridade') or '').strip() for r in linhas_csv)),ensure_ascii=False))
+          print('Criticidades site:',json.dumps(dict(Counter(str(r[3]).strip() for r in linhas_site)),ensure_ascii=False))
+          print('IDs apenas no CSV:',len(set(origem)-set(site)))
+          print('IDs apenas no site:',len(set(site)-set(origem)))
+          for nota in sorted(alvos):
+              r=origem.get(nota)
+              s=site.get(nota)
+              print('Nota',nota,'CSV:',json.dumps({'id':r.get('Número da nota'),'prioridade':r.get('Texto referente à prioridade'),'ativo':r.get('Local de instalação TPLNR'),'km_inicial':r.get('Marcador para o ponto de partida'),'distancia_inicial':r.get('Market Dist Start 2')} if r else None,ensure_ascii=False))
+              print('Nota',nota,'SITE:',json.dumps({'id':s[2],'prioridade':s[3],'ativo':s[5],'km_inicial':s[9],'distancia_inicial':s[10]} if s else None,ensure_ascii=False))
+          PY
+
       - name: Testar conversor
         run: python3 -m unittest discover -s ferramentas/notas-lc-campo/automation -p 'test_*.py' -v
 
@@ -49,7 +78,7 @@ jobs:
               for r in leitor:
                   total+=1
                   bruto=str(r.get(campo) or '').strip()
-                  canonico=re.sub(r'^0+(?=\\d)', '',bruto)
+                  canonico=re.sub(r'^0+(?=\d)', '',bruto)
                   if canonico in alvos:
                       encontrados.append({'id_csv':bruto,'id_normalizado':canonico,
                                          'criticidade':r.get('Texto referente à prioridade',''),
@@ -96,7 +125,7 @@ jobs:
           referencia = {'14600288', '14619762'}
           amostra = []
           for r in linhas:
-              numero = re.sub(r'^0+(?=\\d)', '', str(r[2]))
+              numero = re.sub(r'^0+(?=\d)', '', str(r[2]))
               if numero in referencia:
                   amostra.append({
                       'nota': numero, 'criticidade': str(r[3]),
