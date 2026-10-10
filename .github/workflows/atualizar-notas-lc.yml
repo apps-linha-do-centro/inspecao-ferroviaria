@@ -2,6 +2,8 @@ name: Atualizar Notas LC automaticamente
 
 on:
   workflow_dispatch:
+  repository_dispatch:
+    types: [notas_lc_csv_atualizado]
   push:
     branches: [main]
     paths:
