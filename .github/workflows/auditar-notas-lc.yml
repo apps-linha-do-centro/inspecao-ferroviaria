@@ -127,7 +127,7 @@ jobs:
               print('Nota',nota,'SITE:',json.dumps({'id':s[2],'prioridade':s[3],'ativo':s[5],'km_inicial':s[9],'distancia_inicial':s[10]} if s else None,ensure_ascii=False))
           PY
 
-      - name: Testar conversor
+      - name: Testar conversor e rejeicao de anexos incorretos
         run: python3 -m unittest discover -s ferramentas/notas-lc-campo/automation -p 'test_*.py' -v
 
       - name: Investigar notas ausentes no CSV original
