@@ -7,8 +7,8 @@ on:
     paths:
       - .github/workflows/atualizar-notas-lc.yml
   schedule:
-    # 06:45 e 07:45 em Brasilia (UTC-3), de segunda a sexta.
-    - cron: '45 9,10 * * 1-5'
+    # 06:45 e 07:45 em Brasilia (UTC-3), todos os dias, inclusive finais de semana e feriados.
+    - cron: '45 9,10 * * *'
 
 permissions:
   contents: write
