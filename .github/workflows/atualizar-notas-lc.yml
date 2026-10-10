@@ -2,10 +2,6 @@ name: Atualizar Notas LC automaticamente
 
 on:
   workflow_dispatch:
-  schedule:
-    # Pausado: auditoria da equivalencia entre o app original e o GitHub.
-    # Reativar apos testes de identificadores, prioridade, KM e contagem.
-    # - cron: '*/20 * * * *'
 
 permissions:
   contents: write
