@@ -55,5 +55,53 @@ class ConversaoNotasTest(unittest.TestCase):
             self.assertEqual(linhas[0][10], "0,532")
             self.assertEqual(len(linhas), 4)
 
+
+    def test_rejeita_relatorio_de_inconsistencias(self):
+        with tempfile.TemporaryDirectory() as temp:
+            origem=Path(temp)/"relatorio_inconsistencias.csv"
+            destino=Path(temp)/"saida.json.gz"
+            with origem.open("w", encoding="utf-8", newline="") as arq:
+                w=csv.DictWriter(arq, fieldnames=["Número da nota", "Situação", "Observação"])
+                w.writeheader()
+                w.writerow({"Número da nota":"000014600288", "Situação":"Corrigir", "Observação":"Relatório parcial"})
+            resultado=subprocess.run([sys.executable,str(CONVERTER),str(origem),str(destino)],
+                                     capture_output=True,text=True)
+            self.assertNotEqual(resultado.returncode,0)
+            self.assertIn("REJEITADO",resultado.stderr)
+            self.assertFalse(destino.exists())
+
+    def test_rejeita_base_de_outro_dashboard_mas_com_colunas_iguais(self):
+        with tempfile.TemporaryDirectory() as temp:
+            origem=Path(temp)/"amv_renomeado.csv"
+            destino=Path(temp)/"saida.json.gz"
+            colunas=[
+                "Centro para centro de trabalho responsável", "Tipo de atividade de manutenção",
+                "Número da nota", "Texto referente à prioridade", "Data da nota",
+                "Local de instalação TPLNR", "Texto breve", "Codificação 1",
+                "Texto breve para o código", "Marcador para o ponto de partida",
+                "Market Dist Start 2", "Marcador para o ponto final", "Maker Dist End 1",
+            ]
+            with origem.open("w",encoding="utf-8",newline="") as arq:
+                writer=csv.DictWriter(arq,fieldnames=colunas)
+                writer.writeheader()
+                for i in range(600):
+                    writer.writerow({
+                        "Centro para centro de trabalho responsável":"OUTRO",
+                        "Tipo de atividade de manutenção":"AMV",
+                        "Número da nota":str(15000000+i),
+                        "Texto referente à prioridade":"3-Média",
+                        "Data da nota":"09/10/2026",
+                        "Local de instalação TPLNR":"OUTRO-ATIVO",
+                        "Marcador para o ponto de partida":"KM461",
+                        "Market Dist Start 2":"0",
+                        "Marcador para o ponto final":"KM461",
+                        "Maker Dist End 1":"0",
+                    })
+            resultado=subprocess.run([sys.executable,str(CONVERTER),str(origem),str(destino)],
+                                     capture_output=True,text=True)
+            self.assertNotEqual(resultado.returncode,0)
+            self.assertIn("REJEITADO",resultado.stderr)
+            self.assertFalse(destino.exists())
+
 if __name__ == "__main__":
     unittest.main()
