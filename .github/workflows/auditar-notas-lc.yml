@@ -31,6 +31,34 @@ jobs:
       - name: Testar conversor
         run: python3 -m unittest discover -s ferramentas/notas-lc-campo/automation -p 'test_*.py' -v
 
+      - name: Investigar notas ausentes no CSV original
+        run: |
+          python3 - <<'PY'
+          import csv, re
+          from pathlib import Path
+          arquivo=Path('entrada/notas-lc-campo/automation/incoming.csv')
+          alvos={'14600288','14619762'}
+          with arquivo.open(encoding='utf-8-sig', newline='') as f:
+              leitor=csv.DictReader(f)
+              print('Colunas de identificador:',[c for c in (leitor.fieldnames or []) if 'nota' in c.lower()])
+              campo='Número da nota'
+              if campo not in (leitor.fieldnames or []):
+                  raise ValueError('Coluna Número da nota ausente do CSV original')
+              encontrados=[]
+              total=0
+              for r in leitor:
+                  total+=1
+                  bruto=str(r.get(campo) or '').strip()
+                  canonico=re.sub(r'^0+(?=\\d)', '',bruto)
+                  if canonico in alvos:
+                      encontrados.append({'id_csv':bruto,'id_normalizado':canonico,
+                                         'criticidade':r.get('Texto referente à prioridade',''),
+                                         'ativo':r.get('Local de instalação TPLNR','')})
+          print('Total linhas CSV original:',total)
+          print('Notas alvo encontradas no CSV original:',encontrados)
+          print('Notas alvo ausentes no CSV original:',sorted(alvos-{x['id_normalizado'] for x in encontrados}))
+          PY
+
       - name: Converter CSV real
         run: |
           python3 ferramentas/notas-lc-campo/automation/convert_csv.py \
