@@ -1,0 +1,63 @@
+name: Auditar Notas LC (sem publicar)
+
+on:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  auditoria:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Obter aplicativo publicado
+        uses: actions/checkout@v4
+        with:
+          ref: main
+          path: site
+
+      - name: Obter ferramentas em revisao
+        uses: actions/checkout@v4
+        with:
+          ref: feature/notas-lc-automacao-20261009
+          path: ferramentas
+
+      - name: Obter CSV do Gmail
+        uses: actions/checkout@v4
+        with:
+          ref: notas-lc-inbox
+          path: entrada
+
+      - name: Testar conversor
+        run: python3 -m unittest discover -s ferramentas/notas-lc-campo/automation -p 'test_*.py' -v
+
+      - name: Converter CSV real
+        run: |
+          python3 ferramentas/notas-lc-campo/automation/convert_csv.py \
+            entrada/notas-lc-campo/automation/incoming.csv \
+            /tmp/notas-lc-convertidas.json.gz
+
+      - name: Validar base sem publicar
+        run: |
+          python3 ferramentas/notas-lc-campo/automation/build.py \
+            --entrada /tmp/notas-lc-convertidas.json.gz \
+            --raiz site
+
+      - name: Resumo de auditoria
+        run: |
+          python3 - <<'PY'
+          import json
+          from pathlib import Path
+          s=json.loads(Path('site/notas-lc-campo/base-status.json').read_text())
+          print('Total:',s['total'])
+          print('Com localizacao:',s['located'])
+          print('Sem KM:',s['unlocated'])
+          print('Criticidades:',json.dumps(s.get('auditoria_criticidade',{}),ensure_ascii=False))
+          print('Fora do padrao:',json.dumps(s.get('criticidades_fora_padrao',{}),ensure_ascii=False))
+          PY
+
+      - name: Guardar resultado da auditoria
+        uses: actions/upload-artifact@v4
+        with:
+          name: auditoria-notas-lc
+          path: site/notas-lc-campo/base-status.json
