@@ -42,6 +42,10 @@ def processar(entrada, raiz):
     criticidades = Counter(str(r[3]).strip() for r in linhas)
     classificacoes = {"1-Muito alta", "2-Alta", "3-Média", "4-Baixa"}
     fora_padrao = {k: v for k, v in criticidades.items() if k and k not in classificacoes}
+    # Valores em branco sao validos e continuam como "Criticidade não informada".
+    # Valores preenchidos fora do contrato devem bloquear a atualizacao.
+    if fora_padrao:
+        raise ValueError(f"Criticidades desconhecidas: {fora_padrao}")
     ids_normalizados = [re.sub(r"^0+(?=\d)", "", x) for x in ids]
     repetidos = len(ids_normalizados) - len(set(ids_normalizados))
     if repetidos:
@@ -75,7 +79,8 @@ def processar(entrada, raiz):
         "unlocated": missing, "missing_asset": sem_ativo,
         "reasons": {"Km em branco": missing, "Ativo em branco": sem_ativo},
         "auditoria_criticidade": dict(sorted(criticidades.items())),
-        "criticidades_fora_padrao": fora_padrao
+        "criticidades_fora_padrao": fora_padrao,
+        "sem_criticidade": criticidades.get("", 0)
     }
     html_path = pasta / "index.html"
     html = html_path.read_text(encoding="utf-8")
