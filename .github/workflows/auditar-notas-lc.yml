@@ -56,8 +56,43 @@ jobs:
           print('Fora do padrao:',json.dumps(s.get('criticidades_fora_padrao',{}),ensure_ascii=False))
           PY
 
+      - name: Comparar amostra do trecho FCL LC2
+        run: |
+          python3 - <<'PY'
+          import gzip, json, re
+          from pathlib import Path
+          caminho = Path('site/notas-lc-campo/notes.json.gz')
+          with gzip.open(caminho, 'rt', encoding='utf-8') as arquivo:
+              dados = json.load(arquivo)
+          linhas = dados['abas'][0]['linhas']
+          referencia = {'14600288', '14619762'}
+          amostra = []
+          for r in linhas:
+              numero = re.sub(r'^0+(?=\\d)', '', str(r[2]))
+              if numero in referencia:
+                  amostra.append({
+                      'nota': numero, 'criticidade': str(r[3]),
+                      'centro': str(r[0]), 'ativo': str(r[5]),
+                      'marcador_inicial': str(r[9]), 'distancia_inicial': str(r[10]),
+                      'marcador_final': str(r[11]), 'distancia_final': str(r[12])
+                  })
+          resultado = {
+              'referencia_original': 'Captura do ChatGPT em 09/10/2026, faixa 461+000 a 462+000, FCL LC2, 29 notas proximas',
+              'notas_referencia': sorted(referencia),
+              'encontradas_no_csv': amostra,
+              'nao_encontradas': sorted(referencia - {r['nota'] for r in amostra}),
+              'observacao': 'Amostra informativa. Nao comprova equivalencia da consulta de 29 notas.'
+          }
+          destino = Path('site/notas-lc-campo/automation/auditoria-amostra.json')
+          destino.parent.mkdir(parents=True, exist_ok=True)
+          destino.write_text(json.dumps(resultado, ensure_ascii=False, indent=2), encoding='utf-8')
+          print(json.dumps(resultado, ensure_ascii=False, indent=2))
+          PY
+
       - name: Guardar resultado da auditoria
         uses: actions/upload-artifact@v4
         with:
           name: auditoria-notas-lc
-          path: site/notas-lc-campo/base-status.json
+          path: |
+            site/notas-lc-campo/base-status.json
+            site/notas-lc-campo/automation/auditoria-amostra.json
