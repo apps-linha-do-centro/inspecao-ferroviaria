@@ -12,8 +12,9 @@ for r in rows:
     nota=get(r,'Número da nota')
     if not nota: raise SystemExit('Nota sem número')
     rawprio=get(r,'Texto referente à prioridade')
-    m=re.match(r'([0-9]+)',rawprio)
-    priority='P'+m.group(1) if m else rawprio
+    # Preserve a classificacao original. Converter '3-Média' em 'P3'
+    # muda o significado e quebra filtros/cores do aplicativo.
+    priority=rawprio
     centro=get(r,'Centro para centro de trabalho responsável').removeprefix('C')
     out.append([
       centro,get(r,'Tipo de atividade de manutenção'),nota,priority,
