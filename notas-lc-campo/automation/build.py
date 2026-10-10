@@ -37,6 +37,15 @@ def processar(entrada, raiz):
     ids = [str(r[2]) for r in linhas]
     if len(set(ids)) != len(ids):
         raise ValueError(f"Números de nota duplicados: {len(ids) - len(set(ids))}")
+    # Auditoria: criticidade original deve ser preservada; nao converter em P0/P1/P2.
+    from collections import Counter
+    criticidades = Counter(str(r[3]).strip() for r in linhas)
+    classificacoes = {"1-Muito alta", "2-Alta", "3-Média", "4-Baixa"}
+    fora_padrao = {k: v for k, v in criticidades.items() if k and k not in classificacoes}
+    ids_normalizados = [re.sub(r"^0+(?=\\d)", "", x) for x in ids]
+    repetidos = len(ids_normalizados) - len(set(ids_normalizados))
+    if repetidos:
+        raise ValueError(f"{repetidos} notas duplicadas apos remover zeros a esquerda")
     version = str(data.get("versao_base", ""))
     if not re.fullmatch(r"20\d\d-\d\d-\d\d", version):
         raise ValueError("Data da extração inválida")
@@ -64,7 +73,9 @@ def processar(entrada, raiz):
     resumo = {
         "version": version, "total": len(linhas), "located": len(linhas) - missing,
         "unlocated": missing, "missing_asset": sem_ativo,
-        "reasons": {"Km em branco": missing, "Ativo em branco": sem_ativo}
+        "reasons": {"Km em branco": missing, "Ativo em branco": sem_ativo},
+        "auditoria_criticidade": dict(sorted(criticidades.items())),
+        "criticidades_fora_padrao": fora_padrao
     }
     html_path = pasta / "index.html"
     html = html_path.read_text(encoding="utf-8")
@@ -83,7 +94,9 @@ def processar(entrada, raiz):
     html_path.write_text(html, encoding="utf-8")
     sw_path.write_text(sw, encoding="utf-8")
     print(json.dumps({"resultado": "VALIDADO", "total": len(linhas), "sem_km": missing,
-                      "sem_ativo": sem_ativo, "versao": version, "variacao": f"{variation:.1%}"}, ensure_ascii=False))
+                      "sem_ativo": sem_ativo, "versao": version, "variacao": f"{variation:.1%}",
+                      "criticidades": dict(sorted(criticidades.items())),
+                      "criticidades_fora_padrao": fora_padrao}, ensure_ascii=False))
 
 if __name__ == "__main__":
     parser = argparse.ArgumentParser()
