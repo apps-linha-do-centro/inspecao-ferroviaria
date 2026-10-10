@@ -3,7 +3,9 @@ name: Atualizar Notas LC automaticamente
 on:
   workflow_dispatch:
   schedule:
-    - cron: '*/20 * * * *'
+    # Pausado: auditoria da equivalencia entre o app original e o GitHub.
+    # Reativar apos testes de identificadores, prioridade, KM e contagem.
+    # - cron: '*/20 * * * *'
 
 permissions:
   contents: write
@@ -51,6 +53,12 @@ jobs:
             echo "nova=true" >> "$GITHUB_OUTPUT"
             echo "Nova base detectada: $SHA_ENTRADA"
           fi
+
+      # Protecao temporaria: nao publicar bases ate conclusao da auditoria.
+      - name: Bloquear publicacao durante auditoria
+        run: |
+          echo 'Auditoria de equivalencia pendente. Nao publicar automaticamente.'
+          exit 1
 
       - name: Converter CSV
         if: steps.nova_base.outputs.nova == 'true'
