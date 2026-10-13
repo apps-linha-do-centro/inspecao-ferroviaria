@@ -1,6 +1,9 @@
 # Inspeção Ferroviária · Apps Linha do Centro
 
-[Abrir o aplicativo](https://apps-linha-do-centro.github.io/inspecao-ferroviaria/)
+## Aplicativos publicados
+
+- **[Abrir Inspeção Ferroviária](https://apps-linha-do-centro.github.io/inspecao-ferroviaria/)** — registro de inspeções ferroviárias.
+- **[Abrir Notas LC · Conferência em campo](https://apps-linha-do-centro.github.io/inspecao-ferroviaria/notas-lc-campo/)** — consulta e conferência de notas de manutenção em campo.
 
 Arquivos compilados para hospedagem no GitHub Pages. O código de desenvolvimento é mantido separadamente em repositório privado.
 
