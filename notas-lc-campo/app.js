@@ -41,9 +41,38 @@ async function resizePhoto(file){if(!file.type.startsWith('image/'))throw Error(
 function editProfile(){openDialog('Cadastro do avaliador',`<form id="profileForm" class="fields"><label class="field">Matrícula<input name="employeeId" required maxlength="40" value="${esc(profile?.employeeId||'')}"></label><label class="field">Nome<input name="name" required maxlength="120" value="${esc(profile?.name||'')}"></label><p class="dialog-note">O cadastro será usado nas próximas inspeções. As avaliações anteriores e a inspeção atual mantêm a identificação original.</p><button class="primary">Salvar cadastro</button></form>`);$('#profileForm').onsubmit=e=>{e.preventDefault();const f=new FormData(e.target),name=String(f.get('name')||'').trim(),employeeId=String(f.get('employeeId')||'').trim();if(!name||!employeeId)return;profile={name,employeeId};localStorage.setItem('lc-profile',JSON.stringify(profile));$('#dialog').close();toast('Cadastro salvo para as próximas inspeções')}}
 function setPosition(p){resetFilters();p.track=tracks[p.trackId];position=p;const s=active();if(s&&!s.end){s.lastPosition=p;persist(s).catch(()=>{})}render();warning('')}
 function settings(){openDialog('Configurações',`<form id="rangeForm" class="fields"><label class="field">Alcance antes e depois<select name="preset"><option value="250" ${range===250?'selected':''}>250 metros</option><option value="500" ${range===500?'selected':''}>500 metros</option><option value="custom" ${![250,500].includes(range)?'selected':''}>Personalizado</option></select></label><label class="field">Valor personalizado em metros<input name="custom" type="number" min="1" max="50000" step="1" value="${range}"></label><p class="dialog-note">A distância é aplicada para cada lado, ao longo da quilometragem da mesma linha.</p><button class="primary">Salvar configuração</button><button type="button" id="editProfileBtn">Editar matrícula e nome</button></form>`);$('#editProfileBtn').onclick=editProfile;$('#rangeForm').onsubmit=e=>{e.preventDefault();const f=new FormData(e.target),v=f.get('preset')==='custom'?Number(f.get('custom')):Number(f.get('preset'));if(!Number.isInteger(v)||v<1||v>50000){toast('Informe um alcance entre 1 e 50.000 metros.');return}range=v;localStorage.setItem('lc-range',range);$('#dialog').close();limit=60;render()}}
+function kmInputMask(value,deleting=false){
+ const text=String(value).trim();if(!text)return '';
+ if(/^\d+[.,]\d{1,3}$/.test(text)){const km=C.manualKm(text);return km===null?text:C.fmtKm(km)}
+ if(/^\d+\+\d{0,3}$/.test(text))return text;
+ if(!/^\d+$/.test(text))return text;
+ if(text.length<3)return text;
+ if(text.length===3)return text+(deleting?'':'+');
+ const split=text.length>6?text.length-3:3;
+ return text.slice(0,split)+'+'+text.slice(split);
+}
+function formatKmInput(input,event){
+ const before=input.value,start=input.selectionStart,end=input.selectionEnd;
+ const deleting=event?.inputType?.startsWith('delete')||false,formatted=kmInputMask(before,deleting);
+ if(formatted===before)return;
+ const caret=offset=>{const digits=before.slice(0,offset).replace(/\D/g,'').length;let p=0,count=0;while(p<formatted.length&&count<digits){if(/\d/.test(formatted[p]))count++;p++}if(!deleting&&formatted[p]==='+')p++;return p};
+ input.value=formatted;
+ if(start!==null&&start!==undefined&&input.setSelectionRange)input.setSelectionRange(caret(start),caret(end));
+}
+function completeKmInput(input){
+ let value=input.value.trim();if(/^\d+\+$/.test(value))value+='000';
+ const km=C.manualKm(value);if(km!==null)input.value=C.fmtKm(km);
+}
+function bindCorrectionKm(){
+ for(const id of ['km_inicial','km_final']){
+  const input=$(`[name="change:${id}"]`);if(!input)continue;
+  input.oninput=event=>formatKmInput(input,event);
+  input.onblur=()=>{completeKmInput(input);input.dispatchEvent?.(new Event('change',{bubbles:true}))};
+ }
+}
 function manual(){
  if(!tracks||!rail){toast('Aguarde a preparação da base.');return}
- openDialog('Informar trecho e quilômetro',`<form id="manualForm" class="fields"><label class="field">Quilômetro<input id="manualKm" name="km" required inputmode="decimal" placeholder="Ex.: 210+500 ou 210,500" value="${position?C.fmtKm(position.km):''}"></label><label class="field">Filtrar trecho ou ativo<input id="trackSearch" placeholder="Ex.: FBJ, LC1, FFP"></label><label class="field">Linha / ativo da referência<select id="trackSelect" name="track" required></select></label><p id="manualRangeInfo" class="dialog-note" aria-live="polite"></p><p class="dialog-note">A lista mostra apenas linhas cuja quilometragem cruza a faixa informada. Selecione uma referência para identificar a coordenação e o ramal. A consulta inclui as notas de todas as linhas, AMVs e ativos dessa região dentro da faixa, mesmo que você filtre a lista por nome. A localização manual não recebe coordenadas fictícias.</p><button id="manualSubmit" class="primary">Consultar faixa</button></form>`);
+ openDialog('Informar trecho e quilômetro',`<form id="manualForm" class="fields"><label class="field">Quilômetro<input id="manualKm" name="km" required inputmode="numeric" placeholder="Ex.: 210+500 ou 210,500" value="${position?C.fmtKm(position.km):''}"></label><label class="field">Filtrar trecho ou ativo<input id="trackSearch" placeholder="Ex.: FBJ, LC1, FFP"></label><label class="field">Linha / ativo da referência<select id="trackSelect" name="track" required></select></label><p id="manualRangeInfo" class="dialog-note" aria-live="polite"></p><p class="dialog-note">A lista mostra apenas linhas cuja quilometragem cruza a faixa informada. Selecione uma referência para identificar a coordenação e o ramal. A consulta inclui as notas de todas as linhas, AMVs e ativos dessa região dentro da faixa, mesmo que você filtre a lista por nome. A localização manual não recebe coordenadas fictícias.</p><button id="manualSubmit" class="primary">Consultar faixa</button></form>`);
  const select=$('#trackSelect'),input=$('#manualKm');
  function updateTracks(preferred=select.value){
   const k=C.manualKm(input.value),q=$('#trackSearch').value.trim().toUpperCase();
@@ -54,7 +83,7 @@ function manual(){
   $('#manualSubmit').disabled=k===null||!ids.length;
   $('#manualRangeInfo').textContent=k===null?'Informe um km válido para filtrar as linhas pela tolerância de ±'+range+' m.':'Faixa '+C.fmtKm(Math.max(0,k-range))+' a '+C.fmtKm(k+range)+' · ±'+range+' m · '+ids.length+' linhas / ativos compatíveis'+(ids.length?'':'. Confira o km e o filtro de trecho.');
  }
- input.oninput=()=>updateTracks();$('#trackSearch').oninput=()=>updateTracks();updateTracks(position?String(position.trackId):'');
+ input.oninput=event=>{formatKmInput(input,event);updateTracks()};input.onblur=()=>{completeKmInput(input);updateTracks()};$('#trackSearch').oninput=()=>updateTracks();updateTracks(position?String(position.trackId):'');
  $('#manualForm').onsubmit=e=>{e.preventDefault();const k=C.manualKm(input.value),id=Number(select.value);if(k===null||!select.value||!tracks[id]||!C.tracksAtKm(rail,k,range).includes(id)){toast('Selecione uma linha compatível com o km e a tolerância.');return}setPosition({trackId:id,km:k,source:'Manual',time:now(),lat:null,lon:null,accuracy:null});$('#dialog').close()}
 }
 function trackOptions(ids){return ids.map(i=>`<option value="${i}">${esc(tracks[i].asset+' · '+tracks[i].name+' · '+tracks[i].coord)}</option>`).join('')}
@@ -64,10 +93,165 @@ async function freshSnapshot(reference){if(!navigator.geolocation)return {lat:nu
 function photoLines(meta){const lines=[];if(Number.isFinite(meta?.lat)&&Number.isFinite(meta?.lon))lines.push('Lat '+meta.lat.toFixed(6)+' | Lon '+meta.lon.toFixed(6));else lines.push('Georreferência não disponível');lines.push(meta?.km!=null?'Km '+C.fmtKm(meta.km)+(meta.track?.ramal?' · '+meta.track.ramal:''):'Km não disponível');if(meta?.capturedAt)lines.push('Foto: '+(meta.dateLiteral||date(meta.capturedAt)));if(meta?.source)lines.push(meta.source);return lines}
 async function stampPhoto(image,meta){const img=await new Promise((resolve,reject)=>{const i=new Image;i.onload=()=>resolve(i);i.onerror=reject;i.src=image});const canvas=document.createElement('canvas');canvas.width=img.width;canvas.height=img.height;const cx=canvas.getContext('2d');cx.drawImage(img,0,0);const font=Math.max(12,Math.round(canvas.width*.023)),padding=Math.max(8,Math.round(canvas.width*.015)),lines=photoLines(meta);cx.font='600 '+font+'px sans-serif';const width=Math.min(canvas.width,Math.max(...lines.map(t=>cx.measureText(t).width))+padding*2),height=font*1.35*lines.length+padding*2,x=canvas.width-width,y=canvas.height-height;cx.fillStyle='rgba(0,0,0,.72)';cx.fillRect(x,y,width,height);cx.fillStyle='white';cx.textAlign='right';cx.textBaseline='top';lines.forEach((line,i)=>cx.fillText(line,canvas.width-padding,y+padding+i*font*1.35,width-padding*2));return canvas.toDataURL('image/jpeg',.85)}
 async function photoMetadata(file,reference){const missing={lat:null,lon:null,km:null,source:'Foto da galeria · sem GPS no arquivo'};try{const data=await file.arrayBuffer(),v=new DataView(data);if(v.getUint16(0)!==0xffd8)return missing;let offset=2,tiff=-1;while(offset+4<v.byteLength){const marker=v.getUint16(offset);offset+=2;if(marker===0xffda||marker===0xffd9)break;const len=v.getUint16(offset);if(len<2||offset+len>v.byteLength)break;if(marker===0xffe1&&v.getUint32(offset+2)===0x45786966&&v.getUint16(offset+6)===0){tiff=offset+8;break}offset+=len}if(tiff<0)return missing;const little=v.getUint16(tiff)===0x4949;if(v.getUint16(tiff+2,little)!==42)return missing;const sizes={1:1,2:1,3:2,4:4,5:8,9:4,10:8};function ifd(relative){const o=tiff+relative,n=v.getUint16(o,little),tags={};if(n>256)throw Error('Invalid EXIF');for(let j=0;j<n;j++){const e=o+2+j*12,tag=v.getUint16(e,little),type=v.getUint16(e+2,little),count=v.getUint32(e+4,little),size=sizes[type];if(!size||count>10000)continue;const q=size*count<=4?e+8:tiff+v.getUint32(e+8,little);if(q+size*count>v.byteLength)continue;if(type===2){tags[tag]=new TextDecoder().decode(new Uint8Array(data,q,count)).replace(/\0+$/,'')}else{tags[tag]=[];for(let k=0;k<count;k++){const at=q+k*size;tags[tag].push(type===5?v.getUint32(at,little)/v.getUint32(at+4,little):type===3?v.getUint16(at,little):type===4?v.getUint32(at,little):v.getUint8(at))}}}return tags}const root=ifd(v.getUint32(tiff+4,little)),gps=root[0x8825]?ifd(root[0x8825][0]):{},exif=root[0x8769]?ifd(root[0x8769][0]):{};const dms=a=>a&&a.length===3?a[0]+a[1]/60+a[2]/3600:NaN,lat=dms(gps[2])*(gps[1]==='S'?-1:1),lon=dms(gps[4])*(gps[3]==='W'?-1:1);const literal=exif[0x9003]||root[0x132];const time=literal?{capturedAt:literal,dateLiteral:literal}:{};if(!['N','S'].includes(gps[1])||!['E','W'].includes(gps[3])||!Number.isFinite(lat)||!Number.isFinite(lon)||Math.abs(lat)>90||Math.abs(lon)>180)return {...missing,...time};return {...locateCoordinates(lat,lon,undefined,reference),...time,source:'GPS original da foto (EXIF)'}}catch(e){return missing}}
+// Stable correction contract: original notes and export columns stay unchanged.
+const CHANGE_SCHEMA='notas-lc.alteracao.v1';
+function correctionFields(n){
+ const definitions=[
+ ['anomalia','Anomalia','anomaly',['Texto code codific.','Texto breve para o código']],
+ ['criticidade','Criticidade','priority',['Texto prioridade','Texto referente à prioridade']],
+ ['observacao','Observação da nota','description',['Descrição','Texto breve']],
+ ['km_inicial','Km inicial','start',['Marcador inic.','Dist.PP marc.','Marcador para o ponto de partida','Market Dist Start 2']],
+ ['km_final','Km final','end',['Marcador final','Dist.PF marc.','Marcador para o ponto final','Maker Dist End 1']],
+ ['codigo_anomalia','Código da anomalia','code',['Code codificação','Codificação 1']],
+ ['centro','Centro','center',['Centro p/CenTrab.','Centro para centro de trabalho responsável']],
+ ['tam','TAM / tipo de atividade de manutenção','tam',['Tipo da atividade de manutenção','Tipo de atividade de manutenção']],
+ ['data_nota','Data da nota','date',['Data da nota']],
+ ['numero_nota','Número da nota','id',['Nota','Número da nota']]
+ ];
+ const used=new Set(['Local de instalação','Local de instalação TPLNR']);
+ const fields=definitions.map(([id,label,prop,columns])=>{columns.forEach(k=>used.add(k));return {id,label,columns:columns.filter(k=>Object.hasOwn(n.original||{},k)),value:prop==='start'||prop==='end'?(n[prop]==null?'':C.fmtKm(n[prop])):String(n[prop]??''),km:prop==='start'||prop==='end'}});
+ for(const [column,value]of Object.entries(n.original||{}))if(!used.has(column)){fields.push({id:'original:'+column,label:column,columns:[column],value:String(value??'')})}
+ if(!fields.some(f=>/^(lado|lado da anomalia|lado anomalia|lado do defeito)$/i.test(f.label.trim())))fields.push({id:'lado_anomalia',label:'Lado da anomalia',columns:[],value:C.noteSide(n)});
+ return fields;
+}
+// Only these characteristics are offered for new corrections.
+const CORRECTION_EDITABLE=new Set(['criticidade','observacao','km_inicial','km_final','codigo_anomalia','lado_anomalia']);
+function editableCorrectionFields(n){return correctionFields(n).filter(f=>CORRECTION_EDITABLE.has(f.id)||/^(lado|lado da anomalia|lado anomalia|lado do defeito)$/i.test(f.label.trim()))}
+function correctionSearchKey(value){return String(value).normalize('NFD').replace(/[\u0300-\u036f]/g,'').toLocaleLowerCase('pt-BR').trim()}
+function correctionOptionLabel(field,value){
+ if(!value)return 'Não informado / limpar campo';
+ if(field.id==='codigo_anomalia'){
+  const names=[...new Set(base.notes.filter(n=>String(n.code??'')===value).map(n=>n.anomaly).filter(Boolean))];
+  return value+(names.length?' · '+names.join(' / '):'');
+ }
+ return field.id==='tam'&&base.tam?.[value]?value+' · '+base.tam[value]:value;
+}
+function correctionOptionRows(items,current,query){
+ const key=correctionSearchKey(query),matches=items.filter(item=>correctionSearchKey(item.label).includes(key));
+ const shown=items.filter(item=>!key||item.value===current||matches.includes(item));
+ return {html:shown.map(item=>`<option value="${esc(item.value)}" ${item.value===current?'selected':''}>${esc(item.label)}</option>`).join(''),count:matches.length};
+}
+function bindCorrectionSearch(n,t){
+ $('#dialog').onpointerdown=event=>{for(const root of document.querySelectorAll('[data-correction-dropdown]'))if(!root.contains(event.target)){root.querySelector('details').open=false;root.querySelector('summary').setAttribute('aria-expanded','false')}};
+ const previous=new Map((t?.alteracoes||[]).map(c=>[c.campo,String(c.para)]));
+ for(const field of editableCorrectionFields(n)){
+  const options=correctionOptions(field,n,previous.get(field.id)??field.value);if(!options)continue;
+  const root=$(`[data-correction-dropdown="${field.id}"]`);if(!root?.querySelector)continue;
+  const menu=root.querySelector('details'),search=root.querySelector('input[type="search"]'),select=root.querySelector('input[type="hidden"]'),summary=root.querySelector('summary'),list=root.querySelector('[role="listbox"]'),message=root.querySelector('[role="status"]');
+  const items=options.map(value=>({value,label:correctionOptionLabel(field,value)}));
+  const render=()=>{
+   const key=correctionSearchKey(search.value),matches=items.filter(item=>correctionSearchKey(item.label).includes(key));
+   list.innerHTML=matches.map(item=>`<button type="button" role="option" aria-selected="${item.value===select.value}" data-value="${esc(item.value)}">${esc(item.label)}${item.value===select.value?' ✓':''}</button>`).join('');
+   message.textContent=matches.length?matches.length+' opções encontradas.':'Nenhuma opção encontrada.';
+  };
+  const close=()=>{menu.open=false;summary.setAttribute('aria-expanded','false')};
+  menu.ontoggle=()=>{
+   summary.setAttribute('aria-expanded',String(menu.open));
+   if(menu.open){for(const other of document.querySelectorAll('[data-correction-dropdown]'))if(other!==root)other.querySelector('details').open=false;search.value='';render()}
+  };
+  search.oninput=render;
+  const choose=(option,keyboard=false)=>{
+   if(!option||!list.contains(option))return;
+   const item=items.find(item=>item.value===option.dataset.value);if(!item)return;
+   select.value=item.value;summary.querySelector('span').textContent=item.label;
+   close();select.dispatchEvent(new Event('change',{bubbles:true}));
+   if(keyboard)summary.focus({preventScroll:true});
+  };
+  // Commit touch and pen taps before a delayed click or keyboard dismissal can cancel them.
+  // A drag must continue scrolling the list without selecting the item under the finger.
+  let tap=null;
+  list.onpointerdown=event=>{tap=event.isPrimary!==false&&event.button===0?{id:event.pointerId,x:event.clientX,y:event.clientY,option:event.target.closest('[role="option"]')}:null};
+  list.onpointermove=event=>{if(tap&&event.pointerId===tap.id&&Math.hypot(event.clientX-tap.x,event.clientY-tap.y)>10)tap=null};
+  list.onpointercancel=()=>{tap=null};
+  list.onpointerup=event=>{
+   const pending=tap;tap=null;
+   if(pending&&event.pointerId===pending.id&&event.target.closest('[role="option"]')===pending.option&&Math.hypot(event.clientX-pending.x,event.clientY-pending.y)<=10){event.preventDefault();choose(pending.option)}
+  };
+  list.onclick=event=>{choose(event.target.closest('[role="option"]'),event.detail===0)};
+  root.onkeydown=event=>{
+   if(event.key==='Escape'&&menu.open){event.preventDefault();event.stopPropagation();close();summary.focus({preventScroll:true})}
+   if(['ArrowDown','ArrowUp','Home','End'].includes(event.key)&&menu.open){
+    const buttons=[...list.querySelectorAll('[role="option"]')];if(!buttons.length)return;
+    if(event.target===search&&['Home','End'].includes(event.key))return;
+    event.preventDefault();const index=buttons.indexOf(document.activeElement);
+    const next=event.key==='Home'?0:event.key==='End'?buttons.length-1:event.key==='ArrowDown'?Math.min(index+1,buttons.length-1):index<0?buttons.length-1:Math.max(index-1,0);buttons[next].focus();
+   }
+  };
+  // Close through outside pointerdown or Escape; focus changes must not cancel option taps.
+ }
+}
+// Enumerations use the current extraction; existing saved values are always retained.
+function correctionOptions(field,n,current){
+ const props={anomalia:'anomaly',criticidade:'priority',codigo_anomalia:'code',centro:'center',tam:'tam'};
+ const categorical=/^(Criado por|Centro de trabalho responsável|Denominação do tipo de atividade de manutenção|Campo de ordenação|Nº equipamento EQUNR|Nome do responsável que adicionou o objeto|Nome completo da pessoa|Nome do autor da nota|lado|lado da anomalia|lado anomalia|lado do defeito)$/i;
+ let values;
+ if(props[field.id])values=base.notes.map(note=>note[props[field.id]]);
+ else if(field.id==='lado_anomalia'||/^(lado|lado da anomalia|lado anomalia|lado do defeito)$/i.test(field.label))values=['Direito','Esquerdo','Direito e esquerdo','Não informado na base'];
+ else if(categorical.test(field.label))values=base.notes.flatMap(note=>field.columns.map(column=>note.original?.[column]));
+ else return null;
+ if(field.id==='tam')values.push(...Object.keys(base.tam||{}));
+ return [...new Set(['',field.value,current,...values].map(v=>String(v??'')))].sort((a,b)=>a.localeCompare(b,'pt-BR',{numeric:true}));
+}
+function correctionDate(value){
+ const s=String(value||'');if(!s)return '';
+ const match=s.match(/^(\d{4}-\d{2}-\d{2})(?:T.*)?$/);if(match)return match[1];
+ const br=s.match(/^(\d{2})\/(\d{2})\/(\d{4})$/);return br?`${br[3]}-${br[2]}-${br[1]}`:null;
+}
+function correctionControl(field,n,value){
+ const name='change:'+field.id,options=correctionOptions(field,n,value);
+ if(options){const items=options.map(v=>({value:v,label:correctionOptionLabel(field,v)})),label=correctionOptionLabel(field,value),id='correction-list-'+field.id;return `<div class="correction-control" data-correction-dropdown="${esc(field.id)}"><input type="hidden" name="${esc(name)}" value="${esc(value)}"><details class="correction-dropdown"><summary role="combobox" aria-label="${esc(field.label)}" aria-haspopup="listbox" aria-expanded="false" aria-controls="${esc(id)}"><span>${esc(label)}</span><span aria-hidden="true">⌄</span></summary><div class="correction-dropdown-panel"><input type="search" data-correction-search="${esc(field.id)}" aria-label="Pesquisar ${esc(field.label)}" placeholder="Pesquisar ${esc(field.label.toLocaleLowerCase('pt-BR'))}…" autocomplete="off"><div id="${esc(id)}" role="listbox" aria-label="${esc(field.label)}"></div><small role="status" aria-live="polite"></small></div></details></div>`}
+ if(field.id==='observacao')return `<textarea name="${esc(name)}">${esc(value)}</textarea>`;
+ if((field.id==='data_nota'||/^Data /i.test(field.label))&&correctionDate(value)!==null)return `<input type="date" name="${esc(name)}" value="${esc(correctionDate(value))}">`;
+ return `<input name="${esc(name)}" value="${esc(value)}" ${field.km?'inputmode="numeric" placeholder="Ex.: 210+500"':''}>`;
+}
+function correctionValues(n,form,previous=[]){
+ const fields=editableCorrectionFields(n),editableIds=new Set(fields.map(f=>f.id));
+ const changes=previous.filter(c=>!editableIds.has(c.campo));
+ for(const field of fields){
+  let value=String(form.get('change:'+field.id)??field.value);
+  if((field.id==='data_nota'||/^Data /i.test(field.label))&&correctionDate(field.value)!==null&&/^\d{4}-\d{2}-\d{2}$/.test(value)){
+   if(value===correctionDate(field.value))value=field.value;
+   else if(/^\d{2}\/\d{2}\/\d{4}$/.test(field.value)){const [y,m,d]=value.split('-');value=d+'/'+m+'/'+y}
+   else if(field.value.includes('T'))value+=field.value.slice(10);
+  }
+  if(field.km&&value.trim()){
+   const km=C.manualKm(value);if(km===null||!Number.isSafeInteger(km)||km<0)throw Error(field.label+': informe um km válido, como 210+500.');
+   value=C.fmtKm(km);
+  }else if(field.km)value='';
+  if(value!==field.value)changes.push({campo:field.id,colunas:field.columns,originais:Object.fromEntries(field.columns.map(k=>[k,n.original[k]])),de:field.value,para:value});
+ }
+ return changes;
+}
+function correctionText(n,changes){return JSON.stringify({schema:CHANGE_SCHEMA,nota:String(n.id),alteracoes:changes})}
+function correctionFieldChanged(field,value){
+ value=String(value??'');
+ if(field.km&&value.trim()){const km=C.manualKm(value);if(km!==null&&Number.isSafeInteger(km)&&km>=0)value=C.fmtKm(km)}
+ return value!==field.value;
+}
+function syncCorrectionHighlights(n){
+ for(const field of editableCorrectionFields(n)){
+  const control=$(`[name="change:${field.id}"]`),changed=correctionFieldChanged(field,control?control.value:field.value);
+  $(`[data-correction-field="${field.id}"]`)?.classList.toggle('correction-changed',changed);
+  const indicator=$(`[data-correction-indicator="${field.id}"]`);if(indicator)indicator.hidden=!changed;
+ }
+}
+function correctionEditor(n,t){
+ const previous=new Map((t?.status==='Alterar'?t.alteracoes||[]:[]).map(c=>[c.campo,c.para]));
+ return `<fieldset id="correctionEditor" class="fields" hidden disabled><legend>Alterações solicitadas na nota</legend><p class="dialog-note">Edite as características que precisam de correção. O ativo permanece bloqueado. Os dados originais serão preservados.</p><label class="field">Ativo (não pode ser alterado)<input value="${esc(n.asset)}" disabled></label>${editableCorrectionFields(n).map(f=>{const value=previous.has(f.id)?String(previous.get(f.id)):f.value,changed=correctionFieldChanged(f,value);return `<div class="field${changed?' correction-changed':''}" data-correction-field="${esc(f.id)}"><span>${esc(f.label)} <small class="correction-change-indicator" data-correction-indicator="${esc(f.id)}" ${changed?'':'hidden'}>Alterado</small></span>${correctionControl(f,n,value)}</div>`}).join('')}<p class="dialog-note">As alterações serão registradas automaticamente na tratativa, com o valor anterior e o solicitado de cada campo.</p>${t?.status==='Alterar'&&!t.alteracoes?`<details><summary>Tratativa anterior (registro antigo)</summary><p>${esc(t.text||'')}</p></details>`:''}<details><summary>Prévia do registro padronizado</summary><pre id="correctionPreview" class="correction-preview"></pre></details></fieldset>`;
+}
 function openNote(n){
  const s=active(),t=s?.treatments[n.id],readonly=!editable(),openedAt=now(),reference=position&&(position.track||tracks[position.trackId]),clickSnapshot=readonly?null:freshSnapshot(reference);let evidence=t?.evidencePhoto||null,evidenceMeta=t?.evidenceMeta||null,cameraStream=null;
- openDialog('Nota '+displayNoteId(n.id),`<dl class="details-grid"><div><dt>Anomalia</dt><dd>${esc(n.anomaly)}</dd></div><div><dt>Lado da anomalia na nota</dt><dd>${esc(C.noteSide(n))}</dd></div><div><dt>Criticidade</dt><dd>${esc(C.criticidade(n.priority)||'Não informada')}</dd></div><div><dt>Km inicial</dt><dd>${esc(C.fmtKm(n.start))}</dd></div><div><dt>Km final</dt><dd>${esc(C.fmtKm(n.end))}</dd></div><div><dt>Ativo</dt><dd>${esc(n.asset)}</dd></div><div><dt>TAM / origem</dt><dd>${esc(n.tam||'Não informado')} · ${esc(n.tam?(base.tam[n.tam]||'Código sem referência'):'Sem TAM na extração')}</dd></div><div><dt>Data da Nota</dt><dd>${esc(n.date)}</dd></div><div><dt>Código da anomalia</dt><dd>${esc(n.code||'Não informado')}</dd></div></dl><details class="observation"><summary>Observações da Nota</summary><p>${esc(n.description||'Não preenchidas na extração.')}</p>${/^\d+$/.test(String(n.description||''))?'<small>A extração contém um valor numérico neste campo; o texto original não foi disponibilizado.</small>':''}</details>${readonly?`<div class="observation"><strong>${esc(t?.status||'Sem tratativa')}</strong><p>${esc(t?.text||'')}</p>${evidence?`<img class="evidence-preview" src="${esc(evidence)}" alt="Evidência da Nota ${esc(n.id)}">`:''}</div><p class="dialog-note">${s?.end?'Conferência concluída. Consulte ou exporte no histórico.':'Inicie uma conferência para registrar uma tratativa.'}</p>${!s?'<button id="startFromNote" class="primary">Iniciar inspeção</button>':''}`:`<form id="treatmentForm" class="fields"><label class="field">Sua constatação</label><div class="choices">${['Inexistente','Tratada','Alterar','Manter'].map(v=>`<label><input type="radio" name="status" value="${v}" required ${t?.status===v?'checked':''}>${v}</label>`).join('')}</div><label class="field">Texto livre da tratativa (opcional, exceto para Alterar)<textarea name="text" maxlength="20000" placeholder="Descreva a constatação, o serviço ou a alteração necessária.">${esc(t?.text||'')}</textarea></label><p id="clickLocationInfo" class="dialog-note">Registrando localização no clique…</p><button id="cameraEvidence" type="button">Tirar foto de evidência</button><div id="cameraPanel" hidden><video id="evidenceVideo" autoplay playsinline muted></video><div class="button-row"><button type="button" id="captureEvidence">Fotografar</button><button type="button" id="cancelCamera">Cancelar câmera</button></div></div><label class="field">Foto da galeria (opcional)<input id="evidenceInput" type="file" accept="image/*"><small>A localização da galeria será lida do arquivo, quando disponível. A evidência será incluída no PDF.</small></label><div id="evidencePreview"></div><button id="removeEvidence" type="button" class="text-button" ${evidence?'':'hidden'}>Remover foto</button><p class="dialog-note">“Manter” confirma que a Nota permanece como está e dispensa observações. “Alterar” registra uma solicitação à coordenação. Os dados originais da MRS permanecem preservados.</p><div class="button-row"><button id="saveTreatment" class="primary">Salvar tratativa</button>${t?'<button type="button" class="danger" id="removeTreatment">Remover tratativa</button>':''}</div></form>`}`);
+ openDialog('Nota '+displayNoteId(n.id),`<dl class="details-grid"><div><dt>Anomalia</dt><dd>${esc(n.anomaly)}</dd></div><div><dt>Lado da anomalia na nota</dt><dd>${esc(C.noteSide(n))}</dd></div><div><dt>Criticidade</dt><dd>${esc(C.criticidade(n.priority)||'Não informada')}</dd></div><div><dt>Km inicial</dt><dd>${esc(C.fmtKm(n.start))}</dd></div><div><dt>Km final</dt><dd>${esc(C.fmtKm(n.end))}</dd></div><div><dt>Ativo</dt><dd>${esc(n.asset)}</dd></div><div><dt>TAM / origem</dt><dd>${esc(n.tam||'Não informado')} · ${esc(n.tam?(base.tam[n.tam]||'Código sem referência'):'Sem TAM na extração')}</dd></div><div><dt>Data da Nota</dt><dd>${esc(n.date)}</dd></div><div><dt>Código da anomalia</dt><dd>${esc(n.code||'Não informado')}</dd></div></dl><details class="observation"><summary>Observações da Nota</summary><p>${esc(n.description||'Não preenchidas na extração.')}</p>${/^\d+$/.test(String(n.description||''))?'<small>A extração contém um valor numérico neste campo; o texto original não foi disponibilizado.</small>':''}</details>${readonly?`<div class="observation"><strong>${esc(t?.status||'Sem tratativa')}</strong><p>${esc(t?.text||'')}</p>${evidence?`<img class="evidence-preview" src="${esc(evidence)}" alt="Evidência da Nota ${esc(n.id)}">`:''}</div><p class="dialog-note">${s?.end?'Conferência concluída. Consulte ou exporte no histórico.':'Inicie uma conferência para registrar uma tratativa.'}</p>${!s?'<button id="startFromNote" class="primary">Iniciar inspeção</button>':''}`:`<form id="treatmentForm" class="fields"><label class="field">Sua constatação</label><div class="choices">${['Inexistente','Tratada','Alterar','Manter'].map(v=>`<label><input type="radio" name="status" value="${v}" required ${t?.status===v?'checked':''}>${v}</label>`).join('')}</div><label id="treatmentTextField" class="field">Texto livre da tratativa (opcional)<textarea name="text" maxlength="20000" placeholder="Descreva a constatação, o serviço ou a alteração necessária.">${esc(t?.status==='Alterar'&&t?.alteracoes?'':t?.text||'')}</textarea></label>${correctionEditor(n,t)}<p id="clickLocationInfo" class="dialog-note">Registrando localização no clique…</p><button id="cameraEvidence" type="button">Tirar foto de evidência</button><div id="cameraPanel" hidden><video id="evidenceVideo" autoplay playsinline muted></video><div class="button-row"><button type="button" id="captureEvidence">Fotografar</button><button type="button" id="cancelCamera">Cancelar câmera</button></div></div><label class="field">Foto da galeria (opcional)<input id="evidenceInput" type="file" accept="image/*"><small>A localização da galeria será lida do arquivo, quando disponível. A evidência será incluída no PDF.</small></label><div id="evidencePreview"></div><button id="removeEvidence" type="button" class="text-button" ${evidence?'':'hidden'}>Remover foto</button><p class="dialog-note">“Manter” confirma que a Nota permanece como está e dispensa observações. “Alterar” registra uma solicitação à coordenação. Os dados originais da MRS permanecem preservados.</p><p id="treatmentError" class="warning error" role="alert" tabindex="-1" hidden></p><div class="button-row"><button id="saveTreatment" type="submit" class="primary">Salvar tratativa</button>${t?'<button type="button" class="danger" id="removeTreatment">Remover tratativa</button>':''}</div></form>`}`);
  if($('#startFromNote'))$('#startFromNote').onclick=newSession;if(readonly)return;
+ bindCorrectionSearch(n,t);bindCorrectionKm();
+ const syncCorrection=()=>{
+  const changing=$('#treatmentForm input[name="status"]:checked')?.value==='Alterar';
+  $('#correctionEditor').hidden=!changing;$('#correctionEditor').disabled=!changing;
+  $('#treatmentTextField').hidden=changing;$('#treatmentTextField textarea').disabled=changing;
+  if(changing){syncCorrectionHighlights(n);try{$('#correctionPreview').textContent=correctionText(n,correctionValues(n,new FormData($('#treatmentForm')),t?.status==='Alterar'?t.alteracoes||[]:[]))}catch(error){$('#correctionPreview').textContent=error.message}}
+ };
+ $('#treatmentForm').addEventListener('change',syncCorrection);$('#correctionEditor').addEventListener('input',syncCorrection);syncCorrection();
+
  const drawEvidence=()=>{$('#evidencePreview').innerHTML=evidence?`<img class="evidence-preview" src="${esc(evidence)}" alt="Evidência da Nota ${esc(n.id)}">`:'';$('#removeEvidence').hidden=!evidence};drawEvidence();
  let photoPending=null;
  clickSnapshot.then(snapshot=>{if($('#clickLocationInfo'))$('#clickLocationInfo').textContent='Clique: '+date(openedAt)+' · '+(snapshot.lat!=null?'GPS obtido'+(snapshot.accuracy!=null?' · ±'+Math.round(snapshot.accuracy)+' m':''):snapshot.source)});
@@ -77,7 +261,8 @@ function openNote(n){
  $('#captureEvidence').onclick=()=>{const video=$('#evidenceVideo');if(!video.videoWidth){toast('Aguarde a imagem da câmera.');return}const capturedAt=now(),locationPromise=freshSnapshot(reference),canvas=document.createElement('canvas'),scale=Math.min(1,1200/Math.max(video.videoWidth,video.videoHeight));canvas.width=Math.round(video.videoWidth*scale);canvas.height=Math.round(video.videoHeight*scale);canvas.getContext('2d').drawImage(video,0,0,canvas.width,canvas.height);const raw=canvas.toDataURL('image/jpeg',.85);stopCamera();$('#saveTreatment').disabled=true;$('#removeEvidence').disabled=true;photoPending=locationPromise.then(async snapshot=>{evidenceMeta={...snapshot,capturedAt,source:'GPS solicitado na captura'};if(snapshot.lat==null)evidenceMeta.source=snapshot.source+' na captura';evidence=await stampPhoto(raw,evidenceMeta);drawEvidence()}).catch(()=>toast('Não foi possível preparar a foto.')).finally(()=>{$('#saveTreatment').disabled=false;$('#removeEvidence').disabled=false;photoPending=null})};
  $('#evidenceInput').onchange=()=>{const file=$('#evidenceInput').files?.[0];if(!file)return;$('#saveTreatment').disabled=true;$('#removeEvidence').disabled=true;photoPending=Promise.all([resizePhoto(file),photoMetadata(file,reference)]).then(async([image,meta])=>{evidenceMeta=meta;evidence=await stampPhoto(image,meta);drawEvidence()}).catch(error=>{toast('Não foi possível ler a foto. Selecione uma imagem compatível.');console.error(error)}).finally(()=>{$('#saveTreatment').disabled=false;$('#removeEvidence').disabled=false;photoPending=null})};
  $('#removeEvidence').onclick=()=>{evidence=null;evidenceMeta=null;$('#evidenceInput').value='';drawEvidence()};
- $('#treatmentForm').onsubmit=async e=>{e.preventDefault();if(photoPending)await photoPending;const f=new FormData(e.target),status=f.get('status'),text=String(f.get('text')||'').trim();if(!['Inexistente','Tratada','Alterar','Manter'].includes(status))return;if(status==='Alterar'&&!text){toast('Descreva a alteração necessária.');return}if(Object.values(s.treatments).some(v=>v.note.id===n.id&&v.note.index!==n.index)){toast('Este número de Nota está duplicado na base. Revise os registros antes de tratá-lo.');return}$('#saveTreatment').disabled=true;const snapshot=await clickSnapshot;const old=s.treatments[n.id];s.treatments[n.id]={...(old||{}),note:JSON.parse(JSON.stringify(n)),status,text,evidencePhoto:evidence,evidenceMeta,collaborator:s.collaborator,employeeId:s.employeeId||'',time:openedAt,clickTime:openedAt,savedTime:now(),position:snapshot,version:base.version};$('#saveTreatment').disabled=true;try{await persist(s);stopCamera();$('#dialog').close();render();toast('Tratativa salva neste dispositivo')}catch(error){if(old)s.treatments[n.id]=old;else delete s.treatments[n.id];$('#saveTreatment').disabled=false}};
+ const treatmentError=message=>{const box=$('#treatmentError');box.textContent=message;box.hidden=false;box.focus({preventScroll:true});box.scrollIntoView({block:'nearest',behavior:'smooth'});toast(message)};
+ $('#treatmentForm').onsubmit=async e=>{e.preventDefault();$('#treatmentError').hidden=true;if(photoPending)await photoPending;const f=new FormData(e.target),status=f.get('status');let text=String(f.get('text')||'').trim(),alteracoes=null;if(!['Inexistente','Tratada','Alterar','Manter'].includes(status))return;if(status==='Alterar'){try{alteracoes=correctionValues(n,f,t?.status==='Alterar'?t.alteracoes||[]:[])}catch(error){treatmentError(error.message);return}if(!alteracoes.length){treatmentError('Nenhuma alteração foi selecionada. Escolha um novo valor em pelo menos uma característica da nota e toque em Salvar tratativa.');return}text=correctionText(n,alteracoes)}if(Object.values(s.treatments).some(v=>v.note.id===n.id&&v.note.index!==n.index)){toast('Este número de Nota está duplicado na base. Revise os registros antes de tratá-lo.');return}$('#saveTreatment').disabled=true;const snapshot=await clickSnapshot;const old=s.treatments[n.id];s.treatments[n.id]={...(old||{}),note:JSON.parse(JSON.stringify(n)),status,text,alteracoes,evidencePhoto:evidence,evidenceMeta,collaborator:s.collaborator,employeeId:s.employeeId||'',time:openedAt,clickTime:openedAt,savedTime:now(),position:snapshot,version:base.version};$('#saveTreatment').disabled=true;try{await persist(s);stopCamera();$('#dialog').close();render();toast('Tratativa salva neste dispositivo')}catch(error){if(old)s.treatments[n.id]=old;else delete s.treatments[n.id];$('#saveTreatment').disabled=false;treatmentError('Não foi possível salvar a tratativa neste dispositivo. Tente novamente.')}};
  const remove=$('#removeTreatment');if(remove)remove.onclick=()=>{openDialog('Remover tratativa?',`<p>Remover a avaliação da Nota ${esc(n.id)} desta conferência? A Nota continuará na base.</p><button id="confirmRemove" class="danger">Confirmar remoção</button>`);$('#confirmRemove').onclick=async()=>{const old=s.treatments[n.id];delete s.treatments[n.id];try{await persist(s);$('#dialog').close();render()}catch(e){s.treatments[n.id]=old}}}
 }
 
@@ -93,3 +278,4 @@ async function clearAppCache(){try{await saveQueue;const s=active();if(!s?.end){
 function registerTools(){if(!document.modelContext?.registerTool)return;const lifecycle=new AbortController;const tool={name:'consultar_notas_por_km',title:'Consultar Notas por km',description:'Configura a consulta por linha e quilômetro e exibe as Notas próximas; não registra tratativas.',inputSchema:{type:'object',properties:{trackId:{type:'integer'},kmMeters:{type:'integer'},rangeMeters:{type:'integer'}},required:['trackId','kmMeters'],additionalProperties:false},annotations:{readOnlyHint:false,untrustedContentHint:true},execute(input){if(!editable())throw Error('Inicie uma inspeção antes de consultar pelo agente');if(!input||!Number.isInteger(input.trackId)||!tracks[input.trackId]||!Number.isInteger(input.kmMeters)||input.kmMeters<0||(input.rangeMeters!==undefined&&(!Number.isInteger(input.rangeMeters)||input.rangeMeters<1||input.rangeMeters>50000)))throw Error('Trecho, km ou alcance inválido');if(input.rangeMeters){range=input.rangeMeters;localStorage.setItem('lc-range',range)}setPosition({trackId:input.trackId,km:input.kmMeters,source:'Manual',time:now(),lat:null,lon:null,accuracy:null});setTab('nearby');return {track:tracks[input.trackId].asset,km:C.fmtKm(position.km),notes:C.near(base.notes,position,range,tracks).map(n=>({id:n.id,anomaly:n.anomaly,start:n.start,end:n.end}))}}};try{Promise.resolve(document.modelContext.registerTool(tool,{signal:lifecycle.signal})).catch(()=>{})}catch(e){}window.addEventListener('pagehide',()=>lifecycle.abort(),{once:true})}
 async function init(){try{[db,base,tracks,rail]=await Promise.all([openDB(),loadCompressed('notes.json.gz').then(C.parseBase),fetch('tracks.json').then(r=>{if(!r.ok)throw Error('Base de linhas indisponível');return r.json()}),loadCompressed('rail.bin.gz',true)]);sessions=await readAll();C.classifyLocations(base.notes,tracks,rail);activeId=localStorage.getItem('lc-active');position=restoredPosition(active()?.lastPosition);const excluded=base.notes.filter(n=>n.locationIssue).length;$('#baseInfo').textContent='Base '+base.version+' · '+(base.notes.length-excluded)+' Notas com km · '+excluded+' com km em branco';render();if(active()&&!active().end&&active().employeeId)showWork();else showStart();registerTools();setupOffline();navigator.storage?.persist?.().catch(()=>{});const duplicates=base.notes.length-new Set(base.notes.map(n=>n.id)).size;if(duplicates)toast(duplicates+' números de Nota repetidos na base; revise antes de tratar.')}catch(e){$('#connection').textContent='Não foi possível preparar o aplicativo';$('#notesList').innerHTML='<div class="empty"><strong>Falha ao carregar dados</strong>Reabra com internet para preparar o uso offline. Se persistir, consulte o responsável pelo aplicativo.</div>';console.error(e)}}
 $('#beginAgainBtn').onclick=showStart;$('#finishTopBtn').onclick=finish;$('#settingsBtn').onclick=settings;$('#manualBtn').onclick=manual;$('#gpsBtn').onclick=gps;$('#finishBtn').onclick=finish;document.querySelectorAll('[data-tab]').forEach(b=>b.onclick=()=>setTab(b.dataset.tab));['search','scope'].forEach(id=>$('#'+id).addEventListener(id==='search'?'input':'change',()=>{limit=60;renderNotes()}));$('#moreBtn').onclick=()=>{limit+=60;renderNotes()};window.addEventListener('online',()=>{updateConnection();setupOffline()});window.addEventListener('offline',updateConnection);window.addEventListener('storage',e=>{if(e.key==='lc-active')toast('Outra aba está usando este aplicativo. Evite editar a mesma conferência em duas abas.');});init();
+
