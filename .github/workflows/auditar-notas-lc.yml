@@ -1,225 +1,40 @@
 name: Auditar Notas LC (sem publicar)
-
 on:
   workflow_dispatch:
   push:
     branches: [main]
     paths:
-      - notas-lc-campo/core.js
       - notas-lc-campo/app.js
-      - notas-lc-campo/sw.js
+      - notas-lc-campo/core.js
+      - notas-lc-campo/audit.js
+      - notas-lc-campo/audit-data.js
+      - notas-lc-campo/automation/**
       - .github/workflows/auditar-notas-lc.yml
-
 permissions:
   contents: read
-
 jobs:
   auditoria:
     runs-on: ubuntu-latest
     steps:
-      - name: Obter aplicativo publicado
-        uses: actions/checkout@v4
-        with:
-          ref: main
-          path: site
-
-      - name: Obter ferramentas em revisao
-        uses: actions/checkout@v4
-        with:
-          ref: feature/notas-lc-automacao-20261009
-          path: ferramentas
-
-      - name: Obter CSV do Gmail
-        uses: actions/checkout@v4
-        with:
-          ref: notas-lc-inbox
-          path: entrada
-
-      - name: Testar criticidades e identificadores no navegador
+      - uses: actions/checkout@v4
+      - name: Verificar sintaxe e testes de entradas
         run: |
-          node - <<'JS'
-          const assert=require('node:assert/strict');
-          require('./site/notas-lc-campo/core.js');
-          const casos=[
-            ['000014600288','P3','3-Média'],
-            ['000014619762','3-Média','3-Média'],
-            ['000013827803','P2','2-Alta'],
-            ['000013558789','P1','1-Muito alta'],
-            ['000013555555','P4','4-Baixa'],
-            ['000014000000','',''],
-          ];
-          const linhas=casos.map(([id,criticidade])=>[
-            'FCL','YRD',id,criticidade,'19/08/2026','MF-LC2-FPK_FPK-L000001',
-            'Descrição','AM42','Anomalia','KM 461','0','KM 461','0',
-          ]);
-          const base={abas:[
-            {colunas:['Coordenação','TAM','Número da Nota','Prioridade','Data da Nota','Ativo','Descrição','Código anomalia','Anomalia','Marcador inic.','Distância inic.','Marcador final','Distância final'],linhas},
-            {colunas:['TAM','Descrição'],linhas:[]},
-          ],versao_base:'2026-10-09'};
-          const notas=globalThis.RailCore.parseBase(base).notes;
-          for(let i=0;i<casos.length;i++){
-            assert.equal(notas[i].id,casos[i][0], 'ID interno nao deve mudar');
-            assert.equal(notas[i].priority,casos[i][2], 'Criticidade exibida divergente');
-          }
-          console.log('APROVADO: rotulos P1-P4, valores originais, vazio e IDs preservados');
-          JS
-
-      - name: Comparar base publicada com CSV atual
+          node --check notas-lc-campo/app.js
+          node --check notas-lc-campo/core.js
+          node --check notas-lc-campo/audit.js
+          node --check notas-lc-campo/sw.js
+          node notas-lc-campo/automation/test-audit-ui.mjs
+          node notas-lc-campo/automation/test-apps-script.mjs
+          python3 -m unittest discover -s notas-lc-campo/automation -p 'test_*.py' -v
+      - name: Verificar integridade dos identificadores da base
         run: |
           python3 - <<'PY'
-          import csv, gzip, json, re
-          from collections import Counter
+          import gzip,json,re
           from pathlib import Path
-          alvos={'14600288','14619762'}
-          normalizar=lambda valor: re.sub(r'^0+(?=\d)', '', str(valor).strip())
-          assert normalizar('000014600288') == '14600288'
-          assert normalizar('000014619762') == '14619762'
-          with Path('entrada/notas-lc-campo/automation/incoming.csv').open(encoding='utf-8-sig',newline='') as f:
-              linhas_csv=list(csv.DictReader(f))
-          with gzip.open('site/notas-lc-campo/notes.json.gz','rt',encoding='utf-8') as f:
-              base=json.load(f)
-          linhas_site=base['abas'][0]['linhas']
-          origem={normalizar(r['Número da nota']):r for r in linhas_csv}
-          site={normalizar(r[2]):r for r in linhas_site}
-          print('CSV recebido:',len(linhas_csv),'notas. Site publicado:',len(linhas_site),'notas.')
-          print('Criticidades CSV:',json.dumps(dict(Counter((r.get('Texto referente à prioridade') or '').strip() for r in linhas_csv)),ensure_ascii=False))
-          print('Criticidades site:',json.dumps(dict(Counter(str(r[3]).strip() for r in linhas_site)),ensure_ascii=False))
-          print('IDs apenas no CSV:',len(set(origem)-set(site)))
-          print('IDs apenas no site:',len(set(site)-set(origem)))
-          if set(origem)!=set(site):
-              raise SystemExit('BLOQUEADO: IDs da base publicada diferentes dos IDs do CSV')
-          rotulos={'P1':'1-Muito alta','P2':'2-Alta','P3':'3-Média','P4':'4-Baixa'}
-          inconsistencias=[
-              nota for nota,r in origem.items()
-              if (r.get('Texto referente à prioridade') or '').strip()
-              != rotulos.get(str(site[nota][3]).strip(),str(site[nota][3]).strip())
-          ]
-          print('Notas com criticidade diferente entre CSV e base publicada:',len(inconsistencias))
-          if inconsistencias:
-              print('Exemplos:',inconsistencias[:10])
-              raise SystemExit('BLOQUEADO: criticidades divergentes')
-          def km(marker, offset):
-              m=re.fullmatch(r'\s*KM\s*(\d+(?:[.,]\d+)?)\s*',str(marker or ''),flags=re.I)
-              if not m:return None
-              try:
-                  return round(float(m.group(1).replace(',','.'))*1000+float(str(offset or '0').replace(',','.'))*1000)
-              except ValueError:return None
-          def notas_fcl_lc2(linhas):
-              resposta=set()
-              for r in linhas:
-                  coord=str(r[0] or '').strip().upper().removeprefix('C')
-                  ativo=str(r[5] or '').strip().upper()
-                  if coord!='FCL' or not ativo.startswith('MF-LC2-'):continue
-                  inicio,fim=km(r[9],r[10]),km(r[11],r[12])
-                  if inicio is None and fim is None:continue
-                  if inicio is None:inicio=fim
-                  if fim is None:fim=inicio
-                  if min(inicio,fim)<=462000 and max(inicio,fim)>=461000:
-                      resposta.add(normalizar(r[2]))
-              return resposta
-          atuais=notas_fcl_lc2(linhas_site)
-          print('Faixa 461+000 a 462+000, FCL LC2 no site:',len(atuais),'notas (referencia ChatGPT: 29).')
-          print('Notas de referencia presentes nesta faixa no site:',sorted(atuais & alvos))
-          for nota in sorted(alvos):
-              r=origem.get(nota)
-              s=site.get(nota)
-              print('Nota',nota,'CSV:',json.dumps({'id':r.get('Número da nota'),'prioridade':r.get('Texto referente à prioridade'),'ativo':r.get('Local de instalação TPLNR'),'km_inicial':r.get('Marcador para o ponto de partida'),'distancia_inicial':r.get('Market Dist Start 2')} if r else None,ensure_ascii=False))
-              print('Nota',nota,'SITE:',json.dumps({'id':s[2],'prioridade':s[3],'ativo':s[5],'km_inicial':s[9],'distancia_inicial':s[10]} if s else None,ensure_ascii=False))
+          with gzip.open('notas-lc-campo/notes.json.gz','rt',encoding='utf8') as f:data=json.load(f)
+          rows=data['abas'][0]['linhas'];ids=[str(r[2]).strip().lstrip('0') for r in rows]
+          assert len(ids)==len(set(ids)) and all(re.fullmatch('[0-9]+',v) for v in ids)
+          status=json.loads(Path('notas-lc-campo/base-status.json').read_text())
+          assert len(rows)==status['total']
+          print('Base íntegra:',len(rows),'notas; versão',data['versao_base'])
           PY
-
-      - name: Testar conversor e rejeicao de anexos incorretos
-        run: python3 -m unittest discover -s ferramentas/notas-lc-campo/automation -p 'test_*.py' -v
-
-      - name: Investigar notas ausentes no CSV original
-        run: |
-          python3 - <<'PY'
-          import csv, re
-          from pathlib import Path
-          arquivo=Path('entrada/notas-lc-campo/automation/incoming.csv')
-          alvos={'14600288','14619762'}
-          with arquivo.open(encoding='utf-8-sig', newline='') as f:
-              leitor=csv.DictReader(f)
-              print('Colunas de identificador:',[c for c in (leitor.fieldnames or []) if 'nota' in c.lower()])
-              campo='Número da nota'
-              if campo not in (leitor.fieldnames or []):
-                  raise ValueError('Coluna Número da nota ausente do CSV original')
-              encontrados=[]
-              total=0
-              for r in leitor:
-                  total+=1
-                  bruto=str(r.get(campo) or '').strip()
-                  canonico=re.sub(r'^0+(?=\d)', '',bruto)
-                  if canonico in alvos:
-                      encontrados.append({'id_csv':bruto,'id_normalizado':canonico,
-                                         'criticidade':r.get('Texto referente à prioridade',''),
-                                         'ativo':r.get('Local de instalação TPLNR','')})
-          print('Total linhas CSV original:',total)
-          print('Notas alvo encontradas no CSV original:',encontrados)
-          print('Notas alvo ausentes no CSV original:',sorted(alvos-{x['id_normalizado'] for x in encontrados}))
-          PY
-
-      - name: Converter CSV real
-        run: |
-          python3 ferramentas/notas-lc-campo/automation/convert_csv.py \
-            entrada/notas-lc-campo/automation/incoming.csv \
-            /tmp/notas-lc-convertidas.json.gz
-
-      - name: Validar base sem publicar
-        run: |
-          python3 ferramentas/notas-lc-campo/automation/build.py \
-            --entrada /tmp/notas-lc-convertidas.json.gz \
-            --raiz site
-
-      - name: Resumo de auditoria
-        run: |
-          python3 - <<'PY'
-          import json
-          from pathlib import Path
-          s=json.loads(Path('site/notas-lc-campo/base-status.json').read_text())
-          print('Total:',s['total'])
-          print('Com localizacao:',s['located'])
-          print('Sem KM:',s['unlocated'])
-          print('Criticidades:',json.dumps(s.get('auditoria_criticidade',{}),ensure_ascii=False))
-          print('Fora do padrao:',json.dumps(s.get('criticidades_fora_padrao',{}),ensure_ascii=False))
-          PY
-
-      - name: Comparar amostra do trecho FCL LC2
-        run: |
-          python3 - <<'PY'
-          import gzip, json, re
-          from pathlib import Path
-          caminho = Path('site/notas-lc-campo/notes.json.gz')
-          with gzip.open(caminho, 'rt', encoding='utf-8') as arquivo:
-              dados = json.load(arquivo)
-          linhas = dados['abas'][0]['linhas']
-          referencia = {'14600288', '14619762'}
-          amostra = []
-          for r in linhas:
-              numero = re.sub(r'^0+(?=\d)', '', str(r[2]))
-              if numero in referencia:
-                  amostra.append({
-                      'nota': numero, 'criticidade': str(r[3]),
-                      'centro': str(r[0]), 'ativo': str(r[5]),
-                      'marcador_inicial': str(r[9]), 'distancia_inicial': str(r[10]),
-                      'marcador_final': str(r[11]), 'distancia_final': str(r[12])
-                  })
-          resultado = {
-              'referencia_original': 'Captura do ChatGPT em 09/10/2026, faixa 461+000 a 462+000, FCL LC2, 29 notas proximas',
-              'notas_referencia': sorted(referencia),
-              'encontradas_no_csv': amostra,
-              'nao_encontradas': sorted(referencia - {r['nota'] for r in amostra}),
-              'observacao': 'Amostra informativa. Nao comprova equivalencia da consulta de 29 notas.'
-          }
-          destino = Path('site/notas-lc-campo/automation/auditoria-amostra.json')
-          destino.parent.mkdir(parents=True, exist_ok=True)
-          destino.write_text(json.dumps(resultado, ensure_ascii=False, indent=2), encoding='utf-8')
-          print(json.dumps(resultado, ensure_ascii=False, indent=2))
-          PY
-
-      - name: Guardar resultado da auditoria
-        uses: actions/upload-artifact@v4
-        with:
-          name: auditoria-notas-lc
-          path: |
-            site/notas-lc-campo/base-status.json
-            site/notas-lc-campo/automation/auditoria-amostra.json

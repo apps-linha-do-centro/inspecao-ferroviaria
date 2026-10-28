@@ -1,5 +1,4 @@
-name: Atualizar Notas LC automaticamente
-
+name: Atualizar Notas LC e conferencias
 on:
   workflow_dispatch:
   repository_dispatch:
@@ -8,111 +7,53 @@ on:
     branches: [main]
     paths:
       - .github/workflows/atualizar-notas-lc.yml
+      - notas-lc-campo/automation/**
   schedule:
-    # 06:45 e 07:45 em Brasilia (UTC-3), todos os dias, inclusive finais de semana e feriados.
     - cron: '45 9,10 * * *'
-
 permissions:
   contents: write
-
 concurrency:
   group: atualizar-notas-lc-main
   cancel-in-progress: false
-
 jobs:
-  atualizar-notas:
+  atualizar:
     runs-on: ubuntu-latest
     steps:
-      - name: Baixar site publicado
-        uses: actions/checkout@v4
+      - uses: actions/checkout@v4
         with:
           ref: main
           path: site
-          persist-credentials: true
-
-      - name: Baixar conversor e validador
-        uses: actions/checkout@v4
-        with:
-          ref: feature/notas-lc-automacao-20261009
-          path: ferramentas
-
-      - name: Baixar CSV recebido do Gmail
-        uses: actions/checkout@v4
+      - uses: actions/checkout@v4
         with:
           ref: notas-lc-inbox
           path: entrada
-
-      - name: Verificar se ha nova base
-        id: nova_base
-        shell: bash
+          fetch-depth: 0
+      - name: Testar contratos e entradas independentes
         run: |
-          set -euo pipefail
-          test -s entrada/notas-lc-campo/automation/incoming.csv
-          SHA_ENTRADA="$(git -C entrada rev-parse HEAD)"
-          echo "sha=$SHA_ENTRADA" >> "$GITHUB_OUTPUT"
-          HOJE_BR="$(TZ=America/Sao_Paulo date +%F)"
-          DATA_COMMIT_BR="$(TZ=America/Sao_Paulo date -d "$(git -C entrada log -1 --format=%cI)" +%F)"
-          if [ "$DATA_COMMIT_BR" != "$HOJE_BR" ]; then
-            echo "nova=false" >> "$GITHUB_OUTPUT"
-            echo "Sem arquivo novo nesta data ($HOJE_BR); a ultima entrada foi atualizada em $DATA_COMMIT_BR. Nao publicar."
-            exit 0
-          fi
-          MARCADOR="site/notas-lc-campo/automation/last-processed-sha.txt"
-          if [ -f "$MARCADOR" ] && [ "$(cat "$MARCADOR")" = "$SHA_ENTRADA" ]; then
-            echo "nova=false" >> "$GITHUB_OUTPUT"
-            echo "Base ja publicada. Nenhuma alteracao."
-          else
-            echo "nova=true" >> "$GITHUB_OUTPUT"
-            echo "Nova base detectada: $SHA_ENTRADA"
-          fi
-
-      - name: Testar o conversor antes de atualizar
-        if: steps.nova_base.outputs.nova == 'true'
-        run: python3 -m unittest discover -s ferramentas/notas-lc-campo/automation -p 'test_*.py' -v
-
-      - name: Converter CSV
-        if: steps.nova_base.outputs.nova == 'true'
+          python3 -m unittest discover -s site/notas-lc-campo/automation -p 'test_*.py' -v
+          node site/notas-lc-campo/automation/test-audit-ui.mjs
+          node site/notas-lc-campo/automation/test-apps-script.mjs
+      - name: Processar notas e conferencias independentemente
         run: |
-          python3 ferramentas/notas-lc-campo/automation/convert_csv.py \
-            entrada/notas-lc-campo/automation/incoming.csv \
-            /tmp/notas-lc-convertidas.json.gz
-
-      - name: Validar base e preparar arquivos
-        if: steps.nova_base.outputs.nova == 'true'
-        run: |
-          python3 ferramentas/notas-lc-campo/automation/build.py \
-            --entrada /tmp/notas-lc-convertidas.json.gz \
-            --raiz site
-
-      - name: Registrar base processada
-        if: steps.nova_base.outputs.nova == 'true'
-        env:
-          SHA_ENTRADA: ${{ steps.nova_base.outputs.sha }}
-        run: |
-          mkdir -p site/notas-lc-campo/automation
-          printf '%s' "$SHA_ENTRADA" > site/notas-lc-campo/automation/last-processed-sha.txt
-
-      - name: Publicar somente arquivos do Notas LC
-        if: steps.nova_base.outputs.nova == 'true'
+          DATA_NOTAS="$(TZ=America/Sao_Paulo date -d "$(git -C entrada log -1 --format=%cI -- notas-lc-campo/automation/incoming.csv)" +%F)"
+          python3 site/notas-lc-campo/automation/sync_inputs.py --site site --entry entrada --notes-date "$DATA_NOTAS" --report /tmp/notas-sync.json
+      - name: Publicar arquivos validados
         working-directory: site
         run: |
           set -euo pipefail
-          git config user.name "github-actions[bot]"
-          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git add -- notas-lc-campo/notes.json.gz \
-            notas-lc-campo/base-status.json \
-            notas-lc-campo/index.html \
-            notas-lc-campo/sw.js \
-            notas-lc-campo/automation/last-processed-sha.txt
-          if git diff --cached --quiet; then
-            echo "Nenhuma alteracao para publicar."
-            exit 0
-          fi
-          git commit -m "Atualizar base Notas LC validada"
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add -- notas-lc-campo/notes.json.gz notas-lc-campo/base-status.json notas-lc-campo/index.html notas-lc-campo/sw.js notas-lc-campo/audit-data.js notas-lc-campo/automation/processed-inputs.json
+          if git diff --cached --quiet; then exit 0; fi
+          git commit -m 'Atualizar notas e conferencias validadas'
           git push origin HEAD:main
-
-      - name: Resultado
+      - name: Informar entradas rejeitadas sem apagar as bases validas
         if: always()
         run: |
-          echo "Sem entrada nova da data de hoje ou se a validacao falhar, nada sera publicado."
-          echo "GitHub Pages publicara os arquivos da main apos o commit."
+          python3 - <<'PY'
+          import json,pathlib
+          p=pathlib.Path('/tmp/notas-sync.json')
+          if p.exists():
+              r=json.loads(p.read_text());print(json.dumps(r,ensure_ascii=False,indent=2))
+              if r['errors']:raise SystemExit('Entradas rejeitadas; outras atualizacoes validas foram preservadas.')
+          PY
