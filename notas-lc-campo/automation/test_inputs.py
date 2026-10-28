@@ -1,4 +1,4 @@
-import csv,datetime as dt,hashlib,io,json,shutil,tempfile,unittest
+import csv,datetime as dt,gzip,hashlib,io,json,shutil,tempfile,unittest
 from pathlib import Path
 from import_audits import read_records,merge,load_data,HEADERS
 from sync_inputs import synchronize
@@ -30,12 +30,23 @@ class AuditsTest(unittest.TestCase):
         for both in (False,True):
             with self.subTest(both=both),tempfile.TemporaryDirectory() as temp:
                 temp=Path(temp);site=temp/'site';entry=temp/'entry';shutil.copytree(ROOT/'notas-lc-campo',site/'notas-lc-campo');folder=entry/'notas-lc-campo/automation';folder.mkdir(parents=True)
-                status=site/'notas-lc-campo/base-status.json';data=json.loads(status.read_text());data['total']=600;status.write_text(json.dumps(data))
+                # Fix the copied fixture's date independently of the live published base.
+                notes=site/'notas-lc-campo/notes.json.gz'
+                with gzip.open(notes,'rt',encoding='utf-8') as f:data=json.load(f)
+                data['versao_base']='2026-10-26'
+                with gzip.open(notes,'wt',encoding='utf-8') as f:json.dump(data,f,ensure_ascii=False)
+                status=site/'notas-lc-campo/base-status.json';data=json.loads(status.read_text());data['total']=600;data['version']='2026-10-26';status.write_text(json.dumps(data))
                 with (folder/'incoming.csv').open('w',newline='') as f:
                     w=csv.writer(f);w.writerow(columns)
                     for i in range(600):w.writerow(['CFCL','YRD',str(15500000+i),'3-Média','01/10/2026','MF-LC2-FPK_FPK-L000001','Descrição','AM42','Teste','KM461','0','KM461','0'])
                 if both:(folder/'tratativas').mkdir();(folder/'tratativas/valid.csv').write_bytes(sample())
                 original=load_data(site/'notas-lc-campo/audit-data.js')
+                rejected=synchronize(site,entry,'2026-10-25')
+                self.assertEqual(rejected['notes'],'unchanged')
+                self.assertIn('anterior à publicada',rejected['errors'][0]['reason'])
+                # Restore the audit processing marker before the successful scenario.
+                (site/'notas-lc-campo/automation/processed-inputs.json').unlink()
+                (site/'notas-lc-campo/audit-data.js').write_bytes((ROOT/'notas-lc-campo/audit-data.js').read_bytes())
                 r=synchronize(site,entry,'2026-10-27');self.assertEqual(r['notes'],'updated');self.assertFalse(r['errors']);self.assertEqual(r['audit_files'],int(both))
                 if not both:self.assertEqual(load_data(site/'notas-lc-campo/audit-data.js'),original)
                 files=[site/'notas-lc-campo'/n for n in ['notes.json.gz','audit-data.js','sw.js','automation/processed-inputs.json']];snapshot=[p.read_bytes() for p in files]
