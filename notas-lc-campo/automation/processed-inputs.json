@@ -1,5 +1,7 @@
 {
-  "audit_sha256": [],
+  "audit_sha256": [
+    "7cf2758684819200a0ae5643401a389f1b783cbec00f2db0dff1eb3b48c09534"
+  ],
   "notes_sha256": "09970abe29d96f510635114db04222cd4d30b063951e590a5a260b9f65e1c3c0",
   "version": 1
 }
