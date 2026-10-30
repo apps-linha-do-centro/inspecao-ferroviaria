@@ -39,6 +39,10 @@ with src.open(encoding='utf-8-sig',newline='') as f:
 def get(r,key):
     return (r.get(names[normalize_header(key)]) or '').strip()
 
+def get_optional(r,key):
+    name=names.get(normalize_header(key))
+    return (r.get(name) or '').strip() if name else ''
+
 # A validacao final em build.py tambem exige de 500 a 250000 registros, sem
 # duplicidades, e bloqueia queda/aumento anormal da base (>35%) e criticidade inesperada.
 # Para volumes de producao, acrescentamos verificacao do perfil ferroviario.
@@ -70,9 +74,9 @@ for r in rows:
       get(r,'Texto breve'),get(r,'Codificação 1'),get(r,'Texto breve para o código'),
       get(r,'Marcador para o ponto de partida').replace('KM','KM '),
       get(r,'Market Dist Start 2'),get(r,'Marcador para o ponto final').replace('KM','KM '),
-      get(r,'Maker Dist End 1')
+      get(r,'Maker Dist End 1'),get_optional(r,'Campo de ordenação')
     ])
-columns=['Coordenação','TAM','Número da Nota','Prioridade','Data da Nota','Ativo','Descrição','Código anomalia','Anomalia','Marcador inic.','Distância inic.','Marcador final','Distância final']
+columns=['Coordenação','TAM','Número da Nota','Prioridade','Data da Nota','Ativo','Descrição','Código anomalia','Anomalia','Marcador inic.','Distância inic.','Marcador final','Distância final','Campo de ordenação']
 data={'versao_base':datetime.datetime.now(datetime.timezone(datetime.timedelta(hours=-3))).strftime('%Y-%m-%d'),'abas':[{'colunas':columns,'linhas':out},{'colunas':['TAM','Descrição'],'linhas':[]}]}
 with gzip.open(dest,'wt',encoding='utf-8',compresslevel=9) as f: json.dump(data,f,ensure_ascii=False,separators=(',',':'))
 print('Notas convertidas:',len(out))

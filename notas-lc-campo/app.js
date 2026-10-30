@@ -245,7 +245,7 @@ function correctionEditor(n,t){
 }
 function openNote(n){
  const s=active(),t=s?.treatments[n.id],readonly=!editable(),openedAt=now(),reference=position&&(position.track||tracks[position.trackId]),clickSnapshot=readonly?null:freshSnapshot(reference);let evidence=t?.evidencePhoto||null,evidenceMeta=t?.evidenceMeta||null,cameraStream=null;
- openDialog('Nota '+displayNoteId(n.id),`<dl class="details-grid"><div><dt>Anomalia</dt><dd>${esc(n.anomaly)}</dd></div><div><dt>Lado da anomalia na nota</dt><dd>${esc(C.noteSide(n))}</dd></div><div><dt>Criticidade</dt><dd>${esc(C.criticidade(n.priority)||'Não informada')}</dd></div><div><dt>Km inicial</dt><dd>${esc(C.fmtKm(n.start))}</dd></div><div><dt>Km final</dt><dd>${esc(C.fmtKm(n.end))}</dd></div><div><dt>Ativo</dt><dd>${esc(n.asset)}</dd></div><div><dt>TAM / origem</dt><dd>${esc(n.tam||'Não informado')} · ${esc(n.tam?(base.tam[n.tam]||'Código sem referência'):'Sem TAM na extração')}</dd></div><div><dt>Data da Nota</dt><dd>${esc(n.date)}</dd></div><div><dt>Código da anomalia</dt><dd>${esc(n.code||'Não informado')}</dd></div></dl><details class="observation"><summary>Observações da Nota</summary><p>${esc(n.description||'Não preenchidas na extração.')}</p>${/^\d+$/.test(String(n.description||''))?'<small>A extração contém um valor numérico neste campo; o texto original não foi disponibilizado.</small>':''}</details>${readonly?`<div class="observation"><strong>${esc(t?.status||'Sem tratativa')}</strong><p>${esc(t?.text||'')}</p>${evidence?`<img class="evidence-preview" src="${esc(evidence)}" alt="Evidência da Nota ${esc(n.id)}">`:''}</div><p class="dialog-note">${s?.end?'Conferência concluída. Consulte ou exporte no histórico.':'Inicie uma conferência para registrar uma tratativa.'}</p>${!s?'<button id="startFromNote" class="primary">Iniciar inspeção</button>':''}`:`<form id="treatmentForm" class="fields"><label class="field">Sua constatação</label><div class="choices">${['Inexistente','Tratada','Alterar','Manter'].map(v=>`<label><input type="radio" name="status" value="${v}" required ${t?.status===v?'checked':''}>${v}</label>`).join('')}</div><label id="treatmentTextField" class="field">Texto livre da tratativa (opcional)<textarea name="text" maxlength="20000" placeholder="Descreva a constatação, o serviço ou a alteração necessária.">${esc(t?.status==='Alterar'&&t?.alteracoes?'':t?.text||'')}</textarea></label>${correctionEditor(n,t)}<p id="clickLocationInfo" class="dialog-note">Registrando localização no clique…</p><button id="cameraEvidence" type="button">Tirar foto de evidência</button><div id="cameraPanel" hidden><video id="evidenceVideo" autoplay playsinline muted></video><div class="button-row"><button type="button" id="captureEvidence">Fotografar</button><button type="button" id="cancelCamera">Cancelar câmera</button></div></div><label class="field">Foto da galeria (opcional)<input id="evidenceInput" type="file" accept="image/*"><small>A localização da galeria será lida do arquivo, quando disponível. A evidência será incluída no PDF.</small></label><div id="evidencePreview"></div><button id="removeEvidence" type="button" class="text-button" ${evidence?'':'hidden'}>Remover foto</button><p class="dialog-note">“Manter” confirma que a Nota permanece como está e dispensa observações. “Alterar” registra uma solicitação à coordenação. Os dados originais da MRS permanecem preservados.</p><p id="treatmentError" class="warning error" role="alert" tabindex="-1" hidden></p><div class="button-row"><button id="saveTreatment" type="submit" class="primary">Salvar tratativa</button>${t?'<button type="button" class="danger" id="removeTreatment">Remover tratativa</button>':''}</div></form>`}`);
+ openDialog('Nota '+displayNoteId(n.id),`<dl class="details-grid"><div><dt>Anomalia</dt><dd>${esc(n.anomaly)}</dd></div><div><dt>Lado da anomalia na nota</dt><dd>${esc(C.noteSide(n))}</dd></div><div><dt>Criticidade</dt><dd>${esc(C.criticidade(n.priority)||'Não informada')}</dd></div><div><dt>Km inicial</dt><dd>${esc(C.fmtKm(n.start))}</dd></div><div><dt>Km final</dt><dd>${esc(C.fmtKm(n.end))}</dd></div><div><dt>Ativo</dt><dd>${esc(n.asset)}</dd></div><div><dt>Ordenação</dt><dd>${esc(String(n.original?.['Campo de ordenação']??'').trim()||'Não informado na base')}</dd></div><div><dt>TAM / origem</dt><dd>${esc(n.tam||'Não informado')} · ${esc(n.tam?(base.tam[n.tam]||'Código sem referência'):'Sem TAM na extração')}</dd></div><div><dt>Data da Nota</dt><dd>${esc(n.date)}</dd></div><div><dt>Código da anomalia</dt><dd>${esc(n.code||'Não informado')}</dd></div></dl><details class="observation"><summary>Observações da Nota</summary><p>${esc(n.description||'Não preenchidas na extração.')}</p>${/^\d+$/.test(String(n.description||''))?'<small>A extração contém um valor numérico neste campo; o texto original não foi disponibilizado.</small>':''}</details>${readonly?`<div class="observation"><strong>${esc(t?.status||'Sem tratativa')}</strong><p>${esc(t?.text||'')}</p>${evidence?`<img class="evidence-preview" src="${esc(evidence)}" alt="Evidência da Nota ${esc(n.id)}">`:''}</div><p class="dialog-note">${s?.end?'Conferência concluída. Consulte ou exporte no histórico.':'Inicie uma conferência para registrar uma tratativa.'}</p>${!s?'<button id="startFromNote" class="primary">Iniciar inspeção</button>':''}`:`<form id="treatmentForm" class="fields"><label class="field">Sua constatação</label><div class="choices">${['Inexistente','Tratada','Alterar','Manter'].map(v=>`<label><input type="radio" name="status" value="${v}" required ${t?.status===v?'checked':''}>${v}</label>`).join('')}</div><label id="treatmentTextField" class="field">Texto livre da tratativa (opcional)<textarea name="text" maxlength="20000" placeholder="Descreva a constatação, o serviço ou a alteração necessária.">${esc(t?.status==='Alterar'&&t?.alteracoes?'':t?.text||'')}</textarea></label>${correctionEditor(n,t)}<p id="clickLocationInfo" class="dialog-note">Registrando localização no clique…</p><button id="cameraEvidence" type="button">Tirar foto de evidência</button><div id="cameraPanel" hidden><video id="evidenceVideo" autoplay playsinline muted></video><div class="button-row"><button type="button" id="captureEvidence">Fotografar</button><button type="button" id="cancelCamera">Cancelar câmera</button></div></div><label class="field">Foto da galeria (opcional)<input id="evidenceInput" type="file" accept="image/*"><small>A localização da galeria será lida do arquivo, quando disponível. A evidência será incluída no PDF.</small></label><div id="evidencePreview"></div><button id="removeEvidence" type="button" class="text-button" ${evidence?'':'hidden'}>Remover foto</button><p class="dialog-note">“Manter” confirma que a Nota permanece como está e dispensa observações. “Alterar” registra uma solicitação à coordenação. Os dados originais da MRS permanecem preservados.</p><p id="treatmentError" class="warning error" role="alert" tabindex="-1" hidden></p><div class="button-row"><button id="saveTreatment" type="submit" class="primary">Salvar tratativa</button>${t?'<button type="button" class="danger" id="removeTreatment">Remover tratativa</button>':''}</div></form>`}`);
  if($('#startFromNote'))$('#startFromNote').onclick=newSession;if(readonly)return;
  bindCorrectionSearch(n,t);bindCorrectionKm();
  const syncCorrection=()=>{
@@ -288,9 +288,12 @@ async function clearAppCache(){
  if(clearingData)return;
  if(!active()?.end){toast('Finalize a inspeção antes de limpar o cache.');return}
  clearingData=true;
+ baseCheckController?.abort();baseDownloadController?.abort();
  $('#confirmClearCache').disabled=true;
  let historyCleared=false;
  try{
+  if(baseDownloadTask)await baseDownloadTask;
+  pendingBaseDataset=null;availableBaseStatus=null;$('#baseUpdatePanel').hidden=true;showBaseCurrent(false);
   await saveQueue;
   await new Promise((resolve,reject)=>{
    const transaction=db.transaction('sessions','readwrite');
@@ -301,6 +304,7 @@ async function clearAppCache(){
   historyCleared=true;
   sessions=[];activeId=null;position=null;profile=null;range=500;
   const failures=[];
+  try{await LCBaseUpdates.clear()}catch(error){failures.push(error)}
   for(const storageName of ['localStorage','sessionStorage'])try{
    const storage=window[storageName];
    if(storage)for(const key of ['lc-profile','lc-range','lc-active'])storage.removeItem(key);
@@ -323,8 +327,107 @@ async function clearAppCache(){
  }catch(e){toast(historyCleared?'Histórico apagado. Complete a limpeza dos dados do site nas configurações do navegador.':'Não foi possível apagar o histórico. Tente novamente.');console.error(e)}
  finally{clearingData=false;$('#confirmClearCache').disabled=false}
 }
+let currentBaseStatus=null,availableBaseStatus=null,pendingBaseDataset=null,baseDownloadTask=null;
+let baseCheckController=null,baseDownloadController=null,lastBaseCheck=0,dismissedBaseSignature='';
+const baseDate=value=>String(value||'').split('-').reverse().join('/');
+function renderBaseIdentity(){
+ const excluded=base.notes.filter(n=>n.locationIssue).length;
+ $('#baseInfo').textContent='Base '+base.version+' · '+(base.notes.length-excluded)+' Notas com km · '+excluded+' com km em branco';
+ $('.brand strong').textContent='Notas em campo · Base '+baseDate(base.version);
+ document.title='Notas LC · Base '+baseDate(base.version);
+}
+async function loadCurrentBase(){
+ let saved=null;try{saved=await LCBaseUpdates.read()}catch(error){console.info('Base adicional indisponível; usando arquivos offline.',error)}
+ if(saved){currentBaseStatus=saved.status;return C.parseBase(saved.raw)}
+ const raw=await loadCompressed('notes.json.gz');
+ try{const response=await fetch('base-status.json');if(!response.ok)throw Error('Sem identificação');const status=await response.json();LCBaseUpdates.validate(raw,status);currentBaseStatus=status}catch{currentBaseStatus={version:raw.versao_base,total:raw.abas[0].linhas.length}}
+ return C.parseBase(raw);
+}
+function baseUpdateNotice(title,message,canUpdate=false){
+ $('#baseUpdatePanel').hidden=false;$('#baseUpdateTitle').textContent=title;$('#baseUpdateMessage').textContent=message;
+ $('#updateBaseBtn').hidden=!canUpdate;$('#updateBaseBtn').disabled=!navigator.onLine||!!baseDownloadTask||clearingData;
+ $('#updateBaseBtn').textContent=baseDownloadTask?'Baixando…':'Atualizar base';
+}
+function showBaseCurrent(confirmed){$('#baseCurrentIndicator').hidden=!confirmed}
+function showAvailableBase(){
+ if(!availableBaseStatus)return;
+ showBaseCurrent(false);
+ baseUpdateNotice('Nova base disponível · '+baseDate(availableBaseStatus.version),navigator.onLine?'Você está usando a base de '+baseDate(base.version)+'. Atualize quando for conveniente. Suas inspeções serão preservadas.':'Sem conexão. Continue usando a base de '+baseDate(base.version)+'. Você poderá atualizar quando o sinal voltar.',true);
+}
+async function checkBaseUpdate(force=false){
+ if(!base||!currentBaseStatus||clearingData||baseDownloadTask||baseCheckController)return;
+ if(!navigator.onLine){showBaseCurrent(false);if(force)baseUpdateNotice('Uso offline','Base de '+baseDate(base.version)+' disponível neste aparelho. Continue a inspeção normalmente.');return}
+ if(!force&&Date.now()-lastBaseCheck<60000)return;
+ lastBaseCheck=Date.now();const controller=new AbortController;baseCheckController=controller;const timeout=setTimeout(()=>controller.abort(),8000);
+ try{
+  const remote=await LCBaseUpdates.status(controller.signal);
+  if(clearingData)return;
+  if(remote.version>=base.version&&LCBaseUpdates.signature(remote)!==LCBaseUpdates.signature(currentBaseStatus)){
+   availableBaseStatus=remote;
+   showBaseCurrent(false);
+   if(force||dismissedBaseSignature!==LCBaseUpdates.signature(remote))showAvailableBase();
+  }else{
+   availableBaseStatus=null;
+   showBaseCurrent(LCBaseUpdates.signature(remote)===LCBaseUpdates.signature(currentBaseStatus));
+   $('#baseUpdatePanel').hidden=true;
+  }
+ }catch(error){
+  showBaseCurrent(false);
+  if(force)baseUpdateNotice('Não foi possível verificar agora','A base de '+baseDate(base.version)+' continua disponível. Use o aplicativo normalmente e tente verificar novamente quando houver sinal.');
+ }finally{clearTimeout(timeout);baseCheckController=null}
+}
+function applyPendingBase(){
+ if(!pendingBaseDataset||clearingData||$('#dialog').open)return;
+ base=pendingBaseDataset.parsed;currentBaseStatus=pendingBaseDataset.status;pendingBaseDataset=null;availableBaseStatus=null;
+ renderBaseIdentity();render();
+ showBaseCurrent(navigator.onLine);$('#baseUpdatePanel').hidden=true;
+}
+async function downloadBaseUpdate(){
+ if(baseDownloadTask||clearingData||!availableBaseStatus)return;
+ if(!navigator.onLine){showAvailableBase();return}
+ const expected=availableBaseStatus,controller=new AbortController;baseDownloadController=controller;
+ const timeout=setTimeout(()=>controller.abort(),30000);
+ baseDownloadTask=(async()=>{
+  try{
+   const dataset=await LCBaseUpdates.download(expected,controller.signal);
+   if(controller.signal.aborted||clearingData)throw Error('Download interrompido');
+   const parsed=C.parseBase(dataset.raw);C.classifyLocations(parsed.notes,tracks,rail);
+   await saveQueue;
+   if(controller.signal.aborted||clearingData)throw Error('Download interrompido');
+   await LCBaseUpdates.save(dataset);
+   if(clearingData)return;
+   pendingBaseDataset={parsed,status:dataset.status};
+   if($('#dialog').open)baseUpdateNotice('Nova base pronta','O download foi concluído. Termine sua avaliação normalmente; a base será aplicada quando este painel de avaliação for fechado.');
+   applyPendingBase();
+  }catch(error){
+   if(!clearingData)baseUpdateNotice('Atualização não concluída','A conexão pode ter caído ou o download não pôde ser validado ou salvo. A base de '+baseDate(base.version)+' foi mantida. Continue a inspeção e tente novamente depois.',true);
+   console.info('Base anterior preservada.',error);
+  }finally{
+   clearTimeout(timeout);baseDownloadController=null;baseDownloadTask=null;
+   $('#updateBaseBtn').disabled=!navigator.onLine;$('#updateBaseBtn').textContent='Atualizar base';
+  }
+ })();
+ baseUpdateNotice('Baixando a nova base','Você pode continuar usando o aplicativo. Se o sinal cair, a base anterior será mantida.',true);
+ await baseDownloadTask;
+}
+function baseConnectionChanged(){
+ if(!navigator.onLine){showBaseCurrent(false);baseCheckController?.abort();baseDownloadController?.abort();if(!baseDownloadTask&&availableBaseStatus)showAvailableBase();return}
+ if(availableBaseStatus&&!$('#baseUpdatePanel').hidden)showAvailableBase();
+ lastBaseCheck=0;checkBaseUpdate();
+}
+function setupBaseUpdateUI(){
+ $('#checkBaseBtn').onclick=()=>checkBaseUpdate(true);
+ $('#updateBaseBtn').onclick=downloadBaseUpdate;
+ $('#dismissBaseUpdate').onclick=()=>{if(availableBaseStatus)dismissedBaseSignature=LCBaseUpdates.signature(availableBaseStatus);$('#baseUpdatePanel').hidden=true};
+ $('#dialog').addEventListener('close',applyPendingBase);
+ document.addEventListener('visibilitychange',()=>{if(!document.hidden)checkBaseUpdate()});
+ window.addEventListener('focus',()=>checkBaseUpdate());
+ window.addEventListener('online',baseConnectionChanged);window.addEventListener('offline',baseConnectionChanged);
+ checkBaseUpdate();
+}
+
 function registerTools(){if(!document.modelContext?.registerTool)return;const lifecycle=new AbortController;const tool={name:'consultar_notas_por_km',title:'Consultar Notas por km',description:'Configura a consulta por linha e quilômetro e exibe as Notas próximas; não registra tratativas.',inputSchema:{type:'object',properties:{trackId:{type:'integer'},kmMeters:{type:'integer'},rangeMeters:{type:'integer'}},required:['trackId','kmMeters'],additionalProperties:false},annotations:{readOnlyHint:false,untrustedContentHint:true},execute(input){if(!editable())throw Error('Inicie uma inspeção antes de consultar pelo agente');if(!input||!Number.isInteger(input.trackId)||!tracks[input.trackId]||!Number.isInteger(input.kmMeters)||input.kmMeters<0||(input.rangeMeters!==undefined&&(!Number.isInteger(input.rangeMeters)||input.rangeMeters<1||input.rangeMeters>50000)))throw Error('Trecho, km ou alcance inválido');if(input.rangeMeters){range=input.rangeMeters;localStorage.setItem('lc-range',range)}setPosition({trackId:input.trackId,km:input.kmMeters,source:'Manual',time:now(),lat:null,lon:null,accuracy:null});setTab('nearby');return {track:tracks[input.trackId].asset,km:C.fmtKm(position.km),notes:C.near(base.notes,position,range,tracks).map(n=>({id:n.id,anomaly:n.anomaly,start:n.start,end:n.end}))}}};try{Promise.resolve(document.modelContext.registerTool(tool,{signal:lifecycle.signal})).catch(()=>{})}catch(e){}window.addEventListener('pagehide',()=>lifecycle.abort(),{once:true})}
-async function init(){try{[db,base,tracks,rail]=await Promise.all([openDB(),loadCompressed('notes.json.gz').then(C.parseBase),fetch('tracks.json').then(r=>{if(!r.ok)throw Error('Base de linhas indisponível');return r.json()}),loadCompressed('rail.bin.gz',true)]);sessions=await readAll();C.classifyLocations(base.notes,tracks,rail);activeId=localStorage.getItem('lc-active');position=restoredPosition(active()?.lastPosition);const excluded=base.notes.filter(n=>n.locationIssue).length;$('#baseInfo').textContent='Base '+base.version+' · '+(base.notes.length-excluded)+' Notas com km · '+excluded+' com km em branco';render();if(active()&&!active().end&&active().employeeId)showWork();else showStart();registerTools();offlineSetup=setupOffline();navigator.storage?.persist?.().catch(()=>{});const duplicates=base.notes.length-new Set(base.notes.map(n=>n.id)).size;if(duplicates)toast(duplicates+' números de Nota repetidos na base; revise antes de tratar.')}catch(e){$('#connection').textContent='Não foi possível preparar o aplicativo';$('#notesList').innerHTML='<div class="empty"><strong>Falha ao carregar dados</strong>Reabra com internet para preparar o uso offline. Se persistir, consulte o responsável pelo aplicativo.</div>';console.error(e)}}
+async function init(){try{[db,base,tracks,rail]=await Promise.all([openDB(),loadCurrentBase(),fetch('tracks.json').then(r=>{if(!r.ok)throw Error('Base de linhas indisponível');return r.json()}),loadCompressed('rail.bin.gz',true)]);sessions=await readAll();C.classifyLocations(base.notes,tracks,rail);activeId=localStorage.getItem('lc-active');position=restoredPosition(active()?.lastPosition);renderBaseIdentity();render();if(active()&&!active().end&&active().employeeId)showWork();else showStart();registerTools();setupBaseUpdateUI();offlineSetup=setupOffline();navigator.storage?.persist?.().catch(()=>{});const duplicates=base.notes.length-new Set(base.notes.map(n=>n.id)).size;if(duplicates)toast(duplicates+' números de Nota repetidos na base; revise antes de tratar.')}catch(e){$('#connection').textContent='Não foi possível preparar o aplicativo';$('#notesList').innerHTML='<div class="empty"><strong>Falha ao carregar dados</strong>Reabra com internet para preparar o uso offline. Se persistir, consulte o responsável pelo aplicativo.</div>';console.error(e)}}
 $('#beginAgainBtn').onclick=showStart;$('#finishTopBtn').onclick=finish;$('#settingsBtn').onclick=settings;$('#manualBtn').onclick=manual;$('#gpsBtn').onclick=gps;$('#finishBtn').onclick=finish;document.querySelectorAll('[data-tab]').forEach(b=>b.onclick=()=>setTab(b.dataset.tab));['search','scope'].forEach(id=>$('#'+id).addEventListener(id==='search'?'input':'change',()=>{limit=60;renderNotes()}));$('#moreBtn').onclick=()=>{limit+=60;renderNotes()};window.addEventListener('online',()=>{updateConnection();setupOffline()});window.addEventListener('offline',updateConnection);window.addEventListener('storage',e=>{if(e.key==='lc-active')toast('Outra aba está usando este aplicativo. Evite editar a mesma conferência em duas abas.');});init();
 
 

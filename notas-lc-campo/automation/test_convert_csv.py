@@ -23,7 +23,7 @@ class ConversaoNotasTest(unittest.TestCase):
                 "Local de instalação TPLNR", "Texto breve", "Codificação 1",
                 "Texto breve para o código", "Marcador para o ponto de partida",
                 "Market Dist Start 2", "Marcador para o ponto final",
-                "Maker Dist End 1"
+                "Maker Dist End 1", "Campo de ordenação"
             ]
             with origem.open("w", encoding="utf-8", newline="") as arq:
                 w = csv.DictWriter(arq, fieldnames=colunas)
@@ -44,6 +44,7 @@ class ConversaoNotasTest(unittest.TestCase):
                         "Market Dist Start 2": "0,532",
                         "Marcador para o ponto final": "KM461",
                         "Maker Dist End 1": "0,612",
+                        "Campo de ordenação": "FCL LDE010B",
                     })
             subprocess.run([sys.executable, str(CONVERTER), str(origem), str(destino)], check=True, capture_output=True, text=True)
             with gzip.open(destino, "rt", encoding="utf-8") as arq:
@@ -53,6 +54,8 @@ class ConversaoNotasTest(unittest.TestCase):
             self.assertEqual([r[3] for r in linhas], ["1-Muito alta", "2-Alta", "3-Média", "4-Baixa"])
             self.assertEqual(linhas[0][9], "KM 461")
             self.assertEqual(linhas[0][10], "0,532")
+            self.assertEqual(dados["abas"][0]["colunas"][13], "Campo de ordenação")
+            self.assertEqual(linhas[0][13], "FCL LDE010B")
             self.assertEqual(len(linhas), 4)
 
 

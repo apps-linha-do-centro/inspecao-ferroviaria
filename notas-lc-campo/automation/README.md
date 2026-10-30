@@ -4,7 +4,7 @@ Gmail pessoal → Apps Script `atualizarNotasLC` (gatilho existente de 15 minuto
 
 ## Entradas
 
-- Base completa de notas: `automation/incoming.csv`, com as 13 colunas do relatório LC. Mantém as validações de remetente, estrutura, identificadores, criticidade, perfil ferroviário e variação máxima de 35% do volume.
+- Base completa de notas: `automation/incoming.csv`, com as 13 colunas obrigatórias do relatório LC. O campo opcional `Campo de ordenação` também é preservado quando presente. Mantém as validações de remetente, estrutura, identificadores, criticidade, perfil ferroviário e variação máxima de 35% do volume.
 - Tratativas: `automation/tratativas/<sha256>.csv`. Cada anexo distinto fica preservado; novos arquivos não substituem os anteriores. São exigidas as colunas Colaborador, Início conferência, Número da Nota, Tratativa e Texto livre, com os nomes completos do consolidado.
 - Os arquivos podem chegar juntos, separados, em horários distintos e com nomes/assuntos diferentes. A classificação usa as colunas. PDFs, imagens, Excel e relatórios sem o contrato são ignorados.
 - O Apps Script consulta os últimos sete dias para recuperar atrasos. Não altera leitura, marcadores ou conteúdo dos e-mails.
@@ -25,6 +25,13 @@ O workflow usa scripts da própria `main`, sem depender da antiga branch de ferr
 - Notas confirmadas são excluídas do filtro Não avaliadas durante a validade. O filtro `Conferida 30d` seleciona essas notas. As seleções simultâneas usam união.
 - `audit-data.js` armazena apenas ID normalizado, nome, dia e origem. Texto livre não é publicado nesse recurso. O histórico é mesclado sem apagar confirmações porque uma nota está temporariamente fora da base.
 - O service worker inclui os recursos de conferência, e o cache muda com alterações da base, código ou conferências. Não limpa IndexedDB nem histórico de inspeções.
+
+## Atualização opcional no aparelho
+
+- Ao abrir, voltar ao aplicativo ou recuperar a conexão, a interface consulta `base-status.json` pela rede sem usar o cache do service worker. Só oferece **Atualizar base** quando a versão publicada é diferente da carregada.
+- A base baixada é validada e salva em IndexedDB separado antes de substituir a base em uso. A inspeção e o histórico são preservados; um formulário de avaliação aberto termina antes da troca em memória.
+- Sem sinal ou se o download falhar, a base anterior continua disponível. Quando a versão carregada coincide com a publicada, há apenas um pequeno indicador verde ao lado da data. A verificação manual fica no rodapé.
+- O importador preserva `Campo de ordenação` do CSV, inclusive na publicação atual. Se um relatório não trouxer a coluna, a interface indica que ela não foi informada.
 
 ## Apps Script
 

@@ -32,6 +32,7 @@ jobs:
         run: |
           python3 -m unittest discover -s site/notas-lc-campo/automation -p 'test_*.py' -v
           node site/notas-lc-campo/automation/test-audit-ui.mjs
+          node site/notas-lc-campo/automation/test-base-updates.mjs
           node site/notas-lc-campo/automation/test-apps-script.mjs
       - name: Processar notas e conferencias independentemente
         run: |

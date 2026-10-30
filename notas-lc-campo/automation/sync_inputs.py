@@ -9,7 +9,7 @@ HERE=Path(__file__).resolve().parent
 def sha(path):return hashlib.sha256(path.read_bytes()).hexdigest()
 def cache_version(site):
     app=site/'notas-lc-campo';digest=hashlib.sha256()
-    for name in ['index.html','notes.json.gz','app.js','core.js','style.css','audit.js','audit-data.js']:
+    for name in ['index.html','notes.json.gz','app.js','base-updates.js','core.js','style.css','audit.js','audit-data.js']:
         digest.update((app/name).read_bytes())
     p=app/'sw.js';text,n=re.subn(r"const CACHE='notas-lc-[^']+'",f"const CACHE='notas-lc-v30-{digest.hexdigest()[:16]}'",p.read_text(),count=1)
     if n!=1:raise ValueError('Identificador de cache não encontrado')
