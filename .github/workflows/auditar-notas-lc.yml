@@ -25,6 +25,7 @@ jobs:
           node --check notas-lc-campo/sw.js
           node notas-lc-campo/automation/test-audit-ui.mjs
           node notas-lc-campo/automation/test-base-updates.mjs
+          node notas-lc-campo/automation/test-yag.mjs
           node notas-lc-campo/automation/test-apps-script.mjs
           python3 -m unittest discover -s notas-lc-campo/automation -p 'test_*.py' -v
       - name: Verificar integridade dos identificadores da base
