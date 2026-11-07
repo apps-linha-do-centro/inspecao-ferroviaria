@@ -1,1 +1,1 @@
-{"version":"2026-11-06","total":1813,"located":1720,"unlocated":93,"missing_asset":11,"reasons":{"Km em branco":93,"Ativo em branco":11},"auditoria_criticidade":{"":321,"1-Muito alta":11,"2-Alta":432,"3-Média":901,"4-Baixa":148},"criticidades_fora_padrao":{},"sem_criticidade":321}
+{"version":"2026-11-07","total":1731,"located":1638,"unlocated":93,"missing_asset":12,"reasons":{"Km em branco":93,"Ativo em branco":12},"auditoria_criticidade":{"":294,"1-Muito alta":11,"2-Alta":429,"3-Média":849,"4-Baixa":148},"criticidades_fora_padrao":{},"sem_criticidade":294}
