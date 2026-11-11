@@ -77,6 +77,7 @@ def processar(entrada, raiz):
     missing = sum(not str(r[9]).strip() and not str(r[11]).strip() for r in linhas)
     resumo = {
         "version": version, "total": len(linhas), "located": len(linhas) - missing,
+        "responsible_work_center": "Centro de trabalho responsável" in colunas,
         "unlocated": missing, "missing_asset": sem_ativo,
         "reasons": {"Km em branco": missing, "Ativo em branco": sem_ativo},
         "auditoria_criticidade": dict(sorted(criticidades.items())),
@@ -120,4 +121,5 @@ if __name__ == "__main__":
     except Exception as e:
         print(f"BLOQUEADO: {e}", file=sys.stderr)
         sys.exit(1)
+
 
