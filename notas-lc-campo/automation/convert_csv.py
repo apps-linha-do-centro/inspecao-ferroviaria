@@ -74,10 +74,12 @@ for r in rows:
       get(r,'Texto breve'),get(r,'Codificação 1'),get(r,'Texto breve para o código'),
       get(r,'Marcador para o ponto de partida').replace('KM','KM '),
       get(r,'Market Dist Start 2'),get(r,'Marcador para o ponto final').replace('KM','KM '),
-      get(r,'Maker Dist End 1'),get_optional(r,'Campo de ordenação')
+      get(r,'Maker Dist End 1'),get_optional(r,'Campo de ordenação'),
+      get_optional(r,'Centro de trabalho responsável')
     ])
-columns=['Coordenação','TAM','Número da Nota','Prioridade','Data da Nota','Ativo','Descrição','Código anomalia','Anomalia','Marcador inic.','Distância inic.','Marcador final','Distância final','Campo de ordenação']
+columns=['Coordenação','TAM','Número da Nota','Prioridade','Data da Nota','Ativo','Descrição','Código anomalia','Anomalia','Marcador inic.','Distância inic.','Marcador final','Distância final','Campo de ordenação','Centro de trabalho responsável']
 data={'versao_base':datetime.datetime.now(datetime.timezone(datetime.timedelta(hours=-3))).strftime('%Y-%m-%d'),'abas':[{'colunas':columns,'linhas':out},{'colunas':['TAM','Descrição'],'linhas':[]}]}
 with gzip.open(dest,'wt',encoding='utf-8',compresslevel=9) as f: json.dump(data,f,ensure_ascii=False,separators=(',',':'))
 print('Notas convertidas:',len(out))
+
 
