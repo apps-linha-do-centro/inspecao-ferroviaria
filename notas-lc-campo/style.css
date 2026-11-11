@@ -35,3 +35,7 @@
 
 .base-update{padding:16px 20px;display:flex;align-items:center;justify-content:space-between;gap:16px;border-left:5px solid #b78013}.base-update p{margin:6px 0 0;font-size:.875rem;line-height:1.5;color:#526b80}.base-update-actions{display:flex;gap:8px;flex-shrink:0}@media(max-width:700px){.base-update{display:block}.base-update-actions{margin-top:12px;flex-wrap:wrap}.base-update-actions button{flex:1}}
 .base-current{display:inline-flex;align-items:center;gap:5px;margin-left:8px;color:#b5efd1;font-size:.68rem;font-weight:500;white-space:nowrap;vertical-align:middle}.base-current-dot{width:7px;height:7px;flex:none;border-radius:50%;background:#63d993;box-shadow:0 0 0 2px #63d99328}
+
+
+/* Keep Departamento beside Consulta, including on phones. */
+@media(min-width:701px){.filters{grid-template-columns:2fr 1fr 1fr 1.3fr 1.3fr}}
