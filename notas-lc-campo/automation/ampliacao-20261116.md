@@ -41,7 +41,7 @@ Essas amplitudes são valores calculados dos campos originais do relatório, nã
 
 ## Validação
 
-15 testes Python passaram. Cinco suítes Node passaram: Apps Script, coordenações, Conferida 30d, atualização da base e YAG/ATGMS. Cobertura nova: relatório com coordenação ausente, queda local mesmo abaixo do limite global, código desconhecido, duplicidade após normalizar zeros, exceção exata, arquivo adulterado e crescimento futuro acima de 35%.
+16 testes Python passaram. Cinco suítes Node passaram: Apps Script, coordenações, Conferida 30d, atualização da base e YAG/ATGMS. Cobertura nova: relatório com coordenação ausente, queda local mesmo abaixo do limite global, código desconhecido, duplicidade após normalizar zeros, exceção exata, arquivo adulterado e crescimento futuro acima de 35%.
 
 No navegador local: 4.632 registros na consulta geral; seis opções de coordenação; FBR 1.502; FBR+FBV 2.981; FBR+FBV+Infra 132; avaliação Manter persistida após reabertura com Conferida 0d; indicação Pronto para uso offline. O teste usou inspeção fictícia somente no ambiente local. O histórico do iPhone do usuário não foi acessado; sua preservação foi verificada nos testes de atualização e na reabertura local, sem alteração do esquema de armazenamento.
 

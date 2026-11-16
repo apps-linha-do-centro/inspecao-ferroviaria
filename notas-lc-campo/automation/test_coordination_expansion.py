@@ -54,3 +54,19 @@ class ExpansionTest(unittest.TestCase):
   extra=copy.deepcopy(rows[:len(rows)//2])
   for i,r in enumerate(extra):r[2]=str(900000000+i)
   rows.extend(extra);self.reject()
+
+class OfflineResourcesTest(unittest.TestCase):
+ def test_html_resources_are_precached_with_exact_version(self):
+  import ast,re
+  from html.parser import HTMLParser
+  app=ROOT/'notas-lc-campo'
+  files=ast.literal_eval(re.search(r"FILES=(\[.*?\]);",(app/'sw.js').read_text()).group(1))
+  resources=[]
+  class Parser(HTMLParser):
+   def handle_starttag(self,tag,attrs):
+    a=dict(attrs)
+    if tag=='script' and a.get('src'):resources.append(a['src'])
+    if tag=='link' and a.get('rel') in ('stylesheet','manifest'):resources.append(a['href'])
+  Parser().feed((app/'index.html').read_text())
+  self.assertTrue(resources)
+  for resource in resources:self.assertIn(resource,files)
