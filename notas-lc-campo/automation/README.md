@@ -16,6 +16,11 @@ Gmail pessoal → Apps Script `atualizarNotasLC` (gatilho existente de 15 minuto
 
 O workflow usa scripts da própria `main`, sem depender da antiga branch de ferramentas. Cada arquivo é validado separadamente; uma entrada rejeitada mantém a última base dessa categoria, sem impedir a outra categoria válida. Ao final, erros ficam visíveis no Actions. O agendamento também recupera entradas não processadas de dias anteriores.
 
+## Números das notas
+
+- Telas, CSV e PDF exibem números sem zeros à esquerda (ex.: `000014001617` → `14001617`). A transformação é textual, sem conversão para número.
+- Os IDs originais da base e das inspeções continuam salvos para manter o vínculo com avaliações anteriores. A importação continua validando duplicidades após normalizar zeros.
+
 ## Conferida 60d
 
 - O importador e a interface associam IDs numéricos como texto, removendo apenas zeros à esquerda. Os identificadores originais das notas e das inspeções locais são preservados.

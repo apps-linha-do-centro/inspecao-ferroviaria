@@ -34,15 +34,33 @@ const dept=raw.abas[0].colunas.indexOf('Centro de trabalho responsável');
 assert.equal(Number(node('#nearCount').textContent),raw.abas[0].linhas.filter(r=>['FBR','FBV'].includes(r[0])&&r[dept].startsWith('I')).length);
 assert(!node('#geoCoverageInfo').hidden);
 const saved=run('JSON.stringify(sessions)');run('resetFilters();renderNotes()');assert.equal(run('JSON.stringify(sessions)'),saved);
-assert.equal(run("displayNoteId('000012345678')"),'000012345678');
+for(const [id,expected] of [['000014001617','14001617'],['14001617','14001617'],['0000','0'],['',''],['00009007199254740993','9007199254740993']]){
+ ctx.idInput=id;assert.equal(run('displayNoteId(idInput)'),expected);
+}
 const t=run('Object.values(active().treatments)[0]');
 ctx.exportSession={name:'Teste',collaborator:'Teste',treatments:{x:{note:{...ctx.testNote,id:'000012345678'},status:'Manter'}}};
-const csv=await run('csvBlob(exportSession)').text();assert(csv.includes('"000012345678"'));
+const snapshot=JSON.stringify(ctx.exportSession);
+const csv=await run('csvBlob(exportSession)').text();assert(csv.includes('"12345678"'));assert(!csv.includes('000012345678'));
+ctx.exportSession.treatments.x.status='Alterar';ctx.exportSession.treatments.x.text=JSON.stringify({nota:'000012345678',alteracoes:[]});
+assert.equal(JSON.parse(run('reportTreatmentText(exportSession.treatments.x)')).nota,'12345678');
+assert.equal(JSON.parse(run('correctionText(exportSession.treatments.x.note,[])')).nota,'12345678');
+const card=run('card(exportSession.treatments.x.note,exportSession.treatments.x)');
+assert(card.includes('Nota 12345678'));assert(!card.includes('Nota 000012345678'));
+ctx.exportSession.treatments.x.status='Manter';delete ctx.exportSession.treatments.x.text;
+ctx.exportSession.start='2026-11-16T12:00:00Z';ctx.exportSession.end='2026-11-16T13:00:00Z';
+// Capture text passed to the real PDF renderer, while still generating a valid PDF.
+const pdfText=[];const createPDF=ctx.PDFLib.PDFDocument.create;
+ctx.PDFLib.PDFDocument.create=async(...args)=>{const pdf=await createPDF(...args),addPage=pdf.addPage.bind(pdf);pdf.addPage=(...args)=>{const page=addPage(...args),draw=page.drawText.bind(page);page.drawText=(value,...options)=>{pdfText.push(value);return draw(value,...options)};return page};return pdf};
+const pdf=await run('pdfBlob(exportSession)');assert(pdf.size>0);assert(pdfText.some(v=>v.includes('Nota 12345678')));assert(pdfText.every(v=>!v.includes('000012345678')));
+ctx.PDFLib.PDFDocument.create=createPDF;
+delete ctx.exportSession.start;delete ctx.exportSession.end;
+assert.equal(JSON.stringify(ctx.exportSession),snapshot,'Display and exports must not change saved note IDs');
+assert.equal(run('JSON.stringify(sessions)'),saved,'Existing inspection history is preserved');
 // Route matching must never place a new coordination on an old LC line.
 const n=ctx.RailCore.parseBase(raw).notes.find(n=>n.center==='FBR'&&n.start!==null);
 assert(n);assert(!ctx.RailCore.sameRoute(n,tracks[0]));
 assert.equal(ctx.RailCore.near([n],{trackId:0,km:n.start},500,tracks).length,0);
-console.log('PASS: six dynamic coordination options; multiple selections; department intersection; all notes including missing KM; original zeros in CSV; sessions untouched; no invented route matches.');
+console.log('PASS: six dynamic coordination options; multiple selections; department intersection; all notes including missing KM; note numbers without leading zeros in UI/CSV/PDF; sessions untouched; no invented route matches.');
 
 assert.equal(ctx.RailCore.fmtKm(-7847),'Inconsistente na base');
 
