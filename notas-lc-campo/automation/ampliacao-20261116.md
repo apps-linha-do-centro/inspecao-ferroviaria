@@ -23,7 +23,7 @@ Aumento de 2.981 notas (+180,6%). Nenhuma duplicidade de ID, inclusive após nor
 | FBR | 504 | VPB 1180; TOD 235; LHO 61; ACL 15; sem ativo 11 | 0+143 a 841+866 |
 | FBV | 432 | VPB 1315; ACL 155; LC2 2; sem ativo 7 | 306+065 a 1187+000 |
 
-Essas amplitudes são valores calculados dos campos originais do relatório, não limites territoriais validados. Há 301 notas FBR e 153 FBV sem ambos os marcadores KM. Mais 3 FBR e 5 FBV resultam em quilometragem negativa (exemplo: KM604 com distância -611.847); o app sinaliza inconsistência e não as usa na proximidade. Os campos originais permanecem preservados. A base completa tem 541 notas sem marcadores e 28 sem ativo.
+Essas amplitudes são valores calculados dos campos originais do relatório, não limites territoriais validados. Há 301 notas FBR e 153 FBV sem ambos os marcadores KM. Mais 3 FBR e 5 FBV resultam em quilometragem negativa (exemplo: KM604 com distância -611.847); o app sinaliza inconsistência e não as usa na proximidade. Os campos originais permanecem preservados. A base completa tem 541 notas sem marcadores, 19 com resultado numérico negativo (11 anteriores e 8 novas) e 28 sem ativo: 4.072 notas com KM utilizável e 560 sem KM utilizável.
 
 `tracks.json` não contém FBR/FBV. A geometria distribuída e o arquivo raiz `railway-segments-v2.bin` não fornecem metadados de ramais VPB/TOD/LHO/ACL vinculados a essas coordenações. Não foram criadas coordenadas, linhas ou correspondências. **GPS, busca por proximidade e seleção manual desses trechos continuam pendentes de cadastro geográfico oficial.** Consulta e avaliação pela opção Todas as notas funcionam, inclusive quando falta KM.
 

@@ -94,12 +94,20 @@ def processar(entrada, raiz):
             "Aprovação manual necessária para alteração excepcional."
         )
     missing = sum(not str(r[9]).strip() and not str(r[11]).strip() for r in linhas)
+    def parsed_km(marker, offset):
+        if not str(marker or '').strip(): return None
+        m = re.fullmatch(r'KM\s*(\d+(?:[.,]\d+)?)', str(marker).strip(), re.I)
+        d = re.sub(r'\s', '', str(offset or '0')).replace(',', '.')
+        if not m or not re.fullmatch(r'[-+]?\d+(?:\.\d+)?', d): return None
+        return round((float(m[1].replace(',', '.')) + float(d)) * 1000)
+    inconsistent = sum(any(v is not None and v < 0 for v in
+                           (parsed_km(r[9], r[10]), parsed_km(r[11], r[12]))) for r in linhas)
     resumo = {
         "version": version, "total": len(linhas), "coordination_counts": dict(sorted(counts.items())),
-        "source_sha256": data.get("source_sha256"), "expansion_applied": ampliacao_confirmada, "located": len(linhas) - missing,
+        "source_sha256": data.get("source_sha256"), "expansion_applied": ampliacao_confirmada, "located": len(linhas) - missing - inconsistent,
         "responsible_work_center": "Centro de trabalho responsável" in colunas,
-        "unlocated": missing, "missing_asset": sem_ativo,
-        "reasons": {"Km em branco": missing, "Ativo em branco": sem_ativo},
+        "unlocated": missing + inconsistent, "inconsistent_km": inconsistent, "missing_asset": sem_ativo,
+        "reasons": {"Km em branco": missing, "Km inconsistente na base": inconsistent, "Ativo em branco": sem_ativo},
         "auditoria_criticidade": dict(sorted(criticidades.items())),
         "criticidades_fora_padrao": fora_padrao,
         "sem_criticidade": criticidades.get("", 0)
