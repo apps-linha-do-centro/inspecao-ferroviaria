@@ -13,11 +13,29 @@ const criticidade = valor => {
 };
 function parseBase(base){const s=base.abas[0];const notes=s.linhas.map((row,index)=>{const original=Object.fromEntries(s.colunas.map((c,i)=>[c,row[i]]));const start=km(row[9],row[10]),end=km(row[11],row[12]);return {id:String(row[2]),index,center:row[0],tam:String(row[1]||''),priority:criticidade(row[3]),date:row[4],asset:String(row[5]),description:row[6],code:row[7],anomaly:row[8]||'Anomalia não informada',start,end,valid:start!==null&&end!==null&&start<=end,original}});return {notes,tam:Object.fromEntries(base.abas[1].linhas.map(r=>[String(r[0]),r[1]])),version:base.versao_base||'2026-09-30'}}
 function sameRoute(n,t){const coord=a=>String(a||'').trim().toUpperCase().replace(/^C/,'');const route=a=>String(a||'').trim().toUpperCase().match(/^MF-([^-]+)-/)?.[1];const nc=coord(n.center),tc=coord(t.coord),nr=route(n.asset),tr=String(t.ramal||'').trim().toUpperCase();return !!nc&&nc===tc&&!!nr&&nr===tr}
-function near(notes,p,range,tracks){if(!p)return [];const t=tracks[p.trackId];if(!t)return [];return notes.filter(n=>!n.locationIssue&&n.start!==null&&n.end!==null&&sameRoute(n,t)&&Math.min(n.start,n.end)<=p.km+range&&Math.max(n.start,n.end)>=p.km-range)}
+function near(notes,p,range,tracks){if(!p)return [];const t=p.track||tracks[p.trackId];if(!t)return [];return notes.filter(n=>!n.locationIssue&&n.start!==null&&n.end!==null&&sameRoute(n,t)&&Math.min(n.start,n.end)<=p.km+range&&Math.max(n.start,n.end)>=p.km-range)}
 function classifyLocations(notes,tracks,data){for(const n of notes){const rawStart=n.original['Marcador inic.'],rawEnd=n.original['Marcador final'];n.locationIssue=!String(rawStart??'').trim()&&!String(rawEnd??'').trim()?'Km em branco':'';if((n.start!==null&&n.start<0)||(n.end!==null&&n.end<0))n.locationIssue='Km inconsistente na base';n.valid=!n.locationIssue&&(n.start!==null||n.end!==null);if(n.start===null&&n.end!==null)n.start=n.end;if(n.end===null&&n.start!==null)n.end=n.start;}return notes.filter(n=>n.locationIssue)}
 function tracksAtKm(data,km,range){if(!Number.isFinite(km)||!Number.isFinite(range)||range<0)return [];const ids=new Set;for(let i=0;i<data.length;i+=7){if(Math.min(data[i+4],data[i+5])<=km+range&&Math.max(data[i+4],data[i+5])>=km-range)ids.add(data[i+6])}return [...ids]}
+// Manual references use only assets and KM intervals actually present in the current notes.
+// They never enter the geometry arrays used by GPS.
+function manualReferences(notes,tracks,data,km,range){
+ const valid=Number.isFinite(km)&&Number.isFinite(range)&&range>=0;
+ const ids=valid?tracksAtKm(data,km,range):tracks.map((_,i)=>i);
+ const refs=ids.filter(i=>tracks[i]).map(i=>({key:'geo:'+i,trackId:i,track:tracks[i]}));
+ if(!valid)return refs;
+ const geometryRefs=refs.slice(),seen=new Set;
+ for(const n of notes){
+  if(n.locationIssue||n.start===null||n.end===null||n.start<0||n.end<0||!n.asset||!n.center)continue;
+  if(Math.min(n.start,n.end)>km+range||Math.max(n.start,n.end)<km-range)continue;
+  const ramal=String(n.asset).match(/^MF-([^-]+)-/)?.[1];if(!ramal)continue;
+  if(geometryRefs.some(r=>sameRoute(n,r.track)&&compatible(n,r.track)))continue;
+  const key='note:'+JSON.stringify([n.center,ramal,n.asset]);if(seen.has(key))continue;seen.add(key);
+  refs.push({key,trackId:null,track:{asset:n.asset,parent:root(n.asset),coord:n.center,ramal,name:'Referência da base de notas',manualOnly:true}});
+ }
+ return refs.sort((a,b)=>(a.track.coord+' '+a.track.asset).localeCompare(b.track.coord+' '+b.track.asset,'pt-BR'));
+}
 function candidates(data,tracks,latitude,longitude,accuracy){const lat=latitude*1e6,lon=longitude*1e6,x=.111195*Math.cos(latitude*Math.PI/180),radius=Math.min(250,Math.max(75,(accuracy||0)*2));const found=new Map;for(let i=0;i<data.length;i+=7){if(Math.abs(data[i]-lat)>2300&&Math.abs(data[i+2]-lat)>2300)continue;const ax=(data[i+1]-lon)*x,ay=(data[i]-lat)*.111195,bx=(data[i+3]-lon)*x,by=(data[i+2]-lat)*.111195,vx=bx-ax,vy=by-ay,den=vx*vx+vy*vy;if(!den)continue;const f=Math.max(0,Math.min(1,-(ax*vx+ay*vy)/den)),d=Math.hypot(ax+f*vx,ay+f*vy);if(d>radius)continue;const id=data[i+6],km=Math.round(data[i+4]+f*(data[i+5]-data[i+4]));const key=id+':'+Math.round(km/100);const old=found.get(key);if(!old||d<old.distance)found.set(key,{trackId:id,km,distance:d,lat:latitude,lon:longitude,accuracy,source:'GPS',time:new Date().toISOString()})}return [...found.values()].sort((a,b)=>a.distance-b.distance).filter((v,i,a)=>!a.slice(0,i).some(w=>w.trackId===v.trackId&&Math.abs(w.km-v.km)<100)).slice(0,12)}
 function fmtKm(n){if(n==null||!Number.isFinite(n))return 'Não informado';if(n<0)return 'Inconsistente na base';n=Math.round(n);return Math.floor(n/1000)+'+'+String(n%1000).padStart(3,'0')}
 function manualKm(v){v=String(v).trim();if(/^\d+\+\d{1,3}$/.test(v)){const[a,b]=v.split('+');return Number(a)*1000+Number(b)}if(!/^\d+(?:[.,]\d{1,3})?$/.test(v))return null;return Math.round(Number(v.replace(',','.'))*1000)}
-g.RailCore={km,root,lineAsset,compatible,sameRoute,parseBase,near,tracksAtKm,candidates,fmtKm,manualKm,classifyLocations,noteSide,criticidade};
+g.RailCore={km,root,lineAsset,compatible,sameRoute,parseBase,near,tracksAtKm,manualReferences,candidates,fmtKm,manualKm,classifyLocations,noteSide,criticidade};
 })(typeof globalThis!=='undefined'?globalThis:window);

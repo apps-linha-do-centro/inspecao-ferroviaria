@@ -69,3 +69,12 @@ Não existem trechos FBR/FBV em `tracks.json` nem referências correspondentes n
 ### Recuperação
 
 Backup: branch `backup/notas-lc-antes-ampliacao-20261116`, commit `45dae4ed2614bc3f3a7de5359d14ee8d42ac65eb`. Para reverter, restaurar somente os arquivos desta alteração em um novo commit, mantendo alterações posteriores e históricos. Não forçar o ponteiro de `main`. Reverter o Apps Script externo a partir da cópia preservada no Google quando necessário.
+
+
+### Consulta manual corrigida no km 530 (16/11/2026)
+
+A lista manual usa a união de referências geométricas na tolerância informada e ativos distintos com notas válidas nessa mesma faixa. Referências extraídas das notas são identificadas como `Base de notas · sem geometria GPS`, mantendo ativo, coordenação e ramal originais. Não se amplia o intervalo entre notas esparsas nem se criam coordenadas ou segmentos. A consulta continua isolada por coordenação e ramal; a escolha de uma linha de referência não restringe as demais linhas/AMVs/ativos da mesma coordenação/ramal na faixa. Referências manuais são preservadas no histórico por seu próprio cadastro, sem índice fictício na geometria de GPS.
+
+Caso verificado: km 530+000 ±500 m possui 29 referências únicas na extração atual, 45 notas FBV e 5 FBR. A lista antes mostrava zero porque dependia exclusivamente de `rail.bin.gz`. Testes cobrem a origem das referências, intervalos, ausência de duplicidade, separação de ramais/coordenações, restauração e coordenadas nulas. Navegador confirmou 45 notas FBV e mesma referência após reabrir. `core.js` e `app.js` receberam URLs de versão correspondentes no HTML e no pré-cache para impedir mistura de versões.
+
+Backup anterior à correção manual: branch `backup/notas-lc-antes-km530-20261116`, commit `2baa998ea94bcde90af3c0788318d6a3068c2916`. Base de notas, auditorias e arquivos geográficos não foram modificados.
