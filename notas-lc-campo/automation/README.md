@@ -16,13 +16,13 @@ Gmail pessoal → Apps Script `atualizarNotasLC` (gatilho existente de 15 minuto
 
 O workflow usa scripts da própria `main`, sem depender da antiga branch de ferramentas. Cada arquivo é validado separadamente; uma entrada rejeitada mantém a última base dessa categoria, sem impedir a outra categoria válida. Ao final, erros ficam visíveis no Actions. O agendamento também recupera entradas não processadas de dias anteriores.
 
-## Conferida 30d
+## Conferida 60d
 
 - O importador e a interface associam IDs numéricos como texto, removendo apenas zeros à esquerda. Os identificadores originais das notas e das inspeções locais são preservados.
 - Apenas `Manter` produz confirmação de existência. A aplicação mostra um círculo verde com dias decorridos e permite abrir responsável e data. As outras tratativas não são reclassificadas pelo importador.
 - Cada confirmação mantém sua data original. O CSV atual informa o início da conferência, sem horário; essa limitação aparece nos detalhes. O recebimento do e-mail e a reimportação não renovam o prazo.
-- O indicador vale enquanto a diferença de dias civis em `America/Sao_Paulo` for 0 a 29. Ao completar 30 dias, desaparece. Outro `Manter` recente renova a confirmação.
-- Notas confirmadas são excluídas do filtro Não avaliadas durante a validade. O filtro `Conferida 30d` seleciona essas notas. As seleções simultâneas usam união.
+- O indicador vale enquanto a diferença de dias civis em `America/Sao_Paulo` for 0 a 59. Ao completar 60 dias, desaparece. Outro `Manter` recente renova a confirmação.
+- Notas confirmadas são excluídas do filtro Não avaliadas durante a validade. O filtro `Conferida 60d` seleciona essas notas. As seleções simultâneas usam união.
 - `audit-data.js` armazena apenas ID normalizado, nome, dia e origem. Texto livre não é publicado nesse recurso. O histórico é mesclado sem apagar confirmações porque uma nota está temporariamente fora da base.
 - O service worker inclui os recursos de conferência, e o cache muda com alterações da base, código ou conferências. Não limpa IndexedDB nem histórico de inspeções.
 
