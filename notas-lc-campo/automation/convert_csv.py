@@ -1,8 +1,9 @@
 #!/usr/bin/env python3
-import csv,gzip,json,sys,datetime,re,unicodedata
+import csv,gzip,json,sys,datetime,re,unicodedata,hashlib
 from pathlib import Path
 
 src,dest=map(Path,sys.argv[1:3])
+POLICY=json.loads(Path(__file__).with_name("coordination-policy.json").read_text())
 
 # O nome e assunto do e-mail nao fazem parte da verificacao de identidade do relatorio.
 # Exigimos o formato detalhado das notas LC, para nao confundir com AMV, OS ou analises parciais.
@@ -29,10 +30,14 @@ def normalize_header(value):
 with src.open(encoding='utf-8-sig',newline='') as f:
     first=f.readline();f.seek(0);reader=csv.DictReader(f,delimiter=';' if first.count(';')>first.count(',') else ',',strict=True)
     names={normalize_header(h):h for h in (reader.fieldnames or []) if h is not None}
+    if len(names)!=len(reader.fieldnames or []):
+        raise SystemExit("REJEITADO: colunas duplicadas ou vazias")
     missing=[h for h in REQUIRED if normalize_header(h) not in names]
     if missing:
         raise SystemExit('REJEITADO: anexo nao e a base completa Notas LC. Faltam colunas: '+', '.join(missing))
     rows=list(reader)
+    if any(None in r or any(v is None for v in r.values()) for r in rows):
+        raise SystemExit("REJEITADO: registros com colunas incompatíveis")
     if not rows:
         raise SystemExit('CSV vazio')
 
@@ -49,13 +54,18 @@ def get_optional(r,key):
 if len(rows)>=500:
     total=len(rows)
     invalid_ids=sum(not re.fullmatch(r'\d{7,15}',get(r,'Número da nota')) for r in rows)
-    lc_centers=sum(get(r,'Centro para centro de trabalho responsável').upper()
-                   in ('CFFB','CFCL','CFBC','CFBJ') for r in rows)
-    lc_assets=sum(get(r,'Local de instalação TPLNR').upper().startswith('MF-LC')
-                  for r in rows)
+    lc_centers=sum(get(r,'Centro para centro de trabalho responsável').upper() in POLICY['centers'] for r in rows)
+    def known_asset(r):
+        route=get(r,'Local de instalação TPLNR').upper().split('-')
+        return len(route)>2 and route[0]=='MF' and route[1] in POLICY['centers'].get(get(r,'Centro para centro de trabalho responsável').upper(),[])
+    lc_assets=sum(known_asset(r) for r in rows)
+    for center in POLICY['centers']:
+        group=[r for r in rows if get(r,'Centro para centro de trabalho responsável').upper()==center]
+        if group and sum(known_asset(r) for r in group)/len(group)<.75:
+            raise SystemExit('REJEITADO: perfil de ativos divergente na coordenação '+center)
     dates=sum(bool(re.fullmatch(r'\d{2}/\d{2}/20\d{2}',get(r,'Data da nota')))
               for r in rows)
-    if invalid_ids or lc_centers/total<.75 or lc_assets/total<.75 or dates/total<.80:
+    if invalid_ids or lc_centers!=total or lc_assets/total<.75 or dates/total<.80:
         raise SystemExit('REJEITADO: perfil divergente do relatorio de notas LC; '
                          f'IDs invalidos={invalid_ids}, centros LC={lc_centers}/{total}, '
                          f'ativos LC={lc_assets}/{total}, datas={dates}/{total}')
@@ -67,7 +77,9 @@ for r in rows:
     # Preserve a classificacao original. Converter '3-Média' em 'P3'
     # muda o significado e quebra filtros/cores do aplicativo.
     priority=rawprio
-    centro=get(r,'Centro para centro de trabalho responsável').removeprefix('C')
+    raw_center=get(r,'Centro para centro de trabalho responsável').upper()
+    if raw_center not in POLICY['centers']: raise SystemExit('REJEITADO: coordenação desconhecida '+raw_center)
+    centro=raw_center.removeprefix('C')
     out.append([
       centro,get(r,'Tipo de atividade de manutenção'),nota,priority,
       get(r,'Data da nota'),get(r,'Local de instalação TPLNR'),
@@ -78,7 +90,7 @@ for r in rows:
       get_optional(r,'Centro de trabalho responsável')
     ])
 columns=['Coordenação','TAM','Número da Nota','Prioridade','Data da Nota','Ativo','Descrição','Código anomalia','Anomalia','Marcador inic.','Distância inic.','Marcador final','Distância final','Campo de ordenação','Centro de trabalho responsável']
-data={'versao_base':datetime.datetime.now(datetime.timezone(datetime.timedelta(hours=-3))).strftime('%Y-%m-%d'),'abas':[{'colunas':columns,'linhas':out},{'colunas':['TAM','Descrição'],'linhas':[]}]}
+data={'source_sha256':hashlib.sha256(src.read_bytes()).hexdigest(),'versao_base':datetime.datetime.now(datetime.timezone(datetime.timedelta(hours=-3))).strftime('%Y-%m-%d'),'abas':[{'colunas':columns,'linhas':out},{'colunas':['TAM','Descrição'],'linhas':[]}]}
 with gzip.open(dest,'wt',encoding='utf-8',compresslevel=9) as f: json.dump(data,f,ensure_ascii=False,separators=(',',':'))
 print('Notas convertidas:',len(out))
 

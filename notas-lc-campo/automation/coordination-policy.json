@@ -1,0 +1,51 @@
+{
+  "version": 1,
+  "centers": {
+    "CFBC": [
+      "LC1",
+      "LMG"
+    ],
+    "CFCL": [
+      "LC1",
+      "LC2",
+      "VPB",
+      "RAM",
+      "RMB",
+      "RPB"
+    ],
+    "CFFB": [
+      "LC1",
+      "RPB"
+    ],
+    "CFBJ": [
+      "LC1",
+      "LSM",
+      "SJU"
+    ],
+    "CFBR": [
+      "VPB",
+      "TOD",
+      "LHO",
+      "ACL"
+    ],
+    "CFBV": [
+      "VPB",
+      "ACL",
+      "LC2"
+    ]
+  },
+  "expansion": {
+    "date": "2026-11-16",
+    "previous_total": 1651,
+    "counts": {
+      "FBC": 421,
+      "FCL": 521,
+      "FFB": 332,
+      "FBJ": 377,
+      "FBR": 1502,
+      "FBV": 1479
+    },
+    "source_sha256": "19bc993b681b0973fa41ed5fab158dd7e24e8f8e575d45375d32b120952d3eae",
+    "rows_sha256": "47d7545effa4eaee351eea7692c0a7d148cab42ae4254b2e264f4b8b2e274f01"
+  }
+}

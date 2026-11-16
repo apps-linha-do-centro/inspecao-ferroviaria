@@ -42,3 +42,30 @@ O arquivo `apps-script-v3-extension.gs` usa os auxiliares da V2 e a propriedade 
 Rodar os testes Python `test_*.py`, `test-audit-ui.mjs` e `test-apps-script.mjs`. Cobrem CSVs juntos/separados, repetição, falha isolada, IDs com zeros, auditor/data, prazo e recursos offline.
 
 Backup do GitHub anterior: branch `backup/notas-lc-antes-conferencias-20261027`, commit `07b9c1b5ff698bb86767abeffad44bef0956ca44`. O Apps Script conserva a V2 em `BackupV2_20261027.html`, como texto sem execução. A versão Sites usada para ensaio é independente do GitHub e não recebe sincronização automática.
+
+
+## Ampliação de 16/11/2026 — FBR e FBV
+
+`coordination-policy.json` define explicitamente seis centros autorizados e seus ramais observados na extração. A inclusão de novos códigos exige alteração revisada dessa política. O conversor preserva o contrato detalhado e os limiares de perfil ferroviário (75%) e datas (80%), exigindo 100% dos centros reconhecidos. O build exige as seis coordenações e bloqueia reduções superiores a 35% por coordenação, além da variação global de 35%.
+
+A única exceção nova exige data 16/11/2026, base anterior de 1.651 notas, contagem exata de cada coordenação, SHA-256 do CSV sanitizado e das linhas convertidas, e retenção de todos os IDs anteriores. Depois da expansão para 4.632, essa exceção não se aplica novamente. Não há flag para ignorar validações.
+
+### Instalação pendente no Apps Script externo
+
+1. No projeto Google que já executa `atualizarNotasLC`, preserve uma cópia do código atual.
+2. Substitua **integralmente a extensão V3** pelo conteúdo atualizado de `apps-script-v3-extension.gs`. Não cole uma segunda cópia das mesmas funções/constantes.
+3. Preserve os auxiliares V2 (`normalizarColuna_`, `extrairEmail_`, `requisicaoGitHub_`, `lerConteudoGitHub_`, `bytesIguais_`, `dispatchAtualizacao_`), `CONFIG`, a propriedade secreta `GITHUB_TOKEN` e o gatilho de `atualizarNotasLC`. A V4 não chama mais o validador restrito aos quatro centros da V2.
+4. Confira `CONFIG.remetentes` com o endereço verificado `gilberto.viana@mrs.com.br`, destinatário pessoal já configurado, repositório `apps-linha-do-centro/inspecao-ferroviaria`, branch `notas-lc-inbox`, caminho `notas-lc-campo/automation/incoming.csv`, fuso `America/Sao_Paulo` e limite de anexo de pelo menos 999136 bytes. Não acrescente remetentes sem autorização.
+5. Salve e execute `atualizarNotasLC` uma vez. Confira o log e o workflow no GitHub. O fluxo deve reconhecer todas as seis coordenações; anexos parciais são rejeitados. Não recrie nem altere o horário do gatilho existente.
+
+A extensão sanitiza o CSV de notas antes de enviá-lo ao repositório público, conservando as 13 colunas obrigatórias e os dois campos opcionais utilizados. Autores, responsáveis nominais e ordens do SAP não são enviados nessa entrada nova. Não há alteração dos arquivos de tratativas já existentes. Essa minimização não comprova autorização corporativa para publicação dos dados operacionais ou das conferências: a política interna da MRS não foi fornecida.
+
+Os scripts de produção continuam vindo de `main`; não se deve mesclar a branch antiga `notas-lc-inbox` sobre `main`. Ela contém versões antigas da interface e serve somente de caixa de entrada.
+
+### Geografia
+
+Não existem trechos FBR/FBV em `tracks.json` nem referências correspondentes na geometria distribuída. O arquivo raiz `railway-segments-v2.bin`, interpretado pelos metadados do aplicativo raiz, também só contém ramais LC1/LC2. Portanto não foi alterada a geografia. Solicitar cadastro ferroviário com coordenadas, ramais, linha, centro e quilometragem vinculados por fonte oficial antes de habilitar proximidade GPS nesses centros. Todas as notas, inclusive sem KM, estão disponíveis na consulta **Todas as notas**, com filtro múltiplo de coordenação. Valores que resultam em KM negativo são sinalizados como inconsistentes e excluídos da proximidade sem alterar o texto original.
+
+### Recuperação
+
+Backup: branch `backup/notas-lc-antes-ampliacao-20261116`, commit `45dae4ed2614bc3f3a7de5359d14ee8d42ac65eb`. Para reverter, restaurar somente os arquivos desta alteração em um novo commit, mantendo alterações posteriores e históricos. Não forçar o ponteiro de `main`. Reverter o Apps Script externo a partir da cópia preservada no Google quando necessário.

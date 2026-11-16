@@ -17,6 +17,7 @@ COLUNAS = [
 
 def processar(entrada, raiz):
     pasta = raiz / "notas-lc-campo"
+    policy = json.loads(Path(__file__).with_name("coordination-policy.json").read_text())
     with gzip.open(entrada, "rt", encoding="utf-8") as f:
         data = json.load(f)
     abas = data.get("abas", [])
@@ -30,6 +31,8 @@ def processar(entrada, raiz):
     for i, row in enumerate(linhas, 1):
         if not isinstance(row, list) or len(row) != len(colunas):
             raise ValueError(f"Linha {i}: número de colunas incompatível")
+        if not isinstance(row[2], str) or not re.fullmatch(r"\d{7,15}", row[2]) or not row[2].strip("0"):
+            raise ValueError(f"Linha {i}: número da nota deve ser texto numérico preservado")
         if not str(row[2]).strip() or not str(row[0]).strip():
             raise ValueError(f"Linha {i}: identificador ou coordenação ausente")
     sem_ativo = sum(not str(r[5]).strip() for r in linhas)
@@ -61,13 +64,29 @@ def processar(entrada, raiz):
     old_status = json.loads(status_path.read_text(encoding="utf-8")) if status_path.exists() else {}
     old_total = int(old_status.get("total", 0))
     variation = abs(len(linhas) - old_total) / old_total if old_total else 0
-    # Exceção única e delimitada: ampliação confirmada da base em 09/10/2026
-    # com notas de Eletroeletrônica e Infraestrutura.
-    # Não desabilitar o limite de 35% para atualizações futuras.
+    counts = Counter(str(r[0]).strip() for r in linhas)
+    expected = {c.removeprefix('C') for c in policy['centers']}
+    if set(counts) != expected:
+        raise ValueError(f"Relatório parcial ou coordenações desconhecidas: esperado {sorted(expected)}, recebido {sorted(counts)}")
+    old_path = pasta / 'notes.json.gz'
+    old_rows = []
+    if old_path.exists():
+        with gzip.open(old_path, 'rt', encoding='utf-8') as f:
+            old_rows = json.load(f)['abas'][0]['linhas']
+    old_counts = Counter(str(r[0]).strip() for r in old_rows)
+    for center, total in old_counts.items():
+        if counts.get(center, 0) < total * .65:
+            raise ValueError(f"Relatório parcial: queda superior a 35% na coordenação {center}")
+    expansion = policy['expansion']
+    rows_hash = hashlib.sha256(json.dumps(linhas, ensure_ascii=False, separators=(',', ':')).encode()).hexdigest()
+    retained = {str(r[2]).lstrip('0') for r in old_rows} <= set(ids_normalizados)
     ampliacao_confirmada = (
-        old_total == 2718
-        and len(linhas) == 4951
-        and version == "2026-10-09"
+        old_total == expansion['previous_total']
+        and version == expansion['date']
+        and dict(counts) == expansion['counts']
+        and data.get('source_sha256') == expansion['source_sha256']
+        and rows_hash == expansion['rows_sha256']
+        and retained
     )
     if variation > 0.35 and not ampliacao_confirmada:
         raise ValueError(
@@ -76,7 +95,8 @@ def processar(entrada, raiz):
         )
     missing = sum(not str(r[9]).strip() and not str(r[11]).strip() for r in linhas)
     resumo = {
-        "version": version, "total": len(linhas), "located": len(linhas) - missing,
+        "version": version, "total": len(linhas), "coordination_counts": dict(sorted(counts.items())),
+        "source_sha256": data.get("source_sha256"), "expansion_applied": ampliacao_confirmada, "located": len(linhas) - missing,
         "responsible_work_center": "Centro de trabalho responsável" in colunas,
         "unlocated": missing, "missing_asset": sem_ativo,
         "reasons": {"Km em branco": missing, "Ativo em branco": sem_ativo},

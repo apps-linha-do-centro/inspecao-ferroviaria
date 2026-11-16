@@ -2,14 +2,29 @@ import fs from 'node:fs';import vm from 'node:vm';import assert from 'node:asser
 const script=fs.readFileSync(new URL('apps-script-v3-extension.gs',import.meta.url),'utf8');
 function csv(text,delimiter){const out=[];let row=[],cell='',quoted=false;for(let i=0;i<text.length;i++){const c=text[i];if(c==='"'){if(quoted&&text[i+1]==='"'){cell+='"';i++}else quoted=!quoted}else if(c===delimiter&&!quoted){row.push(cell);cell=''}else if(c==='\n'&&!quoted){row.push(cell.replace(/\r$/,''));out.push(row);row=[];cell=''}else cell+=c}if(cell||row.length){row.push(cell);out.push(row)}return out}
 const normalize=s=>s.normalize('NFD').replace(/[\u0300-\u036f]/g,'').toLowerCase().replace(/[^a-z0-9]/g,'');
-const ctx={console,Date,Set,CONFIG:{remetentes:['gilberto.viana@mrs.com.br'],destinatario:'felipe.lemos090191@gmail.com',limiteAnexoBytes:2e7,fuso:'America/Sao_Paulo'},normalizarColuna_:normalize,extrairEmail_:s=>s,Utilities:{parseCsv:csv,DigestAlgorithm:{SHA_256:'sha256'},computeDigest:(_,v)=>[...crypto.createHash('sha256').update(Buffer.from(v)).digest()],newBlob:bytes=>({getDataAsString:()=>Buffer.from(bytes).toString()}),formatDate:date=>new Intl.DateTimeFormat('en-CA',{timeZone:'America/Sao_Paulo',year:'numeric',month:'2-digit',day:'2-digit'}).format(date)}};
+const ctx={console,Date,Set,CONFIG:{remetentes:['gilberto.viana@mrs.com.br'],destinatario:'felipe.lemos090191@gmail.com',limiteAnexoBytes:2e7,fuso:'America/Sao_Paulo'},normalizarColuna_:normalize,extrairEmail_:s=>s,Utilities:{parseCsv:csv,DigestAlgorithm:{SHA_256:'sha256'},computeDigest:(_,v)=>[...crypto.createHash('sha256').update(Buffer.from(v)).digest()],newBlob:bytes=>({getDataAsString:()=>Buffer.from(bytes).toString(),getBytes:()=>[...Buffer.from(bytes)]}),formatDate:date=>new Intl.DateTimeFormat('en-CA',{timeZone:'America/Sao_Paulo',year:'numeric',month:'2-digit',day:'2-digit'}).format(date)}};
 const audit='INSPEÇÃO | Colaborador,INSPEÇÃO | Início conferência,NOTA ORIGINAL | Número da Nota,INSPEÇÃO | Tratativa,INSPEÇÃO | Texto livre\nFelipe,26/10/2026,000012207119,Manter,\n';
 const attachment=text=>({getName:()=> 'qualquer-nome.csv',getSize:()=>text.length,getBytes:()=>[...Buffer.from(text)]});
 const msg=(files,delta=0)=>({getDate:()=>new Date(Date.now()-60000-delta),getFrom:()=> 'gilberto.viana@mrs.com.br',getId:()=> 'email'+delta,getTo:()=>ctx.CONFIG.destinatario,getCc:()=>'',getAttachments:()=>files.map(attachment)});
 let messages=[];ctx.GmailApp={search:()=>[{getMessages:()=>messages}]};ctx.validarCsvLC_=text=>{if(text!=='NOTES')throw Error('Not notes');return {total:600}};vm.createContext(ctx);vm.runInContext(script,ctx);
+const realValidator=ctx.validarCsvLCV4_,realSanitizer=ctx.sanitizarNotasV4_;
+ctx.validarCsvLCV4_=ctx.validarCsvLC_;ctx.sanitizarNotasV4_=s=>s;
 messages=[msg(['NOTES',audit])];let r=ctx.buscarEntradasV3_();assert.equal(r.notes.total,600);assert.equal(r.audits.length,1);
 messages=[msg(['NOTES'],1000),msg([audit])];r=ctx.buscarEntradasV3_();assert.equal(r.notes.total,600);assert.equal(r.audits.length,1);
 messages=[msg([audit]),msg([audit],1000)];r=ctx.buscarEntradasV3_();assert.equal(r.audits.length,1);assert.equal(r.notes,null);
 messages=[msg(['NOTES','NOTES',audit])];r=ctx.buscarEntradasV3_();assert.equal(r.notes,null);assert(r.notesError);assert.equal(r.audits.length,1);
 assert.throws(()=>ctx.validarTratativas_(audit.replace('26/10/2026','31/02/2026')));assert.throws(()=>ctx.validarTratativas_(audit.replace('Felipe,',',')));
 console.log('Passed: same email, separate emails, duplicate snapshot, ambiguous notes do not lose audits, invalid dates and missing auditor.');
+
+const columns=vm.runInContext('COLUNAS_NOTAS_V4',ctx);
+const centers=['CFBC','CFCL','CFFB','CFBJ','CFBR','CFBV'];
+const rows=Array.from({length:600},(_,i)=>[centers[i%6],'YRD',String(15000000+i),'3-Média','16/11/2026',i%6>=4?'MF-VPB-TEST-L000001':'MF-LC1-TEST-L000001','Teste','','Teste','KM461','0','KM461','0','Nome privado']);
+const make=rs=>[columns.concat(['Nome do autor da nota']).join(','),...rs.map(r=>r.join(','))].join('\n');
+const full=make(rows);const stats=realValidator(full);assert.equal(stats.total,600);assert.equal(stats.counts.FBR,100);
+assert.throws(()=>realValidator(make(rows.filter(r=>r[0]!=='CFBV'))));
+const invalid=structuredClone(rows);invalid[0][0]='OUTRO';assert.throws(()=>realValidator(make(invalid)));
+const sanitized=realSanitizer(full);assert(!sanitized.includes('Nome privado'));assert(!sanitized.includes('Nome do autor'));
+assert.equal(realValidator(sanitized).total,600);
+ctx.validarVolumeV4_({total:600,counts:stats.counts,hash:'other'},{total:600,coordination_counts:stats.counts},'2026-11-17');
+assert.throws(()=>ctx.validarVolumeV4_({total:600,counts:stats.counts,hash:'other'},{total:100},'2026-11-17'));
+console.log('PASS: real six-center Apps Script validator, partial/unknown rejection, sanitized ingress and future 35% guard.');

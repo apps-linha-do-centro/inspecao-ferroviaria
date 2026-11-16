@@ -34,6 +34,8 @@ jobs:
           node site/notas-lc-campo/automation/test-audit-ui.mjs
           node site/notas-lc-campo/automation/test-base-updates.mjs
           node site/notas-lc-campo/automation/test-apps-script.mjs
+          node site/notas-lc-campo/automation/test-coordinations.mjs
+          node site/notas-lc-campo/automation/test-yag.mjs
       - name: Processar notas e conferencias independentemente
         run: |
           DATA_NOTAS="$(TZ=America/Sao_Paulo date -d "$(git -C entrada log -1 --format=%cI -- notas-lc-campo/automation/incoming.csv)" +%F)"

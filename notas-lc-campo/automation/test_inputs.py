@@ -38,7 +38,13 @@ class AuditsTest(unittest.TestCase):
                 status=site/'notas-lc-campo/base-status.json';data=json.loads(status.read_text());data['total']=600;data['version']='2026-10-26';status.write_text(json.dumps(data))
                 with (folder/'incoming.csv').open('w',newline='') as f:
                     w=csv.writer(f);w.writerow(columns)
-                    for i in range(600):w.writerow(['CFCL','YRD',str(15500000+i),'3-Média','01/10/2026','MF-LC2-FPK_FPK-L000001','Descrição','AM42','Teste','KM461','0','KM461','0'])
+                    for i in range(600):w.writerow([['CFBC','CFCL','CFFB','CFBJ','CFBR','CFBV'][i%6],'YRD',str(15500000+i),'3-Média','01/10/2026',('MF-VPB-TEST-L000001' if i%6 in (4,5) else 'MF-LC1-FPK_FPK-L000001'),'Descrição','AM42','Teste','KM461','0','KM461','0'])
+                import subprocess,sys
+                fixture=temp/'fixture.gz'
+                subprocess.run([sys.executable,str(Path(__file__).with_name('convert_csv.py')),str(folder/'incoming.csv'),str(fixture)],check=True,capture_output=True)
+                with gzip.open(fixture,'rt',encoding='utf-8') as f:baseline=json.load(f)
+                baseline['versao_base']='2026-10-26';baseline['abas'][0]['linhas'][0][6]='Descrição anterior'
+                with gzip.open(notes,'wt',encoding='utf-8') as f:json.dump(baseline,f,ensure_ascii=False)
                 if both:(folder/'tratativas').mkdir();(folder/'tratativas/valid.csv').write_bytes(sample())
                 original=load_data(site/'notas-lc-campo/audit-data.js')
                 rejected=synchronize(site,entry,'2026-10-25')

@@ -36,6 +36,7 @@ def synchronize(site,entry,notes_date=None):
                     subprocess.run([sys.executable,str(HERE/'build.py'),'--entrada',str(converted),'--raiz',str(staged)],check=True,capture_output=True,text=True)
                     for name in ['notes.json.gz','base-status.json','index.html','sw.js']:shutil.copyfile(staged/'notas-lc-campo'/name,app/name)
                     report['notes']='updated'
+                    report['coordination_counts']=json.loads((app/'base-status.json').read_text())['coordination_counts']
                 state['notes_sha256']=sha(incoming)
         except Exception as e:report['errors'].append({'input':'notes','reason':str(getattr(e,'stderr',None) or e)[-1000:]})
     audits=load_data(app/'audit-data.js');done=set(state.get('audit_sha256',[]))
