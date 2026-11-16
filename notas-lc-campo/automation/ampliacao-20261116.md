@@ -25,7 +25,9 @@ Aumento de 2.981 notas (+180,6%). Nenhuma duplicidade de ID, inclusive após nor
 
 Essas amplitudes são valores calculados dos campos originais do relatório, não limites territoriais validados. Há 301 notas FBR e 153 FBV sem ambos os marcadores KM. Mais 3 FBR e 5 FBV resultam em quilometragem negativa (exemplo: KM604 com distância -611.847); o app sinaliza inconsistência e não as usa na proximidade. Os campos originais permanecem preservados. A base completa tem 541 notas sem marcadores, 19 com resultado numérico negativo (11 anteriores e 8 novas) e 28 sem ativo: 4.072 notas com KM utilizável e 560 sem KM utilizável.
 
-`tracks.json` não contém FBR/FBV. A geometria distribuída e o arquivo raiz `railway-segments-v2.bin` não fornecem metadados de ramais VPB/TOD/LHO/ACL vinculados a essas coordenações. Não foram criadas coordenadas, linhas ou correspondências. **GPS e busca automática por proximidade desses trechos continuam pendentes de cadastro geográfico oficial. A seleção manual foi posteriormente corrigida para usar os ativos e intervalos presentes nas notas, conforme README.md.** Consulta e avaliação pela opção Todas as notas funcionam, inclusive quando falta KM.
+A revisão posterior recuperou o Excel original no Drive e corrigiu a falta de integração geográfica: foram adicionadas 73 referências de linhas/trechos e 36.809 segmentos, com ativo, linha, coordenação e ramal originais. O arquivo raiz já continha coordenadas FBR/FBV, porém perdeu os nomes dos ramais desses centros na compactação. A afirmação anterior de ausência de geografia foi corrigida. `geography-source.json` registra a origem e as contagens. As geometrias anteriores permanecem intactas.
+
+No km 530, a consulta manual agora oferece as linhas reais de Belo Vale e a busca retorna 50 notas, inclusive as cinco com centro SAP FBR e ativo físico da referência FBV. Os detalhes da nota apresentam as coordenadas calculadas pela tabela, separadas do GPS da avaliação. Trechos que não existem no Excel original permanecem com referência manual, sem coordenadas inventadas.
 
 ## Alterações
 
@@ -37,7 +39,7 @@ Essas amplitudes são valores calculados dos campos originais do relatório, nã
 - `apps-script-v3-extension.gs`: validador V4 com seis centros, sanitização antes do envio público e proteção contra relatório parcial. **Arquivo preparado no GitHub; instalação externa ainda necessária.**
 - `.github/workflows/atualizar-notas-lc.yml`: inclui testes de coordenações e YAG. Cron existente preservado: 06h45 e 07h45 em Brasília. Não foi possível inspecionar o gatilho real no Google; a documentação anterior registra execução a cada 15 minutos.
 - `notes.json.gz`, `base-status.json`, `sw.js`: base ampliada e identidade de atualização/cache, sem alteração do banco de inspeções.
-- `tracks.json`, `rail.bin.gz`, `audit-data.js`: preservados.
+- `tracks.json`, `rail.bin.gz`: ampliados com preservação do conteúdo anterior. `audit-data.js`: preservado.
 
 ## Validação
 
@@ -52,7 +54,7 @@ A tela publicada do Sites foi inspecionada e continua bloqueando a versão antig
 O repositório e o Pages são públicos. A entrada nova foi reduzida aos 15 campos do aplicativo; não se publicou o CSV original com nomes de autores, responsáveis nominais e ordens SAP. O anexo recebido traz aviso de confidencialidade. A política interna de segurança da MRS não está disponível, portanto **não se atesta conformidade corporativa da publicação pública**. A base ainda contém informações operacionais; os dados e conferências preexistentes no histórico público não foram removidos nesta alteração.
 
 1. Instalar no projeto Google a extensão atualizada conforme o passo a passo em `README.md`, preservando CONFIG, token e gatilhos. A sessão disponível não abriu o editor autenticado; não foi possível alterar ou verificar a execução do Apps Script real.
-2. Receber a geometria/cadastro oficial para FBR/FBV e revisar as oito inconsistências de KM da nova extração.
+2. Revisar as oito inconsistências de KM da nova extração e eventuais ativos sem cobertura no Excel original. A geografia disponível de FBR/FBV já foi incorporada.
 3. Validar internamente a autorização de uso público dos dados operacionais e das conferências. A redução de colunas não substitui essa aprovação corporativa.
 
 O GitHub está preparado para aceitar exclusivamente a base com as seis coordenações; um próximo arquivo parcial não apaga a ampliação. A atualização integral Gmail → Apps Script → GitHub só poderá ser declarada verificada depois da instalação e execução no Google.

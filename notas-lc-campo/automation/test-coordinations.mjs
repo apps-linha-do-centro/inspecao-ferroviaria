@@ -46,10 +46,13 @@ console.log('PASS: six dynamic coordination options; multiple selections; depart
 
 assert.equal(ctx.RailCore.fmtKm(-7847),'Inconsistente na base');
 
-// Regression: km 530 has notes in the new coordinations but no GPS geometry.
+// Regression: manual km selection includes the new coordinates, with note-based fallback where geometry is unavailable.
 const parsed=ctx.RailCore.parseBase(raw).notes;ctx.RailCore.classifyLocations(parsed,tracks,rail);
 const refs530=ctx.RailCore.manualReferences(parsed,tracks,rail,530000,500);
-assert(refs530.some(r=>r.track.coord==='FBR'&&r.track.ramal==='VPB'&&r.track.manualOnly));
+assert(refs530.some(r=>r.track.ramal==='VPB'));
+const withoutGeometry=ctx.RailCore.manualReferences(parsed,[],new Int32Array(),530000,500);
+assert(withoutGeometry.some(r=>r.track.coord==='FBR'&&r.track.manualOnly));
+assert(withoutGeometry.some(r=>r.track.coord==='FBV'&&r.track.manualOnly));
 assert(refs530.some(r=>r.track.coord==='FBV'&&r.track.asset==='MF-VPB-FBV_FBV-L000001'));
 assert.equal(refs530.length,new Set(refs530.map(r=>r.key)).size);
 for(const ref of refs530.filter(r=>r.track.manualOnly)){
@@ -67,6 +70,8 @@ run("$('#trackSelect').value=selectedManual.key;$('#manualForm').onsubmit({preve
 assert.equal(run('position.km'),530000);assert.equal(run('position.track.coord'),'FBV');
 assert.equal(run('position.lat'),null);assert.equal(run('position.lon'),null);
 assert.equal(run('restoredPosition(active().lastPosition).track.asset'),selected.track.asset);
+ctx.fallbackPosition={source:'Manual',km:530000,track:withoutGeometry[0].track,trackId:null,lat:null,lon:null};
+assert.equal(run('restoredPosition(fallbackPosition).track.asset'),withoutGeometry[0].track.asset);
 assert.equal(tracks.length,originalTrackCount);
 assert.equal(Number(node('#nearCount').textContent),ctx.RailCore.near(parsed,{km:530000,track:selected.track},500,tracks).length);
 const refsFar=ctx.RailCore.manualReferences(parsed,tracks,rail,999999999,500);
@@ -74,3 +79,6 @@ assert.equal(refsFar.length,0);
 run("manual();$('#manualKm').value='999999+999';$('#manualKm').onblur()");
 assert(node('#manualSubmit').disabled);
 console.log('PASS: manual km 530 includes FBR/FBV assets from notes; route isolation; valid KM ranges; persisted manual reference; null GPS coordinates; no geometry mutation; empty ranges stay blocked.');
+
+ctx.upgradePosition={source:'Manual',km:530000,track:{asset:'MF-VPB-FBV_FBV-L000001',coord:'FBV',ramal:'VPB',manualOnly:true},trackId:null,lat:null,lon:null};
+const upgraded=run('restoredPosition(upgradePosition)');assert(!upgraded.track.manualOnly);assert(Number.isInteger(upgraded.trackId));assert.equal(upgraded.lat,null);assert.equal(upgraded.lon,null);assert(ctx.upgradePosition.track.manualOnly);

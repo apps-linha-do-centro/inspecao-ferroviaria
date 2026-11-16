@@ -64,7 +64,20 @@ Os scripts de produção continuam vindo de `main`; não se deve mesclar a branc
 
 ### Geografia
 
-Não existem trechos FBR/FBV em `tracks.json` nem referências correspondentes na geometria distribuída. O arquivo raiz `railway-segments-v2.bin`, interpretado pelos metadados do aplicativo raiz, também só contém ramais LC1/LC2. Portanto não foi alterada a geografia. Solicitar cadastro ferroviário com coordenadas, ramais, linha, centro e quilometragem vinculados por fonte oficial antes de habilitar proximidade GPS nesses centros. Todas as notas, inclusive sem KM, estão disponíveis na consulta **Todas as notas**, com filtro múltiplo de coordenação. Valores que resultam em KM negativo são sinalizados como inconsistentes e excluídos da proximidade sem alterar o texto original.
+A revisão de 16/11/2026 recuperou a planilha original `Eixo_Pontos_unificado_4326_5M 5.xlsx`, no Drive, pasta `1 - Quilometragem e georreferência`. O binário raiz já continha FBR/FBV, porém codificava os ramais desses centros como vazios. A planilha original contém `LocalInst`, `Deno`, `Linha`, `Coord`, `Ramal`, `LocInstSup`, `KM`, `Latitude` e `Longitude` e permite incorporar os trechos sem inventar relações.
+
+`import_geography.py` acrescentou 39 referências FBR (19.426 segmentos) e 34 FBV (17.383 segmentos). As 238 referências e os 111.296 segmentos anteriores foram preservados, com os mesmos índices e bytes. `geography-source.json` registra SHA-256 do Excel, regras, contagens e hashes para auditoria. Não foi publicada a planilha completa. O importador requer Python com openpyxl para ler o Excel e só precisa ser executado quando a geografia original for atualizada.
+
+O agrupamento usa os campos originais de coordenação, ramal, ativo, ativo superior, linha e denominação. Isso mantém separados registros cujo LocalInst é igual, mas o LocInstSup difere na origem. Segmentos com lacuna física ou de KM superior a 30 m são excluídos. Não há extrapolação fora dos segmentos existentes.
+
+O GPS passa a usar VPB/TOD de FBR e VPB/ACL de FBV disponíveis na origem. A busca manual continua oferecendo referências das notas quando uma linha não consta dessa tabela. Não se declara cobertura total de todos os ativos das novas coordenações: por exemplo, não foram encontrados pontos originais FBR/LHO nesta planilha. Nesses casos a consulta manual permanece disponível e não recebe coordenadas fictícias.
+
+Nos detalhes da nota, o ativo e o KM são cruzados com a linha de referência para calcular a coordenada inicial/final e oferecer Ver no mapa. Essa coordenada é identificada como tabela ferroviária e não substitui o GPS real do clique de avaliação. Se houver mais de uma linha ou posições divergentes, a aplicação informa a ambiguidade e não escolhe uma coordenada arbitrária. O GPS e a tabela mantêm suas origens distintas.
+
+Uma nota pode estar atribuída no SAP a FBR e usar um ativo que a tabela territorial cadastra como FBV. A associação física só atravessa essa diferença quando o ramal e o ativo superior coincidem com a geometria original validada. O centro original da nota e o centro da tabela não são modificados. Isso recupera as 50 notas da faixa do km 530 na referência geográfica de Belo Vale, incluindo as cinco atribuídas a FBR.
+
+URLs e cache acompanham código e geografia. Atualizações normais de notas não substituem `tracks.json` nem `rail.bin.gz`.
+
 
 ### Recuperação
 

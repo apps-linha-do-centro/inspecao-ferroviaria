@@ -1,0 +1,44 @@
+{
+  "source_name": "Eixo_Pontos_unificado_4326_5M 5.xlsx",
+  "source_sha256": "05dcbbc993c209f548e3e8a2e5d7a3f74eb19bd444e4d4d53b799136ee6bb6da",
+  "source_drive_id": "1CzU2CLIowGIuyjxNAVO49ckid5SjVwQ2",
+  "source_sheet": "Eixo_Pontos_unificado_4326_5M",
+  "centers": [
+    "FBR",
+    "FBV"
+  ],
+  "source_points": {
+    "FBV": 17458,
+    "FBR": 19664
+  },
+  "added_tracks": {
+    "FBR": 39,
+    "FBV": 34
+  },
+  "added_segments": {
+    "FBR": 19426,
+    "FBV": 17383
+  },
+  "invalid_points": 0,
+  "excluded_gaps": 238,
+  "original_tracks": 238,
+  "original_segments": 111296,
+  "preserved_prefix_sha256": "df20394547a264cea856250e262d124818f15d94b0dfe190868f1dc736404a18",
+  "binary_sha256": "49bda9f51031ca7b3761374f45f1322dce65ebc7c2e79723567e5dca2d44821a",
+  "tracks_sha256": "74ac9eacc8ffd5c0e762f01ad3f77bec54d8096a1c4c75bdb18edc646baeef2c",
+  "rules": {
+    "coordinates": "WGS84; source Latitude/Longitude rounded to 1e-6 degree",
+    "km": "source KM in kilometres multiplied by 1000",
+    "group": [
+      "Coord",
+      "Ramal",
+      "LocalInst",
+      "LocInstSup",
+      "Linha",
+      "Deno"
+    ],
+    "maximum_gap_m": 30,
+    "maximum_km_gap_m": 30,
+    "inferred_coordinates": false
+  }
+}
