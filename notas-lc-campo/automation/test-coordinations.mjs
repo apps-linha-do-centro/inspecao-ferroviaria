@@ -22,7 +22,7 @@ vm.runInContext("db=dbStub;sessions=[{id:'corrections-test',employeeId:'001234',
 const run=code=>vm.runInContext(code,ctx);
 
 
-run("C.classifyLocations(base.notes,tracks,rail);$('#scope').value='all';renderNotes()");
+run("C.classifyLocations(base.notes,tracks,rail);queryScope='all';renderNotes()");
 assert.equal(Number(node('#nearCount').textContent),raw.abas[0].linhas.length);
 const centers=new Set(raw.abas[0].linhas.map(r=>r[0]));
 assert(centers.has('FBR')&&centers.has('FBV'));
@@ -63,6 +63,21 @@ assert.equal(ctx.RailCore.near([n],{trackId:0,km:n.start},500,tracks).length,0);
 console.log('PASS: six dynamic coordination options; multiple selections; department intersection; all notes including missing KM; note numbers without leading zeros in UI/CSV/PDF; sessions untouched; no invented route matches.');
 
 assert.equal(ctx.RailCore.fmtKm(-7847),'Inconsistente na base');
+
+const html=read('index.html').toString(),css=read('style.css').toString();
+const filterMarkup=html.slice(html.indexOf('<div class="filters">'),html.indexOf('<details id="assetFilter"'));
+assert(!html.includes('id="scope"'),'Scope belongs only to the settings dialog');
+const order=['coordination','department','priority','evaluation'].map(id=>filterMarkup.indexOf('id="'+id+'"'));
+assert(order.every((v,i)=>v>=0&&(i===0||v>order[i-1])),'Main filters follow the requested row order');
+assert(css.includes('grid-template-columns:repeat(2,minmax(0,1fr))'));
+assert(css.includes('.filters .search{grid-column:1/-1}'));
+// Scope is a setting, so clearing the main-page filters preserves it.
+assert.equal(run('queryScope'),'all');
+run("settings()");assert(node('#dialogContent').innerHTML.includes('name=\"scope\"'));
+assert(node('#dialogContent').innerHTML.includes('value=\"all\" selected'));
+const beforeSettings=run('JSON.stringify(sessions)');
+run("$('#rangeForm').onsubmit({preventDefault(){},target:{values:{scope:'near',preset:'500'}}})");
+assert.equal(run('queryScope'),'near');assert.equal(run('JSON.stringify(sessions)'),beforeSettings);
 
 // Regression: manual km selection includes the new coordinates, with note-based fallback where geometry is unavailable.
 const parsed=ctx.RailCore.parseBase(raw).notes;ctx.RailCore.classifyLocations(parsed,tracks,rail);
