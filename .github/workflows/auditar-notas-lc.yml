@@ -33,6 +33,7 @@ jobs:
           node notas-lc-campo/automation/test-geography.mjs
           node notas-lc-campo/automation/test-geography-points.mjs
           node notas-lc-campo/automation/test-gps-offline.mjs
+          node notas-lc-campo/automation/test-field-usability.mjs
           node notas-lc-campo/automation/test-offline-cache.mjs
           python3 -m unittest discover -s notas-lc-campo/automation -p 'test_*.py' -v
       - name: Verificar integridade dos identificadores da base

@@ -119,3 +119,11 @@ Pontos isolados são codificados como registros de comprimento zero. `core.js` o
 `geography-completion.json` contém a origem, a contagem por coordenação, hashes dos grupos originais, hashes dos arquivos publicados e a conferência de completude. Os testes verificam cobertura, integridade do prefixo, duplicidades, idempotência, pontos descontínuos, ambiguidades, GPS offline, consulta manual, caches e avaliações salvas. A nova leitura independente da planilha inteira confirmou zero registros ausentes nas seis coordenações. Essa completude é relativa à planilha conferida; ela não garante qualidade física de dados conflitantes na própria origem nem recepção de GPS em qualquer aparelho.
 
 Reprodução: `python3 notas-lc-campo/automation/complete_geography.py --source /caminho/planilha-original.xlsx --app notas-lc-campo`. O arquivo original fica fora do repositório. Repetir a execução com a mesma planilha preserva a auditoria e os recursos já completos. Atualizações diárias de notas continuam independentes da geografia.
+
+### Uso em campo e abertura — 17/11/2026
+
+Ao aceitar uma nova posição GPS ou confirmar o km manual, a consulta volta para **Na faixa atual** e salva essa preferência. **Todas as notas** continua disponível em Configurações. A restauração do histórico não troca o modo de consulta.
+
+A cobertura geográfica é calculada uma vez por conjunto de notas/trechos e invalidada quando a base ou os trechos são substituídos. O texto e a abrangência dos avisos permanecem iguais. O complemento GPS é carregado em segundo plano e não bloqueia a abertura dos dados essenciais. A identidade final do cache inclui `gps.js`, `gps-routes.json` e `gps-routes.bin.gz`.
+
+Regressões: `test-field-usability.mjs` e `test_cache_resources.py`, executadas nos fluxos de auditoria/atualização.
