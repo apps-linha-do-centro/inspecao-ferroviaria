@@ -9,7 +9,11 @@ const p3=C.coordinatesAtKm({asset:'MF-VPB-FBV_FBV-L000003',center:'FBV'},530000,
 assert(p3&&!p3.ambiguous);assert.equal(p3.lat,-20.412217);assert.equal(p3.lon,-44.023815);assert.notEqual(p.trackId,p3.trackId);
 const gps=C.candidates(rail,tracks,p.lat,p.lon,5);assert(gps.some(x=>x.trackId===p.trackId&&Math.abs(x.km-530000)<=1));
 const inRange=C.near(notes,{track:p.track,trackId:p.trackId,km:530000},500,tracks);
-assert(inRange.some(n=>n.center==='FBV'));assert(inRange.some(n=>n.center==='FBR'));assert.equal(inRange.length,50);
+// Counts change with daily SAP extraction. Check matching semantics rather than a frozen total.
+const expected=notes.filter(n=>!n.locationIssue&&n.start!==null&&n.end!==null&&Math.min(n.start,n.end)<=530500&&Math.max(n.start,n.end)>=529500&&((n.center==='FBV'&&n.asset.startsWith('MF-VPB-'))||(n.center==='FBR'&&n.asset.startsWith('MF-VPB-FBV_FBV-'))));
+assert.deepEqual([...inRange.map(n=>n.id)].sort(),expected.map(n=>n.id).sort());
+const fixture=[{id:'fbv',center:'FBV',asset:line1.asset,start:529900,end:530100},{id:'fbr',center:'FBR',asset:line1.asset+'-FILAESQ',start:530000,end:530050},{id:'other-root',center:'FBR',asset:'MF-VPB-OUTRO-L000001',start:530000,end:530050},{id:'other-route',center:'FBV',asset:'MF-LC1-FBV_FBV-L000001',start:530000,end:530050},{id:'outside',center:'FBV',asset:line1.asset,start:535000,end:535050}];
+assert.deepEqual([...C.near(fixture,{track:p.track,trackId:p.trackId,km:530000},500,tracks).map(n=>n.id)].sort(),['fbr','fbv']);
 assert(inRange.every(n=>n.asset.startsWith('MF-VPB-')));
 const cfbr={asset:'MF-VPB-FBV_FBV-L000001-FILAESQ',center:'FBR'};
 assert.equal(C.coordinatesAtKm(cfbr,530000,tracks,rail).track.asset,line1.asset);
@@ -18,4 +22,4 @@ assert.equal(C.coordinatesAtKm(line1,-1,tracks,rail),null);assert.equal(C.coordi
 const legacy=[{...p.track}];delete legacy[0].geographySource;
 assert(!C.sameRoute(cfbr,legacy[0]));
 const at=C.manualReferences(notes,tracks,rail,530000,500);assert(at.some(r=>r.track.asset===line1.asset&&!r.track.manualOnly));
-console.log('PASS: original MRS L1/L3 coordinates at km530; GPS round-trip; 50 notes across SAP centers by verified asset; no cross-route matches; ambiguous lines return no arbitrary coordinates; geometry-backed manual selection.');
+console.log('PASS: original MRS L1/L3 coordinates at km530; GPS round-trip; daily notes and stable fixtures across SAP centers by verified asset; no cross-route matches; ambiguous lines return no arbitrary coordinates; geometry-backed manual selection.');

@@ -124,7 +124,7 @@ def processar(entrada, raiz):
     # A identidade do cache acompanha base e codigo, inclusive em atualizacoes no mesmo dia.
     digest = hashlib.sha256()
     digest.update(entrada.read_bytes())
-    for recurso in ("app.js", "base-updates.js", "core.js", "style.css", "tracks.json", "rail.bin.gz"):
+    for recurso in ("app.js", "base-updates.js", "core.js", "style.css", "tracks.json", "rail.bin.gz", "gps.js", "gps-routes.json", "gps-routes.bin.gz"):
         digest.update((pasta / recurso).read_bytes())
     identificador_cache = f"notas-lc-v14-{version.replace('-', '')}-{digest.hexdigest()[:12]}"
     sw, n = re.subn(r"const CACHE='notas-lc-v[^']+'", f"const CACHE='{identificador_cache}'", sw, count=1)

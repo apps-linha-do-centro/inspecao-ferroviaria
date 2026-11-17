@@ -1,0 +1,16 @@
+{
+  "source": "railway-segments-v2.bin",
+  "source_sha256": "71977538a84796204b090e5946a246139ecb4c3dbcda5190df51f2f171cd8e77",
+  "dictionary_source": "assets/index-Dh9jGWSH.js",
+  "dictionary_sha256": "ee2a515cc5b5b70fd35b58e55cf8fdd282aea79fad0ab4dae057e6f7d50e388d",
+  "segments": {
+    "FBJ/LC1": 25134,
+    "FFB/LC1": 28457,
+    "FBC/LC1": 32813,
+    "FCL/LC2": 13946,
+    "FCL/LC1": 2231
+  },
+  "binary_sha256": "ec1fa46bb9c5d533b3983174023197778c7570fc3b8a60685980e54e92b80cea",
+  "tracks_sha256": "aef24126eb53dc04e03a3db6793ef2a3f93090a0c9d14b737ea5fcfb52124c76",
+  "rules": "Original coordinates and KM retained. No asset/line inferred. Only fallback when detailed GPS references find no segment."
+}
