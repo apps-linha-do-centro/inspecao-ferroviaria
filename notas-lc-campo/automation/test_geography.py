@@ -9,11 +9,12 @@ class OriginalGeographyTest(unittest.TestCase):
  def test_original_geometry_and_track_indices_preserved(self):
   count=self.source['original_segments'];prefix=self.binary[:count*28]
   self.assertEqual(hashlib.sha256(prefix).hexdigest(),self.source['preserved_prefix_sha256'])
-  self.assertEqual(hashlib.sha256(self.binary).hexdigest(),self.source['binary_sha256'])
-  self.assertEqual(hashlib.sha256((APP/'tracks.json').read_bytes()).hexdigest(),self.source['tracks_sha256'])
+  end=(self.source['original_segments']+sum(self.source['added_segments'].values()))*28
+  self.assertEqual(hashlib.sha256(self.binary[:end]).hexdigest(),self.source['binary_sha256'])
+  self.assertEqual(hashlib.sha256(json.dumps(self.tracks[:self.source['original_tracks']+sum(self.source['added_tracks'].values())],ensure_ascii=False,separators=(',',':')).encode()).hexdigest(),self.source['tracks_sha256'])
   for row in struct.iter_unpack('<7i',self.binary[:count*28]):self.assertLess(row[6],self.source['original_tracks'])
  def test_new_geometry_has_original_route_asset_and_valid_endpoints(self):
-  added=self.tracks[self.source['original_tracks']:]
+  added=self.tracks[self.source['original_tracks']:self.source['original_tracks']+sum(self.source['added_tracks'].values())]
   self.assertEqual(len(added),sum(self.source['added_tracks'].values()))
   self.assertEqual({t['coord'] for t in added},{'FBR','FBV'})
   self.assertTrue(any(t['coord']=='FBR' and t['ramal']=='TOD' for t in added))
@@ -21,7 +22,7 @@ class OriginalGeographyTest(unittest.TestCase):
   for t in added:
    self.assertTrue(t['asset'].startswith('MF-'+t['ramal']+'-'))
    self.assertEqual(t['geographySource'],self.source['source_name'])
-  rows=list(struct.iter_unpack('<7i',self.binary[self.source['original_segments']*28:]))
+  rows=list(struct.iter_unpack('<7i',self.binary[self.source['original_segments']*28:(self.source['original_segments']+sum(self.source['added_segments'].values()))*28]))
   self.assertEqual(len(rows),sum(self.source['added_segments'].values()))
   from import_geography import distance
   for row in rows:

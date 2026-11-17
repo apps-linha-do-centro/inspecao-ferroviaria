@@ -1,0 +1,10 @@
+import fs from 'node:fs';import vm from 'node:vm';import assert from 'node:assert/strict';
+const app=new URL('../',import.meta.url),ctx={};vm.createContext(ctx);vm.runInContext(fs.readFileSync(new URL('core.js',app),'utf8'),ctx);const C=ctx.RailCore;
+const tracks=[{asset:'MF-RCB-FBC_FAB-L000001',parent:'MF-RCB-FBC_FAB',coord:'FBC',ramal:'RCB',line:'L1',name:'Original',geographySource:'Eixo_Pontos_unificado_4326_5M 5.xlsx'}];
+const points=new Int32Array([-20000000,-44000000,-20000000,-44000000,100000,100000,0,-20001000,-44000000,-20001000,-44000000,100100,100100,0]);
+const gps=C.candidates(points,tracks,-20,-44,5);assert.equal(gps[0].km,100000);assert.equal(gps[0].distance,0);assert(gps[0].pointReference);
+assert.equal(C.coordinatesAtKm({asset:tracks[0].asset,center:'FBC'},100050,tracks,points),null,'No interpolation across isolated source points');
+const p=C.coordinatesAtKm({asset:tracks[0].asset,center:'FBC'},100000,tracks,points);assert.equal(p.lat,-20);assert.equal(p.lon,-44);
+assert(C.manualReferences([],tracks,points,100000,0).some(r=>r.track.asset===tracks[0].asset));assert.equal(C.manualReferences([],tracks,points,100050,0).length,0);
+const conflicting=new Int32Array([...points.slice(0,7),-20001000,-44000000,-20001000,-44000000,100000,100000,0]);assert(C.coordinatesAtKm({asset:tracks[0].asset,center:'FBC'},100000,tracks,conflicting).ambiguous);
+console.log('PASS: original isolated GPS points recognized; manual references include points; no artificial segments/interpolation; conflicting original KM remains ambiguous.');

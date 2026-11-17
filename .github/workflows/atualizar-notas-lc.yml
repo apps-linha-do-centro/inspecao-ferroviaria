@@ -35,6 +35,7 @@ jobs:
           node site/notas-lc-campo/automation/test-base-updates.mjs
           node site/notas-lc-campo/automation/test-apps-script.mjs
           node site/notas-lc-campo/automation/test-geography.mjs
+          node site/notas-lc-campo/automation/test-geography-points.mjs
           node site/notas-lc-campo/automation/test-gps-offline.mjs
           node site/notas-lc-campo/automation/test-offline-cache.mjs
           node site/notas-lc-campo/automation/test-coordinations.mjs

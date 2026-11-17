@@ -115,3 +115,11 @@ console.log('PASS: manual km 530 includes FBR/FBV assets from notes; route isola
 
 ctx.upgradePosition={source:'Manual',km:530000,track:{asset:'MF-VPB-FBV_FBV-L000001',coord:'FBV',ramal:'VPB',manualOnly:true},trackId:null,lat:null,lon:null};
 const upgraded=run('restoredPosition(upgradePosition)');assert(!upgraded.track.manualOnly);assert(Number.isInteger(upgraded.trackId));assert.equal(upgraded.lat,null);assert.equal(upgraded.lon,null);assert(ctx.upgradePosition.track.manualOnly);
+
+// A saved reference must retain its original parent/line when SAP assets repeat.
+const byAsset=new Map;for(let i=0;i<tracks.length;i++){const ids=byAsset.get(tracks[i].asset)||[];ids.push(i);byAsset.set(tracks[i].asset,ids)}
+const repeated=[...byAsset.values()].find(ids=>ids.length>1&&ids.some(i=>tracks[i].parent!==tracks[ids[0]].parent||tracks[i].name!==tracks[ids[0]].name||tracks[i].line!==tracks[ids[0]].line));
+assert(repeated,'Fixture must contain repeated SAP assets with different original references');
+const selectedIndex=repeated.at(-1);ctx.savedReference={source:'GPS',track:tracks[selectedIndex],trackId:repeated[0],km:530000,lat:-20,lon:-44};
+assert.equal(run('restoredPosition(savedReference).trackId'),selectedIndex);assert.equal(run('restoredPosition(savedReference).track.parent'),tracks[selectedIndex].parent);
+console.log('PASS: restoring an inspection retains the complete original reference when SAP assets repeat.');

@@ -1,0 +1,4592 @@
+{
+  "source_name": "Eixo_Pontos_unificado_4326_5M 5.xlsx",
+  "source_drive_id": "1CzU2CLIowGIuyjxNAVO49ckid5SjVwQ2",
+  "source_sha256": "05dcbbc993c209f548e3e8a2e5d7a3f74eb19bd444e4d4d53b799136ee6bb6da",
+  "centers": [
+    "FBC",
+    "FBJ",
+    "FBR",
+    "FBV",
+    "FCL",
+    "FFB"
+  ],
+  "groups": [
+    {
+      "metadata": {
+        "coord": "FBC",
+        "ramal": "LC1",
+        "asset": "MF-LC1-FAS_FAS-L000001",
+        "parent": "MF-LC1-FAS_FAS",
+        "line": "L1",
+        "name": "L01 ANTÔ. CARLOS"
+      },
+      "source_points": 342,
+      "source_points_sha256": "0e75fe6d5144724c4de4f847fd19b1ff721067542fc82f84c5d88f4bf7da52e6",
+      "app_points": 342,
+      "app_points_sha256": "0e75fe6d5144724c4de4f847fd19b1ff721067542fc82f84c5d88f4bf7da52e6"
+    },
+    {
+      "metadata": {
+        "coord": "FBC",
+        "ramal": "LC1",
+        "asset": "MF-LC1-FAS_FAS-L000002",
+        "parent": "MF-LC1-FAS_FAS",
+        "line": "L2",
+        "name": "L02 ANTÔ. CARLOS"
+      },
+      "source_points": 340,
+      "source_points_sha256": "4d827956e2bbce8ffccee18c6365271147508adc3854bd23d450c5e3acbd177b",
+      "app_points": 340,
+      "app_points_sha256": "4d827956e2bbce8ffccee18c6365271147508adc3854bd23d450c5e3acbd177b"
+    },
+    {
+      "metadata": {
+        "coord": "FBC",
+        "ramal": "LC1",
+        "asset": "MF-LC1-FAS_FSF-L000001",
+        "parent": "MF-LC1-FAS_FSF",
+        "line": "L1",
+        "name": "L01 ANTÔ. CARLOS-SÁ FORTES"
+      },
+      "source_points": 402,
+      "source_points_sha256": "0012a8dff615bba8d71fd5ac7b9e81b4d17de77f1742cd5c256ffd49a4a48be4",
+      "app_points": 402,
+      "app_points_sha256": "0012a8dff615bba8d71fd5ac7b9e81b4d17de77f1742cd5c256ffd49a4a48be4"
+    },
+    {
+      "metadata": {
+        "coord": "FBC",
+        "ramal": "LC1",
+        "asset": "MF-LC1-FBC_FBC-L000001",
+        "parent": "MF-LC1-FBC_FBC",
+        "line": "L1",
+        "name": "L01 BARBACENA"
+      },
+      "source_points": 1131,
+      "source_points_sha256": "362bbc2842de6d6ccce5e11a4a28b69810ded4d5bc334d3b1060ba13bd2dc650",
+      "app_points": 1131,
+      "app_points_sha256": "362bbc2842de6d6ccce5e11a4a28b69810ded4d5bc334d3b1060ba13bd2dc650"
+    },
+    {
+      "metadata": {
+        "coord": "FBC",
+        "ramal": "LC1",
+        "asset": "MF-LC1-FBC_FBC-L000002",
+        "parent": "MF-LC1-FBC_FBC",
+        "line": "L2",
+        "name": "L02 BARBACENA"
+      },
+      "source_points": 1129,
+      "source_points_sha256": "42040cd4d22d86fb5497e4064eea3a5b0f84f0e7e6d7431ba40076bdda09654b",
+      "app_points": 1129,
+      "app_points_sha256": "42040cd4d22d86fb5497e4064eea3a5b0f84f0e7e6d7431ba40076bdda09654b"
+    },
+    {
+      "metadata": {
+        "coord": "FBC",
+        "ramal": "LC1",
+        "asset": "MF-LC1-FBC_FBC-L000004",
+        "parent": "MF-LC1-FBC_FBC",
+        "line": "L4",
+        "name": "L04 BARBACENA"
+      },
+      "source_points": 105,
+      "source_points_sha256": "0e3b2bb6b8104d7fc07101cec066aed451d2352cc475e8b83321a6369952628e",
+      "app_points": 105,
+      "app_points_sha256": "0e3b2bb6b8104d7fc07101cec066aed451d2352cc475e8b83321a6369952628e"
+    },
+    {
+      "metadata": {
+        "coord": "FBC",
+        "ramal": "LC1",
+        "asset": "MF-LC1-FBC_FBC-L000006",
+        "parent": "MF-LC1-FBC_FBC",
+        "line": "L6",
+        "name": "L06 BARBACENA"
+      },
+      "source_points": 87,
+      "source_points_sha256": "5af7fb4d4350f565f02077d73a83b444d8c33588d4e5de38210587c33ecf528e",
+      "app_points": 87,
+      "app_points_sha256": "5af7fb4d4350f565f02077d73a83b444d8c33588d4e5de38210587c33ecf528e"
+    },
+    {
+      "metadata": {
+        "coord": "FBC",
+        "ramal": "LC1",
+        "asset": "MF-LC1-FBC_FBC-L000DM3",
+        "parent": "MF-LC1-FBC_FBC",
+        "line": "DM3",
+        "name": "LDM3 BARBACENA"
+      },
+      "source_points": 16,
+      "source_points_sha256": "8af9b66bf97c05e8f77f3f2f3b7a3937eb06add71cc382b57fe79bc13500ea8a",
+      "app_points": 16,
+      "app_points_sha256": "8af9b66bf97c05e8f77f3f2f3b7a3937eb06add71cc382b57fe79bc13500ea8a"
+    },
+    {
+      "metadata": {
+        "coord": "FBC",
+        "ramal": "LC1",
+        "asset": "MF-LC1-FBC_FBC-L0DM04A",
+        "parent": "MF-LC1-FBC_FBC",
+        "line": "DM4A",
+        "name": "LDM04A BARBACENA"
+      },
+      "source_points": 128,
+      "source_points_sha256": "a6e85ee99ca5dbd485ecc189d345e5cc600e9fdcfb82787e952a03b7c35ed163",
+      "app_points": 128,
+      "app_points_sha256": "a6e85ee99ca5dbd485ecc189d345e5cc600e9fdcfb82787e952a03b7c35ed163"
+    },
+    {
+      "metadata": {
+        "coord": "FBC",
+        "ramal": "LC1",
+        "asset": "MF-LC1-FBC_FDB-L000001",
+        "parent": "MF-LC1-FBC_FDB",
+        "line": "L1",
+        "name": "L01 BARBACENA-DORIV. BRITO"
+      },
+      "source_points": 919,
+      "source_points_sha256": "d88f2232b5a2030b68748ae6f8004e081cedd78da61d195165b555ffbd4460cb",
+      "app_points": 919,
+      "app_points_sha256": "d88f2232b5a2030b68748ae6f8004e081cedd78da61d195165b555ffbd4460cb"
+    },
+    {
+      "metadata": {
+        "coord": "FBC",
+        "ramal": "LC1",
+        "asset": "MF-LC1-FCH_FCH-L000001",
+        "parent": "MF-LC1-FCH_FCH",
+        "line": "L1",
+        "name": "L01 CACHOEIRA"
+      },
+      "source_points": 415,
+      "source_points_sha256": "78f5ea442e09832c646e9f4b5674f5a24dd1444d4da49224ff141068f815b89e",
+      "app_points": 415,
+      "app_points_sha256": "78f5ea442e09832c646e9f4b5674f5a24dd1444d4da49224ff141068f815b89e"
+    },
+    {
+      "metadata": {
+        "coord": "FBC",
+        "ramal": "LC1",
+        "asset": "MF-LC1-FCH_FCH-L000002",
+        "parent": "MF-LC1-FCH_FCH",
+        "line": "L2",
+        "name": "L02 CACHOEIRA"
+      },
+      "source_points": 415,
+      "source_points_sha256": "379fe75571ec41019dac74a6f20cc3125942f226acad70ad761973b91f230344",
+      "app_points": 415,
+      "app_points_sha256": "379fe75571ec41019dac74a6f20cc3125942f226acad70ad761973b91f230344"
+    },
+    {
+      "metadata": {
+        "coord": "FBC",
+        "ramal": "LC1",
+        "asset": "MF-LC1-FCH_FEV-L000001",
+        "parent": "MF-LC1-FCH_FEV",
+        "line": "L1",
+        "name": "L01 CACHOEIRA-ENG. DRUMONT"
+      },
+      "source_points": 1259,
+      "source_points_sha256": "5b4ee1de76b3b2b10ca82fa9d407aa5e9c10e1a2c680e85e8da0433c8c37e675",
+      "app_points": 1259,
+      "app_points_sha256": "5b4ee1de76b3b2b10ca82fa9d407aa5e9c10e1a2c680e85e8da0433c8c37e675"
+    },
+    {
+      "metadata": {
+        "coord": "FBC",
+        "ramal": "LC1",
+        "asset": "MF-LC1-FCN_FCN-L000001",
+        "parent": "MF-LC1-FCN_FCN",
+        "line": "L1",
+        "name": "L01 COND. CASTRO"
+      },
+      "source_points": 545,
+      "source_points_sha256": "f523116e07d6b059771657db48e7bd80815ee80739f0055f991ee94caa3120fa",
+      "app_points": 545,
+      "app_points_sha256": "f523116e07d6b059771657db48e7bd80815ee80739f0055f991ee94caa3120fa"
+    },
+    {
+      "metadata": {
+        "coord": "FBC",
+        "ramal": "LC1",
+        "asset": "MF-LC1-FCN_FCN-L000003",
+        "parent": "MF-LC1-FCN_FCN",
+        "line": "L3",
+        "name": "L03 COND. CASTRO"
+      },
+      "source_points": 544,
+      "source_points_sha256": "a4da6ec3c58862d68f73b49f63f231bcb742f6d9ceb9fe23d4fc6475411d236d",
+      "app_points": 544,
+      "app_points_sha256": "a4da6ec3c58862d68f73b49f63f231bcb742f6d9ceb9fe23d4fc6475411d236d"
+    },
+    {
+      "metadata": {
+        "coord": "FBC",
+        "ramal": "LC1",
+        "asset": "MF-LC1-FCN_FIL-L000001",
+        "parent": "MF-LC1-FCN_FIL",
+        "line": "L1",
+        "name": "L01 COND. CASTRO-ILÍDIO"
+      },
+      "source_points": 1566,
+      "source_points_sha256": "67e8a7dcd41e89b136dd4fdcff40d3a0bb461dfae6224404cf3a27541b385696",
+      "app_points": 1566,
+      "app_points_sha256": "67e8a7dcd41e89b136dd4fdcff40d3a0bb461dfae6224404cf3a27541b385696"
+    },
+    {
+      "metadata": {
+        "coord": "FBC",
+        "ramal": "LC1",
+        "asset": "MF-LC1-FCY_FCY-L000001",
+        "parent": "MF-LC1-FCY_FCY",
+        "line": "L1",
+        "name": "L01 CARANDAÍ"
+      },
+      "source_points": 491,
+      "source_points_sha256": "aea8d4baf1b784c650f6218da752cc281690aacca7265012a7e026ef7f968db8",
+      "app_points": 491,
+      "app_points_sha256": "aea8d4baf1b784c650f6218da752cc281690aacca7265012a7e026ef7f968db8"
+    },
+    {
+      "metadata": {
+        "coord": "FBC",
+        "ramal": "LC1",
+        "asset": "MF-LC1-FCY_FCY-L000002",
+        "parent": "MF-LC1-FCY_FCY",
+        "line": "L2",
+        "name": "L02 CARANDAÍ"
+      },
+      "source_points": 494,
+      "source_points_sha256": "6df615d8f62d502ac0619123169ce10c9583648b0a5127d8872b76c72699fecc",
+      "app_points": 494,
+      "app_points_sha256": "6df615d8f62d502ac0619123169ce10c9583648b0a5127d8872b76c72699fecc"
+    },
+    {
+      "metadata": {
+        "coord": "FBC",
+        "ramal": "LC1",
+        "asset": "MF-LC1-FCY_FCY-L000004",
+        "parent": "MF-LC1-FCY_FCY",
+        "line": "L4",
+        "name": "L04 CARANDAÍ"
+      },
+      "source_points": 155,
+      "source_points_sha256": "ed9a2cb99e69ed763886d965f8e0c5e955a51afd33f902ab14ade08b7e2c2c0a",
+      "app_points": 155,
+      "app_points_sha256": "ed9a2cb99e69ed763886d965f8e0c5e955a51afd33f902ab14ade08b7e2c2c0a"
+    },
+    {
+      "metadata": {
+        "coord": "FBC",
+        "ramal": "LC1",
+        "asset": "MF-LC1-FCY_FPE-L000001",
+        "parent": "MF-LC1-FCY_FPE",
+        "line": "L1",
+        "name": "L01 CARANDAÍ-PED. DO SINO"
+      },
+      "source_points": 1527,
+      "source_points_sha256": "f46ea552a8f1667e9def98742e3a7430b901caed7b1f038c87c0dec9d7e0e17f",
+      "app_points": 1527,
+      "app_points_sha256": "f46ea552a8f1667e9def98742e3a7430b901caed7b1f038c87c0dec9d7e0e17f"
+    },
+    {
+      "metadata": {
+        "coord": "FBC",
+        "ramal": "LC1",
+        "asset": "MF-LC1-FDB_FCH-L000001",
+        "parent": "MF-LC1-FDB_FCH",
+        "line": "L1",
+        "name": "L01 DORIV. BRITO-CACHOEIRA"
+      },
+      "source_points": 901,
+      "source_points_sha256": "c1ad9759f97d3315c793a13238f4848154f5e8aa5968a11535279f317b739257",
+      "app_points": 901,
+      "app_points_sha256": "c1ad9759f97d3315c793a13238f4848154f5e8aa5968a11535279f317b739257"
+    },
+    {
+      "metadata": {
+        "coord": "FBC",
+        "ramal": "LC1",
+        "asset": "MF-LC1-FDB_FDB-L000001",
+        "parent": "MF-LC1-FDB_FDB",
+        "line": "L1",
+        "name": "L01 DORIV. BRITO"
+      },
+      "source_points": 418,
+      "source_points_sha256": "66c08136159572d657aaca5c5bc7094b936215482ee604770ad5002d14b0afde",
+      "app_points": 418,
+      "app_points_sha256": "66c08136159572d657aaca5c5bc7094b936215482ee604770ad5002d14b0afde"
+    },
+    {
+      "metadata": {
+        "coord": "FBC",
+        "ramal": "LC1",
+        "asset": "MF-LC1-FDB_FDB-L000002",
+        "parent": "MF-LC1-FDB_FDB",
+        "line": "L2",
+        "name": "L02 DORIV. BRITO"
+      },
+      "source_points": 417,
+      "source_points_sha256": "e092dfcfe08fdd433166644d18e7ef4a13e7783197e8986f2217012f379a89d2",
+      "app_points": 417,
+      "app_points_sha256": "e092dfcfe08fdd433166644d18e7ef4a13e7783197e8986f2217012f379a89d2"
+    },
+    {
+      "metadata": {
+        "coord": "FBC",
+        "ramal": "LC1",
+        "asset": "MF-LC1-FET_FCN-L000001",
+        "parent": "MF-LC1-FET_FCN",
+        "line": "L1",
+        "name": "L01 SIMÃO TAMM-COND. CASTRO"
+      },
+      "source_points": 700,
+      "source_points_sha256": "bc521fb1aa48c26bc6ae31d196658a1d5339d1fd394142f7a898e82a27f446dc",
+      "app_points": 700,
+      "app_points_sha256": "bc521fb1aa48c26bc6ae31d196658a1d5339d1fd394142f7a898e82a27f446dc"
+    },
+    {
+      "metadata": {
+        "coord": "FBC",
+        "ramal": "LC1",
+        "asset": "MF-LC1-FET_FET-L000001",
+        "parent": "MF-LC1-FET_FET",
+        "line": "L1",
+        "name": "L01 SIMÃO TAMM"
+      },
+      "source_points": 344,
+      "source_points_sha256": "e5a8d6d2bff27a5bf6258f9fb617824199c9977827de79b7611dc4a1b42ea90b",
+      "app_points": 344,
+      "app_points_sha256": "e5a8d6d2bff27a5bf6258f9fb617824199c9977827de79b7611dc4a1b42ea90b"
+    },
+    {
+      "metadata": {
+        "coord": "FBC",
+        "ramal": "LC1",
+        "asset": "MF-LC1-FET_FET-L000002",
+        "parent": "MF-LC1-FET_FET",
+        "line": "L2",
+        "name": "L02 SIMÃO TAMM"
+      },
+      "source_points": 345,
+      "source_points_sha256": "992287579e48ed573539fc8ea1137662954a7534897d657ad7e8436448a34be8",
+      "app_points": 345,
+      "app_points_sha256": "992287579e48ed573539fc8ea1137662954a7534897d657ad7e8436448a34be8"
+    },
+    {
+      "metadata": {
+        "coord": "FBC",
+        "ramal": "LC1",
+        "asset": "MF-LC1-FEV_FET-L000001",
+        "parent": "MF-LC1-FEV_FET",
+        "line": "L1",
+        "name": "L01 ENG. DRUMONT-SIMÃO TAMM"
+      },
+      "source_points": 1753,
+      "source_points_sha256": "df19b1017acffc1e0d6be755217c01fc13e0f6765df3e5a57c415d5ac8f0d800",
+      "app_points": 1753,
+      "app_points_sha256": "df19b1017acffc1e0d6be755217c01fc13e0f6765df3e5a57c415d5ac8f0d800"
+    },
+    {
+      "metadata": {
+        "coord": "FBC",
+        "ramal": "LC1",
+        "asset": "MF-LC1-FEV_FEV-L000001",
+        "parent": "MF-LC1-FEV_FEV",
+        "line": "L1",
+        "name": "L01 ENG. DRUMONT"
+      },
+      "source_points": 363,
+      "source_points_sha256": "6bb4c537396ba3e4b1ebd5b2a2ae3acdb0cadeef6cdaf7ca3bda02d1a596aa25",
+      "app_points": 363,
+      "app_points_sha256": "6bb4c537396ba3e4b1ebd5b2a2ae3acdb0cadeef6cdaf7ca3bda02d1a596aa25"
+    },
+    {
+      "metadata": {
+        "coord": "FBC",
+        "ramal": "LC1",
+        "asset": "MF-LC1-FEV_FEV-L000002",
+        "parent": "MF-LC1-FEV_FEV",
+        "line": "L2",
+        "name": "L02 ENG. DRUMONT"
+      },
+      "source_points": 363,
+      "source_points_sha256": "f87002cab4ba172964f59a1a883857d662cc5adfa790a9a07933038cc4a81350",
+      "app_points": 363,
+      "app_points_sha256": "f87002cab4ba172964f59a1a883857d662cc5adfa790a9a07933038cc4a81350"
+    },
+    {
+      "metadata": {
+        "coord": "FBC",
+        "ramal": "LC1",
+        "asset": "MF-LC1-FIL_FCY-L000001",
+        "parent": "MF-LC1-FIL_FCY",
+        "line": "L1",
+        "name": "L01 ILÍDIO-CARANDAÍ"
+      },
+      "source_points": 848,
+      "source_points_sha256": "6c9ca970de05c0be42cdff766384bcd585cb6f0a820848961649a2e8c78c8696",
+      "app_points": 848,
+      "app_points_sha256": "6c9ca970de05c0be42cdff766384bcd585cb6f0a820848961649a2e8c78c8696"
+    },
+    {
+      "metadata": {
+        "coord": "FBC",
+        "ramal": "LC1",
+        "asset": "MF-LC1-FIL_FIL-L000001",
+        "parent": "MF-LC1-FIL_FIL",
+        "line": "L1",
+        "name": "L01 ILÍDIO"
+      },
+      "source_points": 427,
+      "source_points_sha256": "154e36b91021b661569589608035958868735852daab426918cc54a18d8af297",
+      "app_points": 427,
+      "app_points_sha256": "154e36b91021b661569589608035958868735852daab426918cc54a18d8af297"
+    },
+    {
+      "metadata": {
+        "coord": "FBC",
+        "ramal": "LC1",
+        "asset": "MF-LC1-FIL_FIL-L000003",
+        "parent": "MF-LC1-FIL_FIL",
+        "line": "L3",
+        "name": "L03 ILÍDIO"
+      },
+      "source_points": 425,
+      "source_points_sha256": "3bc8a7f581ce34aeb9efe18892556f597b55fa05f17a55d65909f802d5ea4b00",
+      "app_points": 425,
+      "app_points_sha256": "3bc8a7f581ce34aeb9efe18892556f597b55fa05f17a55d65909f802d5ea4b00"
+    },
+    {
+      "metadata": {
+        "coord": "FBC",
+        "ramal": "LC1",
+        "asset": "MF-LC1-FJA_FJA-L000001",
+        "parent": "MF-LC1-FJA_FJA",
+        "line": "L1",
+        "name": "L01 JOÃO AIRES"
+      },
+      "source_points": 345,
+      "source_points_sha256": "c01b8e1eb5806b2e2573e67b04e7cd1baeedd580eb8b3502f312ae251483ec15",
+      "app_points": 345,
+      "app_points_sha256": "c01b8e1eb5806b2e2573e67b04e7cd1baeedd580eb8b3502f312ae251483ec15"
+    },
+    {
+      "metadata": {
+        "coord": "FBC",
+        "ramal": "LC1",
+        "asset": "MF-LC1-FJA_FJA-L000003",
+        "parent": "MF-LC1-FJA_FJA",
+        "line": "L3",
+        "name": "L03 JOÃO AIRES"
+      },
+      "source_points": 345,
+      "source_points_sha256": "aba5c71bcbd2097895479705803e90db3c81dadbf2a055e87a766ac04ed81fff",
+      "app_points": 345,
+      "app_points_sha256": "aba5c71bcbd2097895479705803e90db3c81dadbf2a055e87a766ac04ed81fff"
+    },
+    {
+      "metadata": {
+        "coord": "FBC",
+        "ramal": "LC1",
+        "asset": "MF-LC1-FJA_FLJ-L000001",
+        "parent": "MF-LC1-FJA_FLJ",
+        "line": "L1",
+        "name": "L01 JOÃO AIRES-COR. ARAÚJO"
+      },
+      "source_points": 574,
+      "source_points_sha256": "e368729608a11d82a14b3e03afe0c675e6d5c3a29afb842013b8f4ead514eafa",
+      "app_points": 574,
+      "app_points_sha256": "e368729608a11d82a14b3e03afe0c675e6d5c3a29afb842013b8f4ead514eafa"
+    },
+    {
+      "metadata": {
+        "coord": "FBC",
+        "ramal": "LC1",
+        "asset": "MF-LC1-FLJ_FAS-L000001",
+        "parent": "MF-LC1-FLJ_FAS",
+        "line": "L1",
+        "name": "L01 COR. ARAÚJO-ANTÔ. CARLOS"
+      },
+      "source_points": 1048,
+      "source_points_sha256": "510bb210006bbd83338f96beb0019234ed6369d8c2d6934462ade55c8b87e1e6",
+      "app_points": 1048,
+      "app_points_sha256": "510bb210006bbd83338f96beb0019234ed6369d8c2d6934462ade55c8b87e1e6"
+    },
+    {
+      "metadata": {
+        "coord": "FBC",
+        "ramal": "LC1",
+        "asset": "MF-LC1-FLJ_FLJ-L000001",
+        "parent": "MF-LC1-FLJ_FLJ",
+        "line": "L1",
+        "name": "L01 COR. ARAÚJO"
+      },
+      "source_points": 323,
+      "source_points_sha256": "2787f314079e798b92dd57026f9cb1e5d9202c8eaa4669458dc10889c365c124",
+      "app_points": 323,
+      "app_points_sha256": "2787f314079e798b92dd57026f9cb1e5d9202c8eaa4669458dc10889c365c124"
+    },
+    {
+      "metadata": {
+        "coord": "FBC",
+        "ramal": "LC1",
+        "asset": "MF-LC1-FLJ_FLJ-L000003",
+        "parent": "MF-LC1-FLJ_FLJ",
+        "line": "L3",
+        "name": "L03 COR. ARAÚJO"
+      },
+      "source_points": 323,
+      "source_points_sha256": "f4d93fa6cc5752ef1f086bfaff64c911a00a0e29c08f461c5eab48a8283556f5",
+      "app_points": 323,
+      "app_points_sha256": "f4d93fa6cc5752ef1f086bfaff64c911a00a0e29c08f461c5eab48a8283556f5"
+    },
+    {
+      "metadata": {
+        "coord": "FBC",
+        "ramal": "LC1",
+        "asset": "MF-LC1-FMQ_FMQ-L000001",
+        "parent": "MF-LC1-FMQ_FMQ",
+        "line": "L1",
+        "name": "L01 MANTIQUEIRA"
+      },
+      "source_points": 613,
+      "source_points_sha256": "e96f6f7f26f069dfe5f371f0e31b49a1cebdd4d8f0f9d7b8061440a46e18a5e8",
+      "app_points": 613,
+      "app_points_sha256": "e96f6f7f26f069dfe5f371f0e31b49a1cebdd4d8f0f9d7b8061440a46e18a5e8"
+    },
+    {
+      "metadata": {
+        "coord": "FBC",
+        "ramal": "LC1",
+        "asset": "MF-LC1-FMQ_FMQ-L000003",
+        "parent": "MF-LC1-FMQ_FMQ",
+        "line": "L3",
+        "name": "L03 MANTIQUEIRA"
+      },
+      "source_points": 610,
+      "source_points_sha256": "3924a487aca760299f6c13d5353ab04bcad284c44a5382cb11ec17205f8dd220",
+      "app_points": 610,
+      "app_points_sha256": "3924a487aca760299f6c13d5353ab04bcad284c44a5382cb11ec17205f8dd220"
+    },
+    {
+      "metadata": {
+        "coord": "FBC",
+        "ramal": "LC1",
+        "asset": "MF-LC1-FMQ_FRD-L000001",
+        "parent": "MF-LC1-FMQ_FRD",
+        "line": "L1",
+        "name": "L01 MANTIQUEIRA-ROCHA DIAS"
+      },
+      "source_points": 1192,
+      "source_points_sha256": "88c9cad0f88dbe755106324628e13b8b2f09c127cf1148a0ede89b80d4bed21f",
+      "app_points": 1192,
+      "app_points_sha256": "88c9cad0f88dbe755106324628e13b8b2f09c127cf1148a0ede89b80d4bed21f"
+    },
+    {
+      "metadata": {
+        "coord": "FBC",
+        "ramal": "LC1",
+        "asset": "MF-LC1-FPE_FPE-L000001",
+        "parent": "MF-LC1-FPE_FPE",
+        "line": "L1",
+        "name": "L01 PED. DO SINO"
+      },
+      "source_points": 462,
+      "source_points_sha256": "bdf33198d12175e51898d2b0e01efe2624cacfe85b67a249d0010f4f92767719",
+      "app_points": 462,
+      "app_points_sha256": "bdf33198d12175e51898d2b0e01efe2624cacfe85b67a249d0010f4f92767719"
+    },
+    {
+      "metadata": {
+        "coord": "FBC",
+        "ramal": "LC1",
+        "asset": "MF-LC1-FPE_FPE-L000002",
+        "parent": "MF-LC1-FPE_FPE",
+        "line": "L2",
+        "name": "L02 PED. DO SINO"
+      },
+      "source_points": 456,
+      "source_points_sha256": "ab6cae3d702393e0233e2278bf45d1f08d5a5a77905defb27d940c58924aacfb",
+      "app_points": 456,
+      "app_points_sha256": "ab6cae3d702393e0233e2278bf45d1f08d5a5a77905defb27d940c58924aacfb"
+    },
+    {
+      "metadata": {
+        "coord": "FBC",
+        "ramal": "LC1",
+        "asset": "MF-LC1-FPE_FPE-L000004",
+        "parent": "MF-LC1-FPE_FPE",
+        "line": "L4",
+        "name": "L04 PED. DO SINO"
+      },
+      "source_points": 314,
+      "source_points_sha256": "92ba7108de5d7b6abcf30c1c238eab4baa17f0cfcca98346cd2ddc07cb743f0d",
+      "app_points": 314,
+      "app_points_sha256": "92ba7108de5d7b6abcf30c1c238eab4baa17f0cfcca98346cd2ddc07cb743f0d"
+    },
+    {
+      "metadata": {
+        "coord": "FBC",
+        "ramal": "LC1",
+        "asset": "MF-LC1-FPE_FPE-L000006",
+        "parent": "MF-LC1-FPE_FPE",
+        "line": "L6",
+        "name": "L06 PED. DO SINO"
+      },
+      "source_points": 18,
+      "source_points_sha256": "a5c03f3a09ac7727598e194fd1dc1c804001c2c40d1cb4310c5ea42ae52841a3",
+      "app_points": 18,
+      "app_points_sha256": "a5c03f3a09ac7727598e194fd1dc1c804001c2c40d1cb4310c5ea42ae52841a3"
+    },
+    {
+      "metadata": {
+        "coord": "FBC",
+        "ramal": "LC1",
+        "asset": "MF-LC1-FPE_FPE-L000DM6",
+        "parent": "MF-LC1-FPE_FPE",
+        "line": "DM6",
+        "name": "LDM6 PED. DO SINO"
+      },
+      "source_points": 119,
+      "source_points_sha256": "c02e62ab44c7f1a0a7d895a93de9591c6938bdf685cbc7735c54fd771f9ddd7d",
+      "app_points": 119,
+      "app_points_sha256": "c02e62ab44c7f1a0a7d895a93de9591c6938bdf685cbc7735c54fd771f9ddd7d"
+    },
+    {
+      "metadata": {
+        "coord": "FBC",
+        "ramal": "LC1",
+        "asset": "MF-LC1-FRD_FJA-L000001",
+        "parent": "MF-LC1-FRD_FJA",
+        "line": "L1",
+        "name": "L01 ROCHA DIAS-JOÃO AIRES"
+      },
+      "source_points": 1179,
+      "source_points_sha256": "b3071991520a926138fd9966ff0ccabb8c3dbaff71df2775be514732e6a34f90",
+      "app_points": 1179,
+      "app_points_sha256": "b3071991520a926138fd9966ff0ccabb8c3dbaff71df2775be514732e6a34f90"
+    },
+    {
+      "metadata": {
+        "coord": "FBC",
+        "ramal": "LC1",
+        "asset": "MF-LC1-FRD_FRD-L000001",
+        "parent": "MF-LC1-FRD_FRD",
+        "line": "L1",
+        "name": "L01 ROCHA DIAS"
+      },
+      "source_points": 433,
+      "source_points_sha256": "568d3b055a82d549d4301244b4af4e2d406be7d9162ed4ca8f6352c5e8e395a4",
+      "app_points": 433,
+      "app_points_sha256": "568d3b055a82d549d4301244b4af4e2d406be7d9162ed4ca8f6352c5e8e395a4"
+    },
+    {
+      "metadata": {
+        "coord": "FBC",
+        "ramal": "LC1",
+        "asset": "MF-LC1-FRD_FRD-L000002",
+        "parent": "MF-LC1-FRD_FRD",
+        "line": "L2",
+        "name": "L02 ROCHA DIAS"
+      },
+      "source_points": 431,
+      "source_points_sha256": "d15d758e5224c51a16ce69a9a63974b11523e3ea585e237e5d2cfcc44569de65",
+      "app_points": 431,
+      "app_points_sha256": "d15d758e5224c51a16ce69a9a63974b11523e3ea585e237e5d2cfcc44569de65"
+    },
+    {
+      "metadata": {
+        "coord": "FBC",
+        "ramal": "LC1",
+        "asset": "MF-LC1-FRV_FMQ-L000001",
+        "parent": "MF-LC1-FRV_FMQ",
+        "line": "L1",
+        "name": "L01 RECENVINDO-MANTIQUEIRA"
+      },
+      "source_points": 686,
+      "source_points_sha256": "d08a6762bdee2f68bcdaf9e4d51bacb68e2b4ffc0f7e570196d351ef5d54ceca",
+      "app_points": 686,
+      "app_points_sha256": "d08a6762bdee2f68bcdaf9e4d51bacb68e2b4ffc0f7e570196d351ef5d54ceca"
+    },
+    {
+      "metadata": {
+        "coord": "FBC",
+        "ramal": "LC1",
+        "asset": "MF-LC1-FRV_FRV-L000001",
+        "parent": "MF-LC1-FRV_FRV",
+        "line": "L1",
+        "name": "L01 RECENVINDO"
+      },
+      "source_points": 445,
+      "source_points_sha256": "58c25acc4add659e8efd66878781da98dc2dc8ca9d78d6cb71049342049f7b43",
+      "app_points": 445,
+      "app_points_sha256": "58c25acc4add659e8efd66878781da98dc2dc8ca9d78d6cb71049342049f7b43"
+    },
+    {
+      "metadata": {
+        "coord": "FBC",
+        "ramal": "LC1",
+        "asset": "MF-LC1-FRV_FRV-L000003",
+        "parent": "MF-LC1-FRV_FRV",
+        "line": "L3",
+        "name": "L03 RECENVINDO"
+      },
+      "source_points": 445,
+      "source_points_sha256": "b981858878400ae4126ac866adbeb4925ff8983ee1d02373abe991b870048235",
+      "app_points": 445,
+      "app_points_sha256": "b981858878400ae4126ac866adbeb4925ff8983ee1d02373abe991b870048235"
+    },
+    {
+      "metadata": {
+        "coord": "FBC",
+        "ramal": "LC1",
+        "asset": "MF-LC1-FSD_FRV-L000001",
+        "parent": "MF-LC1-FSD_FRV",
+        "line": "L1",
+        "name": "L01 SANT. DUMONT-RECENVINDO"
+      },
+      "source_points": 697,
+      "source_points_sha256": "ab2fbdb385bb790d2d972c91afea19dea05c94de9749f42caf07d5aa3daea8fa",
+      "app_points": 697,
+      "app_points_sha256": "ab2fbdb385bb790d2d972c91afea19dea05c94de9749f42caf07d5aa3daea8fa"
+    },
+    {
+      "metadata": {
+        "coord": "FBC",
+        "ramal": "LC1",
+        "asset": "MF-LC1-FSD_FSD-L000001",
+        "parent": "MF-LC1-FSD_FSD",
+        "line": "L1",
+        "name": "L01 SANT. DUMONT"
+      },
+      "source_points": 450,
+      "source_points_sha256": "df223421caba2ecec5d7dc1db9ec30c59dcfc672fb299bdff070e4857fac282e",
+      "app_points": 450,
+      "app_points_sha256": "df223421caba2ecec5d7dc1db9ec30c59dcfc672fb299bdff070e4857fac282e"
+    },
+    {
+      "metadata": {
+        "coord": "FBC",
+        "ramal": "LC1",
+        "asset": "MF-LC1-FSD_FSD-L000002",
+        "parent": "MF-LC1-FSD_FSD",
+        "line": "L2",
+        "name": "L02 SANT. DUMONT"
+      },
+      "source_points": 344,
+      "source_points_sha256": "15fcc2f78f90325c0e8ccbed429d619518d950b74ac1fcfcf2ec72c7dc354196",
+      "app_points": 344,
+      "app_points_sha256": "15fcc2f78f90325c0e8ccbed429d619518d950b74ac1fcfcf2ec72c7dc354196"
+    },
+    {
+      "metadata": {
+        "coord": "FBC",
+        "ramal": "LC1",
+        "asset": "MF-LC1-FSD_FSD-L000003",
+        "parent": "MF-LC1-FSD_FSD",
+        "line": "L3",
+        "name": "L03 SANT. DUMONT"
+      },
+      "source_points": 423,
+      "source_points_sha256": "650f60787ba4cc531f3fc3440f0ef4856b8f7d5c391dfb5fefeb4b79b0697911",
+      "app_points": 423,
+      "app_points_sha256": "650f60787ba4cc531f3fc3440f0ef4856b8f7d5c391dfb5fefeb4b79b0697911"
+    },
+    {
+      "metadata": {
+        "coord": "FBC",
+        "ramal": "LC1",
+        "asset": "MF-LC1-FSD_FSD-L00DM04",
+        "parent": "MF-LC1-FSD_FSD",
+        "line": "DM4",
+        "name": "LDM04 SANT. DUMONT"
+      },
+      "source_points": 21,
+      "source_points_sha256": "8b3b064a0865d06323df1db76d34e06e0efd23e4f6bff72657ad8bfe01c9c0ee",
+      "app_points": 21,
+      "app_points_sha256": "8b3b064a0865d06323df1db76d34e06e0efd23e4f6bff72657ad8bfe01c9c0ee"
+    },
+    {
+      "metadata": {
+        "coord": "FBC",
+        "ramal": "LC1",
+        "asset": "MF-LC1-FSD_FSD-L00DM05",
+        "parent": "MF-LC1-FSD_FSD",
+        "line": "DM05",
+        "name": "LDM05 SANT. DUMONT"
+      },
+      "source_points": 36,
+      "source_points_sha256": "9ac5992b42edd237d786a45990ecbf33b4b46daafbede11853189f0e0c3daf8b",
+      "app_points": 36,
+      "app_points_sha256": "9ac5992b42edd237d786a45990ecbf33b4b46daafbede11853189f0e0c3daf8b"
+    },
+    {
+      "metadata": {
+        "coord": "FBC",
+        "ramal": "LC1",
+        "asset": "MF-LC1-FSD_FSD-L00DM05",
+        "parent": "MF-LC1-FSD_FSD",
+        "line": "DM5L",
+        "name": "LDM05 SANT. DUMONT"
+      },
+      "source_points": 17,
+      "source_points_sha256": "0e9ea185425d4864c46964795dd0dcc24f7e057354ef4c741dc087ceb898fe93",
+      "app_points": 17,
+      "app_points_sha256": "0e9ea185425d4864c46964795dd0dcc24f7e057354ef4c741dc087ceb898fe93"
+    },
+    {
+      "metadata": {
+        "coord": "FBC",
+        "ramal": "LC1",
+        "asset": "MF-LC1-FSD_FSD-L00DM07",
+        "parent": "MF-LC1-FSD_FSD",
+        "line": "DM7",
+        "name": "LDM07 SANT. DUMONT"
+      },
+      "source_points": 26,
+      "source_points_sha256": "c1d95f25b5af0c9780e10bd081cb59e04105e131edbb01c935bed8e42b321b68",
+      "app_points": 26,
+      "app_points_sha256": "c1d95f25b5af0c9780e10bd081cb59e04105e131edbb01c935bed8e42b321b68"
+    },
+    {
+      "metadata": {
+        "coord": "FBC",
+        "ramal": "LC1",
+        "asset": "MF-LC1-FSD_FSD-LFRESA",
+        "parent": "MF-LC1-FSD_FSD",
+        "line": "FRESA",
+        "name": "LFRESA SANT. DUMONT"
+      },
+      "source_points": 60,
+      "source_points_sha256": "a1c74f1d2e924f1987c07b0f9c5d8ff4e8f8f860d83ae6cfbc1a4cdd72e7e004",
+      "app_points": 60,
+      "app_points_sha256": "a1c74f1d2e924f1987c07b0f9c5d8ff4e8f8f860d83ae6cfbc1a4cdd72e7e004"
+    },
+    {
+      "metadata": {
+        "coord": "FBC",
+        "ramal": "LC1",
+        "asset": "MF-LC1-FSD_FSD-TRAVESS",
+        "parent": "MF-LC1-FSD_FSD",
+        "line": "TRAVE",
+        "name": "TRAVESSÃO SANT. DUMONT"
+      },
+      "source_points": 36,
+      "source_points_sha256": "7ec9fb233e3b24d79fc1e7a40451448853d796da2b654a2851f6c75bb6cec63a",
+      "app_points": 36,
+      "app_points_sha256": "7ec9fb233e3b24d79fc1e7a40451448853d796da2b654a2851f6c75bb6cec63a"
+    },
+    {
+      "metadata": {
+        "coord": "FBC",
+        "ramal": "LC1",
+        "asset": "MF-LC1-FSF_FBC-L000001",
+        "parent": "MF-LC1-FSF_FBC",
+        "line": "L1",
+        "name": "L01 SÁ FORTES-BARBACENA"
+      },
+      "source_points": 840,
+      "source_points_sha256": "992b8902336959e9204e0e2e0625a031d2528f1fb48af3325bd3bf21888e6af9",
+      "app_points": 840,
+      "app_points_sha256": "992b8902336959e9204e0e2e0625a031d2528f1fb48af3325bd3bf21888e6af9"
+    },
+    {
+      "metadata": {
+        "coord": "FBC",
+        "ramal": "LC1",
+        "asset": "MF-LC1-FSF_FSF-L000001",
+        "parent": "MF-LC1-FSF_FSF",
+        "line": "L1",
+        "name": "L01 SÁ FORTES"
+      },
+      "source_points": 344,
+      "source_points_sha256": "c44b85d1177b29f128d78147a46cc47058bd1e9df45cd29d10815e08005b3bf7",
+      "app_points": 344,
+      "app_points_sha256": "c44b85d1177b29f128d78147a46cc47058bd1e9df45cd29d10815e08005b3bf7"
+    },
+    {
+      "metadata": {
+        "coord": "FBC",
+        "ramal": "LC1",
+        "asset": "MF-LC1-FSF_FSF-L000002",
+        "parent": "MF-LC1-FSF_FSF",
+        "line": "L2",
+        "name": "L02 SÁ FORTES"
+      },
+      "source_points": 342,
+      "source_points_sha256": "a6febd5356561896a9fb728354ec8e93c6a8354c89b2815684f6ff77db2f7d0a",
+      "app_points": 342,
+      "app_points_sha256": "a6febd5356561896a9fb728354ec8e93c6a8354c89b2815684f6ff77db2f7d0a"
+    },
+    {
+      "metadata": {
+        "coord": "FBC",
+        "ramal": "RCB",
+        "asset": "MF-RCB-FBC_FAB-L000001",
+        "parent": "MF-RCB-FBC_FAB",
+        "line": "L1",
+        "name": "L01 BARBACENA-BIAS FORTES"
+      },
+      "source_points": 97,
+      "source_points_sha256": "dcb975dc3492e42c9cbbf7ecca28ec844191f7330d09fd9b32abcdeaa10e76cc",
+      "app_points": 97,
+      "app_points_sha256": "dcb975dc3492e42c9cbbf7ecca28ec844191f7330d09fd9b32abcdeaa10e76cc"
+    },
+    {
+      "metadata": {
+        "coord": "FBJ",
+        "ramal": "LC1",
+        "asset": "MF-LC1-FAI_FAI-L000001",
+        "parent": "MF-LC1-FAI_FAI",
+        "line": "L1",
+        "name": "L01 ALIANÇA"
+      },
+      "source_points": 447,
+      "source_points_sha256": "295956b6c6eee45ec4441b7c632d96b545d09bee06d1806b93814d4abeddf73c",
+      "app_points": 447,
+      "app_points_sha256": "295956b6c6eee45ec4441b7c632d96b545d09bee06d1806b93814d4abeddf73c"
+    },
+    {
+      "metadata": {
+        "coord": "FBJ",
+        "ramal": "LC1",
+        "asset": "MF-LC1-FAI_FAI-L000003",
+        "parent": "MF-LC1-FAI_FAI",
+        "line": "L3",
+        "name": "L03 ALIANÇA"
+      },
+      "source_points": 446,
+      "source_points_sha256": "4183fbb10be0d28ca50f51668b4b5e80a5e5d769a96161b92534d13c6b9c1bc0",
+      "app_points": 446,
+      "app_points_sha256": "4183fbb10be0d28ca50f51668b4b5e80a5e5d769a96161b92534d13c6b9c1bc0"
+    },
+    {
+      "metadata": {
+        "coord": "FBJ",
+        "ramal": "LC1",
+        "asset": "MF-LC1-FAI_FAI-L000005",
+        "parent": "MF-LC1-FAI_FAI",
+        "line": "L5",
+        "name": "L05 ALIANÇA"
+      },
+      "source_points": 14,
+      "source_points_sha256": "168e0ce00cc4b6665b287b211057d1ef0a0ffad2f3a8ef6c5811c73e8fe9e5af",
+      "app_points": 14,
+      "app_points_sha256": "168e0ce00cc4b6665b287b211057d1ef0a0ffad2f3a8ef6c5811c73e8fe9e5af"
+    },
+    {
+      "metadata": {
+        "coord": "FBJ",
+        "ramal": "LC1",
+        "asset": "MF-LC1-FAI_FNC-L000001",
+        "parent": "MF-LC1-FAI_FNC",
+        "line": "L1",
+        "name": "L01 ALIANÇA-CASAL NOVO"
+      },
+      "source_points": 1151,
+      "source_points_sha256": "bf2a1f0e9706becd2405c70032be4f6d16802cb4134c288f902e5dff02a5718d",
+      "app_points": 1151,
+      "app_points_sha256": "bf2a1f0e9706becd2405c70032be4f6d16802cb4134c288f902e5dff02a5718d"
+    },
+    {
+      "metadata": {
+        "coord": "FBJ",
+        "ramal": "LC1",
+        "asset": "MF-LC1-FAP_FAP-L000001",
+        "parent": "MF-LC1-FAP_FAP",
+        "line": "L1",
+        "name": "L01 ANDRA. PINTO"
+      },
+      "source_points": 341,
+      "source_points_sha256": "24116097fb5c3926af5875b226dba4e66ccbe8f0906edf4570cc4f5f22e5bedc",
+      "app_points": 341,
+      "app_points_sha256": "24116097fb5c3926af5875b226dba4e66ccbe8f0906edf4570cc4f5f22e5bedc"
+    },
+    {
+      "metadata": {
+        "coord": "FBJ",
+        "ramal": "LC1",
+        "asset": "MF-LC1-FAP_FAP-L000003",
+        "parent": "MF-LC1-FAP_FAP",
+        "line": "L3",
+        "name": "L03 ANDRA. PINTO"
+      },
+      "source_points": 340,
+      "source_points_sha256": "27aae3772a42a4e3f2edaaefc3269ca81e803e8d9b657d2449c14246a7cb805e",
+      "app_points": 340,
+      "app_points_sha256": "27aae3772a42a4e3f2edaaefc3269ca81e803e8d9b657d2449c14246a7cb805e"
+    },
+    {
+      "metadata": {
+        "coord": "FBJ",
+        "ramal": "LC1",
+        "asset": "MF-LC1-FAP_FVC-L000001",
+        "parent": "MF-LC1-FAP_FVC",
+        "line": "L1",
+        "name": "L01 ANDRA. PINTO-VIE. CORTEZ"
+      },
+      "source_points": 1129,
+      "source_points_sha256": "c4d730d6f3e925f222c07b323eee9649a6109be7fa9ceac9ca2c984da1567742",
+      "app_points": 1129,
+      "app_points_sha256": "c4d730d6f3e925f222c07b323eee9649a6109be7fa9ceac9ca2c984da1567742"
+    },
+    {
+      "metadata": {
+        "coord": "FBJ",
+        "ramal": "LC1",
+        "asset": "MF-LC1-FAT_FAT-L000001",
+        "parent": "MF-LC1-FAT_FAT",
+        "line": "L1",
+        "name": "L01 ARIST. LOBO"
+      },
+      "source_points": 351,
+      "source_points_sha256": "8c1d8650e72ad20bb2ed975e91582adbb632998f2557c681e10f7f2507e6b3f4",
+      "app_points": 351,
+      "app_points_sha256": "8c1d8650e72ad20bb2ed975e91582adbb632998f2557c681e10f7f2507e6b3f4"
+    },
+    {
+      "metadata": {
+        "coord": "FBJ",
+        "ramal": "LC1",
+        "asset": "MF-LC1-FAT_FAT-L000003",
+        "parent": "MF-LC1-FAT_FAT",
+        "line": "L3",
+        "name": "L03 ARIST. LOBO"
+      },
+      "source_points": 351,
+      "source_points_sha256": "b3da6a9bb6319fe92144331ed7efa94cc4cb69ca5bdd550f0f3f9eec72514dee",
+      "app_points": 351,
+      "app_points_sha256": "b3da6a9bb6319fe92144331ed7efa94cc4cb69ca5bdd550f0f3f9eec72514dee"
+    },
+    {
+      "metadata": {
+        "coord": "FBJ",
+        "ramal": "LC1",
+        "asset": "MF-LC1-FAT_FDR-L000001",
+        "parent": "MF-LC1-FAT_FDR",
+        "line": "L1",
+        "name": "L01 ARIST. LOBO-DEMÉTR. RIB."
+      },
+      "source_points": 1073,
+      "source_points_sha256": "45d8b7122b7aed648b5f4b30a4e967e7f35a544494013b70db3f47b095a0ae83",
+      "app_points": 1073,
+      "app_points_sha256": "45d8b7122b7aed648b5f4b30a4e967e7f35a544494013b70db3f47b095a0ae83"
+    },
+    {
+      "metadata": {
+        "coord": "FBJ",
+        "ramal": "LC1",
+        "asset": "MF-LC1-FBJ_FBJ-L000001",
+        "parent": "MF-LC1-FBJ_FBJ",
+        "line": "L1",
+        "name": "L01 B. JUPARANÃ"
+      },
+      "source_points": 180,
+      "source_points_sha256": "9778a3ab3ff7ed40a302e63adada3d15debbb3412b82a96adfe1d7ff3f627c14",
+      "app_points": 343,
+      "app_points_sha256": "82094064f154813b80f38e597cb8701aa079e82b698c0eff3c3504478b9ea4b1"
+    },
+    {
+      "metadata": {
+        "coord": "FBJ",
+        "ramal": "LC1",
+        "asset": "MF-LC1-FBJ_FBJ-L000001",
+        "parent": "MF-LC1-FBJ_FBJ",
+        "line": "L1",
+        "name": "L01 B. JUPARANÃ-SEB. LACERDA"
+      },
+      "source_points": 163,
+      "source_points_sha256": "777dfd28c70e23e134c1190b8f215fa675fce360528022c2c47617dd5b0ecad2",
+      "app_points": 163,
+      "app_points_sha256": "777dfd28c70e23e134c1190b8f215fa675fce360528022c2c47617dd5b0ecad2"
+    },
+    {
+      "metadata": {
+        "coord": "FBJ",
+        "ramal": "LC1",
+        "asset": "MF-LC1-FBJ_FBJ-L000002",
+        "parent": "MF-LC1-FBJ_FBJ",
+        "line": "L2",
+        "name": "L02 B. JUPARANÃ"
+      },
+      "source_points": 343,
+      "source_points_sha256": "a9dcb2e3bcf481f3e41ac1ee543e23c20237fc6581235913618122045427fdb2",
+      "app_points": 343,
+      "app_points_sha256": "a9dcb2e3bcf481f3e41ac1ee543e23c20237fc6581235913618122045427fdb2"
+    },
+    {
+      "metadata": {
+        "coord": "FBJ",
+        "ramal": "LC1",
+        "asset": "MF-LC1-FBJ_FBJ-L000003",
+        "parent": "MF-LC1-FBJ_FBJ",
+        "line": "L3",
+        "name": "L03 B. JUPARANÃ"
+      },
+      "source_points": 377,
+      "source_points_sha256": "7b755184abf45e50daf76efeadbce19d98630b56f9ea837b2cb01cacf0b7f049",
+      "app_points": 377,
+      "app_points_sha256": "7b755184abf45e50daf76efeadbce19d98630b56f9ea837b2cb01cacf0b7f049"
+    },
+    {
+      "metadata": {
+        "coord": "FBJ",
+        "ramal": "LC1",
+        "asset": "MF-LC1-FBJ_FBJ-L000005",
+        "parent": "MF-LC1-FBJ_FBJ",
+        "line": "L5",
+        "name": "L05 B. JUPARANÃ"
+      },
+      "source_points": 7,
+      "source_points_sha256": "d38beb901070e745233eabe7e5c0fc1ad94f21bc1f037b07a626ac8d3405f023",
+      "app_points": 7,
+      "app_points_sha256": "d38beb901070e745233eabe7e5c0fc1ad94f21bc1f037b07a626ac8d3405f023"
+    },
+    {
+      "metadata": {
+        "coord": "FBJ",
+        "ramal": "LC1",
+        "asset": "MF-LC1-FBJ_FBJ-L000006",
+        "parent": "MF-LC1-FBJ_FBJ",
+        "line": "L4",
+        "name": "L06 B. JUPARANÃ"
+      },
+      "source_points": 61,
+      "source_points_sha256": "6766aa9e8a3af1ad41d9041e7bb5d3b82b435f5dd8dd95654a4b68f28158a9a5",
+      "app_points": 61,
+      "app_points_sha256": "6766aa9e8a3af1ad41d9041e7bb5d3b82b435f5dd8dd95654a4b68f28158a9a5"
+    },
+    {
+      "metadata": {
+        "coord": "FBJ",
+        "ramal": "LC1",
+        "asset": "MF-LC1-FBJ_FBJ-L00DM04",
+        "parent": "MF-LC1-FBJ_FBJ",
+        "line": "L4",
+        "name": "DM04 B. JUPARANÃ"
+      },
+      "source_points": 15,
+      "source_points_sha256": "9ceb2c8d6d6f6c05d6227c13517b9ef347d342ecd5746d56e767e040560c46df",
+      "app_points": 15,
+      "app_points_sha256": "9ceb2c8d6d6f6c05d6227c13517b9ef347d342ecd5746d56e767e040560c46df"
+    },
+    {
+      "metadata": {
+        "coord": "FBJ",
+        "ramal": "LC1",
+        "asset": "MF-LC1-FBJ_FBJ-TRAVESS",
+        "parent": "MF-LC1-FBJ_FBJ",
+        "line": "TRAVE",
+        "name": "TRAVESSAO B. JUPARANÃ"
+      },
+      "source_points": 30,
+      "source_points_sha256": "c24d10f424759af9485198ca566f1033a516b9154b554fe203a8cb07d859a4f1",
+      "app_points": 30,
+      "app_points_sha256": "c24d10f424759af9485198ca566f1033a516b9154b554fe203a8cb07d859a4f1"
+    },
+    {
+      "metadata": {
+        "coord": "FBJ",
+        "ramal": "LC1",
+        "asset": "MF-LC1-FBJ_FBL-L000001",
+        "parent": "MF-LC1-FBJ_FBL",
+        "line": "L1",
+        "name": "L01 B. JUPARANÃ-SEB. LACERDA"
+      },
+      "source_points": 2130,
+      "source_points_sha256": "41379a030c5e37faba264e0ebd88145ae7bd38d9a284440c8fb6638f2fbfa0b9",
+      "app_points": 2130,
+      "app_points_sha256": "41379a030c5e37faba264e0ebd88145ae7bd38d9a284440c8fb6638f2fbfa0b9"
+    },
+    {
+      "metadata": {
+        "coord": "FBJ",
+        "ramal": "LC1",
+        "asset": "MF-LC1-FBL_FAI-L000001",
+        "parent": "MF-LC1-FBL_FAI",
+        "line": "L1",
+        "name": "L01 SEB. LACERDA-ALIANÇA"
+      },
+      "source_points": 1454,
+      "source_points_sha256": "4afe1a99338166270b0d04f52c555a19d94853f7db8c126986478831929e4f7f",
+      "app_points": 1454,
+      "app_points_sha256": "4afe1a99338166270b0d04f52c555a19d94853f7db8c126986478831929e4f7f"
+    },
+    {
+      "metadata": {
+        "coord": "FBJ",
+        "ramal": "LC1",
+        "asset": "MF-LC1-FBL_FBL-L000001",
+        "parent": "MF-LC1-FBL_FBL",
+        "line": "L1",
+        "name": "L01 SEB. LACERDA"
+      },
+      "source_points": 337,
+      "source_points_sha256": "3ff44fd474c787cac8fb678a82060de90f63736b962e303b438807e541ab841a",
+      "app_points": 337,
+      "app_points_sha256": "3ff44fd474c787cac8fb678a82060de90f63736b962e303b438807e541ab841a"
+    },
+    {
+      "metadata": {
+        "coord": "FBJ",
+        "ramal": "LC1",
+        "asset": "MF-LC1-FBL_FBL-L000002",
+        "parent": "MF-LC1-FBL_FBL",
+        "line": "L2",
+        "name": "L02 SEB. LACERDA"
+      },
+      "source_points": 336,
+      "source_points_sha256": "7c3cfb55e069ceb75604e10e4685ca8f938d6071c3cd22c5d58fe264b7b4ec4b",
+      "app_points": 336,
+      "app_points_sha256": "7c3cfb55e069ceb75604e10e4685ca8f938d6071c3cd22c5d58fe264b7b4ec4b"
+    },
+    {
+      "metadata": {
+        "coord": "FBJ",
+        "ramal": "LC1",
+        "asset": "MF-LC1-FBN_FBN-L000001",
+        "parent": "MF-LC1-FBN_FBN",
+        "line": "L1",
+        "name": "L01 BAR. ANGRA"
+      },
+      "source_points": 367,
+      "source_points_sha256": "57ae3551e803b2a6122e5af653b3c0c1142c360a6078754fed5b4a2fb0fba4e7",
+      "app_points": 367,
+      "app_points_sha256": "57ae3551e803b2a6122e5af653b3c0c1142c360a6078754fed5b4a2fb0fba4e7"
+    },
+    {
+      "metadata": {
+        "coord": "FBJ",
+        "ramal": "LC1",
+        "asset": "MF-LC1-FBN_FBN-L000002",
+        "parent": "MF-LC1-FBN_FBN",
+        "line": "L2",
+        "name": "L02 BAR. ANGRA"
+      },
+      "source_points": 343,
+      "source_points_sha256": "4c70f9ec81aa9e572de5474f7d5ce2f81cc642532c4b70a51595690d312509a0",
+      "app_points": 343,
+      "app_points_sha256": "4c70f9ec81aa9e572de5474f7d5ce2f81cc642532c4b70a51595690d312509a0"
+    },
+    {
+      "metadata": {
+        "coord": "FBJ",
+        "ramal": "LC1",
+        "asset": "MF-LC1-FBN_FBN-L000003",
+        "parent": "MF-LC1-FBN_FBN",
+        "line": "L3",
+        "name": "L03 BAR. ANGRA"
+      },
+      "source_points": 366,
+      "source_points_sha256": "b326e1db2bb0e5eab3a6d391fd2906a8db7b0ea96e1e2fe491de45ee0512864c",
+      "app_points": 366,
+      "app_points_sha256": "b326e1db2bb0e5eab3a6d391fd2906a8db7b0ea96e1e2fe491de45ee0512864c"
+    },
+    {
+      "metadata": {
+        "coord": "FBJ",
+        "ramal": "LC1",
+        "asset": "MF-LC1-FBN_FBN-L000005",
+        "parent": "MF-LC1-FBN_FBN",
+        "line": "L5",
+        "name": "L05 BAR. ANGRA"
+      },
+      "source_points": 12,
+      "source_points_sha256": "abae5573f7999ce8f951fd9868e690c0c282b77c7805d8cce998cbb86b179359",
+      "app_points": 12,
+      "app_points_sha256": "abae5573f7999ce8f951fd9868e690c0c282b77c7805d8cce998cbb86b179359"
+    },
+    {
+      "metadata": {
+        "coord": "FBJ",
+        "ramal": "LC1",
+        "asset": "MF-LC1-FBN_FBN-L000007",
+        "parent": "MF-LC1-FBN_FBN",
+        "line": "L7",
+        "name": "L07 BAR. ANGRA"
+      },
+      "source_points": 109,
+      "source_points_sha256": "02d9c288f922d9cc2788135dfce1b3387bc719b5cb97b2e779c0c305f8b72e1b",
+      "app_points": 109,
+      "app_points_sha256": "02d9c288f922d9cc2788135dfce1b3387bc719b5cb97b2e779c0c305f8b72e1b"
+    },
+    {
+      "metadata": {
+        "coord": "FBJ",
+        "ramal": "LC1",
+        "asset": "MF-LC1-FBN_FBN-L000009",
+        "parent": "MF-LC1-FBN_FBN",
+        "line": "L9",
+        "name": "L09 BAR. ANGRA"
+      },
+      "source_points": 15,
+      "source_points_sha256": "edfb7f548166845109708ee2c3cf5daf71db226b2b6ccaceaa8a4dd4a78cf2d5",
+      "app_points": 15,
+      "app_points_sha256": "edfb7f548166845109708ee2c3cf5daf71db226b2b6ccaceaa8a4dd4a78cf2d5"
+    },
+    {
+      "metadata": {
+        "coord": "FBJ",
+        "ramal": "LC1",
+        "asset": "MF-LC1-FBN_FBN-L00005A",
+        "parent": "MF-LC1-FBN_FBN",
+        "line": "L5A",
+        "name": "L05A BAR. ANGRA"
+      },
+      "source_points": 46,
+      "source_points_sha256": "0048138a7f75efe17abec3993865fbbbc657e5893cb183b2d8071c020ff444b9",
+      "app_points": 46,
+      "app_points_sha256": "0048138a7f75efe17abec3993865fbbbc657e5893cb183b2d8071c020ff444b9"
+    },
+    {
+      "metadata": {
+        "coord": "FBJ",
+        "ramal": "LC1",
+        "asset": "MF-LC1-FBN_FBN-L00005B",
+        "parent": "MF-LC1-FBN_FBN",
+        "line": "L5B",
+        "name": "L05A BAR. ANGRA"
+      },
+      "source_points": 18,
+      "source_points_sha256": "c4754a6a1be6fe35925de95176414b03f0221695db7fcf013761fe7632000ac0",
+      "app_points": 18,
+      "app_points_sha256": "c4754a6a1be6fe35925de95176414b03f0221695db7fcf013761fe7632000ac0"
+    },
+    {
+      "metadata": {
+        "coord": "FBJ",
+        "ramal": "LC1",
+        "asset": "MF-LC1-FBN_FCQ-L000001",
+        "parent": "MF-LC1-FBN_FCQ",
+        "line": "L1",
+        "name": "L01 BAR. ANGRA-KM194"
+      },
+      "source_points": 469,
+      "source_points_sha256": "9da8f3f44ab4e08f1f53f1f571937f2a958da572635753db68595e9896393221",
+      "app_points": 469,
+      "app_points_sha256": "9da8f3f44ab4e08f1f53f1f571937f2a958da572635753db68595e9896393221"
+    },
+    {
+      "metadata": {
+        "coord": "FBJ",
+        "ramal": "LC1",
+        "asset": "MF-LC1-FBP_FDQ-L000001",
+        "parent": "MF-LC1-FBP_FDQ",
+        "line": "L1",
+        "name": "L01 B. DO PIRAÍ-ESTALEIRO"
+      },
+      "source_points": 281,
+      "source_points_sha256": "67a1e1a67734b6f13a365e4e3c76504e886539001707cd7ec7fbb011d685c25e",
+      "app_points": 281,
+      "app_points_sha256": "67a1e1a67734b6f13a365e4e3c76504e886539001707cd7ec7fbb011d685c25e"
+    },
+    {
+      "metadata": {
+        "coord": "FBJ",
+        "ramal": "LC1",
+        "asset": "MF-LC1-FCQ_FCQ-L000001",
+        "parent": "MF-LC1-FCQ_FCQ",
+        "line": "L1",
+        "name": "L01 KM194"
+      },
+      "source_points": 309,
+      "source_points_sha256": "b96334787f7c25c5386494aa98393b0f83335c006da0de0aaf3f36ed3a83e0f8",
+      "app_points": 309,
+      "app_points_sha256": "b96334787f7c25c5386494aa98393b0f83335c006da0de0aaf3f36ed3a83e0f8"
+    },
+    {
+      "metadata": {
+        "coord": "FBJ",
+        "ramal": "LC1",
+        "asset": "MF-LC1-FCQ_FCQ-L000002",
+        "parent": "MF-LC1-FCQ_FCQ",
+        "line": "L2",
+        "name": "L02 KM194"
+      },
+      "source_points": 310,
+      "source_points_sha256": "3d0747fbe77ffa45743583a09f7b676f21dc63e388c74d880e56077dcf8d50df",
+      "app_points": 310,
+      "app_points_sha256": "3d0747fbe77ffa45743583a09f7b676f21dc63e388c74d880e56077dcf8d50df"
+    },
+    {
+      "metadata": {
+        "coord": "FBJ",
+        "ramal": "LC1",
+        "asset": "MF-LC1-FCQ_FFP-L000001",
+        "parent": "MF-LC1-FCQ_FFP",
+        "line": "L1",
+        "name": "L01 KM194-FERNANDES P."
+      },
+      "source_points": 1302,
+      "source_points_sha256": "5e936978155f46a90767ae27fc3e84afe03850bb3f963cdc8e19c0589b61298a",
+      "app_points": 1302,
+      "app_points_sha256": "5e936978155f46a90767ae27fc3e84afe03850bb3f963cdc8e19c0589b61298a"
+    },
+    {
+      "metadata": {
+        "coord": "FBJ",
+        "ramal": "LC1",
+        "asset": "MF-LC1-FDQ_FAT-L000001",
+        "parent": "MF-LC1-FDQ_FAT",
+        "line": "L1",
+        "name": "L01 ESTALEIRO-ARIST. LOBO"
+      },
+      "source_points": 321,
+      "source_points_sha256": "2129fe73bee699971ff2cd01932dcbbead52b65c17a5748f50f0595581326895",
+      "app_points": 321,
+      "app_points_sha256": "2129fe73bee699971ff2cd01932dcbbead52b65c17a5748f50f0595581326895"
+    },
+    {
+      "metadata": {
+        "coord": "FBJ",
+        "ramal": "LC1",
+        "asset": "MF-LC1-FDQ_FDQ-L000001",
+        "parent": "MF-LC1-FDQ_FDQ",
+        "line": "L1",
+        "name": "L01 ESTALEIRO"
+      },
+      "source_points": 233,
+      "source_points_sha256": "4a1cf2148c181d21d077bbe9f7eb7320f735be8dbd31d2575f5c2d9a3a83d746",
+      "app_points": 233,
+      "app_points_sha256": "4a1cf2148c181d21d077bbe9f7eb7320f735be8dbd31d2575f5c2d9a3a83d746"
+    },
+    {
+      "metadata": {
+        "coord": "FBJ",
+        "ramal": "LC1",
+        "asset": "MF-LC1-FDQ_FDQ-L000002",
+        "parent": "MF-LC1-FDQ_FDQ",
+        "line": "L2",
+        "name": "L02 ESTALEIRO"
+      },
+      "source_points": 236,
+      "source_points_sha256": "bb5caf93d8a00175dd4021cb88b38a55ea9afc25bb23855dcf9ae8a2620af7ad",
+      "app_points": 236,
+      "app_points_sha256": "bb5caf93d8a00175dd4021cb88b38a55ea9afc25bb23855dcf9ae8a2620af7ad"
+    },
+    {
+      "metadata": {
+        "coord": "FBJ",
+        "ramal": "LC1",
+        "asset": "MF-LC1-FDQ_FDQ-L000004",
+        "parent": "MF-LC1-FDQ_FDQ",
+        "line": "L4",
+        "name": "L04 ESTALEIRO"
+      },
+      "source_points": 107,
+      "source_points_sha256": "414221994662e886d160dea83020825741d16eac71f95d25b18303c72acc6f1b",
+      "app_points": 107,
+      "app_points_sha256": "414221994662e886d160dea83020825741d16eac71f95d25b18303c72acc6f1b"
+    },
+    {
+      "metadata": {
+        "coord": "FBJ",
+        "ramal": "LC1",
+        "asset": "MF-LC1-FDQ_FDQ-L000006",
+        "parent": "MF-LC1-FDQ_FDQ",
+        "line": "L6",
+        "name": "L06 ESTALEIRO"
+      },
+      "source_points": 52,
+      "source_points_sha256": "58c51689bf64b3210b70b21fe8f8924d6d5375f979ca748b4da37d6b0969f0bd",
+      "app_points": 52,
+      "app_points_sha256": "58c51689bf64b3210b70b21fe8f8924d6d5375f979ca748b4da37d6b0969f0bd"
+    },
+    {
+      "metadata": {
+        "coord": "FBJ",
+        "ramal": "LC1",
+        "asset": "MF-LC1-FDQ_FDQ-L000008",
+        "parent": "MF-LC1-FDQ_FDQ",
+        "line": "L8",
+        "name": "L06 ESTALEIRO"
+      },
+      "source_points": 44,
+      "source_points_sha256": "afc72a9b913040f5e115ad6271b0a5411fccec976c952273b68c635a82e60a97",
+      "app_points": 79,
+      "app_points_sha256": "7affed37f0484df7e032efdbd98f7bc5a915d66d8bcbb4594e2fca497cdf7ade"
+    },
+    {
+      "metadata": {
+        "coord": "FBJ",
+        "ramal": "LC1",
+        "asset": "MF-LC1-FDQ_FDQ-L000008",
+        "parent": "MF-LC1-FDQ_FDQ",
+        "line": "L8",
+        "name": "L08 ESTALEIRO"
+      },
+      "source_points": 35,
+      "source_points_sha256": "ec269caba593cf593d41ac0719358d78a139bf543cd09b7fc28a99887e789205",
+      "app_points": 35,
+      "app_points_sha256": "ec269caba593cf593d41ac0719358d78a139bf543cd09b7fc28a99887e789205"
+    },
+    {
+      "metadata": {
+        "coord": "FBJ",
+        "ramal": "LC1",
+        "asset": "MF-LC1-FDQ_FDQ-L000010",
+        "parent": "MF-LC1-FDQ_FDQ",
+        "line": "L10",
+        "name": "L10 ESTALEIRO"
+      },
+      "source_points": 17,
+      "source_points_sha256": "e1ff2a90d3f3507f77f79348876ea802af2115e11700c9b802359e9d93ba34c1",
+      "app_points": 17,
+      "app_points_sha256": "e1ff2a90d3f3507f77f79348876ea802af2115e11700c9b802359e9d93ba34c1"
+    },
+    {
+      "metadata": {
+        "coord": "FBJ",
+        "ramal": "LC1",
+        "asset": "MF-LC1-FDR_FBJ-L000001",
+        "parent": "MF-LC1-FDR_FBJ",
+        "line": "L1",
+        "name": "L01 DEMÉTR. RIB.-B. JUPARANÃ"
+      },
+      "source_points": 2025,
+      "source_points_sha256": "1c27b19bccca55eb3e7052a058ff055b89c1b4700e6cbb103686239caf43f634",
+      "app_points": 2025,
+      "app_points_sha256": "1c27b19bccca55eb3e7052a058ff055b89c1b4700e6cbb103686239caf43f634"
+    },
+    {
+      "metadata": {
+        "coord": "FBJ",
+        "ramal": "LC1",
+        "asset": "MF-LC1-FDR_FDR-L000001",
+        "parent": "MF-LC1-FDR_FDR",
+        "line": "L1",
+        "name": "L01 DEMÉTR. RIB."
+      },
+      "source_points": 450,
+      "source_points_sha256": "556c382fffd78bd968ab5aff2bdd4e5007ab53282224df2ab3751277746f91bf",
+      "app_points": 450,
+      "app_points_sha256": "556c382fffd78bd968ab5aff2bdd4e5007ab53282224df2ab3751277746f91bf"
+    },
+    {
+      "metadata": {
+        "coord": "FBJ",
+        "ramal": "LC1",
+        "asset": "MF-LC1-FDR_FDR-L000002",
+        "parent": "MF-LC1-FDR_FDR",
+        "line": "L2",
+        "name": "L02 DEMÉTR. RIB."
+      },
+      "source_points": 377,
+      "source_points_sha256": "acde25ed3789254ea7dfd5950c10f678f40b49ff135af9340cfedd1707ec6db4",
+      "app_points": 377,
+      "app_points_sha256": "acde25ed3789254ea7dfd5950c10f678f40b49ff135af9340cfedd1707ec6db4"
+    },
+    {
+      "metadata": {
+        "coord": "FBJ",
+        "ramal": "LC1",
+        "asset": "MF-LC1-FFP_FFP-L000001",
+        "parent": "MF-LC1-FFP_FFP",
+        "line": "L1",
+        "name": "L01 FERNANDES P."
+      },
+      "source_points": 380,
+      "source_points_sha256": "97f2e4c9ce9a49981dd2c0ea19fdd3927d73886ce1476927953df543b9488169",
+      "app_points": 380,
+      "app_points_sha256": "97f2e4c9ce9a49981dd2c0ea19fdd3927d73886ce1476927953df543b9488169"
+    },
+    {
+      "metadata": {
+        "coord": "FBJ",
+        "ramal": "LC1",
+        "asset": "MF-LC1-FFP_FFP-L000002",
+        "parent": "MF-LC1-FFP_FFP",
+        "line": "L2",
+        "name": "L02 FERNANDES P."
+      },
+      "source_points": 380,
+      "source_points_sha256": "b6c205cd6a42a30d08328c0c8e44384f0ab20739af6e360b65547f35596fbdc4",
+      "app_points": 380,
+      "app_points_sha256": "b6c205cd6a42a30d08328c0c8e44384f0ab20739af6e360b65547f35596fbdc4"
+    },
+    {
+      "metadata": {
+        "coord": "FBJ",
+        "ramal": "LC1",
+        "asset": "MF-LC1-FFP_FSR-L000001",
+        "parent": "MF-LC1-FFP_FSR",
+        "line": "L1",
+        "name": "L01 FERNANDES P.-SERRARIA"
+      },
+      "source_points": 1321,
+      "source_points_sha256": "976bb234323a3c5e9d0af2385663e7e1a4e57377fed9c09b13759a4a92a87dce",
+      "app_points": 1321,
+      "app_points_sha256": "976bb234323a3c5e9d0af2385663e7e1a4e57377fed9c09b13759a4a92a87dce"
+    },
+    {
+      "metadata": {
+        "coord": "FBJ",
+        "ramal": "LC1",
+        "asset": "MF-LC1-FNC_FAP-L000001",
+        "parent": "MF-LC1-FNC_FA",
+        "line": "L1",
+        "name": "L01 CASAL NOVO-ANDRA. PINTO"
+      },
+      "source_points": 399,
+      "source_points_sha256": "eff51a2989c20ec62a997b0dbcb3fd82edd75f11c854b3ed9da76a6518331750",
+      "app_points": 399,
+      "app_points_sha256": "eff51a2989c20ec62a997b0dbcb3fd82edd75f11c854b3ed9da76a6518331750"
+    },
+    {
+      "metadata": {
+        "coord": "FBJ",
+        "ramal": "LC1",
+        "asset": "MF-LC1-FNC_FAP-L000001",
+        "parent": "MF-LC1-FNC_FAP",
+        "line": "L1",
+        "name": "L01 CASAL NOVO-ANDRA. PINTO"
+      },
+      "source_points": 921,
+      "source_points_sha256": "34494e9205af1ffcce17c25072a909b4c2a6ade786e3952a70dcbdc92dcfaad6",
+      "app_points": 1290,
+      "app_points_sha256": "18af5e1d98bdf4e4962dd89978fbe44340fe53a7b066e608609682afdbc9f49d"
+    },
+    {
+      "metadata": {
+        "coord": "FBJ",
+        "ramal": "LC1",
+        "asset": "MF-LC1-FNC_FNC-L000001",
+        "parent": "MF-LC1-FNC_FNC",
+        "line": "L1",
+        "name": "L01 CASAL NOVO"
+      },
+      "source_points": 370,
+      "source_points_sha256": "41e705d1c5dddccd902f70d87b539f515251fadb18956ef9e6fc6973c744d7b2",
+      "app_points": 370,
+      "app_points_sha256": "41e705d1c5dddccd902f70d87b539f515251fadb18956ef9e6fc6973c744d7b2"
+    },
+    {
+      "metadata": {
+        "coord": "FBJ",
+        "ramal": "LC1",
+        "asset": "MF-LC1-FNC_FNC-L000003",
+        "parent": "MF-LC1-FNC_FNC",
+        "line": "L3",
+        "name": "L03 CASAL NOVO"
+      },
+      "source_points": 369,
+      "source_points_sha256": "e5169f4e58d32a029f2bbed6aae4f7ae018ed3bf2c33d6cd8f00bcdcc38a8901",
+      "app_points": 369,
+      "app_points_sha256": "e5169f4e58d32a029f2bbed6aae4f7ae018ed3bf2c33d6cd8f00bcdcc38a8901"
+    },
+    {
+      "metadata": {
+        "coord": "FBJ",
+        "ramal": "LC1",
+        "asset": "MF-LC1-FVC_FBN-L000001",
+        "parent": "MF-LC1-FVC_FBN",
+        "line": "L1",
+        "name": "L01 VIE. CORTEZ-BAR. ANGRA"
+      },
+      "source_points": 2362,
+      "source_points_sha256": "df50dfcc29b29f3334adcc6cea568005fa257182e8bdc4ba35e78e7503ac1302",
+      "app_points": 2362,
+      "app_points_sha256": "df50dfcc29b29f3334adcc6cea568005fa257182e8bdc4ba35e78e7503ac1302"
+    },
+    {
+      "metadata": {
+        "coord": "FBJ",
+        "ramal": "LC1",
+        "asset": "MF-LC1-FVC_FVC-L000001",
+        "parent": "MF-LC1-FVC_FVC",
+        "line": "L1",
+        "name": "L01 VIE. CORTEZ"
+      },
+      "source_points": 353,
+      "source_points_sha256": "5f507eab3c768ecd274a51574f5b792eec1f5c90c0ad8bcee7a514167c11e9f2",
+      "app_points": 353,
+      "app_points_sha256": "5f507eab3c768ecd274a51574f5b792eec1f5c90c0ad8bcee7a514167c11e9f2"
+    },
+    {
+      "metadata": {
+        "coord": "FBJ",
+        "ramal": "LC1",
+        "asset": "MF-LC1-FVC_FVC-L000002",
+        "parent": "MF-LC1-FVC_FVC",
+        "line": "L2",
+        "name": "L02 VIE. CORTEZ"
+      },
+      "source_points": 354,
+      "source_points_sha256": "944a24c83ed505df75e0eae7275c120fd3a832b13216463a5d064817a4e93d14",
+      "app_points": 354,
+      "app_points_sha256": "944a24c83ed505df75e0eae7275c120fd3a832b13216463a5d064817a4e93d14"
+    },
+    {
+      "metadata": {
+        "coord": "FBR",
+        "ramal": "TOD",
+        "asset": "MF-TOD-FIE_FIE-L000001",
+        "parent": "MF-TOD-FIE_FIE",
+        "line": "L1",
+        "name": "L01 IBIRITÉ"
+      },
+      "source_points": 13,
+      "source_points_sha256": "2c1b2500d713322ad3d2eea1f9155655c1cbf0472d128f953d78bdd90b761107",
+      "app_points": 13,
+      "app_points_sha256": "2c1b2500d713322ad3d2eea1f9155655c1cbf0472d128f953d78bdd90b761107"
+    },
+    {
+      "metadata": {
+        "coord": "FBR",
+        "ramal": "TOD",
+        "asset": "MF-TOD-FIE_FIE-L000002",
+        "parent": "MF-TOD-FIE_FIE",
+        "line": "L2",
+        "name": "L02 IBIRITÉ"
+      },
+      "source_points": 462,
+      "source_points_sha256": "5745058dc09cbba789f63cab09427ddf48099a660dcfd28c1c84580d1a0ee951",
+      "app_points": 462,
+      "app_points_sha256": "5745058dc09cbba789f63cab09427ddf48099a660dcfd28c1c84580d1a0ee951"
+    },
+    {
+      "metadata": {
+        "coord": "FBR",
+        "ramal": "TOD",
+        "asset": "MF-TOD-FIE_FIE-L000004",
+        "parent": "MF-TOD-FIE_FIE",
+        "line": "L4",
+        "name": "L04 IBIRITÉ"
+      },
+      "source_points": 448,
+      "source_points_sha256": "2da84cac229437e1a479cfedde1866724d928b8931a9d8b1ee188ed1561eff96",
+      "app_points": 448,
+      "app_points_sha256": "2da84cac229437e1a479cfedde1866724d928b8931a9d8b1ee188ed1561eff96"
+    },
+    {
+      "metadata": {
+        "coord": "FBR",
+        "ramal": "TOD",
+        "asset": "MF-TOD-FIE_FLH-L000001",
+        "parent": "MF-TOD-FIE_FLH",
+        "line": "L1",
+        "name": "L01 IBIRITÉ-OLHOS D AGUA"
+      },
+      "source_points": 2096,
+      "source_points_sha256": "f5cf8372552fb204a06206d801386025b4f674753dedba2c756325cfa2db656c",
+      "app_points": 2096,
+      "app_points_sha256": "f5cf8372552fb204a06206d801386025b4f674753dedba2c756325cfa2db656c"
+    },
+    {
+      "metadata": {
+        "coord": "FBR",
+        "ramal": "VPB",
+        "asset": "MF-VPB-FAF_FAF-L000DM2",
+        "parent": "MF-VPB-FAF_FAF",
+        "line": "DM2",
+        "name": "L02 ALB. FLORES"
+      },
+      "source_points": 160,
+      "source_points_sha256": "2cd454dd04004dd394416e20c2935f22cdc121660a81eba36675ef18528a501b",
+      "app_points": 160,
+      "app_points_sha256": "2cd454dd04004dd394416e20c2935f22cdc121660a81eba36675ef18528a501b"
+    },
+    {
+      "metadata": {
+        "coord": "FBR",
+        "ramal": "VPB",
+        "asset": "MF-VPB-FAF_FAF-L000DM2",
+        "parent": "MF-VPB-FAF_FAF",
+        "line": "DM2",
+        "name": "LDM2 ALB. FLORES"
+      },
+      "source_points": 35,
+      "source_points_sha256": "9e6e723bed69498fb077e0074945782c3151597e575cfb72e20d059b0a82f283",
+      "app_points": 35,
+      "app_points_sha256": "9e6e723bed69498fb077e0074945782c3151597e575cfb72e20d059b0a82f283"
+    },
+    {
+      "metadata": {
+        "coord": "FBR",
+        "ramal": "VPB",
+        "asset": "MF-VPB-FAF_FAF-L000DM4",
+        "parent": "MF-VPB-FAF_FAF",
+        "line": "DM4",
+        "name": "LDM4 ALB. FLORES"
+      },
+      "source_points": 62,
+      "source_points_sha256": "f6e1b6cde6d24667bbb83d85d0349310fa812bf890f7d1102248c29dc3c11d9f",
+      "app_points": 62,
+      "app_points_sha256": "f6e1b6cde6d24667bbb83d85d0349310fa812bf890f7d1102248c29dc3c11d9f"
+    },
+    {
+      "metadata": {
+        "coord": "FBR",
+        "ramal": "VPB",
+        "asset": "MF-VPB-FAF_FAF-L000DM6",
+        "parent": "MF-VPB-FAF_FAF",
+        "line": "DM6",
+        "name": "LDM6 ALB. FLORES"
+      },
+      "source_points": 9,
+      "source_points_sha256": "6cc2468674fdbd308fd83c9c20a7000f360c385c902238e2730ad8219cca44a3",
+      "app_points": 9,
+      "app_points_sha256": "6cc2468674fdbd308fd83c9c20a7000f360c385c902238e2730ad8219cca44a3"
+    },
+    {
+      "metadata": {
+        "coord": "FBR",
+        "ramal": "VPB",
+        "asset": "MF-VPB-FAF_FCC-L000001",
+        "parent": "MF-VPB-FAF_FCC",
+        "line": "L1",
+        "name": "L01 ALB. FLORES-POSTO KM 575"
+      },
+      "source_points": 243,
+      "source_points_sha256": "33c7e98861b7671c0afe05af16dc8bc48a2609faa21bd1a91960731f8a633e5a",
+      "app_points": 243,
+      "app_points_sha256": "33c7e98861b7671c0afe05af16dc8bc48a2609faa21bd1a91960731f8a633e5a"
+    },
+    {
+      "metadata": {
+        "coord": "FBR",
+        "ramal": "VPB",
+        "asset": "MF-VPB-FBR_FBR-L000001",
+        "parent": "MF-VPB-FBR_FBR",
+        "line": "L1",
+        "name": "L01 BRUMADINHO"
+      },
+      "source_points": 147,
+      "source_points_sha256": "e96b38b87dfd7f35c2f961bc793b61f00efe8fd6912dbe6b338cf26a1ad61d88",
+      "app_points": 147,
+      "app_points_sha256": "e96b38b87dfd7f35c2f961bc793b61f00efe8fd6912dbe6b338cf26a1ad61d88"
+    },
+    {
+      "metadata": {
+        "coord": "FBR",
+        "ramal": "VPB",
+        "asset": "MF-VPB-FBR_FBR-L000DM3",
+        "parent": "MF-VPB-FBR_FBR",
+        "line": "LDM3",
+        "name": "LDM3 BRUMADINHO"
+      },
+      "source_points": 140,
+      "source_points_sha256": "2d6e5c5327c9d9e549a89341bd52942c477e79cbdb101785fca1c9908c696482",
+      "app_points": 140,
+      "app_points_sha256": "2d6e5c5327c9d9e549a89341bd52942c477e79cbdb101785fca1c9908c696482"
+    },
+    {
+      "metadata": {
+        "coord": "FBR",
+        "ramal": "VPB",
+        "asset": "MF-VPB-FBR_FSN-L000001",
+        "parent": "MF-VPB-FBR_FSN",
+        "line": "L1",
+        "name": "L01 BRUMADINHO-CAR.NEWLANDS"
+      },
+      "source_points": 515,
+      "source_points_sha256": "dff204497f1dfc07bd77516f73276846106f1cb431c356b1da5088b7b90c52dd",
+      "app_points": 515,
+      "app_points_sha256": "dff204497f1dfc07bd77516f73276846106f1cb431c356b1da5088b7b90c52dd"
+    },
+    {
+      "metadata": {
+        "coord": "FBR",
+        "ramal": "VPB",
+        "asset": "MF-VPB-FCC_FBR-L000001",
+        "parent": "MF-VPB-FCC_FBR",
+        "line": "L1",
+        "name": "L01 POSTO KM 575-BRUMADINHO"
+      },
+      "source_points": 481,
+      "source_points_sha256": "2208c71aed35f06c06f6a9d6d5f3e649b461718f47d9f473278af160e16ab143",
+      "app_points": 481,
+      "app_points_sha256": "2208c71aed35f06c06f6a9d6d5f3e649b461718f47d9f473278af160e16ab143"
+    },
+    {
+      "metadata": {
+        "coord": "FBR",
+        "ramal": "VPB",
+        "asset": "MF-VPB-FCC_FCC-L000001",
+        "parent": "MF-VPB-FCC_FCC",
+        "line": "L1",
+        "name": "L01 POSTO KM 575"
+      },
+      "source_points": 469,
+      "source_points_sha256": "21fae2a7900e5bcdbe8e538232fe77019ddba904a4b7a429e9b14427d201856e",
+      "app_points": 469,
+      "app_points_sha256": "21fae2a7900e5bcdbe8e538232fe77019ddba904a4b7a429e9b14427d201856e"
+    },
+    {
+      "metadata": {
+        "coord": "FBR",
+        "ramal": "VPB",
+        "asset": "MF-VPB-FCC_FCC-L000003",
+        "parent": "MF-VPB-FCC_FCC",
+        "line": "L3",
+        "name": "L03 POSTO KM 575"
+      },
+      "source_points": 468,
+      "source_points_sha256": "92e6ea4079be7325763d211138158f5c1ed7dcadd43b51d68c5c5c9b8d7a7494",
+      "app_points": 468,
+      "app_points_sha256": "92e6ea4079be7325763d211138158f5c1ed7dcadd43b51d68c5c5c9b8d7a7494"
+    },
+    {
+      "metadata": {
+        "coord": "FBR",
+        "ramal": "VPB",
+        "asset": "MF-VPB-FCC_FCC-L000005",
+        "parent": "MF-VPB-FCC_FCC",
+        "line": "L5",
+        "name": "L05 POSTO KM 575"
+      },
+      "source_points": 347,
+      "source_points_sha256": "e4aaa208436fa890d882aaf806165fd21a86c51d68df5fb0d35d51daf4e5182f",
+      "app_points": 347,
+      "app_points_sha256": "e4aaa208436fa890d882aaf806165fd21a86c51d68df5fb0d35d51daf4e5182f"
+    },
+    {
+      "metadata": {
+        "coord": "FBR",
+        "ramal": "VPB",
+        "asset": "MF-VPB-FIE_FBO-L000001",
+        "parent": "MF-VPB-FIE_FBO",
+        "line": "L1",
+        "name": "L01 IBIRITÉ-BARREIRO"
+      },
+      "source_points": 2181,
+      "source_points_sha256": "272a53ab93021860ed2a3d39055834c465e8a926f3af4d5517ead7dda908703d",
+      "app_points": 2181,
+      "app_points_sha256": "272a53ab93021860ed2a3d39055834c465e8a926f3af4d5517ead7dda908703d"
+    },
+    {
+      "metadata": {
+        "coord": "FBR",
+        "ramal": "VPB",
+        "asset": "MF-VPB-FLC_FML-L000001",
+        "parent": "MF-VPB-FLC_FML",
+        "line": "L1",
+        "name": "L01 COR. EURICO-MELO FRANCO"
+      },
+      "source_points": 901,
+      "source_points_sha256": "b699eb4a1dc9ad39e69acbfbb2d688adbae930b02d485cf10fe43b2fca0f58fd",
+      "app_points": 901,
+      "app_points_sha256": "b699eb4a1dc9ad39e69acbfbb2d688adbae930b02d485cf10fe43b2fca0f58fd"
+    },
+    {
+      "metadata": {
+        "coord": "FBR",
+        "ramal": "VPB",
+        "asset": "MF-VPB-FMC_FMC-L000001",
+        "parent": "MF-VPB-FMC_FMC",
+        "line": "L1",
+        "name": "L01 MÁRIO CAMPOS"
+      },
+      "source_points": 385,
+      "source_points_sha256": "90173df0e81663b5d22110a0993b0a364853cf8983c6e3a6ac3c9b42b76695af",
+      "app_points": 385,
+      "app_points_sha256": "90173df0e81663b5d22110a0993b0a364853cf8983c6e3a6ac3c9b42b76695af"
+    },
+    {
+      "metadata": {
+        "coord": "FBR",
+        "ramal": "VPB",
+        "asset": "MF-VPB-FMC_FMC-L000003",
+        "parent": "MF-VPB-FMC_FMC",
+        "line": "L3",
+        "name": "L03 MÁRIO CAMPOS"
+      },
+      "source_points": 383,
+      "source_points_sha256": "b6a8a367aec0966df894954f398e87b555491e828a8cba41fe26dd07592e5c0f",
+      "app_points": 383,
+      "app_points_sha256": "b6a8a367aec0966df894954f398e87b555491e828a8cba41fe26dd07592e5c0f"
+    },
+    {
+      "metadata": {
+        "coord": "FBR",
+        "ramal": "VPB",
+        "asset": "MF-VPB-FMC_FSO-L000001",
+        "parent": "MF-VPB-FMC_FSO",
+        "line": "L1",
+        "name": "L01 MÁRIO CAMPOS-SARZEDO"
+      },
+      "source_points": 1393,
+      "source_points_sha256": "61d2d11646d58e753da53a8fcd0ad4027cd96476c9650f8e9c7929cf35403e67",
+      "app_points": 1393,
+      "app_points_sha256": "61d2d11646d58e753da53a8fcd0ad4027cd96476c9650f8e9c7929cf35403e67"
+    },
+    {
+      "metadata": {
+        "coord": "FBR",
+        "ramal": "VPB",
+        "asset": "MF-VPB-FML_FAF-L000001",
+        "parent": "MF-VPB-FML_FAF",
+        "line": "L1",
+        "name": "L01 MELO FRANCO-ALB. FLORES"
+      },
+      "source_points": 1341,
+      "source_points_sha256": "82a2aab38259bd9c15f3a4ca216027f5abc4d4818143fbb6f6a389b8440189bc",
+      "app_points": 1341,
+      "app_points_sha256": "82a2aab38259bd9c15f3a4ca216027f5abc4d4818143fbb6f6a389b8440189bc"
+    },
+    {
+      "metadata": {
+        "coord": "FBR",
+        "ramal": "VPB",
+        "asset": "MF-VPB-FML_FML-L000001",
+        "parent": "MF-VPB-FML_FML",
+        "line": "L1",
+        "name": "L01 MELO FRANCO"
+      },
+      "source_points": 371,
+      "source_points_sha256": "3b88b691b33c5eca3b9edbd13321513f8c895732b0a711f9c3fb061b5a0df1d1",
+      "app_points": 371,
+      "app_points_sha256": "3b88b691b33c5eca3b9edbd13321513f8c895732b0a711f9c3fb061b5a0df1d1"
+    },
+    {
+      "metadata": {
+        "coord": "FBR",
+        "ramal": "VPB",
+        "asset": "MF-VPB-FML_FML-L000002",
+        "parent": "MF-VPB-FML_FML",
+        "line": "L2",
+        "name": "L02 MELO FRANCO"
+      },
+      "source_points": 371,
+      "source_points_sha256": "a5ac756ac9ecb2dd3e94e2aee24cb3c54939cff22dbdd0709eb7814671f4ac1d",
+      "app_points": 371,
+      "app_points_sha256": "a5ac756ac9ecb2dd3e94e2aee24cb3c54939cff22dbdd0709eb7814671f4ac1d"
+    },
+    {
+      "metadata": {
+        "coord": "FBR",
+        "ramal": "VPB",
+        "asset": "MF-VPB-FPO_FIE-L000001",
+        "parent": "MF-VPB-FPO_FIE",
+        "line": "L1",
+        "name": "L01 ENG.PE.PAULO-IBIRITÉ"
+      },
+      "source_points": 796,
+      "source_points_sha256": "6fa1f22562a71021dc326aac0b4d890771d97ec4370d18465e5708359cad2046",
+      "app_points": 796,
+      "app_points_sha256": "6fa1f22562a71021dc326aac0b4d890771d97ec4370d18465e5708359cad2046"
+    },
+    {
+      "metadata": {
+        "coord": "FBR",
+        "ramal": "VPB",
+        "asset": "MF-VPB-FPO_FPO-L000001",
+        "parent": "MF-VPB-FPO_FPO",
+        "line": "L1",
+        "name": "L01 ENG.PE.PAULO"
+      },
+      "source_points": 427,
+      "source_points_sha256": "dfe4ebbfa567aca036f5a5685d41d33ee5b0665ab4ca48ffa684db1a5e691d3d",
+      "app_points": 427,
+      "app_points_sha256": "dfe4ebbfa567aca036f5a5685d41d33ee5b0665ab4ca48ffa684db1a5e691d3d"
+    },
+    {
+      "metadata": {
+        "coord": "FBR",
+        "ramal": "VPB",
+        "asset": "MF-VPB-FPO_FPO-L000002",
+        "parent": "MF-VPB-FPO_FPO",
+        "line": "L2",
+        "name": "L02 ENG.PE.PAULO"
+      },
+      "source_points": 426,
+      "source_points_sha256": "5e3c3b9a2478eb438e795b10b10f284845a8c02279cc709a8cc24c07e3e07d72",
+      "app_points": 426,
+      "app_points_sha256": "5e3c3b9a2478eb438e795b10b10f284845a8c02279cc709a8cc24c07e3e07d72"
+    },
+    {
+      "metadata": {
+        "coord": "FBR",
+        "ramal": "VPB",
+        "asset": "MF-VPB-FSN_FMC-L000001",
+        "parent": "MF-VPB-FSN_FMC",
+        "line": "L1",
+        "name": "L01 CAR.NEWLANDS-MÁRIO CAMPOS"
+      },
+      "source_points": 1225,
+      "source_points_sha256": "5d68233f7b60e3e4e773c7e2664731436040cf8aaa49c5e1d7286e4c5e72c54c",
+      "app_points": 1225,
+      "app_points_sha256": "5d68233f7b60e3e4e773c7e2664731436040cf8aaa49c5e1d7286e4c5e72c54c"
+    },
+    {
+      "metadata": {
+        "coord": "FBR",
+        "ramal": "VPB",
+        "asset": "MF-VPB-FSN_FSN-L000001",
+        "parent": "MF-VPB-FSN_FSN",
+        "line": "L1",
+        "name": "L01 CAR.NEWLANDS"
+      },
+      "source_points": 774,
+      "source_points_sha256": "47afd0adcef0790d23cf4b7f51c8178ab490c86bec075780afbb7d596cde4dcb",
+      "app_points": 774,
+      "app_points_sha256": "47afd0adcef0790d23cf4b7f51c8178ab490c86bec075780afbb7d596cde4dcb"
+    },
+    {
+      "metadata": {
+        "coord": "FBR",
+        "ramal": "VPB",
+        "asset": "MF-VPB-FSN_FSN-L000003",
+        "parent": "MF-VPB-FSN_FSN",
+        "line": "L3",
+        "name": "L03 CAR.NEWLANDS"
+      },
+      "source_points": 778,
+      "source_points_sha256": "73702d58a0951aa81a5dc4251f996d37a9e790c6ebf2332579803c4c70e434f4",
+      "app_points": 778,
+      "app_points_sha256": "73702d58a0951aa81a5dc4251f996d37a9e790c6ebf2332579803c4c70e434f4"
+    },
+    {
+      "metadata": {
+        "coord": "FBR",
+        "ramal": "VPB",
+        "asset": "MF-VPB-FSN_FSN-L000005",
+        "parent": "MF-VPB-FSN_FSN",
+        "line": "L5",
+        "name": "L05 CAR.NEWLANDS"
+      },
+      "source_points": 416,
+      "source_points_sha256": "a61ef097e90163bdaba0d63ebbb6dcd2f0960c8b5f00baf22afd143447f1b3ed",
+      "app_points": 416,
+      "app_points_sha256": "a61ef097e90163bdaba0d63ebbb6dcd2f0960c8b5f00baf22afd143447f1b3ed"
+    },
+    {
+      "metadata": {
+        "coord": "FBR",
+        "ramal": "VPB",
+        "asset": "MF-VPB-FSN_FSN-TRAVESS",
+        "parent": "MF-VPB-FSN_FSN",
+        "line": "TRAVE",
+        "name": "TRAVESSÃO CAR.NEWLANDS"
+      },
+      "source_points": 35,
+      "source_points_sha256": "65861b23c50c7c95b69414b7177193f94e6a88d2bd3b3f33399479f127a744ae",
+      "app_points": 35,
+      "app_points_sha256": "65861b23c50c7c95b69414b7177193f94e6a88d2bd3b3f33399479f127a744ae"
+    },
+    {
+      "metadata": {
+        "coord": "FBR",
+        "ramal": "VPB",
+        "asset": "MF-VPB-FSO_FPO-L000001",
+        "parent": "MF-VPB-FSO_FPO",
+        "line": "L1",
+        "name": "L01 SARZEDO-ENG.PE.PAULO"
+      },
+      "source_points": 420,
+      "source_points_sha256": "06ce8ac8072c46e970ae6227e2fdc1b45bec0cb20a826854aeae89de75685705",
+      "app_points": 420,
+      "app_points_sha256": "06ce8ac8072c46e970ae6227e2fdc1b45bec0cb20a826854aeae89de75685705"
+    },
+    {
+      "metadata": {
+        "coord": "FBR",
+        "ramal": "VPB",
+        "asset": "MF-VPB-FSO_FSO-L000001",
+        "parent": "MF-VPB-FSO_FSO",
+        "line": "L1",
+        "name": "L01 SARZEDO"
+      },
+      "source_points": 336,
+      "source_points_sha256": "11929cca1d7ec4e6e7d23b19483784b4c368c2499b2c4bab90fb21aac695bb43",
+      "app_points": 336,
+      "app_points_sha256": "11929cca1d7ec4e6e7d23b19483784b4c368c2499b2c4bab90fb21aac695bb43"
+    },
+    {
+      "metadata": {
+        "coord": "FBR",
+        "ramal": "VPB",
+        "asset": "MF-VPB-FSO_FSO-L000002",
+        "parent": "MF-VPB-FSO_FSO",
+        "line": "L2",
+        "name": "L02 SARZEDO"
+      },
+      "source_points": 338,
+      "source_points_sha256": "30190a4a95740601c075e0634df67937ac8ccc6b2afdc874ab4f9ac715589ae4",
+      "app_points": 338,
+      "app_points_sha256": "30190a4a95740601c075e0634df67937ac8ccc6b2afdc874ab4f9ac715589ae4"
+    },
+    {
+      "metadata": {
+        "coord": "FBR",
+        "ramal": "VPB",
+        "asset": "MF-VPB-FSO_FSO-L00002C",
+        "parent": "MF-VPB-FSO_FSO",
+        "line": "L2C",
+        "name": "L2C SARZEDO"
+      },
+      "source_points": 51,
+      "source_points_sha256": "cb0b91ebe01f90c8215afee6532e6022e542d3fe5e47ff6e3fa994418471505e",
+      "app_points": 51,
+      "app_points_sha256": "cb0b91ebe01f90c8215afee6532e6022e542d3fe5e47ff6e3fa994418471505e"
+    },
+    {
+      "metadata": {
+        "coord": "FBR",
+        "ramal": "VPB",
+        "asset": "MF-VPB-FSO_FSO-L00004",
+        "parent": "MF-VPB-FSO_FSO",
+        "line": "L4",
+        "name": "L04 SARZEDO"
+      },
+      "source_points": 131,
+      "source_points_sha256": "729e770b86b5ab7a22abc5183251db07ab0415bfdec5a3716d943c7c06953009",
+      "app_points": 131,
+      "app_points_sha256": "729e770b86b5ab7a22abc5183251db07ab0415bfdec5a3716d943c7c06953009"
+    },
+    {
+      "metadata": {
+        "coord": "FBR",
+        "ramal": "VPB",
+        "asset": "MF-VPB-FSO_FSO-L00DM6",
+        "parent": "MF-VPB-FSO_FSO",
+        "line": "L4",
+        "name": "LDM6 SARZEDO"
+      },
+      "source_points": 76,
+      "source_points_sha256": "f6c7042e8c7a78e1b9ab062a7d147ce3a41cc8961e1a35cf8f3a066a74964635",
+      "app_points": 76,
+      "app_points_sha256": "f6c7042e8c7a78e1b9ab062a7d147ce3a41cc8961e1a35cf8f3a066a74964635"
+    },
+    {
+      "metadata": {
+        "coord": "FBR",
+        "ramal": "VPB",
+        "asset": "MF-VPB-FSO_FSO-TRAVESS",
+        "parent": "MF-VPB-FSO_FSO",
+        "line": "TRAVE",
+        "name": "TRAVESSÃO SARZEDO"
+      },
+      "source_points": 13,
+      "source_points_sha256": "3d9c8420f5b58d5b4d987a6e914fee3d55007fd228e6ea86e781c3d343a2de46",
+      "app_points": 13,
+      "app_points_sha256": "3d9c8420f5b58d5b4d987a6e914fee3d55007fd228e6ea86e781c3d343a2de46"
+    },
+    {
+      "metadata": {
+        "coord": "FBV",
+        "ramal": "ACL",
+        "asset": "MF-ACL-FLP_FLP-L000005",
+        "parent": "MF-ACL-FLP_FLP",
+        "line": "L5",
+        "name": "L05 CAETA. LOPES"
+      },
+      "source_points": 563,
+      "source_points_sha256": "a806c75153e4306f19ec09805d7295132d8b29a445a60e54053b5bca8b55d51e",
+      "app_points": 563,
+      "app_points_sha256": "a806c75153e4306f19ec09805d7295132d8b29a445a60e54053b5bca8b55d51e"
+    },
+    {
+      "metadata": {
+        "coord": "FBV",
+        "ramal": "ACL",
+        "asset": "MF-ACL-FLP_FLP-TRAVESS",
+        "parent": "MF-ACL-FLP_FLP",
+        "line": "TRAVE",
+        "name": "TRAVESSÃO CAETA. LOPES"
+      },
+      "source_points": 33,
+      "source_points_sha256": "7d5b3ac90fc8462c6c849b275370be33940e83c052a326d4e82e13dbadb8c9b1",
+      "app_points": 33,
+      "app_points_sha256": "7d5b3ac90fc8462c6c849b275370be33940e83c052a326d4e82e13dbadb8c9b1"
+    },
+    {
+      "metadata": {
+        "coord": "FBV",
+        "ramal": "VPB",
+        "asset": "MF-VPB-FAL_FAL-L000001",
+        "parent": "MF-VPB-FAL_FAL",
+        "line": "L1",
+        "name": "L01 ARRO. LISBOA"
+      },
+      "source_points": 390,
+      "source_points_sha256": "5d5fe0833ce6905202e5a51e6bd46d0bd3b0d9ccbd867bb1edc7f7da270dcef1",
+      "app_points": 390,
+      "app_points_sha256": "5d5fe0833ce6905202e5a51e6bd46d0bd3b0d9ccbd867bb1edc7f7da270dcef1"
+    },
+    {
+      "metadata": {
+        "coord": "FBV",
+        "ramal": "VPB",
+        "asset": "MF-VPB-FAL_FAL-L000003",
+        "parent": "MF-VPB-FAL_FAL",
+        "line": "L3",
+        "name": "L03 ARRO. LISBOA"
+      },
+      "source_points": 390,
+      "source_points_sha256": "1f22da67d97d021fec8a313a3529aaec6bacbd797e5c1cfd122fdd7b72822563",
+      "app_points": 390,
+      "app_points_sha256": "1f22da67d97d021fec8a313a3529aaec6bacbd797e5c1cfd122fdd7b72822563"
+    },
+    {
+      "metadata": {
+        "coord": "FBV",
+        "ramal": "VPB",
+        "asset": "MF-VPB-FAL_FQZ-L000001",
+        "parent": "MF-VPB-FAL_FQZ",
+        "line": "L1",
+        "name": "ARRO. LISBOA-POSTO KM 520"
+      },
+      "source_points": 508,
+      "source_points_sha256": "f18e5ea04b105631ac152bdf9fbdf03237f1aa93555a736d1631cec5caba2f0d",
+      "app_points": 508,
+      "app_points_sha256": "f18e5ea04b105631ac152bdf9fbdf03237f1aa93555a736d1631cec5caba2f0d"
+    },
+    {
+      "metadata": {
+        "coord": "FBV",
+        "ramal": "VPB",
+        "asset": "MF-VPB-FBV_FBV-L000001",
+        "parent": "MF-VPB-FBV_FBV",
+        "line": "L1",
+        "name": "L01 BELO VALE"
+      },
+      "source_points": 451,
+      "source_points_sha256": "f6bf2b6ce0656215241f6bc2344399aac8846926de0e003396c3009f4775f933",
+      "app_points": 451,
+      "app_points_sha256": "f6bf2b6ce0656215241f6bc2344399aac8846926de0e003396c3009f4775f933"
+    },
+    {
+      "metadata": {
+        "coord": "FBV",
+        "ramal": "VPB",
+        "asset": "MF-VPB-FBV_FBV-L000003",
+        "parent": "MF-VPB-FBV_FBV",
+        "line": "L3",
+        "name": "L03 BELO VALE"
+      },
+      "source_points": 451,
+      "source_points_sha256": "4a9b3f3b71007991bdf2b42fbdf67b753f8d98922414d61875f904040bc47380",
+      "app_points": 451,
+      "app_points_sha256": "4a9b3f3b71007991bdf2b42fbdf67b753f8d98922414d61875f904040bc47380"
+    },
+    {
+      "metadata": {
+        "coord": "FBV",
+        "ramal": "VPB",
+        "asset": "MF-VPB-FBV_FBV-L000005",
+        "parent": "MF-VPB-FBV_FBV",
+        "line": "L5",
+        "name": "L05 BELO VALE"
+      },
+      "source_points": 79,
+      "source_points_sha256": "118d7d4d5ffcd6f378285d14166b8000b8f8e40b5863d4b83ba53f18a65351b3",
+      "app_points": 79,
+      "app_points_sha256": "118d7d4d5ffcd6f378285d14166b8000b8f8e40b5863d4b83ba53f18a65351b3"
+    },
+    {
+      "metadata": {
+        "coord": "FBV",
+        "ramal": "VPB",
+        "asset": "MF-VPB-FBV_FBV-L000007",
+        "parent": "MF-VPB-FBV_FBV",
+        "line": "L7",
+        "name": "L07 BELO VALE"
+      },
+      "source_points": 6,
+      "source_points_sha256": "7749a49f4927871ae99572b9e3bbd2ff5e6f472ad103d275afd68891f960287b",
+      "app_points": 6,
+      "app_points_sha256": "7749a49f4927871ae99572b9e3bbd2ff5e6f472ad103d275afd68891f960287b"
+    },
+    {
+      "metadata": {
+        "coord": "FBV",
+        "ramal": "VPB",
+        "asset": "MF-VPB-FBV_FTC-L000001",
+        "parent": "MF-VPB-FBV_FTC",
+        "line": "L1",
+        "name": "L01 BELO VALE-POSTO KM 537"
+      },
+      "source_points": 1141,
+      "source_points_sha256": "6e4071bb39507841cd7fd763bb600e6108c230c5f9d6bc8a8a441781e5fbf705",
+      "app_points": 1141,
+      "app_points_sha256": "6e4071bb39507841cd7fd763bb600e6108c230c5f9d6bc8a8a441781e5fbf705"
+    },
+    {
+      "metadata": {
+        "coord": "FBV",
+        "ramal": "VPB",
+        "asset": "MF-VPB-FCR_FLP-L000001",
+        "parent": "MF-VPB-FCR_FLP",
+        "line": "L1",
+        "name": "L01 CASA DE PEDRA/CAETANO LOPES"
+      },
+      "source_points": 391,
+      "source_points_sha256": "bbf50ef8887a3633a2138feb538540e5f94e1f33205109898c380bcc7c9b9024",
+      "app_points": 391,
+      "app_points_sha256": "bbf50ef8887a3633a2138feb538540e5f94e1f33205109898c380bcc7c9b9024"
+    },
+    {
+      "metadata": {
+        "coord": "FBV",
+        "ramal": "VPB",
+        "asset": "MF-VPB-FJR_FAL-L000001",
+        "parent": "MF-VPB-FJR_FAL",
+        "line": "L1",
+        "name": "L01 JECEABA-ARRO. LISBOA"
+      },
+      "source_points": 1500,
+      "source_points_sha256": "4a1331ecb6e1ae21fc9bc2c5025f2a685107ca1d10f2ddf2d5edc20f07466097",
+      "app_points": 1500,
+      "app_points_sha256": "4a1331ecb6e1ae21fc9bc2c5025f2a685107ca1d10f2ddf2d5edc20f07466097"
+    },
+    {
+      "metadata": {
+        "coord": "FBV",
+        "ramal": "VPB",
+        "asset": "MF-VPB-FJR_FJR-L000001",
+        "parent": "MF-VPB-FJR_FAL",
+        "line": "L1",
+        "name": "L01 JECEABA"
+      },
+      "source_points": 25,
+      "source_points_sha256": "219059b4123d958107a7b85efffc56b633b99ec3ac7dc2edd05e6503b58fbe0d",
+      "app_points": 25,
+      "app_points_sha256": "219059b4123d958107a7b85efffc56b633b99ec3ac7dc2edd05e6503b58fbe0d"
+    },
+    {
+      "metadata": {
+        "coord": "FBV",
+        "ramal": "VPB",
+        "asset": "MF-VPB-FJR_FJR-L000001",
+        "parent": "MF-VPB-FJR_FJR",
+        "line": "L1",
+        "name": "L01 JECEABA"
+      },
+      "source_points": 400,
+      "source_points_sha256": "01acd72a9f4099613d982fb881e6d56e31cb0d71fbaae68761f0b7063948155e",
+      "app_points": 400,
+      "app_points_sha256": "01acd72a9f4099613d982fb881e6d56e31cb0d71fbaae68761f0b7063948155e"
+    },
+    {
+      "metadata": {
+        "coord": "FBV",
+        "ramal": "VPB",
+        "asset": "MF-VPB-FJR_FJR-L000002",
+        "parent": "MF-VPB-FJR_FJR",
+        "line": "L2",
+        "name": "L02 JECEABA"
+      },
+      "source_points": 380,
+      "source_points_sha256": "8bc94a36acb8b47481a52b36386b02fa7f7ba030a1911d83c6d103e9a5c43724",
+      "app_points": 380,
+      "app_points_sha256": "8bc94a36acb8b47481a52b36386b02fa7f7ba030a1911d83c6d103e9a5c43724"
+    },
+    {
+      "metadata": {
+        "coord": "FBV",
+        "ramal": "VPB",
+        "asset": "MF-VPB-FJR_FJR-L000004",
+        "parent": "MF-VPB-FJR_FJR",
+        "line": "L4",
+        "name": "L04 JECEABA"
+      },
+      "source_points": 64,
+      "source_points_sha256": "0ee7d727e8dcf1f90fc45bc6a648febc301983b03d8566549cd20714c07374ce",
+      "app_points": 64,
+      "app_points_sha256": "0ee7d727e8dcf1f90fc45bc6a648febc301983b03d8566549cd20714c07374ce"
+    },
+    {
+      "metadata": {
+        "coord": "FBV",
+        "ramal": "VPB",
+        "asset": "MF-VPB-FLC_FLC-L000001",
+        "parent": "MF-VPB-FLC_FLC",
+        "line": "L1",
+        "name": "L01 COR. EURICO"
+      },
+      "source_points": 404,
+      "source_points_sha256": "8a3cdbe1f32b54fa11dcfbe528f450a7acf8612bd9aa5950378b9b47c6d157c7",
+      "app_points": 404,
+      "app_points_sha256": "8a3cdbe1f32b54fa11dcfbe528f450a7acf8612bd9aa5950378b9b47c6d157c7"
+    },
+    {
+      "metadata": {
+        "coord": "FBV",
+        "ramal": "VPB",
+        "asset": "MF-VPB-FLC_FLC-L000002",
+        "parent": "MF-VPB-FLC_FLC",
+        "line": "L2",
+        "name": "L02 COR. EURICO"
+      },
+      "source_points": 401,
+      "source_points_sha256": "54e8a65a3a4e2fb78315497f4a50d7f65776bbf466dd4d9f23f5fe72df13ec19",
+      "app_points": 401,
+      "app_points_sha256": "54e8a65a3a4e2fb78315497f4a50d7f65776bbf466dd4d9f23f5fe72df13ec19"
+    },
+    {
+      "metadata": {
+        "coord": "FBV",
+        "ramal": "VPB",
+        "asset": "MF-VPB-FLP_FJR-L000001",
+        "parent": "MF-VPB-FLP_FJR",
+        "line": "L1",
+        "name": "L01 CAETA. LOPES-JECEABA"
+      },
+      "source_points": 670,
+      "source_points_sha256": "e4ea871fc2340697b417bd93dda33f8e6acd70e53be2e463705d817dd43cb50c",
+      "app_points": 670,
+      "app_points_sha256": "e4ea871fc2340697b417bd93dda33f8e6acd70e53be2e463705d817dd43cb50c"
+    },
+    {
+      "metadata": {
+        "coord": "FBV",
+        "ramal": "VPB",
+        "asset": "MF-VPB-FLP_FLP-L000001",
+        "parent": "MF-VPB-FLP_FLP",
+        "line": "L1",
+        "name": "L01 CAETA. LOPES"
+      },
+      "source_points": 545,
+      "source_points_sha256": "035a6cea91247df3f51fff497a3684113b277908efd767ed42da65fc257495cf",
+      "app_points": 545,
+      "app_points_sha256": "035a6cea91247df3f51fff497a3684113b277908efd767ed42da65fc257495cf"
+    },
+    {
+      "metadata": {
+        "coord": "FBV",
+        "ramal": "VPB",
+        "asset": "MF-VPB-FLP_FLP-L000003",
+        "parent": "MF-VPB-FLP_FLP",
+        "line": "L3",
+        "name": "L03 CAETA. LOPES"
+      },
+      "source_points": 547,
+      "source_points_sha256": "09d67e32e73248a3aaa12715eecba7987de98685b433d3b731f8fd67f41d7701",
+      "app_points": 547,
+      "app_points_sha256": "09d67e32e73248a3aaa12715eecba7987de98685b433d3b731f8fd67f41d7701"
+    },
+    {
+      "metadata": {
+        "coord": "FBV",
+        "ramal": "VPB",
+        "asset": "MF-VPB-FMD_FMD-L000001",
+        "parent": "MF-VPB-FMD_FMD",
+        "line": "L1",
+        "name": "L01 MOEDA"
+      },
+      "source_points": 361,
+      "source_points_sha256": "22f59376d333730a1743b2b10c5a7f23ed0b7ccdd2b513824b67e1db9b6062e5",
+      "app_points": 361,
+      "app_points_sha256": "22f59376d333730a1743b2b10c5a7f23ed0b7ccdd2b513824b67e1db9b6062e5"
+    },
+    {
+      "metadata": {
+        "coord": "FBV",
+        "ramal": "VPB",
+        "asset": "MF-VPB-FMD_FMD-L000003",
+        "parent": "MF-VPB-FMD_FMD",
+        "line": "L3",
+        "name": "L03 MOEDA"
+      },
+      "source_points": 363,
+      "source_points_sha256": "8c87339f02fb0369209bb4079b3af25b90390f8f51a51d8fa996fa79a1960249",
+      "app_points": 363,
+      "app_points_sha256": "8c87339f02fb0369209bb4079b3af25b90390f8f51a51d8fa996fa79a1960249"
+    },
+    {
+      "metadata": {
+        "coord": "FBV",
+        "ramal": "VPB",
+        "asset": "MF-VPB-FMD_FMD-L000005",
+        "parent": "MF-VPB-FMD_FMD",
+        "line": "L5",
+        "name": "L05 MOEDA"
+      },
+      "source_points": 95,
+      "source_points_sha256": "3df79758bbe0f8c363dc58c843a3d09cdacb357d9706554fc411808d919f3627",
+      "app_points": 95,
+      "app_points_sha256": "3df79758bbe0f8c363dc58c843a3d09cdacb357d9706554fc411808d919f3627"
+    },
+    {
+      "metadata": {
+        "coord": "FBV",
+        "ramal": "VPB",
+        "asset": "MF-VPB-FMD_FMS-L000001",
+        "parent": "MF-VPB-FMD_FMS",
+        "line": "L1",
+        "name": "L01 MOEDA-MARINHOS"
+      },
+      "source_points": 1586,
+      "source_points_sha256": "56d46c7c0c308b5a2c9f9ef683c9a2127dceb33f7bcfdff6a506863a1069b20f",
+      "app_points": 1586,
+      "app_points_sha256": "56d46c7c0c308b5a2c9f9ef683c9a2127dceb33f7bcfdff6a506863a1069b20f"
+    },
+    {
+      "metadata": {
+        "coord": "FBV",
+        "ramal": "VPB",
+        "asset": "MF-VPB-FMS_FLC-L000001",
+        "parent": "MF-VPB-FMS_FLC",
+        "line": "L1",
+        "name": "L01 MARINHOS-COR. EURICO"
+      },
+      "source_points": 560,
+      "source_points_sha256": "3e2e92dc4b742d0418a257f84825fa2080755c3ebe7b401872eea06eaf305d96",
+      "app_points": 560,
+      "app_points_sha256": "3e2e92dc4b742d0418a257f84825fa2080755c3ebe7b401872eea06eaf305d96"
+    },
+    {
+      "metadata": {
+        "coord": "FBV",
+        "ramal": "VPB",
+        "asset": "MF-VPB-FMS_FMS-L000001",
+        "parent": "MF-VPB-FMS_FMS",
+        "line": "L1",
+        "name": "L01 MARINHOS"
+      },
+      "source_points": 462,
+      "source_points_sha256": "1a4a7060534789dedc7d088777d9288c651c71ee25ec5769d6c4042da0aec127",
+      "app_points": 462,
+      "app_points_sha256": "1a4a7060534789dedc7d088777d9288c651c71ee25ec5769d6c4042da0aec127"
+    },
+    {
+      "metadata": {
+        "coord": "FBV",
+        "ramal": "VPB",
+        "asset": "MF-VPB-FMS_FMS-L000003",
+        "parent": "MF-VPB-FMS_FMS",
+        "line": "L3",
+        "name": "L03 MARINHOS"
+      },
+      "source_points": 464,
+      "source_points_sha256": "ae50a67d868bbf67662890f1700f5b42c9837a7c42bd2f1bf1370d46ffeec378",
+      "app_points": 464,
+      "app_points_sha256": "ae50a67d868bbf67662890f1700f5b42c9837a7c42bd2f1bf1370d46ffeec378"
+    },
+    {
+      "metadata": {
+        "coord": "FBV",
+        "ramal": "VPB",
+        "asset": "MF-VPB-FQZ_FBV-L000001",
+        "parent": "MF-VPB-FQZ_FBV",
+        "line": "L1",
+        "name": "L01 POSTO KM 520-BELO VALE"
+      },
+      "source_points": 1589,
+      "source_points_sha256": "b8f4de3c566805f9382e36cdea89bd5ab98174eb45cca8ecd7e29977e637e63d",
+      "app_points": 1589,
+      "app_points_sha256": "b8f4de3c566805f9382e36cdea89bd5ab98174eb45cca8ecd7e29977e637e63d"
+    },
+    {
+      "metadata": {
+        "coord": "FBV",
+        "ramal": "VPB",
+        "asset": "MF-VPB-FQZ_FQZ-L000001",
+        "parent": "MF-VPB-FQZ_FQZ",
+        "line": "L1",
+        "name": "L01 POSTO KM 520"
+      },
+      "source_points": 424,
+      "source_points_sha256": "bebbdf4554acf11cfedf7bc37e3a3917d1e66d8859197a63ff98270eb03b70c6",
+      "app_points": 424,
+      "app_points_sha256": "bebbdf4554acf11cfedf7bc37e3a3917d1e66d8859197a63ff98270eb03b70c6"
+    },
+    {
+      "metadata": {
+        "coord": "FBV",
+        "ramal": "VPB",
+        "asset": "MF-VPB-FQZ_FQZ-L000003",
+        "parent": "MF-VPB-FQZ_FQZ",
+        "line": "L3",
+        "name": "L03 POSTO KM 520"
+      },
+      "source_points": 423,
+      "source_points_sha256": "248408c917bbb6c0cf4e4adf3f3b6cf2f93a6e4522c0d954f8bedc8c2dd607d6",
+      "app_points": 423,
+      "app_points_sha256": "248408c917bbb6c0cf4e4adf3f3b6cf2f93a6e4522c0d954f8bedc8c2dd607d6"
+    },
+    {
+      "metadata": {
+        "coord": "FBV",
+        "ramal": "VPB",
+        "asset": "MF-VPB-FTC_FMD-L000001",
+        "parent": "MF-VPB-FTC_FMD",
+        "line": "L1",
+        "name": "L01 POSTO KM 537-MOEDA"
+      },
+      "source_points": 1016,
+      "source_points_sha256": "a6ddcb57a7d6edf768236b08157128f006c9859c845d9400a4eed31c5511a750",
+      "app_points": 1016,
+      "app_points_sha256": "a6ddcb57a7d6edf768236b08157128f006c9859c845d9400a4eed31c5511a750"
+    },
+    {
+      "metadata": {
+        "coord": "FBV",
+        "ramal": "VPB",
+        "asset": "MF-VPB-FTC_FTC-L000001",
+        "parent": "MF-VPB-FTC_FTC",
+        "line": "L1",
+        "name": "L01 POSTO KM 537"
+      },
+      "source_points": 387,
+      "source_points_sha256": "d31a6782196287fd9af76c07a7fd9cd10f86339cf7f127bb54649f7cb5f59ce0",
+      "app_points": 387,
+      "app_points_sha256": "d31a6782196287fd9af76c07a7fd9cd10f86339cf7f127bb54649f7cb5f59ce0"
+    },
+    {
+      "metadata": {
+        "coord": "FBV",
+        "ramal": "VPB",
+        "asset": "MF-VPB-FTC_FTC-L000002",
+        "parent": "MF-VPB-FTC_FTC",
+        "line": "L2",
+        "name": "L02 POSTO KM 537"
+      },
+      "source_points": 388,
+      "source_points_sha256": "bbc7fbf91ae174f4fa208c44e2e5559c612f9642197780e305cd6fb8b46c853a",
+      "app_points": 388,
+      "app_points_sha256": "bbc7fbf91ae174f4fa208c44e2e5559c612f9642197780e305cd6fb8b46c853a"
+    },
+    {
+      "metadata": {
+        "coord": "FCL",
+        "ramal": "LC1",
+        "asset": "MF-LC1-FPE_FQC-L000001",
+        "parent": "MF-LC1-FPE_FQC",
+        "line": "L1",
+        "name": "L01 PED. DO SINO-POSTO KM 452"
+      },
+      "source_points": 1631,
+      "source_points_sha256": "ae0161c13e04ddddd43324c30b4f4b583ae7987698105c212553115d09d6044c",
+      "app_points": 1631,
+      "app_points_sha256": "ae0161c13e04ddddd43324c30b4f4b583ae7987698105c212553115d09d6044c"
+    },
+    {
+      "metadata": {
+        "coord": "FCL",
+        "ramal": "LC1",
+        "asset": "MF-LC1-FQC_FQC-L000001",
+        "parent": "MF-LC1-FQC_FQC",
+        "line": "L1",
+        "name": "L01 POSTO KM 452"
+      },
+      "source_points": 318,
+      "source_points_sha256": "d39f798d6d4ad2054fea9ae1cec6d12592ccbe8b39889df3505ad22936f65812",
+      "app_points": 318,
+      "app_points_sha256": "d39f798d6d4ad2054fea9ae1cec6d12592ccbe8b39889df3505ad22936f65812"
+    },
+    {
+      "metadata": {
+        "coord": "FCL",
+        "ramal": "LC1",
+        "asset": "MF-LC1-FQC_FQC-L000002",
+        "parent": "MF-LC1-FQC_FQC",
+        "line": "L2",
+        "name": "L02 POSTO KM 452"
+      },
+      "source_points": 318,
+      "source_points_sha256": "ca704396070910f76ba014fdbbe037673c758b33bf206594c292c5282e6051d7",
+      "app_points": 318,
+      "app_points_sha256": "ca704396070910f76ba014fdbbe037673c758b33bf206594c292c5282e6051d7"
+    },
+    {
+      "metadata": {
+        "coord": "FCL",
+        "ramal": "LC2",
+        "asset": "MF-LC2-FBQ_FBQ-L000001",
+        "parent": "MF-LC2-FBQ_FBQ",
+        "line": "L1",
+        "name": "L01 BUAR. MACEDO"
+      },
+      "source_points": 481,
+      "source_points_sha256": "12ff99dafb9e02d6423106c9d3f24356799e91da22dd46d4329ab346c2069080",
+      "app_points": 481,
+      "app_points_sha256": "12ff99dafb9e02d6423106c9d3f24356799e91da22dd46d4329ab346c2069080"
+    },
+    {
+      "metadata": {
+        "coord": "FCL",
+        "ramal": "LC2",
+        "asset": "MF-LC2-FBQ_FBQ-L000003",
+        "parent": "MF-LC2-FBQ_FBQ",
+        "line": "L3",
+        "name": "L03 BUAR. MACEDO"
+      },
+      "source_points": 482,
+      "source_points_sha256": "312a603feee43c2e1c1a99b12381f3cf15d152d42b6a383583b96282d4afcdc6",
+      "app_points": 482,
+      "app_points_sha256": "312a603feee43c2e1c1a99b12381f3cf15d152d42b6a383583b96282d4afcdc6"
+    },
+    {
+      "metadata": {
+        "coord": "FCL",
+        "ramal": "LC2",
+        "asset": "MF-LC2-FBQ_FBS-L000001",
+        "parent": "MF-LC2-FBQ_FBS",
+        "line": "L1",
+        "name": "L01 BUAR. MACEDO-BARROSO"
+      },
+      "source_points": 411,
+      "source_points_sha256": "bf73cdf6ed9a719f880d5f1ba026fefd17692577d9bc3aec45e8e84d24ab20f7",
+      "app_points": 411,
+      "app_points_sha256": "bf73cdf6ed9a719f880d5f1ba026fefd17692577d9bc3aec45e8e84d24ab20f7"
+    },
+    {
+      "metadata": {
+        "coord": "FCL",
+        "ramal": "LC2",
+        "asset": "MF-LC2-FBS_FBS-L000001",
+        "parent": "MF-LC2-FBS_FBS",
+        "line": "L1",
+        "name": "L01 BARROSO"
+      },
+      "source_points": 345,
+      "source_points_sha256": "92b1bc41a420857f1e7100c68edd1c342c149f5fda846c16d3662f402c2cde42",
+      "app_points": 345,
+      "app_points_sha256": "92b1bc41a420857f1e7100c68edd1c342c149f5fda846c16d3662f402c2cde42"
+    },
+    {
+      "metadata": {
+        "coord": "FCL",
+        "ramal": "LC2",
+        "asset": "MF-LC2-FBS_FBS-L000002",
+        "parent": "MF-LC2-FBS_FBS",
+        "line": "L2",
+        "name": "L02 BARROSO"
+      },
+      "source_points": 347,
+      "source_points_sha256": "481c4b126747a9cfe7df0f3eedc59758ba9d019e987a387162de09161707a345",
+      "app_points": 347,
+      "app_points_sha256": "481c4b126747a9cfe7df0f3eedc59758ba9d019e987a387162de09161707a345"
+    },
+    {
+      "metadata": {
+        "coord": "FCL",
+        "ramal": "LC2",
+        "asset": "MF-LC2-FBS_FPK-L000001",
+        "parent": "MF-LC2-FBS_FPK",
+        "line": "L1",
+        "name": "L01 BARROSO/460"
+      },
+      "source_points": 410,
+      "source_points_sha256": "60e41284c8608a54c8f251b95221c3a2f414a657937377206d8eee6809bd2112",
+      "app_points": 410,
+      "app_points_sha256": "60e41284c8608a54c8f251b95221c3a2f414a657937377206d8eee6809bd2112"
+    },
+    {
+      "metadata": {
+        "coord": "FCL",
+        "ramal": "LC2",
+        "asset": "MF-LC2-FCL_FCL-L000001",
+        "parent": "MF-LC2-FCL_FCL",
+        "line": "L1",
+        "name": "L01 CON.LAFAIETE"
+      },
+      "source_points": 214,
+      "source_points_sha256": "f4dbbdc4111e6cbcffe2d66913c931bffdbea09d600cc8d38920874ef332b4f0",
+      "app_points": 214,
+      "app_points_sha256": "f4dbbdc4111e6cbcffe2d66913c931bffdbea09d600cc8d38920874ef332b4f0"
+    },
+    {
+      "metadata": {
+        "coord": "FCL",
+        "ramal": "LC2",
+        "asset": "MF-LC2-FCL_FCL-L000002",
+        "parent": "MF-LC2-FCL_FCL",
+        "line": "L2",
+        "name": "L02 CON.LAFAIETE"
+      },
+      "source_points": 242,
+      "source_points_sha256": "347179dc5b8ce028dc472e9c6e7e019bb3adb69ab225d6df1bc44c3c13466e6f",
+      "app_points": 242,
+      "app_points_sha256": "347179dc5b8ce028dc472e9c6e7e019bb3adb69ab225d6df1bc44c3c13466e6f"
+    },
+    {
+      "metadata": {
+        "coord": "FCL",
+        "ramal": "LC2",
+        "asset": "MF-LC2-FCL_FCL-L000003",
+        "parent": "MF-LC2-FCL_FCL",
+        "line": "L3",
+        "name": "L03 CON.LAFAIETE"
+      },
+      "source_points": 40,
+      "source_points_sha256": "b24c113bf4faa0bdfd3c8a49629322d7a38fc1d2cd57b48009bb9e5fc62be60d",
+      "app_points": 40,
+      "app_points_sha256": "b24c113bf4faa0bdfd3c8a49629322d7a38fc1d2cd57b48009bb9e5fc62be60d"
+    },
+    {
+      "metadata": {
+        "coord": "FCL",
+        "ramal": "LC2",
+        "asset": "MF-LC2-FCL_FCL-L000004",
+        "parent": "MF-LC2-FCL_FCL",
+        "line": "L4",
+        "name": "L04 CON.LAFAIETE"
+      },
+      "source_points": 270,
+      "source_points_sha256": "4bea0cf2fce8853c6e617726d77e2fa568df1f3eabeb02a9fcc5674a27ee11d1",
+      "app_points": 270,
+      "app_points_sha256": "4bea0cf2fce8853c6e617726d77e2fa568df1f3eabeb02a9fcc5674a27ee11d1"
+    },
+    {
+      "metadata": {
+        "coord": "FCL",
+        "ramal": "LC2",
+        "asset": "MF-LC2-FCL_FCL-L00009A",
+        "parent": "MF-LC2-FCL_FCL",
+        "line": "L9A",
+        "name": "L09A CON.LAFAIETE"
+      },
+      "source_points": 188,
+      "source_points_sha256": "7d895038a55e08f50b5dcbbdf691482015f67560bd7b4db1c2da282bbdf99c1e",
+      "app_points": 188,
+      "app_points_sha256": "7d895038a55e08f50b5dcbbdf691482015f67560bd7b4db1c2da282bbdf99c1e"
+    },
+    {
+      "metadata": {
+        "coord": "FCL",
+        "ramal": "LC2",
+        "asset": "MF-LC2-FCL_FCL-TRAVESS",
+        "parent": "MF-LC2-FCL_FCL",
+        "line": "TRAVE",
+        "name": "TRAVESSÃO CON.LAFAIETE"
+      },
+      "source_points": 15,
+      "source_points_sha256": "bff93f0bf45cadd789d2a255498a272391ea019a0e64fac7a2e4f1bd427e5987",
+      "app_points": 15,
+      "app_points_sha256": "bff93f0bf45cadd789d2a255498a272391ea019a0e64fac7a2e4f1bd427e5987"
+    },
+    {
+      "metadata": {
+        "coord": "FCL",
+        "ramal": "LC2",
+        "asset": "MF-LC2-FCL_FMO-L000001",
+        "parent": "MF-LC2-FCL_FMO",
+        "line": "L1",
+        "name": "L01 CON.LAFAIETE-MÁR.CASTILHO"
+      },
+      "source_points": 504,
+      "source_points_sha256": "0064088c0a974bf8b1a1d98c2d5affe84993c32d9dcff7b443e3fa409f1cac82",
+      "app_points": 504,
+      "app_points_sha256": "0064088c0a974bf8b1a1d98c2d5affe84993c32d9dcff7b443e3fa409f1cac82"
+    },
+    {
+      "metadata": {
+        "coord": "FCL",
+        "ramal": "LC2",
+        "asset": "MF-LC2-FCL_FMO-L000002",
+        "parent": "MF-LC2-FCL_FMO",
+        "line": "L2",
+        "name": "L02 CON.LAFAIETE-MÁR.CASTILHO"
+      },
+      "source_points": 508,
+      "source_points_sha256": "451b2d5833da4d2c120070ff9a464c2ecf9150800510875e6e5e5d6f49b66ad7",
+      "app_points": 508,
+      "app_points_sha256": "451b2d5833da4d2c120070ff9a464c2ecf9150800510875e6e5e5d6f49b66ad7"
+    },
+    {
+      "metadata": {
+        "coord": "FCL",
+        "ramal": "LC2",
+        "asset": "MF-LC2-FDM_FDM-L000001",
+        "parent": "MF-LC2-FDM_FDM",
+        "line": "L1",
+        "name": "L01 J. MURTINHO"
+      },
+      "source_points": 415,
+      "source_points_sha256": "bfb35c3a88b78065b89e756b855069038650759193584d2cfe060230d6c65acd",
+      "app_points": 416,
+      "app_points_sha256": "277da62e4ffcc93d5640f33196c8d908dc0b030fc0d2c403d9ae33d88caa0184"
+    },
+    {
+      "metadata": {
+        "coord": "FCL",
+        "ramal": "LC2",
+        "asset": "MF-LC2-FDM_FDM-L000001",
+        "parent": "MF-VPB-FDM_FMD",
+        "line": "L1",
+        "name": "L01 J. MURTINHO"
+      },
+      "source_points": 1,
+      "source_points_sha256": "6100d7ee9c9967b7c2aac232f9374f6a5d0e692d10b41d3eca69545764826e56",
+      "app_points": 1,
+      "app_points_sha256": "6100d7ee9c9967b7c2aac232f9374f6a5d0e692d10b41d3eca69545764826e56"
+    },
+    {
+      "metadata": {
+        "coord": "FCL",
+        "ramal": "LC2",
+        "asset": "MF-LC2-FDM_FDM-L000002",
+        "parent": "MF-LC2-FDM_FDM",
+        "line": "L2",
+        "name": "L02 J. MURTINHO"
+      },
+      "source_points": 70,
+      "source_points_sha256": "097606b0aef341920532c8e3cb8cd931a813e008ec89457ef973e76752f6217c",
+      "app_points": 70,
+      "app_points_sha256": "097606b0aef341920532c8e3cb8cd931a813e008ec89457ef973e76752f6217c"
+    },
+    {
+      "metadata": {
+        "coord": "FCL",
+        "ramal": "LC2",
+        "asset": "MF-LC2-FDM_FDM-L000004",
+        "parent": "MF-LC2-FDM_FDM",
+        "line": "L4",
+        "name": "L04 J. MURTINHO"
+      },
+      "source_points": 299,
+      "source_points_sha256": "3fa4eeb28c1321d98181fbf87875f01569ee84623734ab930684e9cf626963be",
+      "app_points": 299,
+      "app_points_sha256": "3fa4eeb28c1321d98181fbf87875f01569ee84623734ab930684e9cf626963be"
+    },
+    {
+      "metadata": {
+        "coord": "FCL",
+        "ramal": "LC2",
+        "asset": "MF-LC2-FDM_FDM-L000008",
+        "parent": "MF-LC2-FDM_FDM",
+        "line": "L8",
+        "name": "L08 J. MURTINHO"
+      },
+      "source_points": 115,
+      "source_points_sha256": "cb4c27ad4bb2cbb7e33b06e16a15572ca1600108854c6233c1bb4a96fc9d4e6a",
+      "app_points": 115,
+      "app_points_sha256": "cb4c27ad4bb2cbb7e33b06e16a15572ca1600108854c6233c1bb4a96fc9d4e6a"
+    },
+    {
+      "metadata": {
+        "coord": "FCL",
+        "ramal": "LC2",
+        "asset": "MF-LC2-FDM_FDM-L000012",
+        "parent": "MF-LC2-FDM_FDM",
+        "line": "L12",
+        "name": "L12 J. MURTINHO"
+      },
+      "source_points": 116,
+      "source_points_sha256": "b43713c4c273e5e022e3854975beb9de6ab939dfbdc617c5c85c5859822559bd",
+      "app_points": 116,
+      "app_points_sha256": "b43713c4c273e5e022e3854975beb9de6ab939dfbdc617c5c85c5859822559bd"
+    },
+    {
+      "metadata": {
+        "coord": "FCL",
+        "ramal": "LC2",
+        "asset": "MF-LC2-FDM_FDM-L000014",
+        "parent": "MF-LC2-FDM_FDM",
+        "line": "L14",
+        "name": "L14 J. MURTINHO"
+      },
+      "source_points": 12,
+      "source_points_sha256": "72779a91798797e388329b5dd9c27288072a3ccf1ddcde59b7376ab8dda59cc1",
+      "app_points": 12,
+      "app_points_sha256": "72779a91798797e388329b5dd9c27288072a3ccf1ddcde59b7376ab8dda59cc1"
+    },
+    {
+      "metadata": {
+        "coord": "FCL",
+        "ramal": "LC2",
+        "asset": "MF-LC2-FDM_FDM-L00002A",
+        "parent": "MF-LC2-FDM_FDM",
+        "line": "L2A",
+        "name": "L02A J. MURTINHO"
+      },
+      "source_points": 69,
+      "source_points_sha256": "c69750342ff249752d3afcf0fc4916479ddc6126193fc0ff9e1cb0cd0770cc88",
+      "app_points": 69,
+      "app_points_sha256": "c69750342ff249752d3afcf0fc4916479ddc6126193fc0ff9e1cb0cd0770cc88"
+    },
+    {
+      "metadata": {
+        "coord": "FCL",
+        "ramal": "LC2",
+        "asset": "MF-LC2-FDM_FDM-L00002B",
+        "parent": "MF-LC2-FDM_FDM",
+        "line": "L2B",
+        "name": "L02B J. MURTINHO"
+      },
+      "source_points": 306,
+      "source_points_sha256": "625158556567effd67f520783d54ee68e25a31f421f4e68aa0b1523291befa60",
+      "app_points": 306,
+      "app_points_sha256": "625158556567effd67f520783d54ee68e25a31f421f4e68aa0b1523291befa60"
+    },
+    {
+      "metadata": {
+        "coord": "FCL",
+        "ramal": "LC2",
+        "asset": "MF-LC2-FDM_FDM-L00006A",
+        "parent": "MF-LC2-FDM_FDM",
+        "line": "L6A",
+        "name": "L06A J. MURTINHO"
+      },
+      "source_points": 13,
+      "source_points_sha256": "99506993902373cfb5176181d9c305866d5df4ec4a29f7b4159665f43489e2ed",
+      "app_points": 13,
+      "app_points_sha256": "99506993902373cfb5176181d9c305866d5df4ec4a29f7b4159665f43489e2ed"
+    },
+    {
+      "metadata": {
+        "coord": "FCL",
+        "ramal": "LC2",
+        "asset": "MF-LC2-FDM_FDM-L00006B",
+        "parent": "MF-LC2-FDM_FDM",
+        "line": "L6B",
+        "name": "L06B J. MURTINHO"
+      },
+      "source_points": 72,
+      "source_points_sha256": "d117533c75a98f6bf96b8a9620d22808058b9b3539a259a41981abbb67ed8cfd",
+      "app_points": 72,
+      "app_points_sha256": "d117533c75a98f6bf96b8a9620d22808058b9b3539a259a41981abbb67ed8cfd"
+    },
+    {
+      "metadata": {
+        "coord": "FCL",
+        "ramal": "LC2",
+        "asset": "MF-LC2-FDM_FDM-L00006C",
+        "parent": "MF-LC2-FDM_FDM",
+        "line": "L6C",
+        "name": "L06C J. MURTINHO"
+      },
+      "source_points": 146,
+      "source_points_sha256": "74837585b14090f03d55ec2c51fa160aea54f2dfa1f4a8940d17ea419ce6562e",
+      "app_points": 146,
+      "app_points_sha256": "74837585b14090f03d55ec2c51fa160aea54f2dfa1f4a8940d17ea419ce6562e"
+    },
+    {
+      "metadata": {
+        "coord": "FCL",
+        "ramal": "LC2",
+        "asset": "MF-LC2-FDM_FDM-L00010A",
+        "parent": "MF-LC2-FDM_FDM",
+        "line": "L10A",
+        "name": "L10A J. MURTINHO"
+      },
+      "source_points": 107,
+      "source_points_sha256": "273e7426c590097b7259a64b905812ddf8fd049c9c5b9ca5f52a2419f292284c",
+      "app_points": 107,
+      "app_points_sha256": "273e7426c590097b7259a64b905812ddf8fd049c9c5b9ca5f52a2419f292284c"
+    },
+    {
+      "metadata": {
+        "coord": "FCL",
+        "ramal": "LC2",
+        "asset": "MF-LC2-FDM_FDM-L00010B",
+        "parent": "MF-LC2-FDM_FDM",
+        "line": "L10B",
+        "name": "L10B J. MURTINHO"
+      },
+      "source_points": 50,
+      "source_points_sha256": "73ead5b2a864cb675f0463c45d23672cb784b8d0ab91400108f2b2df5bc9f1f1",
+      "app_points": 50,
+      "app_points_sha256": "73ead5b2a864cb675f0463c45d23672cb784b8d0ab91400108f2b2df5bc9f1f1"
+    },
+    {
+      "metadata": {
+        "coord": "FCL",
+        "ramal": "LC2",
+        "asset": "MF-LC2-FDM_FDM-L00014A",
+        "parent": "MF-LC2-FDM_FDM",
+        "line": "L14A",
+        "name": "L14A J. MURTINHO"
+      },
+      "source_points": 116,
+      "source_points_sha256": "92c58bbca66fc8e11d76bb59c73251223fd9d164cad655ef33c41d4671fac9d8",
+      "app_points": 116,
+      "app_points_sha256": "92c58bbca66fc8e11d76bb59c73251223fd9d164cad655ef33c41d4671fac9d8"
+    },
+    {
+      "metadata": {
+        "coord": "FCL",
+        "ramal": "LC2",
+        "asset": "MF-LC2-FDM_FDM-L0DM06A",
+        "parent": "MF-LC2-FDM_FDM",
+        "line": "DM6A",
+        "name": "LDM06A J. MURTINHO"
+      },
+      "source_points": 128,
+      "source_points_sha256": "a02a974ced6bfddb04aabc16d64dee5678f16cffc1ff8ceea54647e1c2402306",
+      "app_points": 128,
+      "app_points_sha256": "a02a974ced6bfddb04aabc16d64dee5678f16cffc1ff8ceea54647e1c2402306"
+    },
+    {
+      "metadata": {
+        "coord": "FCL",
+        "ramal": "LC2",
+        "asset": "MF-LC2-FDM_FDM-TRAVESS",
+        "parent": "MF-LC2-FDM_FDM",
+        "line": "TRAVE",
+        "name": "TRAVESSÂO MURTINHO"
+      },
+      "source_points": 42,
+      "source_points_sha256": "658f7f402c25cdfb3e870d20c369aa32cb9fa1480823837c6bba985de683ea07",
+      "app_points": 142,
+      "app_points_sha256": "5e470d272346844457bb9e9fa5210df552869575810549808309319f273c313b"
+    },
+    {
+      "metadata": {
+        "coord": "FCL",
+        "ramal": "LC2",
+        "asset": "MF-LC2-FDM_FDM-TRAVESS",
+        "parent": "MF-LC2-FDM_FDM",
+        "line": "TRAVE",
+        "name": "TRAVESSÃO J. MURTINHO"
+      },
+      "source_points": 100,
+      "source_points_sha256": "e9a905798880e4c82d760a0ce518a965efa08ee1c56f64db776d78dbf425ba11",
+      "app_points": 100,
+      "app_points_sha256": "e9a905798880e4c82d760a0ce518a965efa08ee1c56f64db776d78dbf425ba11"
+    },
+    {
+      "metadata": {
+        "coord": "FCL",
+        "ramal": "LC2",
+        "asset": "MF-LC2-FDM_FDM-TRAVESS",
+        "parent": "MF-VPB-FDM_FQD",
+        "line": "TRAVE",
+        "name": "TRAVESSÃO J. MURTINHO"
+      },
+      "source_points": 1,
+      "source_points_sha256": "e171d17d362b04b84c6b818c5e458c8683c517566d4ae943e23d8b0a8f57599e",
+      "app_points": 1,
+      "app_points_sha256": "e171d17d362b04b84c6b818c5e458c8683c517566d4ae943e23d8b0a8f57599e"
+    },
+    {
+      "metadata": {
+        "coord": "FCL",
+        "ramal": "LC2",
+        "asset": "MF-LC2-FMO_FDM-L000001",
+        "parent": "MF-LC2-FMO_FDM",
+        "line": "L1",
+        "name": "L01 MÁR.CASTILHO-J. MURTINHO"
+      },
+      "source_points": 915,
+      "source_points_sha256": "f0853300d84c2e07c18a75f4d2f935af8cc18704e53be09bc32bf54ad162892d",
+      "app_points": 915,
+      "app_points_sha256": "f0853300d84c2e07c18a75f4d2f935af8cc18704e53be09bc32bf54ad162892d"
+    },
+    {
+      "metadata": {
+        "coord": "FCL",
+        "ramal": "LC2",
+        "asset": "MF-LC2-FMO_FMO-L000001",
+        "parent": "MF-LC2-FMO_FMO",
+        "line": "L1",
+        "name": "L01 MÁR.CASTILHO"
+      },
+      "source_points": 1001,
+      "source_points_sha256": "1720d11be350d29b51b72c4496d6135efc6e4b6783de7e6953b510d5aed8b472",
+      "app_points": 1001,
+      "app_points_sha256": "1720d11be350d29b51b72c4496d6135efc6e4b6783de7e6953b510d5aed8b472"
+    },
+    {
+      "metadata": {
+        "coord": "FCL",
+        "ramal": "LC2",
+        "asset": "MF-LC2-FMO_FMO-L000002",
+        "parent": "MF-LC2-FMO_FMO",
+        "line": "L2",
+        "name": "L02 MÁR.CASTILHO"
+      },
+      "source_points": 984,
+      "source_points_sha256": "d819eeca8712a99593cfb86236481690dac01616323d1f33caf71b848a232a0e",
+      "app_points": 984,
+      "app_points_sha256": "d819eeca8712a99593cfb86236481690dac01616323d1f33caf71b848a232a0e"
+    },
+    {
+      "metadata": {
+        "coord": "FCL",
+        "ramal": "LC2",
+        "asset": "MF-LC2-FMO_FMO-L000004",
+        "parent": "MF-LC2-FMO_FMO",
+        "line": "L4",
+        "name": "L04 MÁR.CASTILHO"
+      },
+      "source_points": 804,
+      "source_points_sha256": "dabc6c54d3b406e1eebb580b3a5caeaf45c9f0f11add3224d4df7a71d84b7cbd",
+      "app_points": 804,
+      "app_points_sha256": "dabc6c54d3b406e1eebb580b3a5caeaf45c9f0f11add3224d4df7a71d84b7cbd"
+    },
+    {
+      "metadata": {
+        "coord": "FCL",
+        "ramal": "LC2",
+        "asset": "MF-LC2-FMO_FMO-L000006",
+        "parent": "MF-LC2-FMO_FMO",
+        "line": "L6",
+        "name": "L06 MÁR.CASTILHO"
+      },
+      "source_points": 782,
+      "source_points_sha256": "9e8314594c40436548f336716c751a7cf95293b946f1ad33dc6800ed1864abf9",
+      "app_points": 782,
+      "app_points_sha256": "9e8314594c40436548f336716c751a7cf95293b946f1ad33dc6800ed1864abf9"
+    },
+    {
+      "metadata": {
+        "coord": "FCL",
+        "ramal": "LC2",
+        "asset": "MF-LC2-FMO_FMO-TRAVESS",
+        "parent": "MF-LC2-FMO_FMO",
+        "line": "TRAVE",
+        "name": "TRAVESSÃO MÁR.CASTILHO"
+      },
+      "source_points": 101,
+      "source_points_sha256": "9b8d1252eb4a718ff2da2e27fa39760498cbc3d59234d4d669de7a6756996b77",
+      "app_points": 101,
+      "app_points_sha256": "9b8d1252eb4a718ff2da2e27fa39760498cbc3d59234d4d669de7a6756996b77"
+    },
+    {
+      "metadata": {
+        "coord": "FCL",
+        "ramal": "LC2",
+        "asset": "MF-LC2-FPK_FPK-L000001",
+        "parent": "MF-LC2-FPK_FPK",
+        "line": "L1",
+        "name": "L01 POSTO KM 460"
+      },
+      "source_points": 720,
+      "source_points_sha256": "9eb4237f9e944bdf67ae50b177a63db06ef64417281aefde546f87848bd68e5e",
+      "app_points": 720,
+      "app_points_sha256": "9eb4237f9e944bdf67ae50b177a63db06ef64417281aefde546f87848bd68e5e"
+    },
+    {
+      "metadata": {
+        "coord": "FCL",
+        "ramal": "LC2",
+        "asset": "MF-LC2-FPK_FPK-L000004",
+        "parent": "MF-LC2-FPK_FPK",
+        "line": "L4",
+        "name": "L04 POSTO KM 460"
+      },
+      "source_points": 23,
+      "source_points_sha256": "1c71566eb74d2d54e57b846bc3f96d8e7b5ab10e11c03e73c16d524ed7251f2e",
+      "app_points": 23,
+      "app_points_sha256": "1c71566eb74d2d54e57b846bc3f96d8e7b5ab10e11c03e73c16d524ed7251f2e"
+    },
+    {
+      "metadata": {
+        "coord": "FCL",
+        "ramal": "LC2",
+        "asset": "MF-LC2-FPK_FPK-L000010",
+        "parent": "MF-LC2-FPK_FPK",
+        "line": "L10",
+        "name": "L10 POSTO KM 460"
+      },
+      "source_points": 46,
+      "source_points_sha256": "256723e8b35df09f4513eb99aa66e3571a0e73b71572167c10dad00dac13ac40",
+      "app_points": 46,
+      "app_points_sha256": "256723e8b35df09f4513eb99aa66e3571a0e73b71572167c10dad00dac13ac40"
+    },
+    {
+      "metadata": {
+        "coord": "FCL",
+        "ramal": "LC2",
+        "asset": "MF-LC2-FPK_FPK-L000020",
+        "parent": "MF-LC2-FPK_FPK",
+        "line": "L20",
+        "name": "L20 POSTO KM 460"
+      },
+      "source_points": 97,
+      "source_points_sha256": "90f2fe68e02b3ce1630827faad91610c9cbf8045983c97fb092f0774974254d6",
+      "app_points": 97,
+      "app_points_sha256": "90f2fe68e02b3ce1630827faad91610c9cbf8045983c97fb092f0774974254d6"
+    },
+    {
+      "metadata": {
+        "coord": "FCL",
+        "ramal": "LC2",
+        "asset": "MF-LC2-FPK_FPK-L00002A",
+        "parent": "MF-LC2-FPK_FPK",
+        "line": "L2A",
+        "name": "L02A POSTO KM 460"
+      },
+      "source_points": 127,
+      "source_points_sha256": "2f52202361947089b01a01520863c9dc8ecce3da09a428204acfe47e5c6bafe0",
+      "app_points": 127,
+      "app_points_sha256": "2f52202361947089b01a01520863c9dc8ecce3da09a428204acfe47e5c6bafe0"
+    },
+    {
+      "metadata": {
+        "coord": "FCL",
+        "ramal": "LC2",
+        "asset": "MF-LC2-FPK_FPK-L00008A",
+        "parent": "MF-LC2-FPK_FPK",
+        "line": "L8A",
+        "name": "L08A POSTO KM 460"
+      },
+      "source_points": 22,
+      "source_points_sha256": "63af02d3caf97f90621f8ecda6775a3f3b49709b9339afa3171a6a0ad1324974",
+      "app_points": 22,
+      "app_points_sha256": "63af02d3caf97f90621f8ecda6775a3f3b49709b9339afa3171a6a0ad1324974"
+    },
+    {
+      "metadata": {
+        "coord": "FCL",
+        "ramal": "LC2",
+        "asset": "MF-LC2-FPK_FPK-L00008A",
+        "parent": "MF-LC2-FPK_FPK",
+        "line": "L8A",
+        "name": "L8A POSTO KM 460"
+      },
+      "source_points": 17,
+      "source_points_sha256": "f85e0d787c29d58891f72fe5c412d18b056db6777f46f447e7c9e1d1dc68d89a",
+      "app_points": 39,
+      "app_points_sha256": "dbe433d1ab0a7f251ca427519a2795d0bff93d54451ce1531e039611ea50c7bd"
+    },
+    {
+      "metadata": {
+        "coord": "FCL",
+        "ramal": "LC2",
+        "asset": "MF-LC2-FPK_FPK-L00018A",
+        "parent": "MF-LC2-FPK_FPK",
+        "line": "L18A",
+        "name": "L18A POSTO KM 460"
+      },
+      "source_points": 365,
+      "source_points_sha256": "2b1d0bc0c9558295b9211a247e63f87823fdd91d045dc4181185f5043050a442",
+      "app_points": 365,
+      "app_points_sha256": "2b1d0bc0c9558295b9211a247e63f87823fdd91d045dc4181185f5043050a442"
+    },
+    {
+      "metadata": {
+        "coord": "FCL",
+        "ramal": "LC2",
+        "asset": "MF-LC2-FPK_FPK-L00018B",
+        "parent": "MF-LC2-FPK_FPK",
+        "line": "L18B",
+        "name": "L18B POSTO KM 460"
+      },
+      "source_points": 66,
+      "source_points_sha256": "7b8d1cd18863666afbe0e83fe2a12df24900df889864b24aac1826817efc265e",
+      "app_points": 66,
+      "app_points_sha256": "7b8d1cd18863666afbe0e83fe2a12df24900df889864b24aac1826817efc265e"
+    },
+    {
+      "metadata": {
+        "coord": "FCL",
+        "ramal": "LC2",
+        "asset": "MF-LC2-FPK_FPK-L00018C",
+        "parent": "MF-LC2-FPK_FPK",
+        "line": "L18C",
+        "name": "L18C POSTO KM 460"
+      },
+      "source_points": 42,
+      "source_points_sha256": "5ce8959b6b3690fb17ef05d5bbb8106fea1849227430034fb51136de0cd784a1",
+      "app_points": 42,
+      "app_points_sha256": "5ce8959b6b3690fb17ef05d5bbb8106fea1849227430034fb51136de0cd784a1"
+    },
+    {
+      "metadata": {
+        "coord": "FCL",
+        "ramal": "LC2",
+        "asset": "MF-LC2-FPK_FPK-L00028A",
+        "parent": "MF-LC2-FPK_FPK",
+        "line": "L28A",
+        "name": "L28A POSTO KM 460"
+      },
+      "source_points": 27,
+      "source_points_sha256": "e466a1d17a925ce5d7ee392a77123a1aad266fcd9e9ee2f9bfdb4e225b106941",
+      "app_points": 27,
+      "app_points_sha256": "e466a1d17a925ce5d7ee392a77123a1aad266fcd9e9ee2f9bfdb4e225b106941"
+    },
+    {
+      "metadata": {
+        "coord": "FCL",
+        "ramal": "LC2",
+        "asset": "MF-LC2-FPK_FPK-L00DM4E",
+        "parent": "MF-LC2-FPK_FPK",
+        "line": "DM4E",
+        "name": "LDM4E POSTO KM 460"
+      },
+      "source_points": 22,
+      "source_points_sha256": "8fdfb48af3904f6aa1c6b3dd13ceb73e301dea27790465ebd570a6faec1741b3",
+      "app_points": 22,
+      "app_points_sha256": "8fdfb48af3904f6aa1c6b3dd13ceb73e301dea27790465ebd570a6faec1741b3"
+    },
+    {
+      "metadata": {
+        "coord": "FCL",
+        "ramal": "LC2",
+        "asset": "MF-LC2-FPK_FPK-L0DM10A",
+        "parent": "MF-LC2-FPK_FPK",
+        "line": "DM10A",
+        "name": "LDM10A POSTO KM 460"
+      },
+      "source_points": 29,
+      "source_points_sha256": "57cf27878888a97d4adbbab618a035944a1b1e21d182f406d221f061e482fd43",
+      "app_points": 29,
+      "app_points_sha256": "57cf27878888a97d4adbbab618a035944a1b1e21d182f406d221f061e482fd43"
+    },
+    {
+      "metadata": {
+        "coord": "FCL",
+        "ramal": "LC2",
+        "asset": "MF-LC2-FPK_FPK-TRAVESS",
+        "parent": "MF-LC2-FPK_FPK",
+        "line": "TRAVE",
+        "name": "TRAVESSÃO  POSTO KM 460"
+      },
+      "source_points": 25,
+      "source_points_sha256": "f268b538ec4d87509b97aa6b56bc435e7d5b7f709914a9fbdeb12fdbc81b6a80",
+      "app_points": 38,
+      "app_points_sha256": "652c1391d95efd7ff3dc6b1c997c1e72ec23f0e4a8f04e3f78ca0318cdddc9cf"
+    },
+    {
+      "metadata": {
+        "coord": "FCL",
+        "ramal": "LC2",
+        "asset": "MF-LC2-FPK_FPK-TRAVESS",
+        "parent": "MF-LC2-FPK_FPK",
+        "line": "TRAVE",
+        "name": "TRAVESSÃO POSTO KM 460"
+      },
+      "source_points": 13,
+      "source_points_sha256": "af63d7a5aa205beb3fb07e01129ff6a7ae2950424ae68b7b3f003368ae49783d",
+      "app_points": 13,
+      "app_points_sha256": "af63d7a5aa205beb3fb07e01129ff6a7ae2950424ae68b7b3f003368ae49783d"
+    },
+    {
+      "metadata": {
+        "coord": "FCL",
+        "ramal": "LC2",
+        "asset": "MF-LC2-FQC_FBQ-L000001",
+        "parent": "MF-LC2-FQC_FBQ",
+        "line": "L1",
+        "name": "L01 POSTO KM 452-BUAR. MACEDO"
+      },
+      "source_points": 1781,
+      "source_points_sha256": "ef58694960b489f78e24f55549798fc3d5a93288ddc9bb50bb7474067ba29270",
+      "app_points": 1781,
+      "app_points_sha256": "ef58694960b489f78e24f55549798fc3d5a93288ddc9bb50bb7474067ba29270"
+    },
+    {
+      "metadata": {
+        "coord": "FCL",
+        "ramal": "RAM",
+        "asset": "MF-RAM-FDM_FOB-L000001",
+        "parent": "MF-RAM-FDM_FOB",
+        "line": "L1",
+        "name": "L01 J. MURTINHO-OURO BRANCO"
+      },
+      "source_points": 1477,
+      "source_points_sha256": "12683e64ebf12951809805e7cf68921db1ece6ab9c9857f99a5af0be6ef852f4",
+      "app_points": 1477,
+      "app_points_sha256": "12683e64ebf12951809805e7cf68921db1ece6ab9c9857f99a5af0be6ef852f4"
+    },
+    {
+      "metadata": {
+        "coord": "FCL",
+        "ramal": "RAM",
+        "asset": "MF-RAM-FOB_FOB-L000001",
+        "parent": "MF-RAM-FOB_FOB",
+        "line": "L1",
+        "name": "L01 OURO BRANCO"
+      },
+      "source_points": 356,
+      "source_points_sha256": "725067db8aff3b0421ab88ff8e8451cf9f2aae4beac80cfae9391782c7832426",
+      "app_points": 356,
+      "app_points_sha256": "725067db8aff3b0421ab88ff8e8451cf9f2aae4beac80cfae9391782c7832426"
+    },
+    {
+      "metadata": {
+        "coord": "FCL",
+        "ramal": "RMB",
+        "asset": "MF-RMB-FDM_EMP-L000001",
+        "parent": "MF-RMB-FDM_EMP",
+        "line": "L1",
+        "name": "L01 J. MURTINHO-MIG. BURNIER"
+      },
+      "source_points": 3790,
+      "source_points_sha256": "fd14fbf2ecd41542b2358c4d47787002a1a9091c247e87de532a6c89009875a5",
+      "app_points": 3790,
+      "app_points_sha256": "fd14fbf2ecd41542b2358c4d47787002a1a9091c247e87de532a6c89009875a5"
+    },
+    {
+      "metadata": {
+        "coord": "FCL",
+        "ramal": "VPB",
+        "asset": "MF-VPB-FCR_FCR-L000001",
+        "parent": "MF-VPB-FCR_FCR",
+        "line": "L1",
+        "name": "L01 C. DE PEDRA"
+      },
+      "source_points": 609,
+      "source_points_sha256": "1af336c04c4217cfdc4ee90cb40c36cbc2410fa51d068ce27a40bb5c5c3aecd7",
+      "app_points": 609,
+      "app_points_sha256": "1af336c04c4217cfdc4ee90cb40c36cbc2410fa51d068ce27a40bb5c5c3aecd7"
+    },
+    {
+      "metadata": {
+        "coord": "FCL",
+        "ramal": "VPB",
+        "asset": "MF-VPB-FCR_FCR-L000002",
+        "parent": "MF-VPB-FCR_FCR",
+        "line": "L2",
+        "name": "L02 C. DE PEDRA"
+      },
+      "source_points": 589,
+      "source_points_sha256": "1b9cdbda75031e6d4008d89c808a9a221247e77c06997097081ed2e624b28751",
+      "app_points": 589,
+      "app_points_sha256": "1b9cdbda75031e6d4008d89c808a9a221247e77c06997097081ed2e624b28751"
+    },
+    {
+      "metadata": {
+        "coord": "FCL",
+        "ramal": "VPB",
+        "asset": "MF-VPB-FCR_FLP-L000001",
+        "parent": "MF-VPB-FCR_FLP",
+        "line": "L1",
+        "name": "L01 CASA DE PEDRA/CAETANO LOPES"
+      },
+      "source_points": 252,
+      "source_points_sha256": "c036c554fe61b0fe66122546d444b08f33bf893775f51a1c7831c8e870a08a97",
+      "app_points": 627,
+      "app_points_sha256": "7b4f7fc3f1f12fcda7150c0105523bb3a5683d7887a6a0b875dde74c2b4770ad"
+    },
+    {
+      "metadata": {
+        "coord": "FCL",
+        "ramal": "VPB",
+        "asset": "MF-VPB-FDM_FQD-L000001",
+        "parent": "MF-VPB-FDM_FQD",
+        "line": "L1",
+        "name": "L01 J. MURTINHO-POSTO KM 482"
+      },
+      "source_points": 637,
+      "source_points_sha256": "50c0991c95a73467c8de86374233388b40709279e9ed61426cc3ef005115c610",
+      "app_points": 637,
+      "app_points_sha256": "50c0991c95a73467c8de86374233388b40709279e9ed61426cc3ef005115c610"
+    },
+    {
+      "metadata": {
+        "coord": "FCL",
+        "ramal": "VPB",
+        "asset": "MF-VPB-FQD_FQD-L000001",
+        "parent": "MF-VPB-FQD_FQD",
+        "line": "L1",
+        "name": "L01 POSTO KM 482"
+      },
+      "source_points": 355,
+      "source_points_sha256": "44ec8ee769c978dbe8c6e1d6b65bae9d087e7f277088eb566b7066dda2344856",
+      "app_points": 355,
+      "app_points_sha256": "44ec8ee769c978dbe8c6e1d6b65bae9d087e7f277088eb566b7066dda2344856"
+    },
+    {
+      "metadata": {
+        "coord": "FCL",
+        "ramal": "VPB",
+        "asset": "MF-VPB-FQD_FQD-L000003",
+        "parent": "MF-VPB-FQD_FQD",
+        "line": "L3",
+        "name": "L03 POSTO KM 482"
+      },
+      "source_points": 354,
+      "source_points_sha256": "b59c177eacc331115d4a1d5105d68fc94e8530162a1ad6b7640c59d2629d511c",
+      "app_points": 354,
+      "app_points_sha256": "b59c177eacc331115d4a1d5105d68fc94e8530162a1ad6b7640c59d2629d511c"
+    },
+    {
+      "metadata": {
+        "coord": "FCL",
+        "ramal": "VPB",
+        "asset": "MF-VPB-FQD_FQN-L000001",
+        "parent": "MF-VPB-FQD_FQN",
+        "line": "L1",
+        "name": "L01 POSTO KM 482-POSTO KM 490"
+      },
+      "source_points": 1391,
+      "source_points_sha256": "dbab07c7df724b2755b2d581185693aae1d5e01aaaf3c1a16dec07e7571b2486",
+      "app_points": 1391,
+      "app_points_sha256": "dbab07c7df724b2755b2d581185693aae1d5e01aaaf3c1a16dec07e7571b2486"
+    },
+    {
+      "metadata": {
+        "coord": "FCL",
+        "ramal": "VPB",
+        "asset": "MF-VPB-FQN_FQN-L000001",
+        "parent": "MF-VPB-FQN_FQN",
+        "line": "L1",
+        "name": "L01 POSTO KM 490"
+      },
+      "source_points": 341,
+      "source_points_sha256": "f4115dd261e50e468e231481addd0b3656e46e80b684593ff49820f85d6ed613",
+      "app_points": 341,
+      "app_points_sha256": "f4115dd261e50e468e231481addd0b3656e46e80b684593ff49820f85d6ed613"
+    },
+    {
+      "metadata": {
+        "coord": "FCL",
+        "ramal": "VPB",
+        "asset": "MF-VPB-FQN_FQN-L000002",
+        "parent": "MF-VPB-FQN_FQN",
+        "line": "L2",
+        "name": "L02 POSTO KM 490"
+      },
+      "source_points": 363,
+      "source_points_sha256": "1343f339c48f479de2292bcb9745936886cf101c938078f694e307cb8b8bf74a",
+      "app_points": 363,
+      "app_points_sha256": "1343f339c48f479de2292bcb9745936886cf101c938078f694e307cb8b8bf74a"
+    },
+    {
+      "metadata": {
+        "coord": "FCL",
+        "ramal": "VPB",
+        "asset": "MF-VPB-FQN_FQN-TRAVESS",
+        "parent": "MF-VPB-FQN_FQN",
+        "line": "TRAVE",
+        "name": "TRAVESSÃO POSTO KM 490"
+      },
+      "source_points": 46,
+      "source_points_sha256": "8b877efd1f9c9cfeed03c36b622d61b7db0d175d06cdd631d619857e3c47cf7b",
+      "app_points": 46,
+      "app_points_sha256": "8b877efd1f9c9cfeed03c36b622d61b7db0d175d06cdd631d619857e3c47cf7b"
+    },
+    {
+      "metadata": {
+        "coord": "FFB",
+        "ramal": "LC1",
+        "asset": "MF-LC1-FAA_FAA-L000001",
+        "parent": "MF-LC1-FAA_FAA",
+        "line": "L1",
+        "name": "L01 AFON. ARINOS"
+      },
+      "source_points": 337,
+      "source_points_sha256": "30a488df99c2622b3703532b5da4c4d3769d5c90e34e1dd19defbedde083748a",
+      "app_points": 337,
+      "app_points_sha256": "30a488df99c2622b3703532b5da4c4d3769d5c90e34e1dd19defbedde083748a"
+    },
+    {
+      "metadata": {
+        "coord": "FFB",
+        "ramal": "LC1",
+        "asset": "MF-LC1-FAA_FAA-L000003",
+        "parent": "MF-LC1-FAA_FAA",
+        "line": "L3",
+        "name": "L03 AFON. ARINOS"
+      },
+      "source_points": 339,
+      "source_points_sha256": "94b25af5e376c5710fdc81543589ba3cd41c19ee3810f25279ba2c4cec647bc9",
+      "app_points": 339,
+      "app_points_sha256": "94b25af5e376c5710fdc81543589ba3cd41c19ee3810f25279ba2c4cec647bc9"
+    },
+    {
+      "metadata": {
+        "coord": "FFB",
+        "ramal": "LC1",
+        "asset": "MF-LC1-FAA_FOT-L000001",
+        "parent": "MF-LC1-FAA_FOT",
+        "line": "L1",
+        "name": "L01 AFON. ARINOS-COTEGIPE"
+      },
+      "source_points": 2816,
+      "source_points_sha256": "62c14ed031d806dc31313c2729eee3c32bdd18a5f61c3b15efff4c6563d6cead",
+      "app_points": 2816,
+      "app_points_sha256": "62c14ed031d806dc31313c2729eee3c32bdd18a5f61c3b15efff4c6563d6cead"
+    },
+    {
+      "metadata": {
+        "coord": "FFB",
+        "ramal": "LC1",
+        "asset": "MF-LC1-FBF_FBF-L000001",
+        "parent": "MF-LC1-FBF_FBF",
+        "line": "L1",
+        "name": "L01 BENFICA"
+      },
+      "source_points": 272,
+      "source_points_sha256": "0ce8846c3cb29a542f8b502b782b267ce204cbfb1dedc481864dcc68a467c1e3",
+      "app_points": 272,
+      "app_points_sha256": "0ce8846c3cb29a542f8b502b782b267ce204cbfb1dedc481864dcc68a467c1e3"
+    },
+    {
+      "metadata": {
+        "coord": "FFB",
+        "ramal": "LC1",
+        "asset": "MF-LC1-FBF_FBF-L000002",
+        "parent": "MF-LC1-FBF_FBF",
+        "line": "L2",
+        "name": "L02 BENFICA"
+      },
+      "source_points": 116,
+      "source_points_sha256": "e5a2fba4421a3347c8b69221d0b29cbdd45f8b2f1b2aa255f08b69f0f86bb05d",
+      "app_points": 116,
+      "app_points_sha256": "e5a2fba4421a3347c8b69221d0b29cbdd45f8b2f1b2aa255f08b69f0f86bb05d"
+    },
+    {
+      "metadata": {
+        "coord": "FFB",
+        "ramal": "LC1",
+        "asset": "MF-LC1-FBF_FBF-L000003",
+        "parent": "MF-LC1-FBF_FBF",
+        "line": "L3",
+        "name": "L03 BENFICA"
+      },
+      "source_points": 273,
+      "source_points_sha256": "8c22b476e7805899120dc292ea682e4bdb9614fcc6cb47d11adbe31bc6a4688c",
+      "app_points": 273,
+      "app_points_sha256": "8c22b476e7805899120dc292ea682e4bdb9614fcc6cb47d11adbe31bc6a4688c"
+    },
+    {
+      "metadata": {
+        "coord": "FFB",
+        "ramal": "LC1",
+        "asset": "MF-LC1-FBF_FBF-L000005",
+        "parent": "MF-LC1-FBF_FBF",
+        "line": "L5",
+        "name": "L05 BENFICA"
+      },
+      "source_points": 154,
+      "source_points_sha256": "6839d588856f50376902cce2120b02e17fc3b3078fb5b8115fc267fe1f1661ea",
+      "app_points": 154,
+      "app_points_sha256": "6839d588856f50376902cce2120b02e17fc3b3078fb5b8115fc267fe1f1661ea"
+    },
+    {
+      "metadata": {
+        "coord": "FFB",
+        "ramal": "LC1",
+        "asset": "MF-LC1-FBF_FBF-L000007",
+        "parent": "MF-LC1-FBF_FBF",
+        "line": "L7",
+        "name": "L07 BENFICA"
+      },
+      "source_points": 44,
+      "source_points_sha256": "722bc8966034b34fc8dff614ad8e1713df6cf1796d1d9600b757db3de798705a",
+      "app_points": 44,
+      "app_points_sha256": "722bc8966034b34fc8dff614ad8e1713df6cf1796d1d9600b757db3de798705a"
+    },
+    {
+      "metadata": {
+        "coord": "FFB",
+        "ramal": "LC1",
+        "asset": "MF-LC1-FBF_FDT-L000001",
+        "parent": "MF-LC1-FBF_FDT",
+        "line": "L1",
+        "name": "L01 BENFICA-DIAS TAVARES"
+      },
+      "source_points": 471,
+      "source_points_sha256": "acbe587ae0305958cb2130cfc46f28d74618bd9a5165853391680e26230688b2",
+      "app_points": 471,
+      "app_points_sha256": "acbe587ae0305958cb2130cfc46f28d74618bd9a5165853391680e26230688b2"
+    },
+    {
+      "metadata": {
+        "coord": "FFB",
+        "ramal": "LC1",
+        "asset": "MF-LC1-FDC_FDC-L000001",
+        "parent": "MF-LC1-FDC_FDC",
+        "line": "L1",
+        "name": "L01 POSTO KM 250"
+      },
+      "source_points": 388,
+      "source_points_sha256": "ed5193171e2786e1c7eb589f128e694a279ec753637bc9f39eb6ca3224614718",
+      "app_points": 388,
+      "app_points_sha256": "ed5193171e2786e1c7eb589f128e694a279ec753637bc9f39eb6ca3224614718"
+    },
+    {
+      "metadata": {
+        "coord": "FFB",
+        "ramal": "LC1",
+        "asset": "MF-LC1-FDC_FDC-L000003",
+        "parent": "MF-LC1-FDC_FDC",
+        "line": "L3",
+        "name": "L03 POSTO KM 250"
+      },
+      "source_points": 388,
+      "source_points_sha256": "9b7a6f6c6a8bec9461a29bac4eb44e72f37037d183bb3b51d45a3d9086651891",
+      "app_points": 388,
+      "app_points_sha256": "9b7a6f6c6a8bec9461a29bac4eb44e72f37037d183bb3b51d45a3d9086651891"
+    },
+    {
+      "metadata": {
+        "coord": "FFB",
+        "ramal": "LC1",
+        "asset": "MF-LC1-FDC_FMT-L000001",
+        "parent": "MF-LC1-FDC_FMT",
+        "line": "L1",
+        "name": "L01 POSTO KM 250-MAT. BARBOSA"
+      },
+      "source_points": 192,
+      "source_points_sha256": "b526457484354335af2bba436c529f950cfe9ad50347d10a737dbc621beae342",
+      "app_points": 192,
+      "app_points_sha256": "b526457484354335af2bba436c529f950cfe9ad50347d10a737dbc621beae342"
+    },
+    {
+      "metadata": {
+        "coord": "FFB",
+        "ramal": "LC1",
+        "asset": "MF-LC1-FDN_FDN-L000001",
+        "parent": "MF-LC1-FDN_FDN",
+        "line": "L1",
+        "name": "L01 POSTO KM 298"
+      },
+      "source_points": 420,
+      "source_points_sha256": "1bdde2d16477eece3615eeede076ed45b948a1b98e22dd9b30af341b813ca8c9",
+      "app_points": 420,
+      "app_points_sha256": "1bdde2d16477eece3615eeede076ed45b948a1b98e22dd9b30af341b813ca8c9"
+    },
+    {
+      "metadata": {
+        "coord": "FFB",
+        "ramal": "LC1",
+        "asset": "MF-LC1-FDN_FDN-L000002",
+        "parent": "MF-LC1-FDN_FDN",
+        "line": "L2",
+        "name": "L02 POSTO KM 298"
+      },
+      "source_points": 420,
+      "source_points_sha256": "0db7c4b37dfd23d4db06215fa5c312ded3c7c4d66fc2f470deea2ead1cc088d5",
+      "app_points": 420,
+      "app_points_sha256": "0db7c4b37dfd23d4db06215fa5c312ded3c7c4d66fc2f470deea2ead1cc088d5"
+    },
+    {
+      "metadata": {
+        "coord": "FFB",
+        "ramal": "LC1",
+        "asset": "MF-LC1-FDN_FEB-L000001",
+        "parent": "MF-LC1-FDN_FEB",
+        "line": "L1",
+        "name": "L01 POSTO KM 298-EWBA. CÂMARA"
+      },
+      "source_points": 1628,
+      "source_points_sha256": "494639f32bc90ff91b8a82a0f61a6c138079f64f5a0e9e7db6c1a2ed343be34d",
+      "app_points": 1628,
+      "app_points_sha256": "494639f32bc90ff91b8a82a0f61a6c138079f64f5a0e9e7db6c1a2ed343be34d"
+    },
+    {
+      "metadata": {
+        "coord": "FFB",
+        "ramal": "LC1",
+        "asset": "MF-LC1-FDS_FDS-L000001",
+        "parent": "MF-LC1-FDS_FDS",
+        "line": "L1",
+        "name": "L01 POSTO KM 261"
+      },
+      "source_points": 359,
+      "source_points_sha256": "5324787196cbb611031d0d024578099221a817d1df6f740f038292a82a551d05",
+      "app_points": 359,
+      "app_points_sha256": "5324787196cbb611031d0d024578099221a817d1df6f740f038292a82a551d05"
+    },
+    {
+      "metadata": {
+        "coord": "FFB",
+        "ramal": "LC1",
+        "asset": "MF-LC1-FDS_FDS-L000003",
+        "parent": "MF-LC1-FDS_FDS",
+        "line": "L3",
+        "name": "L03 POSTO KM 261"
+      },
+      "source_points": 360,
+      "source_points_sha256": "a1c33b2245f511aa61d78d185492f2d6c44cbb35b089ac6fa235de8717bbb5b4",
+      "app_points": 360,
+      "app_points_sha256": "a1c33b2245f511aa61d78d185492f2d6c44cbb35b089ac6fa235de8717bbb5b4"
+    },
+    {
+      "metadata": {
+        "coord": "FFB",
+        "ramal": "LC1",
+        "asset": "MF-LC1-FDS_FRT-L000001",
+        "parent": "MF-LC1-FDS_FRT",
+        "line": "L1",
+        "name": "L01 POSTO KM 261-RETIRO"
+      },
+      "source_points": 932,
+      "source_points_sha256": "0af32417fe360c8e24424de3b1b45220421212be61fa61ca9f2c94baa0c93954",
+      "app_points": 932,
+      "app_points_sha256": "0af32417fe360c8e24424de3b1b45220421212be61fa61ca9f2c94baa0c93954"
+    },
+    {
+      "metadata": {
+        "coord": "FFB",
+        "ramal": "LC1",
+        "asset": "MF-LC1-FDT_FDN-L000001",
+        "parent": "MF-LC1-FDT_FDN",
+        "line": "L1",
+        "name": "L01 DIAS TAVARES-POSTO KM 298"
+      },
+      "source_points": 713,
+      "source_points_sha256": "005e8da5ccedea39b700f05fee2e439a5228305cc12429c232853d02dfe574a7",
+      "app_points": 713,
+      "app_points_sha256": "005e8da5ccedea39b700f05fee2e439a5228305cc12429c232853d02dfe574a7"
+    },
+    {
+      "metadata": {
+        "coord": "FFB",
+        "ramal": "LC1",
+        "asset": "MF-LC1-FDT_FDT-L000001",
+        "parent": "MF-LC1-FDT_FDT",
+        "line": "L1",
+        "name": "L01 DIAS TAVARES"
+      },
+      "source_points": 565,
+      "source_points_sha256": "23e452ca95f5589f467a46a6ff8417a7752240aa267a2e1675d7517f02dfd98a",
+      "app_points": 565,
+      "app_points_sha256": "23e452ca95f5589f467a46a6ff8417a7752240aa267a2e1675d7517f02dfd98a"
+    },
+    {
+      "metadata": {
+        "coord": "FFB",
+        "ramal": "LC1",
+        "asset": "MF-LC1-FDT_FDT-L000002",
+        "parent": "MF-LC1-FDT_FDT",
+        "line": "L2",
+        "name": "L02 DIAS TAVARES"
+      },
+      "source_points": 567,
+      "source_points_sha256": "9ff20fa833332d265f791038cb95ff71ada879de5d56f1f3a4d6c85d895b4267",
+      "app_points": 567,
+      "app_points_sha256": "9ff20fa833332d265f791038cb95ff71ada879de5d56f1f3a4d6c85d895b4267"
+    },
+    {
+      "metadata": {
+        "coord": "FFB",
+        "ramal": "LC1",
+        "asset": "MF-LC1-FDT_FDT-L000004",
+        "parent": "MF-LC1-FDT_FDT",
+        "line": "L4",
+        "name": "L04 DIAS TAVARES"
+      },
+      "source_points": 432,
+      "source_points_sha256": "66c9dcbcde0b33df4a3da14f2f3dec5452e722bd1cc965216a0ce0140c01a0e7",
+      "app_points": 432,
+      "app_points_sha256": "66c9dcbcde0b33df4a3da14f2f3dec5452e722bd1cc965216a0ce0140c01a0e7"
+    },
+    {
+      "metadata": {
+        "coord": "FFB",
+        "ramal": "LC1",
+        "asset": "MF-LC1-FDT_FDT-LTRAVES",
+        "parent": "MF-LC1-FDT_FDT",
+        "line": "TRAVE",
+        "name": "TRAVESSAO DIAS TAVARES"
+      },
+      "source_points": 41,
+      "source_points_sha256": "96b20a0d8ded6dbad7346cfdc42c4db676fabea68edfafed75394b766dd5ff13",
+      "app_points": 41,
+      "app_points_sha256": "96b20a0d8ded6dbad7346cfdc42c4db676fabea68edfafed75394b766dd5ff13"
+    },
+    {
+      "metadata": {
+        "coord": "FFB",
+        "ramal": "LC1",
+        "asset": "MF-LC1-FDU_FDU-L000001",
+        "parent": "MF-LC1-FDU_FDU",
+        "line": "L1",
+        "name": "L01 POSTO KM 271"
+      },
+      "source_points": 451,
+      "source_points_sha256": "b3875d016ec45f3666645a000d3e82de87b8d895b4c754de1e3e40ebc1020c04",
+      "app_points": 451,
+      "app_points_sha256": "b3875d016ec45f3666645a000d3e82de87b8d895b4c754de1e3e40ebc1020c04"
+    },
+    {
+      "metadata": {
+        "coord": "FFB",
+        "ramal": "LC1",
+        "asset": "MF-LC1-FDU_FDU-L000002",
+        "parent": "MF-LC1-FDU_FDU",
+        "line": "L2",
+        "name": "L02 POSTO KM 271"
+      },
+      "source_points": 445,
+      "source_points_sha256": "1e723dbac8a3702a771871da129c85c463a00225680eb0ce531d66a61aaf333f",
+      "app_points": 445,
+      "app_points_sha256": "1e723dbac8a3702a771871da129c85c463a00225680eb0ce531d66a61aaf333f"
+    },
+    {
+      "metadata": {
+        "coord": "FFB",
+        "ramal": "LC1",
+        "asset": "MF-LC1-FDU_FJF-L000001",
+        "parent": "MF-LC1-FDU_FJF",
+        "line": "L1",
+        "name": "L01 POSTO KM 271-JUIZ DE FORA"
+      },
+      "source_points": 509,
+      "source_points_sha256": "33c4a91931c9695e0ada1492a82f5c163282a9159751136646cadf0aa86604a1",
+      "app_points": 509,
+      "app_points_sha256": "33c4a91931c9695e0ada1492a82f5c163282a9159751136646cadf0aa86604a1"
+    },
+    {
+      "metadata": {
+        "coord": "FFB",
+        "ramal": "LC1",
+        "asset": "MF-LC1-FEB_FEB-L000001",
+        "parent": "MF-LC1-FEB_FEB",
+        "line": "L1",
+        "name": "L01 EWBA. CÂMARA"
+      },
+      "source_points": 339,
+      "source_points_sha256": "a00548041fc80e3b5338d90cef8dbf4f64dfc66064df1627bcc9ed30d9d77de9",
+      "app_points": 339,
+      "app_points_sha256": "a00548041fc80e3b5338d90cef8dbf4f64dfc66064df1627bcc9ed30d9d77de9"
+    },
+    {
+      "metadata": {
+        "coord": "FFB",
+        "ramal": "LC1",
+        "asset": "MF-LC1-FEB_FEB-L000003",
+        "parent": "MF-LC1-FEB_FEB",
+        "line": "L3",
+        "name": "L03 EWBA. CÂMARA"
+      },
+      "source_points": 340,
+      "source_points_sha256": "5ce2b6ac09b900ac8b727fde89fe9a75ec4f076cbf6f2ad7dfc220e285618993",
+      "app_points": 340,
+      "app_points_sha256": "5ce2b6ac09b900ac8b727fde89fe9a75ec4f076cbf6f2ad7dfc220e285618993"
+    },
+    {
+      "metadata": {
+        "coord": "FFB",
+        "ramal": "LC1",
+        "asset": "MF-LC1-FEB_FSM-L000001",
+        "parent": "MF-LC1-FEB_FSM",
+        "line": "L1",
+        "name": "L01 EWBA. CÂMARA-POSTO KM 316"
+      },
+      "source_points": 934,
+      "source_points_sha256": "dfbd36e65a3cc60e1a3f7b74584968eeef6e6caea75f804aeec0c48d0fc6c8e7",
+      "app_points": 934,
+      "app_points_sha256": "dfbd36e65a3cc60e1a3f7b74584968eeef6e6caea75f804aeec0c48d0fc6c8e7"
+    },
+    {
+      "metadata": {
+        "coord": "FFB",
+        "ramal": "LC1",
+        "asset": "MF-LC1-FFB_FBF-L000001",
+        "parent": "MF-LC1-FFB_FBF",
+        "line": "L1",
+        "name": "L01 F.BERNARDINO-BENFICA"
+      },
+      "source_points": 1091,
+      "source_points_sha256": "5125e9be69c052774e470b099751e55bc41830e83941658b32e5f99ac9a8e956",
+      "app_points": 1091,
+      "app_points_sha256": "5125e9be69c052774e470b099751e55bc41830e83941658b32e5f99ac9a8e956"
+    },
+    {
+      "metadata": {
+        "coord": "FFB",
+        "ramal": "LC1",
+        "asset": "MF-LC1-FFB_FFB-L000001",
+        "parent": "MF-LC1-FFB_FFB",
+        "line": "L1",
+        "name": "L01 F.BERNARDINO"
+      },
+      "source_points": 771,
+      "source_points_sha256": "2944428b840f64c6ada82436bc74f5e7e50220e17becab1d8ebc26d6d8f986ce",
+      "app_points": 771,
+      "app_points_sha256": "2944428b840f64c6ada82436bc74f5e7e50220e17becab1d8ebc26d6d8f986ce"
+    },
+    {
+      "metadata": {
+        "coord": "FFB",
+        "ramal": "LC1",
+        "asset": "MF-LC1-FFB_FFB-L000002",
+        "parent": "MF-LC1-FFB_FFB",
+        "line": "L2",
+        "name": "L02 F.BERNARDINO"
+      },
+      "source_points": 771,
+      "source_points_sha256": "b392f80bddfdc7ea3616ba0b941b0ceaa6771700c677ac923fc97d5c317e5b68",
+      "app_points": 771,
+      "app_points_sha256": "b392f80bddfdc7ea3616ba0b941b0ceaa6771700c677ac923fc97d5c317e5b68"
+    },
+    {
+      "metadata": {
+        "coord": "FFB",
+        "ramal": "LC1",
+        "asset": "MF-LC1-FFB_FFB-L000004",
+        "parent": "MF-LC1-FFB_FFB",
+        "line": "L4",
+        "name": "L04 F.BERNARDINO"
+      },
+      "source_points": 189,
+      "source_points_sha256": "41a8f92227066cd2752cca266456e1449e061d0a1bb0bb66914b9a8ce4deaa84",
+      "app_points": 189,
+      "app_points_sha256": "41a8f92227066cd2752cca266456e1449e061d0a1bb0bb66914b9a8ce4deaa84"
+    },
+    {
+      "metadata": {
+        "coord": "FFB",
+        "ramal": "LC1",
+        "asset": "MF-LC1-FFB_FFB-L000DM6",
+        "parent": "MF-LC1-FFB_FFB",
+        "line": "LDM6",
+        "name": "LDM6 F.BERNARDINO"
+      },
+      "source_points": 9,
+      "source_points_sha256": "7acea41d83435911190f2e6d588a363aeb8a3c258ef83d1ab889f28679ea28da",
+      "app_points": 9,
+      "app_points_sha256": "7acea41d83435911190f2e6d588a363aeb8a3c258ef83d1ab889f28679ea28da"
+    },
+    {
+      "metadata": {
+        "coord": "FFB",
+        "ramal": "LC1",
+        "asset": "MF-LC1-FFB_FFB-LTRAVES",
+        "parent": "MF-LC1-FFB_FFB",
+        "line": "TRAVE",
+        "name": "TRAVESSAO F.BERNARDINO"
+      },
+      "source_points": 22,
+      "source_points_sha256": "b0e416a85b55fd7df2be2eb9f489da47c8a7b22724f9747eae38f18236054956",
+      "app_points": 22,
+      "app_points_sha256": "b0e416a85b55fd7df2be2eb9f489da47c8a7b22724f9747eae38f18236054956"
+    },
+    {
+      "metadata": {
+        "coord": "FFB",
+        "ramal": "LC1",
+        "asset": "MF-LC1-FJF_FFB-L000001",
+        "parent": "MF-LC1-FJF_FFB",
+        "line": "L1",
+        "name": "L01 JUIZ DE FORA-F.BERNARDINO"
+      },
+      "source_points": 574,
+      "source_points_sha256": "1d344d34d1fbbf9b2341aa9dc789934eb33a4edaea3ae9c8a60a7ad50e23d184",
+      "app_points": 574,
+      "app_points_sha256": "1d344d34d1fbbf9b2341aa9dc789934eb33a4edaea3ae9c8a60a7ad50e23d184"
+    },
+    {
+      "metadata": {
+        "coord": "FFB",
+        "ramal": "LC1",
+        "asset": "MF-LC1-FJF_FFB-L000DM3",
+        "parent": "MF-LC1-FJF_FFB",
+        "line": "LDM3",
+        "name": "LDM3 JUIZ DE FORA-F.BERNARDINO"
+      },
+      "source_points": 74,
+      "source_points_sha256": "1dfd267e337478451afddec1299f8ec3bd62b97fa5f3e47ebee9cc34690ec982",
+      "app_points": 74,
+      "app_points_sha256": "1dfd267e337478451afddec1299f8ec3bd62b97fa5f3e47ebee9cc34690ec982"
+    },
+    {
+      "metadata": {
+        "coord": "FFB",
+        "ramal": "LC1",
+        "asset": "MF-LC1-FJF_FJF-L000001",
+        "parent": "MF-LC1-FJF_FJF",
+        "line": "L1",
+        "name": "L01 JUIZ DE FORA"
+      },
+      "source_points": 243,
+      "source_points_sha256": "8886e8e55541ae848b51de2b1c38345d4afe1e16be3c428353e0e2b3a5c0eec6",
+      "app_points": 243,
+      "app_points_sha256": "8886e8e55541ae848b51de2b1c38345d4afe1e16be3c428353e0e2b3a5c0eec6"
+    },
+    {
+      "metadata": {
+        "coord": "FFB",
+        "ramal": "LC1",
+        "asset": "MF-LC1-FJF_FJF-L000002",
+        "parent": "MF-LC1-FJF_FJF",
+        "line": "L2",
+        "name": "L02 JUIZ DE FORA"
+      },
+      "source_points": 244,
+      "source_points_sha256": "fa4d50caac9d79d17bb144a5077f08d07aaf43c9857755141e952055c5e0d0e4",
+      "app_points": 244,
+      "app_points_sha256": "fa4d50caac9d79d17bb144a5077f08d07aaf43c9857755141e952055c5e0d0e4"
+    },
+    {
+      "metadata": {
+        "coord": "FFB",
+        "ramal": "LC1",
+        "asset": "MF-LC1-FJF_FJF-L000004",
+        "parent": "MF-LC1-FJF_FJF",
+        "line": "L4",
+        "name": "L04 JUIZ DE FORA"
+      },
+      "source_points": 213,
+      "source_points_sha256": "2379594426111f4bba70bf30c5d1398cea6b6cf6a04619aeca85f2094307964f",
+      "app_points": 213,
+      "app_points_sha256": "2379594426111f4bba70bf30c5d1398cea6b6cf6a04619aeca85f2094307964f"
+    },
+    {
+      "metadata": {
+        "coord": "FFB",
+        "ramal": "LC1",
+        "asset": "MF-LC1-FMT_FDS_L000001",
+        "parent": "MF-LC1-FMT_FDS",
+        "line": "L1",
+        "name": "L01 MAT. BARBOSA-POSTO KM 261"
+      },
+      "source_points": 1445,
+      "source_points_sha256": "85f65534666a3af0d96cc424608d32b763673153f163b786b9574c65bbe58edf",
+      "app_points": 1445,
+      "app_points_sha256": "85f65534666a3af0d96cc424608d32b763673153f163b786b9574c65bbe58edf"
+    },
+    {
+      "metadata": {
+        "coord": "FFB",
+        "ramal": "LC1",
+        "asset": "MF-LC1-FMT_FMT-L000001",
+        "parent": "MF-LC1-FMT_FMT",
+        "line": "L1",
+        "name": "L01 MAT. BARBOSA"
+      },
+      "source_points": 149,
+      "source_points_sha256": "e61ea7cca05672261ed96380d144e1c5f6423979a3472fec23739a08345b961f",
+      "app_points": 149,
+      "app_points_sha256": "e61ea7cca05672261ed96380d144e1c5f6423979a3472fec23739a08345b961f"
+    },
+    {
+      "metadata": {
+        "coord": "FFB",
+        "ramal": "LC1",
+        "asset": "MF-LC1-FMT_FMT-L000DM2",
+        "parent": "MF-LC1-FMT_FMT",
+        "line": "LDM2",
+        "name": "LDM2 MAT. BARBOSA"
+      },
+      "source_points": 125,
+      "source_points_sha256": "219c377348b00372a7d392c628e5fe371e2d51f7ba43f26a91ee48ad8b558345",
+      "app_points": 125,
+      "app_points_sha256": "219c377348b00372a7d392c628e5fe371e2d51f7ba43f26a91ee48ad8b558345"
+    },
+    {
+      "metadata": {
+        "coord": "FFB",
+        "ramal": "LC1",
+        "asset": "MF-LC1-FOT_FDC-L000001",
+        "parent": "MF-LC1-FOT_FDC",
+        "line": "L1",
+        "name": "L01 COTEGIPE-POSTO KM 250"
+      },
+      "source_points": 638,
+      "source_points_sha256": "bc10e1ba0ee32bde318762e02fc79066c2429bab292eb92cb1446352e1fc650a",
+      "app_points": 638,
+      "app_points_sha256": "bc10e1ba0ee32bde318762e02fc79066c2429bab292eb92cb1446352e1fc650a"
+    },
+    {
+      "metadata": {
+        "coord": "FFB",
+        "ramal": "LC1",
+        "asset": "MF-LC1-FOT_FOT-L000001",
+        "parent": "MF-LC1-FOT_FOT",
+        "line": "L1",
+        "name": "L01 COTEGIPE"
+      },
+      "source_points": 399,
+      "source_points_sha256": "d0bf43d2305ce539abb1cab4e6c4473a406ce5500486a42ce7447bfe9e48bd8a",
+      "app_points": 399,
+      "app_points_sha256": "d0bf43d2305ce539abb1cab4e6c4473a406ce5500486a42ce7447bfe9e48bd8a"
+    },
+    {
+      "metadata": {
+        "coord": "FFB",
+        "ramal": "LC1",
+        "asset": "MF-LC1-FOT_FOT-L000003",
+        "parent": "MF-LC1-FOT_FOT",
+        "line": "L3",
+        "name": "L03 COTEGIPE"
+      },
+      "source_points": 400,
+      "source_points_sha256": "97f629e63f28a3d7f5b9ffb2100d78578c611a52697245ea3c459aa2576232c0",
+      "app_points": 400,
+      "app_points_sha256": "97f629e63f28a3d7f5b9ffb2100d78578c611a52697245ea3c459aa2576232c0"
+    },
+    {
+      "metadata": {
+        "coord": "FFB",
+        "ramal": "LC1",
+        "asset": "MF-LC1-FRT_FDU-L000001",
+        "parent": "MF-LC1-FRT_FDU",
+        "line": "L1",
+        "name": "L01 RETIRO-POSTO KM 271"
+      },
+      "source_points": 682,
+      "source_points_sha256": "54f645c3dba4b3ebf147ca5299b03082ff5661f800f248de3bc8f3481f475a30",
+      "app_points": 682,
+      "app_points_sha256": "54f645c3dba4b3ebf147ca5299b03082ff5661f800f248de3bc8f3481f475a30"
+    },
+    {
+      "metadata": {
+        "coord": "FFB",
+        "ramal": "LC1",
+        "asset": "MF-LC1-FRT_FRT-L000001",
+        "parent": "MF-LC1-FRT_FRT",
+        "line": "L1",
+        "name": "L01 RETIRO"
+      },
+      "source_points": 17,
+      "source_points_sha256": "bbaab338cb82f63d2a1e24545ab43f209e4a2ef618d320a01abb39e2114cc10c",
+      "app_points": 17,
+      "app_points_sha256": "bbaab338cb82f63d2a1e24545ab43f209e4a2ef618d320a01abb39e2114cc10c"
+    },
+    {
+      "metadata": {
+        "coord": "FFB",
+        "ramal": "LC1",
+        "asset": "MF-LC1-FRT_FRT-L000DM3",
+        "parent": "MF-LC1-FRT_FRT",
+        "line": "LDM3",
+        "name": "LDM3 RETIRO"
+      },
+      "source_points": 62,
+      "source_points_sha256": "5a493ab9bd8d5ff6126627326f3de4dbbbb9fbf522eb457d99ef567546f1fa81",
+      "app_points": 62,
+      "app_points_sha256": "5a493ab9bd8d5ff6126627326f3de4dbbbb9fbf522eb457d99ef567546f1fa81"
+    },
+    {
+      "metadata": {
+        "coord": "FFB",
+        "ramal": "LC1",
+        "asset": "MF-LC1-FSA_FAA-L000001",
+        "parent": "MF-LC1-FSA_FAA",
+        "line": "L1",
+        "name": "L01 SOUZA AGUIAR-AFON. ARINOS"
+      },
+      "source_points": 1871,
+      "source_points_sha256": "50e1c442cd8d10a20d940d923ad46b451ab921598b688c48588071ad9b225f6e",
+      "app_points": 1871,
+      "app_points_sha256": "50e1c442cd8d10a20d940d923ad46b451ab921598b688c48588071ad9b225f6e"
+    },
+    {
+      "metadata": {
+        "coord": "FFB",
+        "ramal": "LC1",
+        "asset": "MF-LC1-FSA_FSA-L000001",
+        "parent": "MF-LC1-FSA_FSA",
+        "line": "L1",
+        "name": "L01 SOUZA AGUIAR"
+      },
+      "source_points": 361,
+      "source_points_sha256": "fede4d245c423f019a4fa8c6959fbfcd464c8ddb64ba88bbfed794f540ea5a32",
+      "app_points": 361,
+      "app_points_sha256": "fede4d245c423f019a4fa8c6959fbfcd464c8ddb64ba88bbfed794f540ea5a32"
+    },
+    {
+      "metadata": {
+        "coord": "FFB",
+        "ramal": "LC1",
+        "asset": "MF-LC1-FSA_FSA-L000003",
+        "parent": "MF-LC1-FSA_FSA",
+        "line": "L3",
+        "name": "L03 SOUZA AGUIAR"
+      },
+      "source_points": 360,
+      "source_points_sha256": "6c195c2dc01921313f366d03397e9b985a3eb593ae9f4bde82e73a7e49d28ef1",
+      "app_points": 360,
+      "app_points_sha256": "6c195c2dc01921313f366d03397e9b985a3eb593ae9f4bde82e73a7e49d28ef1"
+    },
+    {
+      "metadata": {
+        "coord": "FFB",
+        "ramal": "LC1",
+        "asset": "MF-LC1-FSM_FSD-L000001",
+        "parent": "MF-LC1-FSM_FSD",
+        "line": "L1",
+        "name": "L01 POSTO KM 316-SANT. DUMONT"
+      },
+      "source_points": 902,
+      "source_points_sha256": "322ae378080b6a23db1a651b62f31362bb7450db5f86901ce28839ac16d53ea8",
+      "app_points": 902,
+      "app_points_sha256": "322ae378080b6a23db1a651b62f31362bb7450db5f86901ce28839ac16d53ea8"
+    },
+    {
+      "metadata": {
+        "coord": "FFB",
+        "ramal": "LC1",
+        "asset": "MF-LC1-FSM_FSM-L000001",
+        "parent": "MF-LC1-FSM_FSM",
+        "line": "L1",
+        "name": "L01 POSTO KM 316"
+      },
+      "source_points": 503,
+      "source_points_sha256": "9c61230bb3132da35889872fb960616cf8891ceb3f37e410d87bd9957916011e",
+      "app_points": 503,
+      "app_points_sha256": "9c61230bb3132da35889872fb960616cf8891ceb3f37e410d87bd9957916011e"
+    },
+    {
+      "metadata": {
+        "coord": "FFB",
+        "ramal": "LC1",
+        "asset": "MF-LC1-FSM_FSM-L000002",
+        "parent": "MF-LC1-FSM_FSM",
+        "line": "L2",
+        "name": "L02 POSTO KM 316"
+      },
+      "source_points": 500,
+      "source_points_sha256": "02500796c4cd705884a778b028b28c4ccef320497ef51a0229cd5fab52742859",
+      "app_points": 500,
+      "app_points_sha256": "02500796c4cd705884a778b028b28c4ccef320497ef51a0229cd5fab52742859"
+    },
+    {
+      "metadata": {
+        "coord": "FFB",
+        "ramal": "LC1",
+        "asset": "MF-LC1-FSR_FSA-L000001",
+        "parent": "MF-LC1-FSR_FSA",
+        "line": "L1",
+        "name": "L01 SERRARIA-SOUZA AGUIAR"
+      },
+      "source_points": 916,
+      "source_points_sha256": "fe3d64fd07c600b17f8ea603fe0a1ad63f657b00fac300037a304a304ee7398f",
+      "app_points": 916,
+      "app_points_sha256": "fe3d64fd07c600b17f8ea603fe0a1ad63f657b00fac300037a304a304ee7398f"
+    },
+    {
+      "metadata": {
+        "coord": "FFB",
+        "ramal": "LC1",
+        "asset": "MF-LC1-FSR_FSR-L000003",
+        "parent": "MF-LC1-FSR_FSR",
+        "line": "L3",
+        "name": "L03 SERRARIA"
+      },
+      "source_points": 189,
+      "source_points_sha256": "49203c0bb31bdb7e1fe4b25ea0cbedfd0483ab504f651e3aeb71594dc7c01542",
+      "app_points": 189,
+      "app_points_sha256": "49203c0bb31bdb7e1fe4b25ea0cbedfd0483ab504f651e3aeb71594dc7c01542"
+    }
+  ],
+  "source_records": {
+    "FBJ": 26129,
+    "FFB": 28966,
+    "FBV": 17458,
+    "FBC": 33409,
+    "FCL": 27471,
+    "FBR": 19664
+  },
+  "unique_source_points": {
+    "FBC": 33408,
+    "FBJ": 26129,
+    "FBR": 19663,
+    "FBV": 17457,
+    "FCL": 27471,
+    "FFB": 28965
+  },
+  "duplicate_source_records": 4,
+  "represented_unique_points": {
+    "FBC": 33408,
+    "FBJ": 26129,
+    "FBR": 19663,
+    "FBV": 17457,
+    "FCL": 27471,
+    "FFB": 28965
+  },
+  "unrepresented_source_records": {
+    "FBJ": 0,
+    "FFB": 0,
+    "FBV": 0,
+    "FBC": 0,
+    "FCL": 0,
+    "FBR": 0
+  },
+  "added_points": {
+    "FBC": 356,
+    "FBJ": 1386,
+    "FBR": 165,
+    "FBV": 17,
+    "FCL": 2460,
+    "FFB": 2526
+  },
+  "added_tracks": {
+    "FBC": 2,
+    "FBJ": 3,
+    "FCL": 9,
+    "FFB": 3
+  },
+  "ambiguous_asset_km_groups": 1386,
+  "original_tracks": 311,
+  "original_segments": 148105,
+  "preserved_binary_prefix_sha256": "49bda9f51031ca7b3761374f45f1322dce65ebc7c2e79723567e5dca2d44821a",
+  "preserved_tracks_prefix_sha256": "74ac9eacc8ffd5c0e762f01ad3f77bec54d8096a1c4c75bdb18edc646baeef2c",
+  "binary_sha256": "23234388c6640f71ad91491938560bd3adb1223304a474e436e4f174057c9676",
+  "tracks_sha256": "25ebddb194543aaf6d965cb53897fb9b93111736bb59e43f63feabf0eda92fb3",
+  "rules": "Source points retain coordination, original route, asset, parent, line, name, KM and coordinates. No new nonzero segments. No extrapolation across gaps. Distinct positions sharing asset/KM remain distinct and require confirmation."
+}
