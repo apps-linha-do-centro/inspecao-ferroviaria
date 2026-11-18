@@ -4,8 +4,8 @@ from complete_geography import complete,key,point_index
 APP=Path(__file__).resolve().parents[1]
 class CompleteGeographyTest(unittest.TestCase):
  def test_all_audited_source_groups_preserved(self):
-  report=json.loads((APP/'automation/geography-completion.json').read_text());tracks=json.loads((APP/'tracks.json').read_text());binary=gzip.decompress((APP/'rail.bin.gz').read_bytes());actual=point_index(tracks,binary)
-  self.assertEqual(hashlib.sha256(binary).hexdigest(),report['binary_sha256']);self.assertEqual(hashlib.sha256((APP/'tracks.json').read_bytes()).hexdigest(),report['tracks_sha256'])
+  report=json.loads((APP/'automation/geography-completion.json').read_text());tracks=json.loads((APP/'tracks.json').read_text());binary=gzip.decompress((APP/'rail.bin.gz').read_bytes());completed_count=report['original_segments']+sum(report['added_points'].values());binary=binary[:completed_count*28];tracks=tracks[:max(r[6] for r in struct.iter_unpack('<7i',binary))+1];actual=point_index(tracks,binary)
+  self.assertEqual(hashlib.sha256(binary).hexdigest(),report['binary_sha256']);self.assertEqual(hashlib.sha256(json.dumps(tracks,ensure_ascii=False,separators=(',',':')).encode()).hexdigest(),report['tracks_sha256'])
   self.assertEqual(hashlib.sha256(binary[:report['original_segments']*28]).hexdigest(),report['preserved_binary_prefix_sha256'])
   self.assertEqual(hashlib.sha256(json.dumps(tracks[:report['original_tracks']],ensure_ascii=False,separators=(',',':')).encode()).hexdigest(),report['preserved_tracks_prefix_sha256'])
   self.assertEqual(sum(report['source_records'].values()),153097);self.assertEqual(sum(report['unique_source_points'].values()),153093)

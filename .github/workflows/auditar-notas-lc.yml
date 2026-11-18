@@ -31,6 +31,7 @@ jobs:
           node notas-lc-campo/automation/test-yag.mjs
           node notas-lc-campo/automation/test-apps-script.mjs
           node notas-lc-campo/automation/test-geography.mjs
+          node notas-lc-campo/automation/test-nexa.mjs
           node notas-lc-campo/automation/test-geography-points.mjs
           node notas-lc-campo/automation/test-gps-offline.mjs
           node notas-lc-campo/automation/test-field-usability.mjs

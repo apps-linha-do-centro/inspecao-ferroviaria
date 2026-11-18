@@ -15,6 +15,6 @@ let response;handlers.fetch({request:{method:'GET',url:'https://example.test/not
 handlers.fetch({request:{method:'GET',url:'https://example.test/notas-lc-campo/base-status.json?lc-update=1'},respondWith:p=>response=p});await assert.rejects(response);assert.equal(urls.size,files.length);
 // Repair only missing resources. One failed file must not erase or redownload valid files.
 offline=false;urls.delete(key('gps-routes.bin.gz?v=45'));urls.delete(key('gps-routes.json?v=45'));failed=key('gps-routes.bin.gz?v=45');requests.length=0;
-handlers.message({data:{type:'PREPARE_OFFLINE'},ports:[{postMessage:p=>messages.push(p)}],waitUntil:p=>pending=p});await pending;assert.equal(messages.at(-1).ready,false);assert.equal(requests.length,2);assert(urls.has(key('gps-routes.json?v=45')));assert(urls.has(key('rail.bin.gz?v=46')));
+handlers.message({data:{type:'PREPARE_OFFLINE'},ports:[{postMessage:p=>messages.push(p)}],waitUntil:p=>pending=p});await pending;assert.equal(messages.at(-1).ready,false);assert.equal(requests.length,2);assert(urls.has(key('gps-routes.json?v=45')));assert(urls.has(key('rail.bin.gz?v=48')));
 failed=null;requests.length=0;handlers.message({data:{type:'PREPARE_OFFLINE'},ports:[{postMessage:p=>messages.push(p)}],waitUntil:p=>pending=p});await pending;assert.equal(messages.at(-1).ready,true);assert.equal(requests.length,1);
 console.log('PASS: complete GPS resources cached; all requests and home shortcut navigation work offline; update failure preserves files; incremental repair retains valid resources.');

@@ -127,3 +127,11 @@ Ao aceitar uma nova posição GPS ou confirmar o km manual, a consulta volta par
 A cobertura geográfica é calculada uma vez por conjunto de notas/trechos e invalidada quando a base ou os trechos são substituídos. O texto e a abrangência dos avisos permanecem iguais. O complemento GPS é carregado em segundo plano e não bloqueia a abertura dos dados essenciais. A identidade final do cache inclui `gps.js`, `gps-routes.json` e `gps-routes.bin.gz`.
 
 Regressões: `test-field-usability.mjs` e `test_cache_resources.py`, executadas nos fluxos de auditoria/atualização.
+
+### Ramal Nexa (RPB / FBF_FAW)
+
+Fonte: `01. NEXA.zip`, SHA-256 e índices originais em `nexa-source.json`. O importador `import_nexa.py` conserva coordenadas WGS84 originais e seleciona pontos após aproximadamente 5 m percorridos, preservando os marcos e o fim. Os 17.296 registros resultam em 1.040 pontos e 1.039 segmentos. Nenhum segmento da base anterior é modificado.
+
+A quilometragem é **aproximada**: a distância acumulada entre mudanças do campo KM original é escalada entre os marcos inteiros. O final usa 5 + 93,510 m do DBF do eixo (arredondado para 5+094 no aplicativo). Sample e SEQ não são tratados como metros. A associação ao ativo MF-RPB-FBF_FAW-L000001 foi fornecida pelo usuário. A referência identifica somente esse ativo-raiz, inclusive a nota alocada em FCL, sem estender a associação a outros ativos do RPB. O nome da referência sinaliza “km aproximado”.
+
+Reprodução: `python3 notas-lc-campo/automation/import_nexa.py --source /caminho/01.\ NEXA.zip --app notas-lc-campo`. O ZIP não é publicado. Os testes verificam GPS e consulta manual no km 0+111, marcos, preservação do binário anterior e isolamento de ramal/ativo.
