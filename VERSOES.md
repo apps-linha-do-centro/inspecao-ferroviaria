@@ -1,5 +1,9 @@
 # Histórico de publicações
 
+## V23 — referência recuperável
+
+Código do Sites e7bfa7a17ac57211a00e53ec3ab08f0167bea9a7, com adaptação de caminhos e cache para GitHub Pages. A base IndexedDB permanece na versão 2. Para recompilar a distribuição estática, execute pnpm build:pages a partir da raiz.
+
 ## V16 — 08/10/2026
 
 Atualização a partir do Sites, origem ffce6bf5ba19632ae7efa92386343aa222e4fd4c.
