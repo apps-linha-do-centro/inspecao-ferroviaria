@@ -1,5 +1,11 @@
 # Histórico de publicações
 
+## V24 — 27/11/2026
+
+Inspeção a pé com foto opcional da anomalia, rodapé com KM, coordenadas e horário do registro, e inclusão no PDF. O mesmo aplicativo é compilado para Sites e GitHub Pages. O comando pnpm build:pages gera a distribuição em github-pages/dist/.
+
+Para voltar à V23, consulte a branch inspecao-v23-retorno. No repositório público, restaure somente index.html, sw.js e os demais arquivos da aplicação referenciados pela publicação V23. Preserve notas-lc-campo e os dados locais do navegador. As fotos da V24 voltam a ser exibidas ao retornar à V24.
+
 ## V23 — referência recuperável
 
 Código do Sites e7bfa7a17ac57211a00e53ec3ab08f0167bea9a7, com adaptação de caminhos e cache para GitHub Pages. A base IndexedDB permanece na versão 2. Para recompilar a distribuição estática, execute pnpm build:pages a partir da raiz.

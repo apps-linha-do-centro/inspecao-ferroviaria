@@ -1,7 +1,7 @@
 const ROOT = new URL(self.registration.scope);
 const PREFIX = ROOT.pathname === "/" ? "inspecao-ferroviaria-" : "inspecao-pages-" + ROOT.pathname + "-";
-const BUILD_ASSETS = ["assets/html2canvas-Du3LFj8R.js","assets/index-CHVrB8sJ.js","assets/index-a6zqWE1l.css","assets/index.es-bEUa7Nkk.js","assets/purify.es-D0jS7ypB.js"]; // Replaced with the published build's offline assets.
-const CACHE = PREFIX + "v23-d454f87c3e67";
+const BUILD_ASSETS = ["assets/html2canvas-DGxc0aul.js","assets/index-RDQ1gvra.css","assets/index-U75lJlAI.js","assets/index.es-DN8YdN-1.js","assets/purify.es-D0jS7ypB.js"]; // Replaced with the published build's offline assets.
+const CACHE = PREFIX + "v24-91a3c9b41e96";
 const APP_SHELL = ["", "manifest.webmanifest", "favicon.svg", "railway-segments-v2.bin", ...BUILD_ASSETS]
   .map((path) => new URL(path, ROOT).href);
 let cacheWritesEnabled = true;
